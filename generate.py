@@ -107,10 +107,10 @@ def main() -> int:
     run_dir = ROOT / "runs" / run
     run_dir.mkdir(parents=True, exist_ok=True)
 
-    arms = config.ARMS
+    arms = config.usable_arms(args.mock)
     if args.arms:
         wanted = set(args.arms.split(","))
-        arms = [a for a in config.ARMS if a["name"] in wanted]
+        arms = [a for a in arms if a["name"] in wanted]
         missing = wanted - {a["name"] for a in arms}
         if missing:
             print(f"unknown arms: {sorted(missing)}")

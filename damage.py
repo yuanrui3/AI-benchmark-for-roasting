@@ -113,9 +113,9 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--run", required=True)
     ap.add_argument("--mock", action="store_true")
-    ap.add_argument("--budget", type=float, default=10.0)
+    ap.add_argument("--budget", type=float, default=40.0, help="run-wide USD cap (ledger is shared by all stages)")
     ap.add_argument("--per-lang", type=int, default=30, help="originals per language")
-    ap.add_argument("--judges", default=",".join(config.JUDGES))
+    ap.add_argument("--judges", default=None, help="comma list; default: every judge whose key exists")
     ap.add_argument("--workers", type=int, default=6)
     ap.add_argument("--seed", type=int, default=11)
     args = ap.parse_args()
@@ -143,7 +143,8 @@ def main() -> int:
     print(f"{len(originals)} originals {per_lang}")
 
     llm = LLM(run_dir, budget_usd=args.budget, mock=args.mock)
-    judges = {j: config.MODELS[config.JUDGES[j]] for j in args.judges.split(",")}
+    judge_names = args.judges.split(",") if args.judges else config.usable_judges(args.mock)
+    judges = {j: config.MODELS[config.JUDGES[j]] for j in judge_names}
     variants_path = run_dir / "damaged.jsonl"
     existing = {(r["item_id"], r["damage"]): r for r in read_jsonl(variants_path)} if variants_path.exists() else {}
 

@@ -5,3 +5,5 @@ __pycache__/
 .pytest_cache/
 # raw request/response logs are large; the pooled items in runs/*/items.jsonl are tracked
 runs/*/raw/
+# mock runs are disposable
+runs/mock*/

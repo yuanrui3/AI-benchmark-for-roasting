@@ -42,8 +42,8 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--run", required=True)
     ap.add_argument("--mock", action="store_true")
-    ap.add_argument("--budget", type=float, default=10.0)
-    ap.add_argument("--judges", default=",".join(config.JUDGES))
+    ap.add_argument("--budget", type=float, default=40.0, help="run-wide USD cap (ledger is shared by all stages)")
+    ap.add_argument("--judges", default=None, help="comma list; default: every judge whose key exists")
     ap.add_argument("--workers", type=int, default=6)
     ap.add_argument("--seed", type=int, default=7)
     args = ap.parse_args()
@@ -53,7 +53,8 @@ def main() -> int:
     targets = load_targets()
     distinct = distinctive_words(targets)
     fact_tokens = {tid: tokens(" ".join(t["facts"]) + " " + t["name"]) for tid, t in targets.items()}
-    judges = {j: config.MODELS[config.JUDGES[j]] for j in args.judges.split(",")}
+    judge_names = args.judges.split(",") if args.judges else config.usable_judges(args.mock)
+    judges = {j: config.MODELS[config.JUDGES[j]] for j in judge_names}
     out_path = run_dir / "specificity.jsonl"
     done = {(r["item_id"], r["judge"]) for r in read_jsonl(out_path)} if out_path.exists() else set()
 

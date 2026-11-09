@@ -5,9 +5,14 @@ from this file plus targets.jsonl. Edit here, not in generate.py.
 """
 from __future__ import annotations
 
+import os
 from pathlib import Path
 
+from dotenv import load_dotenv
+
 from llm import ModelSpec
+
+load_dotenv()
 
 ROOT = Path(__file__).resolve().parent
 SKILL_PATH = ROOT / ".claude" / "skills" / "roast-anything" / "SKILL.md"
@@ -55,6 +60,34 @@ JUDGES: dict[str, str] = {        # judge name -> MODELS key
 }
 JUDGE_EFFORT = "low"
 JUDGE_MAX_TOKENS = 1024  # thinking tokens count toward this on Claude; answers themselves are a few tokens
+
+_KEY_ENV = {"anthropic": "ANTHROPIC_API_KEY", "openrouter": "OPENROUTER_API_KEY"}
+
+
+def has_key(provider: str) -> bool:
+    return provider == "mock" or bool(os.environ.get(_KEY_ENV.get(provider, ""), "").strip())
+
+
+def usable_arms(mock: bool = False) -> list[dict]:
+    """ARMS whose provider key exists (all of them under --mock). Dropped arms are printed."""
+    if mock:
+        return list(ARMS)
+    keep, dropped = [], []
+    for a in ARMS:
+        (keep if has_key(MODELS[a["model"]].provider) else dropped).append(a["name"])
+    if dropped:
+        print(f"no key for provider; skipping arms: {dropped}")
+    return [a for a in ARMS if a["name"] in keep]
+
+
+def usable_judges(mock: bool = False) -> list[str]:
+    if mock:
+        return list(JUDGES)
+    keep = [j for j, m in JUDGES.items() if has_key(MODELS[m].provider)]
+    dropped = [j for j in JUDGES if j not in keep]
+    if dropped:
+        print(f"no key for provider; skipping judges: {dropped}")
+    return keep
 
 
 def _facts_block(target: dict, lang: str) -> str:
