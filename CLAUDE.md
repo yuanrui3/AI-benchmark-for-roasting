@@ -5,7 +5,7 @@ Two linked goals:
 1. **Roast Anything** ("Roasting Is All You Need"): a fine-tuned or distilled model, from Claude or an open-weight base, that roasts any *thing*.
 2. **A roast-generation benchmark.** It is the evaluation Roast Anything needs anyway, so it comes first.
 
-Status on 9 Nov 2026, 04:40: `targets.jsonl` is final (200 facts web-verified by six agents, 35 corrected, 0 removed, 1 narrowed). The whole preflight pipeline is built and passes an end-to-end run on the mock provider (`uv run python run_all.py --mock`). No API keys yet: the owner sets them up on the morning of 10 Nov (`.env` is prepared with instructions). Next: `check_keys.py` → `run_all.py --run pilot --smoke` → read the smoke outputs and tune prompts if needed → full run → owner and friends rate.
+Status on 9 Nov 2026, 04:40: `targets.jsonl` is final (200 facts web-verified by six agents, 35 corrected, 0 removed, 1 narrowed). The whole preflight pipeline is built and passes an end-to-end run on the mock provider (`uv run python run_all.py --mock`). No API keys yet: on the morning of 10 Nov the owner claims the Ultra plan's $200/month API credits (claude.ai → Settings → Billing → API credits), creates the two keys and pastes them into `.env` (instructions inside). Next: `check_keys.py` → `run_all.py --run pilot --smoke` → read the smoke outputs and tune prompts if needed → full run → owner and friends rate.
 
 Run scripts with `uv run python <script>`. Windows consoles are cp1252: every script switches stdout to UTF-8, and ad-hoc Python should run with `PYTHONUTF8=1`.
 
@@ -47,6 +47,7 @@ Score each judge's accuracy, position bias (run both orders) and self-preference
 ## Model access (tested 9 Nov 2026)
 
 - **Real runs**: direct API calls with a fixed prompt and temperature, fully logged, from the owner's machine. An Anthropic API key plus one OpenRouter key covers Claude, GPT, Gemini, Qwen, DeepSeek and Llama.
+- **Billing**: the owner's Ultra plan includes $200/month of Claude API credits (claimed once by linking a Console organization; no rollover; API requests stop when they run out and nothing is charged to the plan; they do not cover Claude Code itself). OpenRouter is the only out-of-pocket cost, about $10–15 for a full run. Verified on platform.claude.com, 9 Nov 2026.
 - **Smoke tests only**: headless Claude Code.
   `claude -p --model haiku --system-prompt "…" --tools "" --strict-mcp-config --mcp-config '{"mcpServers":{}}' --disable-slash-commands --setting-sources "" --no-session-persistence --max-turns 1 --output-format json "<prompt>"`
   About 14k tokens of hidden context still reach the model, and there is no temperature control, so it is not fit for scored Claude-vs-others comparisons. `--bare` strips that context but needs `ANTHROPIC_API_KEY`.
