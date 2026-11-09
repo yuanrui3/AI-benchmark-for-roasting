@@ -19,7 +19,7 @@ SKILL_PATH = ROOT / ".claude" / "skills" / "roast-anything" / "SKILL.md"
 
 LANGS = ["en", "zh"]
 SAMPLES = 2            # samples per (arm, target, lang)
-GEN_MAX_TOKENS = 2500  # roasts are short; the headroom is for models that think before writing
+GEN_MAX_TOKENS = 4000  # roasts are short; the headroom is for models that think before writing (billed by use, not by cap)
 
 # OpenRouter ids are checked against https://openrouter.ai/api/v1/models before a real run
 # (generate.py --list-models shows candidates). Fix them here if the check fails.
@@ -60,7 +60,7 @@ JUDGES: dict[str, str] = {        # judge name -> MODELS key
     "judge-gpt": "gpt",
 }
 JUDGE_EFFORT = "low"
-JUDGE_MAX_TOKENS = 1024  # thinking tokens count toward this on Claude; answers themselves are a few tokens
+JUDGE_MAX_TOKENS = 2000  # thinking tokens count toward this on Claude; answers themselves are a few tokens
 
 _KEY_ENV = {"anthropic": "ANTHROPIC_API_KEY", "openrouter": "OPENROUTER_API_KEY"}
 

@@ -280,8 +280,40 @@ def main() -> int:
     gate_controls = None
     gate_raters = None
     judge_human = {}
+    # gate status per item: truth passes (if checked) and the specificity judges' majority picked the target (if checked)
+    truth_pass = defaultdict(list)
+    for r in truth_rows:
+        if not r["parse_fail"]:
+            truth_pass[r["item_id"]].append(r["passes"])
+    spec_ok = defaultdict(list)
+    for r in spec_rows:
+        if not r["parse_fail"]:
+            spec_ok[r["item_id"]].append(r["correct"])
+
+    def passes_gates(iid: str) -> bool:
+        iid = iid.split("~")[0]
+        t_ok = all(truth_pass[iid]) if truth_pass.get(iid) else True
+        s_ok = (sum(spec_ok[iid]) * 2 > len(spec_ok[iid])) if spec_ok.get(iid) else True
+        return t_ok and s_ok
+
     if votes and pairs:
         md += ["## Human votes", "", f"{len(votes)} votes from {len(S['votes']['raters'])} rater(s): {', '.join(S['votes']['raters'])}.", ""]
+        cards = {}
+        for f in sorted(glob.glob(str(run_dir / "votes" / "*.json"))):
+            try:
+                d = json.loads(Path(f).read_text(encoding="utf-8"))
+                r = d.get("rater") or {}
+                if r.get("name"):
+                    cards[r["name"]] = r
+            except json.JSONDecodeError:
+                pass
+        if cards:
+            md += ["Rater cards (stated taste, so a ranking reads as 'funny to these people'):", ""]
+            for name, c in cards.items():
+                md.append(f"- **{name}**: languages {c.get('languages') or '?'}; likes {c.get('humor') or '?'}; dark-humor tolerance "
+                          f"{c.get('dark', '?')}/5; off-limits: {c.get('offlimits') or 'none stated'}")
+            md.append("")
+        S["rater_cards"] = cards
         # per-rater summary incl. gold accuracy and both-bad rate
         md += ["| rater | lang | votes | decisive | both bad | skipped | gold acc | median s/vote |", "|---|---|---:|---:|---:|---:|---:|---:|"]
         for rater in S["votes"]["raters"]:
@@ -324,11 +356,36 @@ def main() -> int:
                 for a in arms_here:
                     bt[a]["both_bad_rate"] = round(both_bad[a] / seen[a], 3) if seen[a] else None
                 bt_human[lang] = bt
-                md += [f"### Bradley-Terry on human votes, {lang} ({len(decisions)} decisive votes)", "",
+                md += [f"### Bradley-Terry on human votes, {lang} ({len(decisions)} decisive votes, all items)", "",
                        "| arm | score | 95% CI | both-bad rate | appearances |", "|---|---:|---|---:|---:|"]
                 for a, s in sorted(bt.items(), key=lambda kv: -kv[1]["score"]):
                     md.append(f"| {a} | {s['score']:+.2f} | [{s['lo']:+.2f}, {s['hi']:+.2f}] | {fmt_pct(s['both_bad_rate'])} | {s['n']} |")
                 md.append("")
+                # gates before taste: the same ranking on votes where both items passed specificity and truth
+                if truth_pass or spec_ok:
+                    gated = []
+                    for v in votes:
+                        p = pairs.get(v["pair_id"])
+                        if not p or v["lang"] != lang or p.get("gold"):
+                            continue
+                        if passes_gates(p["a"]["item_id"]) and passes_gates(p["b"]["item_id"]):
+                            w = vote_winner(v, p)
+                            aa, ab = arm_of(p["a"]["item_id"]), arm_of(p["b"]["item_id"])
+                            if w == "a":
+                                gated.append((aa, ab))
+                            elif w == "b":
+                                gated.append((ab, aa))
+                    arms_g = [a for a in arms_here if any(a in d for d in gated)]
+                    if len(gated) >= 10 and len(arms_g) >= 2:
+                        btg = bt_with_ci(gated, arms_g, boots=args.boots)
+                        bt_human[f"{lang}_gated"] = btg
+                        md += [f"### Bradley-Terry, {lang}, gated ({len(gated)} votes where both items passed specificity and truth)", "",
+                               "| arm | score | 95% CI | appearances |", "|---|---:|---|---:|"]
+                        for a, s in sorted(btg.items(), key=lambda kv: -kv[1]["score"]):
+                            md.append(f"| {a} | {s['score']:+.2f} | [{s['lo']:+.2f}, {s['hi']:+.2f}] | {s['n']} |")
+                        md.append("")
+                    else:
+                        md += [f"Gated ranking for {lang}: too few votes where both items passed the gates ({len(gated)}).", ""]
                 # gates: spread, controls
                 reals = [bt[a] for a in arms_here if a in real_arms]
                 spread = any(x["lo"] > y["hi"] for x in reals for y in reals if x is not y)
