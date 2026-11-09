@@ -38,6 +38,9 @@
   fieldset.hsq legend { color: var(--muted); font-size: .92em; padding: 0 6px; }
   fieldset.hsq label { display: flex; justify-content: space-between; gap: 12px; align-items: center; margin: 6px 0; }
   fieldset.hsq input { width: 4.5em; flex: none; }
+  .fam { margin-top:12px; padding:10px 12px; background:var(--soft); border-radius:8px; font-size:15px; display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
+  .fam button { padding:6px 12px; }
+  .locked .pair, .locked [data-choice] { opacity:.35; pointer-events:none; }
 </style>
 </head>
 <body>
@@ -65,13 +68,18 @@
       <button class="primary" id="start">Start · 开始</button>
       <span class="muted" id="resume"></span>
     </div>
-    <div class="notice">Keys: <kbd>←</kbd> left wins · <kbd>→</kbd> right wins · <kbd>B</kbd> both bad · <kbd>S</kbd> skip · <kbd>1</kbd>/<kbd>2</kbd> flag left/right as crossing a line · <kbd>U</kbd> undo · <kbd>E</kbd> export. Export whenever you like; progress also autosaves in this browser.<br>快捷键：<kbd>←</kbd> 左边赢 · <kbd>→</kbd> 右边赢 · <kbd>B</kbd> 都不行 · <kbd>S</kbd> 跳过 · <kbd>1</kbd>/<kbd>2</kbd> 标记左/右“过线了” · <kbd>U</kbd> 撤销 · <kbd>E</kbd> 导出。随时可以导出；进度也会自动保存在这个浏览器里。</div>
+    <div class="notice">Keys: <kbd>←</kbd> left wins · <kbd>→</kbd> right wins · <kbd>B</kbd> both bad · <kbd>S</kbd> skip · <kbd>1</kbd>/<kbd>2</kbd> flag left/right as crossing a line · <kbd>U</kbd> undo · <kbd>E</kbd> export. The first time a target comes up you say how well you know it (<kbd>7</kbd> well · <kbd>8</kbd> heard of it · <kbd>9</kbd> no idea). Export whenever you like; progress also autosaves in this browser.<br>快捷键：<kbd>←</kbd> 左边赢 · <kbd>→</kbd> 右边赢 · <kbd>B</kbd> 都不行 · <kbd>S</kbd> 跳过 · <kbd>1</kbd>/<kbd>2</kbd> 标记左/右“过线了” · <kbd>U</kbd> 撤销 · <kbd>E</kbd> 导出。每个对象第一次出现时先答一下你对它熟不熟（<kbd>7</kbd> 很熟 · <kbd>8</kbd> 听说过 · <kbd>9</kbd> 不知道）。随时可以导出；进度也会自动保存在这个浏览器里。</div>
   </section>
 
   <section id="rate" class="hidden">
     <div class="bar"><div id="prog"></div></div>
     <div class="row"><span class="muted" id="count"></span><span class="muted" id="timer"></span></div>
     <div class="target">Target · 对象: <strong id="tname"></strong></div>
+    <div class="fam hidden" id="fam"><span>First time this one comes up. How well do you know it? · 第一次碰到这个对象，你对它熟吗？</span>
+      <button data-fam="well">Know it well · 很熟 (7)</button>
+      <button data-fam="heard">Heard of it · 听说过 (8)</button>
+      <button data-fam="none">No idea · 不知道 (9)</button>
+    </div>
     <details><summary>Fact sheet, if you want it · 事实清单（可不看）</summary><ul id="facts"></ul></details>
     <div class="pair">
       <div class="side"><div class="card" id="left"></div><label class="flag"><input type="checkbox" id="flagL"> crosses a line · 过线了 (1)</label></div>
@@ -99,7 +107,7 @@
 (function () {
   const $ = id => document.getElementById(id);
   const DATA = window.PAIRS || null;
-  const state = { rater: null, lang: null, idx: 0, votes: [], t0: 0 };
+  const state = { rater: null, lang: null, idx: 0, votes: [], fam: {}, t0: 0 };  // fam: target_id -> well | heard | none
   const KEY = () => `roastbench:${DATA && DATA.run}:${state.lang}:${state.rater && state.rater.name}`;
 
   function hash(s) { let h = 2166136261; for (let i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 16777619); } return h >>> 0; }
@@ -124,12 +132,12 @@
     state.rater = { name, languages: $('languages').value.trim(), humor: $('humor').value.trim(), dark: Number($('dark').value), offlimits: $('offlimits').value.trim(), hsq, hsq_agg: hsqAgg };
     state.lang = $('lang').value;
     try { localStorage.setItem('roastbench:last', JSON.stringify({ ...state.rater, lang: state.lang })); } catch (e) {}
-    try { const saved = localStorage.getItem(KEY()); if (saved) { const s = JSON.parse(saved); state.votes = s.votes || []; state.idx = s.idx || 0; } } catch (e) {}
+    try { const saved = localStorage.getItem(KEY()); if (saved) { const s = JSON.parse(saved); state.votes = s.votes || []; state.idx = s.idx || 0; state.fam = s.fam || {}; } } catch (e) {}
     $('setup').classList.add('hidden'); $('rate').classList.remove('hidden');
     show();
   }
 
-  function save() { try { localStorage.setItem(KEY(), JSON.stringify({ votes: state.votes, idx: state.idx })); } catch (e) {} }
+  function save() { try { localStorage.setItem(KEY(), JSON.stringify({ votes: state.votes, idx: state.idx, fam: state.fam })); } catch (e) {} }
 
   function show() {
     const ps = pairsFor(state.lang);
@@ -142,6 +150,8 @@
     $('facts').innerHTML = ''; for (const f of p.facts) { const li = document.createElement('li'); li.textContent = f; $('facts').appendChild(li); }
     $('flagL').checked = false; $('flagR').checked = false;
     $('left').classList.remove('pick'); $('right').classList.remove('pick');
+    const known = !!state.fam[p.target_id];  // the familiarity question comes first, once per target; the clock starts after it
+    $('fam').classList.toggle('hidden', known); $('rate').classList.toggle('locked', !known);
     $('count').textContent = `${state.idx + 1} / ${ps.length}`;
     $('prog').style.width = (100 * state.idx / ps.length) + '%';
     state.t0 = Date.now();
@@ -150,15 +160,21 @@
 
   function vote(choice) {
     const ps = pairsFor(state.lang); const p = ps[state.idx]; if (!p) return;
+    if (!state.fam[p.target_id]) return;
     const sw = swapped(p); const L = sw ? p.b : p.a, R = sw ? p.a : p.b;
-    state.votes.push({ pair_id: p.pair_id, left_item: L.item_id, right_item: R.item_id, choice, line_left: $('flagL').checked, line_right: $('flagR').checked, ms: Date.now() - state.t0, ts: new Date().toISOString() });
+    state.votes.push({ pair_id: p.pair_id, left_item: L.item_id, right_item: R.item_id, choice, line_left: $('flagL').checked, line_right: $('flagR').checked, familiarity: state.fam[p.target_id], ms: Date.now() - state.t0, ts: new Date().toISOString() });
     state.idx++; save(); show();
+  }
+
+  function setFam(level) {
+    const p = pairsFor(state.lang)[state.idx]; if (!p || state.fam[p.target_id]) return;
+    state.fam[p.target_id] = level; save(); show();
   }
 
   function undo() { if (!state.votes.length || state.idx === 0) return; state.votes.pop(); state.idx--; save(); show(); }
 
   function exportVotes() {
-    const out = { run: DATA.run, lang: state.lang, rater: state.rater, exported: new Date().toISOString(), votes: state.votes };
+    const out = { run: DATA.run, lang: state.lang, rater: state.rater, exported: new Date().toISOString(), familiarity: state.fam, votes: state.votes };
     const blob = new Blob([JSON.stringify(out, null, 1)], { type: 'application/json' });
     const a = document.createElement('a'); a.href = URL.createObjectURL(blob);
     a.download = `votes_${DATA.run}_${state.lang}_${state.rater.name.replace(/[^\w一-鿿-]+/g, '_')}.json`;
@@ -167,11 +183,13 @@
 
   $('start').onclick = start;
   document.querySelectorAll('[data-choice]').forEach(b => b.onclick = () => vote(b.dataset.choice));
+  document.querySelectorAll('[data-fam]').forEach(b => b.onclick = () => setFam(b.dataset.fam));
   $('undo').onclick = undo; $('export').onclick = exportVotes; $('export2').onclick = exportVotes;
   $('left').onclick = () => vote('left'); $('right').onclick = () => vote('right');
   document.addEventListener('keydown', e => {
     if ($('rate').classList.contains('hidden') || e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
     const k = e.key.toLowerCase();
+    if (k === '7') setFam('well'); else if (k === '8') setFam('heard'); else if (k === '9') setFam('none');
     if (e.key === 'ArrowLeft') vote('left'); else if (e.key === 'ArrowRight') vote('right');
     else if (k === 'b') vote('both_bad'); else if (k === 's') vote('skip'); else if (k === 'u') undo(); else if (k === 'e') exportVotes();
     else if (k === '1') $('flagL').checked = !$('flagL').checked; else if (k === '2') $('flagR').checked = !$('flagR').checked;

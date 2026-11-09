@@ -1,6 +1,6 @@
 # Preflight report: run `pilot-or`
 
-Generated 2026-11-09T21:04:15+00:00. Gates were fixed before data was seen (CLAUDE.md).
+Generated 2026-11-09T21:12:52+00:00. Gates were fixed before data was seen (CLAUDE.md).
 
 ## Generation
 
@@ -21,22 +21,22 @@ Generated 2026-11-09T21:04:15+00:00. Gates were fixed before data was seen (CLAU
 
 ## Profile
 
-Nerve = softeners per item (lower is braver). Novelty = share of items whose text collides (token Jaccard > 0.3) with another arm's item on the same target, plus stock-template hits. Economy = words per sentence. Agent-action = share of a roast's lines whose hit is someone doing something rather than a property of the object (agency.py, one cheap judge call per item; n/a until it has run). The other columns need no model.
+Nerve = softeners per item (lower is braver). Novelty = share of items whose text collides (token Jaccard > 0.3) with another arm's item on the same target, plus stock-template hits. Economy = words per sentence. Agent-action = share of a roast's lines whose hit is someone doing something rather than a property of the object (agency.py; one column per labeller: a judge model, or `rule`, the free keyword rule; n/a until it has run). The other columns need no model.
 
-| arm | lang | softeners/item | stock hits/item | collision rate | words/sentence | agent-action |
+| arm | lang | softeners/item | stock hits/item | collision rate | words/sentence | agent-action (rule) |
 |---|---|---:|---:|---:|---:|---:|
-| plain-gpt | en | 0.00 | 0.20 | 0% | 14.6 | n/a |
-| plain-gemini | en | 0.00 | 0.10 | 0% | 12.4 | n/a |
-| plain-deepseek | en | 0.00 | 0.30 | 0% | 14.9 | n/a |
-| plain-qwen | en | 0.00 | 0.50 | 0% | 15.7 | n/a |
-| control-bland | en | 0.00 | 0.10 | 0% | 15.5 | n/a |
-| control-generic | en | 0.00 | 0.00 | 0% | 14.0 | n/a |
-| plain-gpt | zh | 0.00 | 0.10 | 0% | 23.7 | n/a |
-| plain-gemini | zh | 0.00 | 0.10 | 0% | 21.5 | n/a |
-| plain-deepseek | zh | 0.00 | 0.00 | 0% | 21.6 | n/a |
-| plain-qwen | zh | 0.00 | 0.10 | 0% | 19.3 | n/a |
-| control-bland | zh | 0.00 | 0.00 | 0% | 29.9 | n/a |
-| control-generic | zh | 0.00 | 0.20 | 0% | 23.6 | n/a |
+| plain-gpt | en | 0.00 | 0.20 | 0% | 14.6 | 12% |
+| plain-gemini | en | 0.00 | 0.10 | 0% | 12.4 | 15% |
+| plain-deepseek | en | 0.00 | 0.30 | 0% | 14.9 | 16% |
+| plain-qwen | en | 0.00 | 0.50 | 0% | 15.7 | 23% |
+| control-bland | en | 0.00 | 0.10 | 0% | 15.5 | 5% |
+| control-generic | en | 0.00 | 0.00 | 0% | 14.0 | 19% |
+| plain-gpt | zh | 0.00 | 0.10 | 0% | 23.7 | 6% |
+| plain-gemini | zh | 0.00 | 0.10 | 0% | 21.5 | 7% |
+| plain-deepseek | zh | 0.00 | 0.00 | 0% | 21.6 | 11% |
+| plain-qwen | zh | 0.00 | 0.10 | 0% | 19.3 | 12% |
+| control-bland | zh | 0.00 | 0.00 | 0% | 29.9 | 18% |
+| control-generic | zh | 0.00 | 0.20 | 0% | 23.6 | 12% |
 
 ## Novelty (comic device)
 
@@ -128,6 +128,21 @@ Aggressive-humor is the rater's 1–7 score from the four card items; line flags
 | rater | lang | votes | decisive | both bad | skipped | gold acc | median s/vote | aggressive-humor | line flags |
 |---|---|---:|---:|---:|---:|---:|---:|---:|---:|
 | owner | zh | 100 | 54 | 36 | 10 | 100% | 8.1 | 4.5 | 2% |
+
+Per target (all pairs, gold included). Both-bad and skip counts say where the material or the rater gave up; familiarity is the number of raters who said, the first time the target came up, that they know it well / had heard of it / had no idea (zero everywhere for exports made before the question existed).
+
+| lang | target | votes | decisive | both bad | skipped | median s/vote | know well | heard of | no idea |
+|---|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| zh | javascript | 13 | 7 | 0 | 6 | 4.3 | 0 | 0 | 0 |
+| zh | php | 12 | 4 | 4 | 4 | 9.8 | 0 | 0 | 0 |
+| zh | comic-sans | 11 | 2 | 9 | 0 | 11.1 | 0 | 0 | 0 |
+| zh | papyrus | 10 | 6 | 4 | 0 | 6.6 | 0 | 0 | 0 |
+| zh | ugg | 9 | 5 | 4 | 0 | 8.2 | 0 | 0 | 0 |
+| zh | macau | 9 | 6 | 3 | 0 | 7.5 | 0 | 0 | 0 |
+| zh | crocs | 9 | 8 | 1 | 0 | 8.4 | 0 | 0 | 0 |
+| zh | jackfruit | 9 | 5 | 4 | 0 | 12.0 | 0 | 0 | 0 |
+| zh | durian | 9 | 7 | 2 | 0 | 5.2 | 0 | 0 | 0 |
+| zh | las-vegas | 9 | 4 | 5 | 0 | 5.4 | 0 | 0 | 0 |
 
 ### Bradley-Terry on human votes, zh (52 decisive votes, all items)
 

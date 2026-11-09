@@ -152,15 +152,19 @@ def main() -> int:
     md += ["## Profile", "", "Nerve = softeners per item (lower is braver). Novelty = share of items whose text collides "
            f"(token Jaccard > {COLLISION_J}) with another arm's item on the same target, plus stock-template hits. Economy = words per sentence. "
            "Agent-action = share of a roast's lines whose hit is someone doing something rather than a property of the object "
-           "(agency.py, one cheap judge call per item; n/a until it has run). The other columns need no model.", "",
-           "| arm | lang | softeners/item | stock hits/item | collision rate | words/sentence | agent-action |", "|---|---|---:|---:|---:|---:|---:|"]
-    prof = {}
+           "(agency.py; one column per labeller: a judge model, or `rule`, the free keyword rule; n/a until it has run). "
+           "The other columns need no model.", ""]
     ag_path = run_dir / "agency.jsonl"
     ag_by: dict = defaultdict(list)
     if ag_path.exists():
         for r in read_jsonl(ag_path):
             if r.get("agent_rate") is not None:
-                ag_by[(r["arm"], r["lang"])].append(r["agent_rate"])
+                ag_by[(r["judge"], r["arm"], r["lang"])].append(r["agent_rate"])
+    ag_judges = sorted({k[0] for k in ag_by}, key=lambda j: (j == "rule", j))  # model judges first, the keyword rule last
+    ag_cols = [f"agent-action ({j})" for j in ag_judges] or ["agent-action"]
+    md += ["| arm | lang | softeners/item | stock hits/item | collision rate | words/sentence | " + " | ".join(ag_cols) + " |",
+           "|---|---|---:|---:|---:|---:|" + "---:|" * len(ag_cols)]
+    prof = {}
     toks = {r["item_id"]: tokens(r["text"]) for r in items if r["text"]}
     for lang in langs:
         same_target = defaultdict(list)
@@ -181,10 +185,11 @@ def main() -> int:
             coll = sum(r["item_id"] in collided for r in rs) / len(rs)
             sents = [max(1, len(re.split(r"(?<=[.!?。！？])\s*", r["text"].strip()))) for r in rs]
             wps = sum(count_words(r["text"], lang) for r in rs) / sum(sents)
-            agent = sum(ag_by[(a, lang)]) / len(ag_by[(a, lang)]) if ag_by.get((a, lang)) else None
+            agent = {j: (sum(ag_by[(j, a, lang)]) / len(ag_by[(j, a, lang)]) if ag_by.get((j, a, lang)) else None) for j in ag_judges}
             prof[f"{a}|{lang}"] = {"softeners": round(soft, 2), "stock": round(stock, 2), "collision": round(coll, 2), "wps": round(wps, 1),
-                                   "agent_rate": round(agent, 2) if agent is not None else None}
-            md.append(f"| {a} | {lang} | {soft:.2f} | {stock:.2f} | {fmt_pct(coll)} | {wps:.1f} | {fmt_pct(agent)} |")
+                                   "agent_rate": {j: (round(v, 2) if v is not None else None) for j, v in agent.items()}}
+            ag_cells = " | ".join(fmt_pct(agent[j]) for j in ag_judges) if ag_judges else "n/a"
+            md.append(f"| {a} | {lang} | {soft:.2f} | {stock:.2f} | {fmt_pct(coll)} | {wps:.1f} | {ag_cells} |")
     S["profile"] = prof
     md.append("")
 
@@ -381,6 +386,45 @@ def main() -> int:
                           f"{sum(v['choice'] == 'skip' for v in vs)} | {fmt_pct(gacc)} | {med:.1f} | "
                           f"{hsq if hsq is not None else '?'} | {fmt_pct(flags)} |")
         md.append("")
+        # per target: where the material or the rater gave up, and how well raters said they know the thing
+        fam_levels = ("well", "heard", "none")
+        fam_by: dict = {}  # (rater, lang, target_id) -> level, from the export's familiarity map or the votes themselves
+        for f in sorted(glob.glob(str(run_dir / "votes" / "*.json"))):
+            try:
+                d = json.loads(Path(f).read_text(encoding="utf-8"))
+            except json.JSONDecodeError:
+                continue
+            rname = (d.get("rater") or {}).get("name") or Path(f).stem
+            for tid, lvl in (d.get("familiarity") or {}).items():
+                fam_by[(rname, d.get("lang"), tid)] = lvl
+        for v in votes:
+            p = pairs.get(v["pair_id"])
+            if p and v.get("familiarity") in fam_levels:
+                fam_by.setdefault((v["rater"], v["lang"], p["target_id"]), v["familiarity"])
+        md += ["Per target (all pairs, gold included). Both-bad and skip counts say where the material or the rater gave up; "
+               "familiarity is the number of raters who said, the first time the target came up, that they know it well / had heard "
+               "of it / had no idea (zero everywhere for exports made before the question existed).", "",
+               "| lang | target | votes | decisive | both bad | skipped | median s/vote | know well | heard of | no idea |",
+               "|---|---|---:|---:|---:|---:|---:|---:|---:|---:|"]
+        per_target = {}
+        for lang in langs:
+            by_t = defaultdict(list)
+            for v in votes:
+                p = pairs.get(v["pair_id"])
+                if p and v["lang"] == lang:
+                    by_t[p["target_id"]].append(v)
+            for tid, vs in sorted(by_t.items(), key=lambda kv: -len(kv[1])):
+                ms = sorted(v.get("ms", 0) for v in vs)
+                fam = Counter(fam_by.get((r, lang, tid)) for r in {v["rater"] for v in vs})
+                row = {"votes": len(vs), "decisive": sum(v["choice"] in ("left", "right") for v in vs),
+                       "both_bad": sum(v["choice"] == "both_bad" for v in vs), "skipped": sum(v["choice"] == "skip" for v in vs),
+                       "median_s": round(ms[len(ms) // 2] / 1000, 1) if ms else None,
+                       "familiarity": {k: fam.get(k, 0) for k in fam_levels}}
+                per_target[f"{tid}|{lang}"] = row
+                md.append(f"| {lang} | {tid} | {row['votes']} | {row['decisive']} | {row['both_bad']} | {row['skipped']} | "
+                          f"{row['median_s']} | {fam.get('well', 0)} | {fam.get('heard', 0)} | {fam.get('none', 0)} |")
+        md.append("")
+        S["per_target"] = per_target
         for lang in langs:
             decisions = []
             both_bad = Counter()
@@ -455,6 +499,37 @@ def main() -> int:
                 md += [f"Mean 95% CI width across real arms: {mean_w:.2f} log-odds. To reach a width of {target_w} "
                        f"(arms one notch apart become distinguishable) you need about **{int(need) if need == need else 'n/a'} decisive votes** "
                        f"in {lang}, vs {len(decisions)} now.", ""]
+                # insiders vs outsiders: the same ranking split by how well the rater said they know the target
+                split: dict = {"insiders": [], "outsiders": []}
+                unknown = 0
+                for v in votes:
+                    p = pairs.get(v["pair_id"])
+                    if not p or v["lang"] != lang or p.get("gold"):
+                        continue
+                    w = vote_winner(v, p)
+                    aa, ab = arm_of(p["a"]["item_id"]), arm_of(p["b"]["item_id"])
+                    if not w or not aa or not ab:
+                        continue
+                    lvl = fam_by.get((v["rater"], lang, p["target_id"]))
+                    if lvl not in fam_levels:
+                        unknown += 1
+                        continue
+                    split["insiders" if lvl == "well" else "outsiders"].append((aa, ab) if w == "a" else (ab, aa))
+                if split["insiders"] or split["outsiders"]:
+                    md += [f"Insiders vs outsiders, {lang}: {len(split['insiders'])} decisive votes from raters who know the target well, "
+                           f"{len(split['outsiders'])} from raters who had heard of it or had no idea"
+                           + (f", {unknown} without a familiarity answer" if unknown else "") + ".", ""]
+                    for grp, dec in split.items():
+                        arms_s = [a for a in arms_here if any(a in d for d in dec)]
+                        if len(dec) >= 10 and len(arms_s) >= 2:
+                            bts = bt_with_ci(dec, arms_s, boots=args.boots)
+                            bt_human[f"{lang}_{grp}"] = bts
+                            md += [f"| arm | {grp} score | 95% CI | appearances |", "|---|---:|---|---:|"]
+                            for a, s in sorted(bts.items(), key=lambda kv: -kv[1]["score"]):
+                                md.append(f"| {a} | {s['score']:+.2f} | [{s['lo']:+.2f}, {s['hi']:+.2f}] | {s['n']} |")
+                            md.append("")
+                        else:
+                            md += [f"- {grp}: too few decisive votes for a ranking ({len(dec)}).", ""]
             # rater agreement, ties excluded
             per_pair = defaultdict(dict)
             for v in votes:

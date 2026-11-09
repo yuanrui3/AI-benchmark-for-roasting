@@ -1,6 +1,6 @@
 {
  "run": "pilot-or",
- "generated": "2026-11-09T21:04:15+00:00",
+ "generated": "2026-11-09T21:12:52+00:00",
  "langs": [
   "en",
   "zh"
@@ -105,84 +105,108 @@
    "stock": 0.2,
    "collision": 0.0,
    "wps": 14.6,
-   "agent_rate": null
+   "agent_rate": {
+    "rule": 0.12
+   }
   },
   "plain-gemini|en": {
    "softeners": 0.0,
    "stock": 0.1,
    "collision": 0.0,
    "wps": 12.4,
-   "agent_rate": null
+   "agent_rate": {
+    "rule": 0.15
+   }
   },
   "plain-deepseek|en": {
    "softeners": 0.0,
    "stock": 0.3,
    "collision": 0.0,
    "wps": 14.9,
-   "agent_rate": null
+   "agent_rate": {
+    "rule": 0.16
+   }
   },
   "plain-qwen|en": {
    "softeners": 0.0,
    "stock": 0.5,
    "collision": 0.0,
    "wps": 15.7,
-   "agent_rate": null
+   "agent_rate": {
+    "rule": 0.23
+   }
   },
   "control-bland|en": {
    "softeners": 0.0,
    "stock": 0.1,
    "collision": 0.0,
    "wps": 15.5,
-   "agent_rate": null
+   "agent_rate": {
+    "rule": 0.05
+   }
   },
   "control-generic|en": {
    "softeners": 0.0,
    "stock": 0.0,
    "collision": 0.0,
    "wps": 14.0,
-   "agent_rate": null
+   "agent_rate": {
+    "rule": 0.19
+   }
   },
   "plain-gpt|zh": {
    "softeners": 0.0,
    "stock": 0.1,
    "collision": 0.0,
    "wps": 23.7,
-   "agent_rate": null
+   "agent_rate": {
+    "rule": 0.06
+   }
   },
   "plain-gemini|zh": {
    "softeners": 0.0,
    "stock": 0.1,
    "collision": 0.0,
    "wps": 21.5,
-   "agent_rate": null
+   "agent_rate": {
+    "rule": 0.07
+   }
   },
   "plain-deepseek|zh": {
    "softeners": 0.0,
    "stock": 0.0,
    "collision": 0.0,
    "wps": 21.6,
-   "agent_rate": null
+   "agent_rate": {
+    "rule": 0.11
+   }
   },
   "plain-qwen|zh": {
    "softeners": 0.0,
    "stock": 0.1,
    "collision": 0.0,
    "wps": 19.3,
-   "agent_rate": null
+   "agent_rate": {
+    "rule": 0.12
+   }
   },
   "control-bland|zh": {
    "softeners": 0.0,
    "stock": 0.0,
    "collision": 0.0,
    "wps": 29.9,
-   "agent_rate": null
+   "agent_rate": {
+    "rule": 0.18
+   }
   },
   "control-generic|zh": {
    "softeners": 0.0,
    "stock": 0.2,
    "collision": 0.0,
    "wps": 23.6,
-   "agent_rate": null
+   "agent_rate": {
+    "rule": 0.12
+   }
   }
  },
  "devices": {
@@ -531,6 +555,128 @@
     5
    ],
    "hsq_agg": 4.5
+  }
+ },
+ "per_target": {
+  "javascript|zh": {
+   "votes": 13,
+   "decisive": 7,
+   "both_bad": 0,
+   "skipped": 6,
+   "median_s": 4.3,
+   "familiarity": {
+    "well": 0,
+    "heard": 0,
+    "none": 0
+   }
+  },
+  "php|zh": {
+   "votes": 12,
+   "decisive": 4,
+   "both_bad": 4,
+   "skipped": 4,
+   "median_s": 9.8,
+   "familiarity": {
+    "well": 0,
+    "heard": 0,
+    "none": 0
+   }
+  },
+  "comic-sans|zh": {
+   "votes": 11,
+   "decisive": 2,
+   "both_bad": 9,
+   "skipped": 0,
+   "median_s": 11.1,
+   "familiarity": {
+    "well": 0,
+    "heard": 0,
+    "none": 0
+   }
+  },
+  "papyrus|zh": {
+   "votes": 10,
+   "decisive": 6,
+   "both_bad": 4,
+   "skipped": 0,
+   "median_s": 6.6,
+   "familiarity": {
+    "well": 0,
+    "heard": 0,
+    "none": 0
+   }
+  },
+  "ugg|zh": {
+   "votes": 9,
+   "decisive": 5,
+   "both_bad": 4,
+   "skipped": 0,
+   "median_s": 8.2,
+   "familiarity": {
+    "well": 0,
+    "heard": 0,
+    "none": 0
+   }
+  },
+  "macau|zh": {
+   "votes": 9,
+   "decisive": 6,
+   "both_bad": 3,
+   "skipped": 0,
+   "median_s": 7.5,
+   "familiarity": {
+    "well": 0,
+    "heard": 0,
+    "none": 0
+   }
+  },
+  "crocs|zh": {
+   "votes": 9,
+   "decisive": 8,
+   "both_bad": 1,
+   "skipped": 0,
+   "median_s": 8.4,
+   "familiarity": {
+    "well": 0,
+    "heard": 0,
+    "none": 0
+   }
+  },
+  "jackfruit|zh": {
+   "votes": 9,
+   "decisive": 5,
+   "both_bad": 4,
+   "skipped": 0,
+   "median_s": 12.0,
+   "familiarity": {
+    "well": 0,
+    "heard": 0,
+    "none": 0
+   }
+  },
+  "durian|zh": {
+   "votes": 9,
+   "decisive": 7,
+   "both_bad": 2,
+   "skipped": 0,
+   "median_s": 5.2,
+   "familiarity": {
+    "well": 0,
+    "heard": 0,
+    "none": 0
+   }
+  },
+  "las-vegas|zh": {
+   "votes": 9,
+   "decisive": 4,
+   "both_bad": 5,
+   "skipped": 0,
+   "median_s": 5.4,
+   "familiarity": {
+    "well": 0,
+    "heard": 0,
+    "none": 0
+   }
   }
  },
  "projection": {
