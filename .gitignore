@@ -1,0 +1,7 @@
+.env
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+# raw request/response logs are large; the pooled items in runs/*/items.jsonl are tracked
+runs/*/raw/
