@@ -27,10 +27,11 @@ MODELS: dict[str, ModelSpec] = {
     "opus": ModelSpec("anthropic", "claude-opus-5-5", "anthropic"),
     "sonnet": ModelSpec("anthropic", "claude-sonnet-5-5", "anthropic"),
     "haiku": ModelSpec("anthropic", "claude-haiku-5-5", "anthropic"),
-    "gpt": ModelSpec("openrouter", "openai/gpt-5.1", "openai"),
-    "gemini": ModelSpec("openrouter", "google/gemini-3-pro-preview", "google"),
-    "deepseek": ModelSpec("openrouter", "deepseek/deepseek-v3.2", "deepseek"),
-    "qwen": ModelSpec("openrouter", "qwen/qwen3-max", "alibaba"),
+    # checked against https://openrouter.ai/api/v1/models on 9 Nov 2026; dated snapshots preferred for reproducibility
+    "gpt": ModelSpec("openrouter", "openai/gpt-5.5", "openai"),
+    "gemini": ModelSpec("openrouter", "google/gemini-3.1-pro-preview", "google"),
+    "deepseek": ModelSpec("openrouter", "deepseek/deepseek-v4-pro-0813", "deepseek"),
+    "qwen": ModelSpec("openrouter", "qwen/qwen3.8-max-0902", "alibaba"),
 }
 
 # kind: plain   = roast prompt, model's own knowledge

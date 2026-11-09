@@ -105,7 +105,7 @@ uv run python run_all.py --mock                   # zero-cost pipeline test
 ```
 
 - `llm.py`: the one logged client (anthropic | openrouter | mock). Disk cache per call key, cost ledger, `--budget` is a run-wide cap shared by all stages through `runs/<run>/ledger.jsonl`. Claude 5.5 models accept no temperature, so the sampling policy is "provider default" and is recorded in the manifest. No server-side fallbacks: a refusal is data.
-- `config.py`: arms, models, judges, prompts in both languages. Arms: `plain-{opus,gpt,gemini,deepseek,qwen}`, `facts-opus` (plain prompt + fact sheet, isolates facts from method), `skill-opus` (SKILL.md + fact sheet), `control-bland`, `control-generic`. Arms and judges whose key is missing are skipped with a notice. **OpenRouter ids are unverified guesses** until `generate.py --list-models <query>` confirms them.
+- `config.py`: arms, models, judges, prompts in both languages. Arms: `plain-{opus,gpt,gemini,deepseek,qwen}`, `facts-opus` (plain prompt + fact sheet, isolates facts from method), `skill-opus` (SKILL.md + fact sheet), `control-bland`, `control-generic`. Arms and judges whose key is missing are skipped with a notice. OpenRouter ids were checked against the public model list on 9 Nov 2026 (`generate.py --list-models <query>` re-checks; `generate.py` also fails fast on an unknown id).
 - `generate.py` → `runs/<run>/items.jsonl`, refusals and errors included; `manifest.json`.
 - `specificity.py` → `specificity.jsonl`. Masks names, aliases and distinctive single words (twin → `[OTHER]`); two judges pick from five candidates; the residual leak check and lexical twin-contrast use no model.
 - `truth.py` → `truth.jsonl`. Claims labelled supported / contradicted / absent; an item fails only on a contradiction, because plain arms never saw the sheet.
@@ -115,7 +115,7 @@ uv run python run_all.py --mock                   # zero-cost pipeline test
 - `judge_pairs.py` → `judge_pairs.jsonl`: judges rate the human pairs in both orders, for judge–human agreement.
 - `analyze.py` → `report.md`, `summary.json`: profile (softeners, stock templates, cross-arm collisions, words per sentence), both gates, judge validation, Bradley–Terry with bootstrap CIs, rater agreement, judge–human agreement against the human–human ceiling, vote projection, the gate table and verdict.
 
-Known gaps before the first real run: model ids unverified; prompts and parsers untested on real outputs; expect a tuning pass after `--smoke`. `runs/mock*/` is git-ignored; real runs are tracked except `raw/`.
+Known gaps before the first real run: prompts and parsers untested on real outputs; expect a tuning pass after `--smoke`. `test_common.py` checks the masker and parsers. `runs/mock*/` is git-ignored; real runs are tracked except `raw/`.
 
 ## Early observations (anecdotal, two samples)
 
