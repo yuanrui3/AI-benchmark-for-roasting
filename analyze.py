@@ -3,7 +3,7 @@
     uv run python analyze.py --run pilot
 
 Reads whatever exists under runs/<run>/: items.jsonl, specificity.jsonl, truth.jsonl,
-damage.jsonl, rate/pairs.json, judge_pairs.jsonl and runs/<run>/votes/*.json (the
+devices.jsonl, agency.jsonl, damage.jsonl, rate/pairs.json, judge_pairs.jsonl and runs/<run>/votes/*.json (the
 files raters export from rate.html). Missing pieces are reported as missing, not
 faked. Writes runs/<run>/report.md and runs/<run>/summary.json.
 
@@ -149,10 +149,18 @@ def main() -> int:
     md.append("")
 
     # ---- profile: nerve, novelty, economy ----
-    md += ["## Profile (no model needed)", "", "Nerve = softeners per item (lower is braver). Novelty = share of items whose text collides "
-           f"(token Jaccard > {COLLISION_J}) with another arm's item on the same target, plus stock-template hits. Economy = words per sentence.", "",
-           "| arm | lang | softeners/item | stock hits/item | collision rate | words/sentence |", "|---|---|---:|---:|---:|---:|"]
+    md += ["## Profile", "", "Nerve = softeners per item (lower is braver). Novelty = share of items whose text collides "
+           f"(token Jaccard > {COLLISION_J}) with another arm's item on the same target, plus stock-template hits. Economy = words per sentence. "
+           "Agent-action = share of a roast's lines whose hit is someone doing something rather than a property of the object "
+           "(agency.py, one cheap judge call per item; n/a until it has run). The other columns need no model.", "",
+           "| arm | lang | softeners/item | stock hits/item | collision rate | words/sentence | agent-action |", "|---|---|---:|---:|---:|---:|---:|"]
     prof = {}
+    ag_path = run_dir / "agency.jsonl"
+    ag_by: dict = defaultdict(list)
+    if ag_path.exists():
+        for r in read_jsonl(ag_path):
+            if r.get("agent_rate") is not None:
+                ag_by[(r["arm"], r["lang"])].append(r["agent_rate"])
     toks = {r["item_id"]: tokens(r["text"]) for r in items if r["text"]}
     for lang in langs:
         same_target = defaultdict(list)
@@ -173,8 +181,10 @@ def main() -> int:
             coll = sum(r["item_id"] in collided for r in rs) / len(rs)
             sents = [max(1, len(re.split(r"(?<=[.!?。！？])\s*", r["text"].strip()))) for r in rs]
             wps = sum(count_words(r["text"], lang) for r in rs) / sum(sents)
-            prof[f"{a}|{lang}"] = {"softeners": round(soft, 2), "stock": round(stock, 2), "collision": round(coll, 2), "wps": round(wps, 1)}
-            md.append(f"| {a} | {lang} | {soft:.2f} | {stock:.2f} | {fmt_pct(coll)} | {wps:.1f} |")
+            agent = sum(ag_by[(a, lang)]) / len(ag_by[(a, lang)]) if ag_by.get((a, lang)) else None
+            prof[f"{a}|{lang}"] = {"softeners": round(soft, 2), "stock": round(stock, 2), "collision": round(coll, 2), "wps": round(wps, 1),
+                                   "agent_rate": round(agent, 2) if agent is not None else None}
+            md.append(f"| {a} | {lang} | {soft:.2f} | {stock:.2f} | {fmt_pct(coll)} | {wps:.1f} | {fmt_pct(agent)} |")
     S["profile"] = prof
     md.append("")
 

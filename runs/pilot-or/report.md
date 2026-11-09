@@ -1,6 +1,6 @@
 # Preflight report: run `pilot-or`
 
-Generated 2026-11-09T20:49:45+00:00. Gates were fixed before data was seen (CLAUDE.md).
+Generated 2026-11-09T21:04:15+00:00. Gates were fixed before data was seen (CLAUDE.md).
 
 ## Generation
 
@@ -19,24 +19,24 @@ Generated 2026-11-09T20:49:45+00:00. Gates were fixed before data was seen (CLAU
 | control-generic | en | 10 | 0 | 0 | 149.9 | 0.02 |
 | control-generic | zh | 10 | 0 | 0 | 221.9 | 0.03 |
 
-## Profile (no model needed)
+## Profile
 
-Nerve = softeners per item (lower is braver). Novelty = share of items whose text collides (token Jaccard > 0.3) with another arm's item on the same target, plus stock-template hits. Economy = words per sentence.
+Nerve = softeners per item (lower is braver). Novelty = share of items whose text collides (token Jaccard > 0.3) with another arm's item on the same target, plus stock-template hits. Economy = words per sentence. Agent-action = share of a roast's lines whose hit is someone doing something rather than a property of the object (agency.py, one cheap judge call per item; n/a until it has run). The other columns need no model.
 
-| arm | lang | softeners/item | stock hits/item | collision rate | words/sentence |
-|---|---|---:|---:|---:|---:|
-| plain-gpt | en | 0.00 | 0.20 | 0% | 14.6 |
-| plain-gemini | en | 0.00 | 0.10 | 0% | 12.4 |
-| plain-deepseek | en | 0.00 | 0.30 | 0% | 14.9 |
-| plain-qwen | en | 0.00 | 0.50 | 0% | 15.7 |
-| control-bland | en | 0.00 | 0.10 | 0% | 15.5 |
-| control-generic | en | 0.00 | 0.00 | 0% | 14.0 |
-| plain-gpt | zh | 0.00 | 0.10 | 0% | 23.7 |
-| plain-gemini | zh | 0.00 | 0.10 | 0% | 21.5 |
-| plain-deepseek | zh | 0.00 | 0.00 | 0% | 21.6 |
-| plain-qwen | zh | 0.00 | 0.10 | 0% | 19.3 |
-| control-bland | zh | 0.00 | 0.00 | 0% | 29.9 |
-| control-generic | zh | 0.00 | 0.20 | 0% | 23.6 |
+| arm | lang | softeners/item | stock hits/item | collision rate | words/sentence | agent-action |
+|---|---|---:|---:|---:|---:|---:|
+| plain-gpt | en | 0.00 | 0.20 | 0% | 14.6 | n/a |
+| plain-gemini | en | 0.00 | 0.10 | 0% | 12.4 | n/a |
+| plain-deepseek | en | 0.00 | 0.30 | 0% | 14.9 | n/a |
+| plain-qwen | en | 0.00 | 0.50 | 0% | 15.7 | n/a |
+| control-bland | en | 0.00 | 0.10 | 0% | 15.5 | n/a |
+| control-generic | en | 0.00 | 0.00 | 0% | 14.0 | n/a |
+| plain-gpt | zh | 0.00 | 0.10 | 0% | 23.7 | n/a |
+| plain-gemini | zh | 0.00 | 0.10 | 0% | 21.5 | n/a |
+| plain-deepseek | zh | 0.00 | 0.00 | 0% | 21.6 | n/a |
+| plain-qwen | zh | 0.00 | 0.10 | 0% | 19.3 | n/a |
+| control-bland | zh | 0.00 | 0.00 | 0% | 29.9 | n/a |
+| control-generic | zh | 0.00 | 0.20 | 0% | 23.6 | n/a |
 
 ## Novelty (comic device)
 
@@ -117,17 +117,17 @@ A usable judge prefers the original >= 90% of the time and never prefers an expl
 
 ## Human votes
 
-100 votes from 1 rater(s): uitest-hsq.
+100 votes from 1 rater(s): owner.
 
 Rater cards (stated taste, so a ranking reads as 'funny to these people'):
 
-- **uitest-hsq**: languages ?; likes I find funny things to be funny; dark-humor tolerance 5/5; aggressive-humor 4.5/7; off-limits: Mbappe
+- **owner**: languages ?; likes I find funny things to be funny; dark-humor tolerance 5/5; aggressive-humor 4.5/7; off-limits: Mbappe
 
 Aggressive-humor is the rater's 1–7 score from the four card items; line flags is the share of their votes where they flagged a roast as crossing a line. A higher score should go with fewer flags.
 
 | rater | lang | votes | decisive | both bad | skipped | gold acc | median s/vote | aggressive-humor | line flags |
 |---|---|---:|---:|---:|---:|---:|---:|---:|---:|
-| uitest-hsq | zh | 100 | 54 | 36 | 10 | 100% | 8.1 | 4.5 | 2% |
+| owner | zh | 100 | 54 | 36 | 10 | 100% | 8.1 | 4.5 | 2% |
 
 ### Bradley-Terry on human votes, zh (52 decisive votes, all items)
 

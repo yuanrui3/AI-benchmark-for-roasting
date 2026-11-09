@@ -2,7 +2,7 @@
  "run": "pilot-or",
  "lang": "zh",
  "rater": {
-  "name": "uitest-hsq",
+  "name": "owner",
   "languages": "",
   "humor": "I find funny things to be funny",
   "dark": 5,

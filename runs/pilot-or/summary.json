@@ -1,6 +1,6 @@
 {
  "run": "pilot-or",
- "generated": "2026-11-09T20:49:45+00:00",
+ "generated": "2026-11-09T21:04:15+00:00",
  "langs": [
   "en",
   "zh"
@@ -104,73 +104,85 @@
    "softeners": 0.0,
    "stock": 0.2,
    "collision": 0.0,
-   "wps": 14.6
+   "wps": 14.6,
+   "agent_rate": null
   },
   "plain-gemini|en": {
    "softeners": 0.0,
    "stock": 0.1,
    "collision": 0.0,
-   "wps": 12.4
+   "wps": 12.4,
+   "agent_rate": null
   },
   "plain-deepseek|en": {
    "softeners": 0.0,
    "stock": 0.3,
    "collision": 0.0,
-   "wps": 14.9
+   "wps": 14.9,
+   "agent_rate": null
   },
   "plain-qwen|en": {
    "softeners": 0.0,
    "stock": 0.5,
    "collision": 0.0,
-   "wps": 15.7
+   "wps": 15.7,
+   "agent_rate": null
   },
   "control-bland|en": {
    "softeners": 0.0,
    "stock": 0.1,
    "collision": 0.0,
-   "wps": 15.5
+   "wps": 15.5,
+   "agent_rate": null
   },
   "control-generic|en": {
    "softeners": 0.0,
    "stock": 0.0,
    "collision": 0.0,
-   "wps": 14.0
+   "wps": 14.0,
+   "agent_rate": null
   },
   "plain-gpt|zh": {
    "softeners": 0.0,
    "stock": 0.1,
    "collision": 0.0,
-   "wps": 23.7
+   "wps": 23.7,
+   "agent_rate": null
   },
   "plain-gemini|zh": {
    "softeners": 0.0,
    "stock": 0.1,
    "collision": 0.0,
-   "wps": 21.5
+   "wps": 21.5,
+   "agent_rate": null
   },
   "plain-deepseek|zh": {
    "softeners": 0.0,
    "stock": 0.0,
    "collision": 0.0,
-   "wps": 21.6
+   "wps": 21.6,
+   "agent_rate": null
   },
   "plain-qwen|zh": {
    "softeners": 0.0,
    "stock": 0.1,
    "collision": 0.0,
-   "wps": 19.3
+   "wps": 19.3,
+   "agent_rate": null
   },
   "control-bland|zh": {
    "softeners": 0.0,
    "stock": 0.0,
    "collision": 0.0,
-   "wps": 29.9
+   "wps": 29.9,
+   "agent_rate": null
   },
   "control-generic|zh": {
    "softeners": 0.0,
    "stock": 0.2,
    "collision": 0.0,
-   "wps": 23.6
+   "wps": 23.6,
+   "agent_rate": null
   }
  },
  "devices": {
@@ -502,12 +514,12 @@
  "votes": {
   "n": 100,
   "raters": [
-   "uitest-hsq"
+   "owner"
   ]
  },
  "rater_cards": {
-  "uitest-hsq": {
-   "name": "uitest-hsq",
+  "owner": {
+   "name": "owner",
    "languages": "",
    "humor": "I find funny things to be funny",
    "dark": 5,
