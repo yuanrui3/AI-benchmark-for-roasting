@@ -70,6 +70,9 @@ def main() -> int:
             stop.set()
             print(f"BUDGET: {e}")
             return
+        if res.error:  # not persisted: the ledger keeps the error and the next run retries the call
+            print(f"  failed, will retry next run: {res.error[:80]}", flush=True)
+            return
         ans = parse_letter(res.text)
         # map the letter back to the pair's canonical a/b
         winner = None

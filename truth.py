@@ -99,11 +99,14 @@ def main() -> int:
         spec = judges[jname]
         t = targets[it["target_id"]]
         try:
-            res = llm.call(spec, JUDGE_SYSTEM, prompt(it["text"], t, it["lang"]), max_tokens=2000,
+            res = llm.call(spec, JUDGE_SYSTEM, prompt(it["text"], t, it["lang"]), max_tokens=config.JUDGE_MAX_TOKENS,
                            effort=config.JUDGE_EFFORT, tag=f"truth:{jname}")
         except BudgetExceeded as e:
             stop.set()
             print(f"BUDGET: {e}")
+            return
+        if res.error:  # not persisted: the ledger keeps the error and the next run retries the call
+            print(f"  failed, will retry next run: {res.error[:80]}", flush=True)
             return
         claims = parse_claims(res.text)
         counts = {v: sum(c["verdict"] == v for c in claims or []) for v in VERDICTS}

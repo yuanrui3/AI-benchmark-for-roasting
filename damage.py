@@ -91,7 +91,8 @@ def damager_prompt(kind: str, text: str, lang: str, target: dict) -> str:
         head = f"下面是一段吐槽{name}的段子：\n---\n{text}\n---\n"
         tail = "只输出改写后的全文，不要任何说明。"
         body = {
-            "explain": "在最后一个笑点之后，追加一两句话，把这个笑话为什么好笑解释清楚，把梗点明。原文一字不改。",
+            "explain": "在最后一个笑点之后，追加一两句话，用平铺直叙的说明文语气把这个笑话为什么好笑讲清楚，像老师讲课一样点明梗在哪里。"
+                       "不要写新的俏皮话、比喻或金句，不要押韵，不要再抖包袱。原文一字不改。",
             "generic": f"把段子里所有具体、可查证的细节（名字、数字、年份、具体特征）换成模糊的泛泛之词，让它换成任何一种{config.category_name(target, lang)}都成立。长度和结构不变。",
             "pad": "把这段话改写成原来两倍左右的长度：加铺垫、加口水话、加重复和客套，不要加新的笑点和新的事实，保留每一句原话。",
             "false": f"参考事实清单：\n{facts}\n挑出段子依赖的一条事实性前提（年份、数字、人名、公司、来历），换成一个听起来像真的、"
@@ -103,7 +104,7 @@ def damager_prompt(kind: str, text: str, lang: str, target: dict) -> str:
     head = f"Here is a roast of {name}:\n---\n{text}\n---\n"
     tail = " Output only the full rewritten text, no commentary."
     body = {
-        "explain": "After the final punchline, append one or two sentences that explain why the joke is funny, spelling out the reference. Leave the original text unchanged.",
+        "explain": "After the final punchline, append one or two sentences in flat expository prose, like a teacher, that explain why the joke is funny and spell out the reference. Add no new wit, metaphor or punchline. Leave the original text unchanged.",
         "generic": f"Rewrite it replacing every specific, checkable detail (names, numbers, dates, particular features) with a vague generic equivalent that could apply to any {config.category_name(target, lang)}. Keep the length and structure.",
         "pad": "Rewrite it at about twice the length by adding filler, hedging, throat-clearing and restatement. Add no new jokes or facts. Keep every original sentence.",
         "false": f"Fact sheet for reference:\n{facts}\nPick one factual premise the roast relies on (a year, a number, a name, a company, an origin) "
@@ -225,6 +226,9 @@ def main() -> int:
         except BudgetExceeded as e:
             stop.set()
             print(f"BUDGET: {e}")
+            return
+        if res.error:  # not persisted: the ledger keeps the error and the next run retries the call
+            print(f"  failed, will retry next run: {res.error[:80]}", flush=True)
             return
         ans = parse_letter(res.text)
         orig_letter = "A" if order == "orig_first" else "B"

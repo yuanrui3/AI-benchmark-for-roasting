@@ -101,6 +101,9 @@ def main() -> int:
             stop.set()
             print(f"BUDGET: {e}")
             return
+        if res.error:  # not persisted: the ledger keeps the error and the next run retries the call
+            print(f"  failed, will retry next run: {res.error[:80]}", flush=True)
+            return
         ans = parse_digit(res.text, K)
         picked = base["candidates"][ans - 1] if ans else None
         row = {**base, "judge": jname, "judge_family": spec.family, "answer_raw": res.text[:40], "picked": picked,

@@ -68,7 +68,8 @@ JUDGES: dict[str, str] = {        # judge name -> MODELS key
                                     # analyze.py's self-preference column is the check on it
 }
 JUDGE_EFFORT = "low"
-JUDGE_MAX_TOKENS = 4000  # thinking tokens count toward this; answers themselves are a few tokens
+JUDGE_MAX_TOKENS = 8000  # thinking tokens count toward this; answers are a few tokens. DeepSeek V4 Pro spent
+                         # more than 2000 on most truth checks and more than 4000 on a few swap tests at effort=low.
 # The truth check is a fact-check against a supplied sheet, so one judge is enough: the first usable one here.
 TRUTH_JUDGE_ORDER = ["judge-sonnet", "judge-deepseek", "judge-gpt"]
 
