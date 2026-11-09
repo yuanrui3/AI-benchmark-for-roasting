@@ -31,12 +31,14 @@ def main() -> int:
     ap.add_argument("--budget", type=float, default=40.0, help="run-wide USD cap (ledger is shared by all stages)")
     ap.add_argument("--judges", default=None, help="comma list; default: every judge whose key exists")
     ap.add_argument("--workers", type=int, default=6)
+    ap.add_argument("--pairs", default="rate/pairs.json", help="pool to judge, under runs/<run>")
+    ap.add_argument("--out", default="judge_pairs.jsonl", help="output file under runs/<run>")
     ap.add_argument("--per-lang", type=int, default=None,
                     help="judge only the first N pairs per language, in file order (the order raters see); default all")
     args = ap.parse_args()
 
     run_dir = ROOT / "runs" / args.run
-    pairs = json.loads((run_dir / "rate" / "pairs.json").read_text(encoding="utf-8"))["pairs"]
+    pairs = json.loads((run_dir / args.pairs).read_text(encoding="utf-8"))["pairs"]
     if args.per_lang:
         seen: dict[str, int] = {}
         kept = []
@@ -47,7 +49,7 @@ def main() -> int:
         pairs = kept
     judge_names = args.judges.split(",") if args.judges else config.usable_judges(args.mock)
     judges = {j: config.MODELS[config.JUDGES[j]] for j in judge_names}
-    out_path = run_dir / "judge_pairs.jsonl"
+    out_path = run_dir / args.out
     done = {(r["pair_id"], r["order"], r["judge"]) for r in read_jsonl(out_path)} if out_path.exists() else set()
     jobs = [(p, o, j) for p in pairs for o in ("ab", "ba") for j in judges if (p["pair_id"], o, j) not in done]
     print(f"{len(pairs)} pairs x 2 orders x {len(judges)} judges -> {len(jobs)} calls to do")

@@ -45,6 +45,8 @@ DAMAGER_MODEL = "haiku"
 #       skill   = SKILL.md as system prompt + fact sheet (the specialist arm)
 #       bland   = polite critique, no jokes (funniness floor)
 #       generic = roast of the category, no target (specificity floor)
+#       frame   = agent-action framing (owner, 9 Nov 2026): roast the practice ("wearing Crocs out of the house"),
+#                 aim at the people doing it, not the object. Same system prompt as plain; needs target.practice.
 ARMS: list[dict] = [
     {"name": "plain-opus", "kind": "plain", "model": "opus"},
     {"name": "plain-gpt", "kind": "plain", "model": "gpt"},
@@ -53,6 +55,11 @@ ARMS: list[dict] = [
     {"name": "plain-qwen", "kind": "plain", "model": "qwen"},
     {"name": "facts-opus", "kind": "facts", "model": "opus"},
     {"name": "skill-opus", "kind": "skill", "model": "opus"},
+    {"name": "frame-opus", "kind": "frame", "model": "opus"},
+    {"name": "frame-gpt", "kind": "frame", "model": "gpt"},
+    {"name": "frame-gemini", "kind": "frame", "model": "gemini"},
+    {"name": "frame-deepseek", "kind": "frame", "model": "deepseek"},
+    {"name": "frame-qwen", "kind": "frame", "model": "qwen"},
     {"name": "control-bland", "kind": "bland", "model": "sonnet", "fallback": True},
     {"name": "control-generic", "kind": "generic", "model": "sonnet", "fallback": True},
 ]
@@ -72,6 +79,8 @@ JUDGE_MAX_TOKENS = 8000  # thinking tokens count toward this; answers are a few 
                          # more than 2000 on most truth checks and more than 4000 on a few swap tests at effort=low.
 # The truth check is a fact-check against a supplied sheet, so one judge is enough: the first usable one here.
 TRUTH_JUDGE_ORDER = ["judge-sonnet", "judge-deepseek", "judge-gpt"]
+# Sentence labelling (agency.py) is cheap work: the cheapest adequate judge first.
+AGENCY_JUDGE_ORDER = ["judge-deepseek", "judge-sonnet", "judge-gpt"]
 
 _KEY_ENV = {"anthropic": "ANTHROPIC_API_KEY", "openrouter": "OPENROUTER_API_KEY"}
 
@@ -111,12 +120,20 @@ def damager_spec(mock: bool = False) -> ModelSpec:
     return fb
 
 
-def truth_judges(mock: bool = False) -> list[str]:
+def _first_usable(order: list[str], mock: bool) -> list[str]:
     usable = usable_judges(mock)
-    for j in TRUTH_JUDGE_ORDER:
+    for j in order:
         if j in usable:
             return [j]
     return usable[:1]
+
+
+def truth_judges(mock: bool = False) -> list[str]:
+    return _first_usable(TRUTH_JUDGE_ORDER, mock)
+
+
+def agency_judges(mock: bool = False) -> list[str]:
+    return _first_usable(AGENCY_JUDGE_ORDER, mock)
 
 
 def usable_judges(mock: bool = False) -> list[str]:
@@ -150,6 +167,16 @@ def target_label(target: dict, lang: str) -> str:
     if not gloss:
         return name
     return f"{name}（{gloss}）" if lang == "zh" else f"{name} ({gloss})"
+
+
+def practice_text(target: dict, lang: str) -> str:
+    """The target as someone doing something ('wearing Crocs out of the house'). Falls back to a generic phrasing
+    when targets.jsonl has no practice yet, so a frame arm never silently roasts the object."""
+    p = target.get("practice_zh" if lang == "zh" else "practice")
+    if p:
+        return p
+    label = target_label(target, lang)
+    return f"有人在用{label}" if lang == "zh" else f"people who go in for {label}"
 
 
 def category_name(target: dict, lang: str) -> str:
@@ -194,6 +221,10 @@ def build_prompt(arm: dict, target: dict, lang: str) -> tuple[str, str]:
             user = f"客观、礼貌地评价一下{label}，{n}。说优点也说不足，语气平和，不开玩笑，不讽刺。"
         elif kind == "generic":
             user = f"写一段吐槽“{cat}”这一类东西的段子，{n}。针对这一整类，不要单独点名其中任何一个。"
+        elif kind == "frame":
+            practice = practice_text(target, lang)
+            user = (f"写一段吐槽“{practice}”的段子，{n}。矛头对准干这件事的人：他们是谁、图什么、落得什么下场。"
+                    f"不要只形容{name}本身。要具体到{name}：换成别的东西也成立的吐槽算失败。")
         else:
             raise ValueError(kind)
         return system, user
@@ -212,6 +243,11 @@ def build_prompt(arm: dict, target: dict, lang: str) -> tuple[str, str]:
     elif kind == "generic":
         user = (f"Write a roast of {cat} as a category, {n}. Aim at the whole category; do not single out or "
                 f"name any particular one.")
+    elif kind == "frame":
+        practice = practice_text(target, lang)
+        user = (f"Write a roast of {practice}, {n}. Aim at the people doing it: who they are, what they are after, "
+                f"what it gets them. Do not describe {name} as an object. Be specific to {name}: a roast that would "
+                f"work just as well for something else is a failure.")
     else:
         raise ValueError(kind)
     return system, user
