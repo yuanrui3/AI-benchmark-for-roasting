@@ -178,6 +178,42 @@ def main() -> int:
     S["profile"] = prof
     md.append("")
 
+    # ---- novelty at the level of the joke (devices.py) ----
+    dev_path = run_dir / "devices.jsonl"
+    if dev_path.exists():
+        dev_rows = [r for r in read_jsonl(dev_path) if not r.get("parse_fail")]
+        md += ["## Novelty (comic device)", "",
+               "One judge call per target and language groups that target's roasts by the image or angle each is built on "
+               "(devices.py). Cross-arm = share of an arm's items whose device another arm also used on the same target; "
+               "self-repeat = the arm's own samples share a device. Attractors are devices three or more arms reached on their own.", "",
+               "| arm | lang | items | cross-arm | self-repeat |", "|---|---|---:|---:|---:|"]
+        dstat: dict = defaultdict(lambda: {"n": 0, "cross": 0, "self": 0})
+        attract = []
+        for r in dev_rows:
+            for g in r["groups"]:
+                garms = [by_item[i]["arm"] for i in g["item_ids"] if i in by_item]
+                if len(set(garms)) >= 3:
+                    attract.append((len(set(garms)), r["target_id"], r["lang"], g["device"]))
+                for iid in g["item_ids"]:
+                    it = by_item.get(iid)
+                    if not it:
+                        continue
+                    st = dstat[(it["arm"], it["lang"])]
+                    st["n"] += 1
+                    others = [by_item[j]["arm"] for j in g["item_ids"] if j != iid and j in by_item]
+                    st["cross"] += any(a != it["arm"] for a in others)
+                    st["self"] += any(a == it["arm"] for a in others)
+        devp = {}
+        for (a, lang), st in sorted(dstat.items(), key=lambda kv: (arms.index(kv[0][0]) if kv[0][0] in arms else 99, kv[0][1])):
+            devp[f"{a}|{lang}"] = {"n": st["n"], "cross": round(st["cross"] / st["n"], 2), "self": round(st["self"] / st["n"], 2)}
+            md.append(f"| {a} | {lang} | {st['n']} | {fmt_pct(st['cross'] / st['n'])} | {fmt_pct(st['self'] / st['n'])} |")
+        md.append("")
+        if attract:
+            md += ["Attractors:", ""] + [f"- {n} arms, {tid} ({lang}): {dev or '(unlabelled)'}"
+                                        for n, tid, lang, dev in sorted(attract, reverse=True)[:12]] + [""]
+        S["devices"] = {"per_arm": devp,
+                        "attractors": [{"arms": n, "target": t, "lang": l, "device": d} for n, t, l, d in attract]}
+
     # ---- specificity ----
     spec_path = run_dir / "specificity.jsonl"
     spec_rows = read_jsonl(spec_path) if spec_path.exists() else []
@@ -311,11 +347,14 @@ def main() -> int:
             md += ["Rater cards (stated taste, so a ranking reads as 'funny to these people'):", ""]
             for name, c in cards.items():
                 md.append(f"- **{name}**: languages {c.get('languages') or '?'}; likes {c.get('humor') or '?'}; dark-humor tolerance "
-                          f"{c.get('dark', '?')}/5; off-limits: {c.get('offlimits') or 'none stated'}")
+                          f"{c.get('dark', '?')}/5; aggressive-humor {c.get('hsq_agg', '?')}/7; off-limits: {c.get('offlimits') or 'none stated'}")
             md.append("")
         S["rater_cards"] = cards
         # per-rater summary incl. gold accuracy and both-bad rate
-        md += ["| rater | lang | votes | decisive | both bad | skipped | gold acc | median s/vote |", "|---|---|---:|---:|---:|---:|---:|---:|"]
+        md += ["Aggressive-humor is the rater's 1–7 score from the four card items; line flags is the share of their votes "
+               "where they flagged a roast as crossing a line. A higher score should go with fewer flags.", "",
+               "| rater | lang | votes | decisive | both bad | skipped | gold acc | median s/vote | aggressive-humor | line flags |",
+               "|---|---|---:|---:|---:|---:|---:|---:|---:|---:|"]
         for rater in S["votes"]["raters"]:
             for lang in langs:
                 vs = [v for v in votes if v["rater"] == rater and v["lang"] == lang and v["pair_id"] in pairs]
@@ -326,8 +365,11 @@ def main() -> int:
                 gacc = sum(vote_winner(v, p) == p["gold"]["better"] for v, p in gold) / len(gold) if gold else None
                 ms = sorted(v.get("ms", 0) for v in vs)
                 med = ms[len(ms) // 2] / 1000 if ms else 0
+                flags = sum(bool(v.get("line_left") or v.get("line_right")) for v in vs) / len(vs)
+                hsq = (cards.get(rater) or {}).get("hsq_agg")
                 md.append(f"| {rater} | {lang} | {len(vs)} | {len(dec)} | {sum(v['choice'] == 'both_bad' for v in vs)} | "
-                          f"{sum(v['choice'] == 'skip' for v in vs)} | {fmt_pct(gacc)} | {med:.1f} |")
+                          f"{sum(v['choice'] == 'skip' for v in vs)} | {fmt_pct(gacc)} | {med:.1f} | "
+                          f"{hsq if hsq is not None else '?'} | {fmt_pct(flags)} |")
         md.append("")
         for lang in langs:
             decisions = []

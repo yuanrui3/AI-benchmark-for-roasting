@@ -34,6 +34,10 @@
   kbd { font: 12px ui-monospace, monospace; border:1px solid var(--line); border-bottom-width:2px; border-radius:4px; padding:0 5px; color:var(--muted); }
   .hidden { display:none; }
   .notice { background:var(--soft); padding:10px 12px; border-radius:8px; font-size:14px; margin-top:10px; }
+  fieldset.hsq { border: 1px solid var(--line); border-radius: 8px; padding: 8px 12px; margin: 10px 0; }
+  fieldset.hsq legend { color: var(--muted); font-size: .92em; padding: 0 6px; }
+  fieldset.hsq label { display: flex; justify-content: space-between; gap: 12px; align-items: center; margin: 6px 0; }
+  fieldset.hsq input { width: 4.5em; flex: none; }
 </style>
 </head>
 <body>
@@ -49,6 +53,14 @@
     <label>What you find funny (shows, comedians, forums) · 你觉得什么好笑（节目、演员、论坛） <textarea id="humor"></textarea></label>
     <label>Dark humor tolerance, 1 (none) to 5 (anything) · 黑色幽默接受度 1–5 <input id="dark" type="number" min="1" max="5" value="3"></label>
     <label>Anything off-limits for you · 有什么是你不接受拿来开玩笑的 <input id="offlimits" placeholder="leave blank if nothing · 没有就留空"></label>
+    <fieldset class="hsq">
+      <legend>Four quick taste items, 1 (totally disagree) to 7 (totally agree) · 四道口味题，1（完全不同意）到 7（完全同意）</legend>
+      <label>When someone makes a mistake, I tend to tease them about it. · 别人出了洋相，我常会拿这个开他的玩笑。 <input id="hsq1" type="number" min="1" max="7" value="4"></label>
+      <label>I don't like it when humor is used to criticize or put someone down. · 我不喜欢别人拿幽默当幌子去批评或贬低人。 <input id="hsq2" type="number" min="1" max="7" value="4"></label>
+      <label>If I think of something really funny, I say it even when the occasion is wrong for it. · 想到特别好笑的话，就算场合不对我也忍不住要说。 <input id="hsq3" type="number" min="1" max="7" value="4"></label>
+      <label>If I dislike someone, I use jokes or teasing to take them down a peg. · 要是我不喜欢某个人，我常会用玩笑或挖苦去损他。 <input id="hsq4" type="number" min="1" max="7" value="4"></label>
+      <div class="muted">In the style of the aggressive-humor scale of the Humor Styles Questionnaire (Martin et al., 2003): paraphrased, not the published items. · 仿照幽默风格问卷（HSQ）的攻击型幽默分量表改写，不是原题。</div>
+    </fieldset>
     <div class="actions">
       <button class="primary" id="start">Start · 开始</button>
       <span class="muted" id="resume"></span>
@@ -100,14 +112,16 @@
     for (const l of DATA.langs) { const o = document.createElement('option'); o.value = l; o.textContent = l === 'zh' ? '中文' : l === 'en' ? 'English' : l; $('lang').appendChild(o); }
     try {
       const last = localStorage.getItem('roastbench:last');
-      if (last) { const r = JSON.parse(last); $('name').value = r.name || ''; $('languages').value = r.languages || ''; $('humor').value = r.humor || ''; $('dark').value = r.dark || 3; $('offlimits').value = r.offlimits || ''; if (r.lang) $('lang').value = r.lang; }
+      if (last) { const r = JSON.parse(last); $('name').value = r.name || ''; $('languages').value = r.languages || ''; $('humor').value = r.humor || ''; $('dark').value = r.dark || 3; $('offlimits').value = r.offlimits || ''; if (Array.isArray(r.hsq)) r.hsq.forEach((v, i) => { if ($('hsq' + (i + 1))) $('hsq' + (i + 1)).value = v; }); if (r.lang) $('lang').value = r.lang; }
     } catch (e) {}
   }
 
   function start() {
     const name = $('name').value.trim();
     if (!name) { alert('Name or handle, please. It only labels your export file.'); return; }
-    state.rater = { name, languages: $('languages').value.trim(), humor: $('humor').value.trim(), dark: Number($('dark').value), offlimits: $('offlimits').value.trim() };
+    const hsq = [1, 2, 3, 4].map(i => Math.min(7, Math.max(1, Number($('hsq' + i).value) || 4)));
+    const hsqAgg = Math.round(((hsq[0] + (8 - hsq[1]) + hsq[2] + hsq[3]) / 4) * 100) / 100;  // item 2 reverse-scored
+    state.rater = { name, languages: $('languages').value.trim(), humor: $('humor').value.trim(), dark: Number($('dark').value), offlimits: $('offlimits').value.trim(), hsq, hsq_agg: hsqAgg };
     state.lang = $('lang').value;
     try { localStorage.setItem('roastbench:last', JSON.stringify({ ...state.rater, lang: state.lang })); } catch (e) {}
     try { const saved = localStorage.getItem(KEY()); if (saved) { const s = JSON.parse(saved); state.votes = s.votes || []; state.idx = s.idx || 0; } } catch (e) {}

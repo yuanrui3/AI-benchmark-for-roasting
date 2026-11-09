@@ -7,7 +7,7 @@
 The budget is a single run-wide cap: every stage shares runs/<run>/ledger.jsonl, so
 the number is the most this run can ever spend. Re-running resumes; nothing is paid twice.
 
-Stages: generate -> specificity -> truth -> damage -> build_pairs -> judge_pairs -> analyze.
+Stages: generate -> specificity -> truth -> devices -> damage -> build_pairs -> judge_pairs -> analyze.
 Human votes are not part of this: open runs/<run>/rate/index.html, rate, export, drop the
 JSON files into runs/<run>/votes/, then run analyze.py again.
 """
@@ -62,6 +62,8 @@ def main() -> int:
     if run("specificity.py", "--run", run_name, *mock, *budget) != 0:
         return 1
     if run("truth.py", "--run", run_name, *mock, *budget) != 0:
+        return 1
+    if run("devices.py", "--run", run_name, *mock, *budget) != 0:
         return 1
     dmg_extra = ["--per-lang", "6"] if args.smoke else []
     if args.damage_per_lang is not None:
