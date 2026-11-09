@@ -4,7 +4,7 @@ Run: `pilot-or`. **This pilot is rated in Chinese only** (owner's decision, 9 No
 
 ## English (for context)
 
-You will see pairs of short roasts of the same thing and pick the one that hits harder. Both were written by AI models. The Chinese track is the one being rated; if you only read English, skip this round.
+You will see pairs of short roasts of the same thing and pick the one that hits harder. Both were written by AI models. The first time a target comes up, the page asks how well you know it (know it well / heard of it / no idea, keys 7 / 8 / 9) and unlocks voting once you answer. The Chinese track is the one being rated; if you only read English, skip this round.
 
 ## 中文
 
@@ -13,6 +13,8 @@ You will see pairs of short roasts of the same thing and pick the one that hits 
 **打开页面。** 双击 `runs/pilot-or/rate/index.html`，任何浏览器都行，不用联网。收到的是压缩包就先解压，再打开里面的 `index.html`。（本地服务开着的话也可以访问 http://localhost:8765/runs/pilot-or/rate/index.html。）
 
 **评分人卡片。** 填个名字或网名（只用来给导出的文件命名）；语言选 **中文**（English 这轮不评）；会的语言；平时觉得什么好笑；对黑色幽默的接受度 1–5；有没有不想看到的内容；最后四道口味题按真实感受选。
+
+**先答熟不熟。** 每个对象第一次出现时，页面会先问你对它熟不熟：很熟 / 听说过 / 不知道（快捷键 7 / 8 / 9），答完才能投票。照实答，这个答案用来区分“懂行的人”和“路人”各自觉得什么好笑，不影响你的票。
 
 **怎么判。** 两段都读完再选。旁边有这个对象的事实清单：编造事实的段子该输；自己解释笑点的段子该输。客气不加分，写得长也不加分。
 
