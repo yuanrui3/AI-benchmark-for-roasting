@@ -1,6 +1,6 @@
 # Preflight report: run `pilot-or`
 
-Generated 2026-11-09T19:52:36+00:00. Gates were fixed before data was seen (CLAUDE.md).
+Generated 2026-11-09T19:55:57+00:00. Gates were fixed before data was seen (CLAUDE.md).
 
 ## Generation
 
@@ -37,6 +37,34 @@ Nerve = softeners per item (lower is braver). Novelty = share of items whose tex
 | plain-qwen | zh | 0.00 | 0.10 | 0% | 19.3 |
 | control-bland | zh | 0.00 | 0.00 | 0% | 29.9 |
 | control-generic | zh | 0.00 | 0.20 | 0% | 23.6 |
+
+## Novelty (comic device)
+
+One judge call per target and language groups that target's roasts by the image or angle each is built on (devices.py). Cross-arm = share of an arm's items whose device another arm also used on the same target; self-repeat = the arm's own samples share a device. Attractors are devices three or more arms reached on their own.
+
+| arm | lang | items | cross-arm | self-repeat |
+|---|---|---:|---:|---:|
+| plain-gpt | en | 10 | 80% | 0% |
+| plain-gpt | zh | 10 | 90% | 0% |
+| plain-gemini | en | 10 | 60% | 0% |
+| plain-gemini | zh | 10 | 60% | 0% |
+| plain-deepseek | en | 10 | 90% | 0% |
+| plain-deepseek | zh | 10 | 90% | 0% |
+| plain-qwen | en | 10 | 70% | 0% |
+| plain-qwen | zh | 10 | 60% | 0% |
+
+Attractors:
+
+- 4 arms, papyrus (en): appropriated spiritual font for faux-authentic media
+- 4 arms, macau (zh): 大三巴只是一堵墙
+- 4 arms, las-vegas (zh): 机场老虎机
+- 4 arms, javascript (en): gaslighting logic and weird type coercion
+- 3 arms, ugg (en): shapeless food-like foot (bread/marshmallow/pillow)
+- 3 arms, las-vegas (en): fake landmarks and overpriced cheap experiences
+- 3 arms, jackfruit (en): medieval weapon fruit
+- 3 arms, durian (en): Medieval weapon / biological weapon
+- 3 arms, crocs (zh): 花钱堵洞
+- 3 arms, comic-sans (zh): 幼儿园手工/涂鸦
 
 ## Specificity gate (masked swap test, k=5)
 

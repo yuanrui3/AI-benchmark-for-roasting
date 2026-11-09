@@ -142,6 +142,9 @@ def main() -> int:
     ap.add_argument("--budget", type=float, default=40.0, help="run-wide USD cap (ledger is shared by all stages)")
     ap.add_argument("--judges", default=None, help="comma list; default: the truth judge (config.TRUTH_JUDGE_ORDER)")
     ap.add_argument("--workers", type=int, default=4)
+    ap.add_argument("--max-tokens", type=int, default=config.JUDGE_MAX_TOKENS,
+                    help="OpenRouter refuses a call whose cap times the output price exceeds the balance; lower this when funds are low")
+    ap.add_argument("--effort", default=config.JUDGE_EFFORT, help="low | medium | high | none (no reasoning)")
     args = ap.parse_args()
 
     run_dir = ROOT / "runs" / args.run
@@ -176,8 +179,8 @@ def main() -> int:
             groups, cost, err = mock_groups(texts, lang), 0.0, None
         else:
             try:
-                res = llm.call(judges[jname], JUDGE_SYSTEM, prompt(texts, lang, name), max_tokens=config.JUDGE_MAX_TOKENS,
-                               effort=config.JUDGE_EFFORT, tag=f"devices:{jname}")
+                res = llm.call(judges[jname], JUDGE_SYSTEM, prompt(texts, lang, name), max_tokens=args.max_tokens,
+                               effort=args.effort, tag=f"devices:{jname}")
             except BudgetExceeded as e:
                 stop.set()
                 print(f"BUDGET: {e}")

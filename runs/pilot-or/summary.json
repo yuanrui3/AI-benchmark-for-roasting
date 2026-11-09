@@ -1,6 +1,6 @@
 {
  "run": "pilot-or",
- "generated": "2026-11-09T19:52:36+00:00",
+ "generated": "2026-11-09T19:55:57+00:00",
  "langs": [
   "en",
   "zh"
@@ -172,6 +172,112 @@
    "collision": 0.0,
    "wps": 23.6
   }
+ },
+ "devices": {
+  "per_arm": {
+   "plain-gpt|en": {
+    "n": 10,
+    "cross": 0.8,
+    "self": 0.0
+   },
+   "plain-gpt|zh": {
+    "n": 10,
+    "cross": 0.9,
+    "self": 0.0
+   },
+   "plain-gemini|en": {
+    "n": 10,
+    "cross": 0.6,
+    "self": 0.0
+   },
+   "plain-gemini|zh": {
+    "n": 10,
+    "cross": 0.6,
+    "self": 0.0
+   },
+   "plain-deepseek|en": {
+    "n": 10,
+    "cross": 0.9,
+    "self": 0.0
+   },
+   "plain-deepseek|zh": {
+    "n": 10,
+    "cross": 0.9,
+    "self": 0.0
+   },
+   "plain-qwen|en": {
+    "n": 10,
+    "cross": 0.7,
+    "self": 0.0
+   },
+   "plain-qwen|zh": {
+    "n": 10,
+    "cross": 0.6,
+    "self": 0.0
+   }
+  },
+  "attractors": [
+   {
+    "arms": 3,
+    "target": "comic-sans",
+    "lang": "zh",
+    "device": "幼儿园手工/涂鸦"
+   },
+   {
+    "arms": 3,
+    "target": "durian",
+    "lang": "en",
+    "device": "Medieval weapon / biological weapon"
+   },
+   {
+    "arms": 3,
+    "target": "jackfruit",
+    "lang": "en",
+    "device": "medieval weapon fruit"
+   },
+   {
+    "arms": 3,
+    "target": "crocs",
+    "lang": "zh",
+    "device": "花钱堵洞"
+   },
+   {
+    "arms": 4,
+    "target": "javascript",
+    "lang": "en",
+    "device": "gaslighting logic and weird type coercion"
+   },
+   {
+    "arms": 3,
+    "target": "las-vegas",
+    "lang": "en",
+    "device": "fake landmarks and overpriced cheap experiences"
+   },
+   {
+    "arms": 4,
+    "target": "las-vegas",
+    "lang": "zh",
+    "device": "机场老虎机"
+   },
+   {
+    "arms": 4,
+    "target": "macau",
+    "lang": "zh",
+    "device": "大三巴只是一堵墙"
+   },
+   {
+    "arms": 4,
+    "target": "papyrus",
+    "lang": "en",
+    "device": "appropriated spiritual font for faux-authentic media"
+   },
+   {
+    "arms": 3,
+    "target": "ugg",
+    "lang": "en",
+    "device": "shapeless food-like foot (bread/marshmallow/pillow)"
+   }
+  ]
  },
  "specificity": {
   "plain-gpt|en": {
