@@ -69,3 +69,23 @@ Precedents for free annotation at scale:
   - Not legal advice; check each platform's automation rules.
 
 If results will be published from a university, get an ethics-review exemption before collecting any data.
+
+## Revisions after the pilot (9 Nov 2026)
+
+What the first real data showed (two smoke runs and `runs/pilot-or`: four non-Claude plain arms, two judges, the owner's 100 Chinese votes):
+
+- **Specificity is at ceiling for frontier plain arms**: 100% on the swap test (k = 5) while the generic control sits at twin-chance. The gate separates generic from specific; it does not separate models. Harder distractors or a sentence-level test (hit density: how many sentences identify the target on their own) are needed before it ranks anything.
+- **Truth works once the judge lists the premises a joke relies on**, not the comic exaggeration itself, and ignores puns and redefinitions used as punchlines ("UGG isn't a brand, it's the sound your feet make").
+- **Judges**: GPT-5.5 at low effort passes the damage tests (93%); DeepSeek V4 Pro passes in Chinese; both agree with the one human rater only 57–63% on twenty pairs, which is not yet a verdict either way. Both see the fact sheet, as the raters do, and are told that invented facts and self-explanation count against a roast.
+- **Human rating is slow to resolve close arms**: 52 decisive votes gave interval widths of 1.3 log-odds; about 336 are needed for 0.5. 36% of pairs were "both bad". The owner dropped English (boring or opaque to a non-insider). Human votes are therefore the anchor and the instrument for large effects (framings, target families), not for ranking frontier models against each other.
+- **A roast is about someone doing something.** Every top-voted roast had an agent and an action (paying for durian and getting pricked while the neighbours suspect the drain; seeing snow and panicking for the UGG suede); roasts that stayed on the object read as description. Targets are re-verbalised as practices (`practice` / `practice_zh` in targets.jsonl), a framing arm roasts the practice and aims at the people doing it, and an agent-action rate (share of sentences whose hit is someone doing something) joins the profile. The framing test (plain-X vs frame-X, same model and target, the owner's votes) is the first experiment sized for human votes: a two-to-one effect shows in 40 pairs.
+
+Measurement plan from here, cheapest layer first:
+
+| Layer | Needs | Examples |
+|---|---|---|
+| Free | nothing | softeners, stock templates, length and rhythm, token collisions, keyword agent rate (`agency.py --rule`), per-target both-bad and skip rates from the votes |
+| Judge | API calls, validated by the damage tests | swap test, truth, agent-action rate (`agency.py`), comic-device collisions (`devices.py`), pairwise judge tournaments |
+| Human | the owner and friends, Chinese | framing and target-family effects, gold checks, the anchor that judge agreement is measured against |
+
+A metric earns a place in the headline profile only if it moves in the direction the human votes move on the pairs where both exist.

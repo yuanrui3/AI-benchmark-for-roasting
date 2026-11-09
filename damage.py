@@ -123,10 +123,11 @@ def judge_prompt(a: str, b: str, lang: str, name: str, facts: list[str] | None =
     if lang == "zh":
         head = f"关于{name}的事实清单（已核实，英文）：\n{sheet}\n\n" if sheet else ""
         return (f"{head}下面是两段吐槽同一个对象（{name}）的段子。\n\nA:\n{a}\n\nB:\n{b}\n\n"
-                f"哪一段作为吐槽更好：更好笑、更狠、更具体？编造事实的段子要扣分。Answer with a single letter: A or B.")
+                f"哪一段作为吐槽更好：更好笑、更狠、更具体？编造事实的段子要扣分，自己解释笑点的段子也要扣分。Answer with a single letter: A or B.")
     head = f"Fact sheet about {name} (verified):\n{sheet}\n\n" if sheet else ""
     return (f"{head}Below are two roasts of the same target ({name}).\n\nA:\n{a}\n\nB:\n{b}\n\n"
-            f"Which is the better roast: funnier, sharper, more specific? Hold invented facts against a roast. "
+            f"Which is the better roast: funnier, sharper, more specific? Hold invented facts against a roast, and a roast "
+            f"that explains its own joke. "
             f"Answer with a single letter: A or B.")
 
 
