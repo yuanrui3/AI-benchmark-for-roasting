@@ -7,3 +7,5 @@ __pycache__/
 runs/*/raw/
 # mock runs are disposable
 runs/mock*/
+# zipped rating pages for sending to raters
+runs/*/rate-*.zip
