@@ -1,0 +1,236 @@
+"""Damage tests: validate candidate judges without humans.
+
+    uv run python damage.py --run mock --mock
+    uv run python damage.py --run pilot --budget 10 --per-lang 30
+
+Take N good originals per language (non-control arms), build seven damaged variants
+whose direction is obvious, and ask each judge which of (original, damaged) is the
+better roast, in both presentation orders. A usable judge prefers the original.
+
+Variants: explain (joke explained after the punchline), softener (appended),
+generic (specific details made vague), frontload (punchline moved first),
+pad (twice the length, no new jokes), false (one premise made false),
+polite (rewritten as a polite critique). Mechanical where possible; a cheap
+"damager" model (Haiku) writes the rest, or a mechanical stand-in under --mock.
+
+Output: runs/<run>/damaged.jsonl (variants; rate.html reuses some as gold pairs),
+runs/<run>/damage.jsonl (one row per pair x order x judge), and a per-judge summary
+with accuracy per damage type, position bias and the explain-rule verdict.
+"""
+from __future__ import annotations
+
+import argparse
+import random
+import re
+import sys
+import threading
+from concurrent.futures import ThreadPoolExecutor, as_completed
+
+import config
+from common import ROOT, append_jsonl, count_words, load_targets, parse_letter, read_jsonl, utf8_stdout
+from llm import LLM, BudgetExceeded, ModelSpec
+
+DAMAGES = ["explain", "softener", "generic", "frontload", "pad", "false", "polite"]
+DAMAGER = ModelSpec("anthropic", "claude-haiku-5-5", "anthropic")
+JUDGE_SYSTEM = "You are a comedy editor judging roasts. Follow the answer format exactly."
+
+SOFTENER = {"en": " No offense though. Honestly, it's great and we love it.",
+            "zh": "开个玩笑啊，其实它挺好的，别介意。"}
+
+
+def sentences(text: str, lang: str) -> list[str]:
+    text = text.strip()
+    if lang == "zh":
+        parts = re.split(r"(?<=[。！？!?])", text)
+    else:
+        parts = re.split(r"(?<=[.!?])\s+", text)
+    return [p.strip() for p in parts if p.strip()]
+
+
+def mechanical(kind: str, text: str, lang: str) -> str | None:
+    sents = sentences(text, lang)
+    if kind == "softener":
+        return text.rstrip() + SOFTENER[lang]
+    if kind == "frontload":
+        if len(sents) < 3:
+            return None
+        return (" " if lang == "en" else "").join([sents[-1]] + sents[:-1])
+    if kind == "explain":  # mock stand-in only; the real variant is model-written
+        tail = {"en": " In other words, the joke works because it points out the gap between how it presents itself "
+                      "and what it actually is, which is what makes it funny.",
+                "zh": "换句话说，这个笑点在于它表面上一套、实际上另一套，这种反差就是好笑的地方。"}[lang]
+        return text.rstrip() + tail
+    if kind == "pad":  # mock stand-in
+        filler = {"en": " Now, I want to be fair here, and I think most people would agree with this, more or less.",
+                  "zh": "当然了，我这么说也不是没有道理，大多数人应该多多少少都会同意的。"}[lang]
+        return (" " if lang == "en" else "").join(s + filler for s in sents)
+    if kind == "generic":  # mock stand-in
+        return re.sub(r"\b\d[\d,\.]*\b", "many", text) if lang == "en" else re.sub(r"\d+", "很多", text)
+    if kind == "false":  # mock stand-in
+        return re.sub(r"\b(19|20)\d\d\b", "1850", text, count=1) if lang == "en" else re.sub(r"\d{4}", "1850", text, count=1)
+    if kind == "polite":  # mock stand-in
+        return ({"en": "To be fair, there are some reasonable points to consider. ", "zh": "客观地说，这里有几点值得考虑。"}[lang]
+                + text)
+    return None
+
+
+def damager_prompt(kind: str, text: str, lang: str, target: dict) -> str:
+    facts = "\n".join(f"- {f}" for f in target["facts"])
+    name = config.target_name(target, lang)
+    if lang == "zh":
+        head = f"下面是一段吐槽{name}的段子：\n---\n{text}\n---\n"
+        tail = "只输出改写后的全文，不要任何说明。"
+        body = {
+            "explain": "在最后一个笑点之后，追加一两句话，把这个笑话为什么好笑解释清楚，把梗点明。原文一字不改。",
+            "generic": f"把段子里所有具体、可查证的细节（名字、数字、年份、具体特征）换成模糊的泛泛之词，让它换成任何一种{config.category_name(target, lang)}都成立。长度和结构不变。",
+            "pad": "把这段话改写成原来两倍左右的长度：加铺垫、加口水话、加重复和客套，不要加新的笑点和新的事实，保留每一句原话。",
+            "false": f"参考事实清单：\n{facts}\n把段子里恰好一处事实性的说法改成看似合理但错误的（错的年份、数字或公司）。其他一字不改。",
+            "polite": "把这段话改写成礼貌、客观、平衡的评价：不开玩笑、不讽刺、不夸张，要点不变，长度相近。",
+        }[kind]
+        return head + body + tail
+    head = f"Here is a roast of {name}:\n---\n{text}\n---\n"
+    tail = " Output only the full rewritten text, no commentary."
+    body = {
+        "explain": "After the final punchline, append one or two sentences that explain why the joke is funny, spelling out the reference. Leave the original text unchanged.",
+        "generic": f"Rewrite it replacing every specific, checkable detail (names, numbers, dates, particular features) with a vague generic equivalent that could apply to any {config.category_name(target, lang)}. Keep the length and structure.",
+        "pad": "Rewrite it at about twice the length by adding filler, hedging, throat-clearing and restatement. Add no new jokes or facts. Keep every original sentence.",
+        "false": f"Fact sheet for reference:\n{facts}\nChange exactly one factual claim in the roast to something false but plausible (a wrong year, number or company). Change nothing else.",
+        "polite": "Rewrite it as a polite, balanced critique with no jokes, sarcasm or exaggeration. Same points, similar length.",
+    }[kind]
+    return head + body + tail
+
+
+def judge_prompt(a: str, b: str, lang: str, name: str) -> str:
+    if lang == "zh":
+        return (f"下面是两段吐槽同一个对象（{name}）的段子。\n\nA:\n{a}\n\nB:\n{b}\n\n"
+                f"哪一段作为吐槽更好：更好笑、更狠、更具体？Answer with a single letter: A or B.")
+    return (f"Below are two roasts of the same target ({name}).\n\nA:\n{a}\n\nB:\n{b}\n\n"
+            f"Which is the better roast: funnier, sharper, more specific? Answer with a single letter: A or B.")
+
+
+def main() -> int:
+    utf8_stdout()
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--run", required=True)
+    ap.add_argument("--mock", action="store_true")
+    ap.add_argument("--budget", type=float, default=10.0)
+    ap.add_argument("--per-lang", type=int, default=30, help="originals per language")
+    ap.add_argument("--judges", default=",".join(config.JUDGES))
+    ap.add_argument("--workers", type=int, default=6)
+    ap.add_argument("--seed", type=int, default=11)
+    args = ap.parse_args()
+
+    run_dir = ROOT / "runs" / args.run
+    targets = load_targets()
+    items = [r for r in read_jsonl(run_dir / "items.jsonl")
+             if r["kind"] in ("plain", "facts", "skill") and not r["refused"] and not r["error"]
+             and count_words(r["text"], r["lang"]) >= (40 if r["lang"] == "en" else 60)]
+    rng = random.Random(args.seed)
+    originals = []
+    for lang in sorted({r["lang"] for r in items}):
+        pool = [r for r in items if r["lang"] == lang]
+        rng.shuffle(pool)
+        by_arm: dict[str, list] = {}
+        for r in pool:
+            by_arm.setdefault(r["arm"], []).append(r)
+        picked, arms = [], sorted(by_arm)
+        while len(picked) < args.per_lang and any(by_arm.values()):
+            for a in arms:
+                if by_arm[a] and len(picked) < args.per_lang:
+                    picked.append(by_arm[a].pop())
+        originals += picked
+    per_lang = {lang: sum(r["lang"] == lang for r in originals) for lang in sorted({r["lang"] for r in originals})}
+    print(f"{len(originals)} originals {per_lang}")
+
+    llm = LLM(run_dir, budget_usd=args.budget, mock=args.mock)
+    judges = {j: config.MODELS[config.JUDGES[j]] for j in args.judges.split(",")}
+    variants_path = run_dir / "damaged.jsonl"
+    existing = {(r["item_id"], r["damage"]): r for r in read_jsonl(variants_path)} if variants_path.exists() else {}
+
+    # 1) build variants
+    variants = []
+    for it in originals:
+        t = targets[it["target_id"]]
+        for kind in DAMAGES:
+            if (it["item_id"], kind) in existing:
+                variants.append(existing[(it["item_id"], kind)])
+                continue
+            text = None
+            if args.mock or kind in ("softener", "frontload"):
+                text = mechanical(kind, it["text"], it["lang"])
+            else:
+                try:
+                    res = llm.call(DAMAGER, "You rewrite text exactly as instructed. Output only the text.",
+                                   damager_prompt(kind, it["text"], it["lang"], t), max_tokens=2500, effort="low",
+                                   key=f"dmg|{args.run}|{it['item_id']}|{kind}", tag=f"damager:{kind}")
+                except BudgetExceeded as e:
+                    print(f"BUDGET while damaging: {e}")
+                    return 3
+                text = res.text.strip() if res.text.strip() and not res.refused else None
+            if not text or text == it["text"]:
+                continue
+            row = {"item_id": it["item_id"], "damage": kind, "lang": it["lang"], "arm": it["arm"], "gen_family": it["family"],
+                   "target_id": it["target_id"], "original": it["text"], "damaged": text}
+            append_jsonl(variants_path, row)
+            variants.append(row)
+    print(f"{len(variants)} damaged variants ready")
+
+    # 2) judge every (variant, order, judge)
+    out_path = run_dir / "damage.jsonl"
+    done = {(r["item_id"], r["damage"], r["order"], r["judge"]) for r in read_jsonl(out_path)} if out_path.exists() else set()
+    jobs = [(v, order, j) for v in variants for order in ("orig_first", "dmg_first") for j in judges
+            if (v["item_id"], v["damage"], order, j) not in done]
+    print(f"{len(jobs)} judge calls to do")
+    lock = threading.Lock()
+    stop = threading.Event()
+
+    def work(job):
+        v, order, jname = job
+        if stop.is_set():
+            return
+        spec = judges[jname]
+        a, b = (v["original"], v["damaged"]) if order == "orig_first" else (v["damaged"], v["original"])
+        name = config.target_name(targets[v["target_id"]], v["lang"])
+        try:
+            res = llm.call(spec, JUDGE_SYSTEM, judge_prompt(a, b, v["lang"], name), max_tokens=config.JUDGE_MAX_TOKENS,
+                           effort=config.JUDGE_EFFORT, key=f"dmgj|{args.run}|{v['item_id']}|{v['damage']}|{order}|{jname}",
+                           tag=f"damage:{jname}")
+        except BudgetExceeded as e:
+            stop.set()
+            print(f"BUDGET: {e}")
+            return
+        ans = parse_letter(res.text)
+        orig_letter = "A" if order == "orig_first" else "B"
+        row = {"item_id": v["item_id"], "damage": v["damage"], "lang": v["lang"], "arm": v["arm"],
+               "gen_family": v["gen_family"], "order": order, "judge": jname, "judge_family": spec.family,
+               "answer": ans, "correct": ans == orig_letter, "chose_A": ans == "A", "parse_fail": ans is None,
+               "cost_usd": res.cost_usd, "error": res.error}
+        with lock:
+            append_jsonl(out_path, row)
+
+    with ThreadPoolExecutor(max_workers=args.workers) as ex:
+        for _ in as_completed([ex.submit(work, j) for j in jobs]):
+            pass
+
+    rows = read_jsonl(out_path)
+    print(f"\nspent ${llm.spent_usd:.2f}\n{'judge':14s} {'lang':4s} " + " ".join(f"{d[:7]:>7s}" for d in DAMAGES)
+          + f" {'all':>6s} {'P(A)':>6s} {'verdict'}")
+    for j in sorted({r["judge"] for r in rows}):
+        for lang in sorted({r["lang"] for r in rows}):
+            rs = [r for r in rows if r["judge"] == j and r["lang"] == lang]
+            if not rs:
+                continue
+            accs = []
+            for d in DAMAGES:
+                ds = [r for r in rs if r["damage"] == d]
+                accs.append(sum(r["correct"] for r in ds) / len(ds) if ds else float("nan"))
+            overall = sum(r["correct"] for r in rs) / len(rs)
+            p_a = sum(r["chose_A"] for r in rs) / len(rs)
+            explain_fail = any(not r["correct"] and not r["parse_fail"] for r in rs if r["damage"] == "explain")
+            verdict = "DISCARD (preferred an explained joke)" if explain_fail else ("usable" if overall >= 0.9 else "weak")
+            print(f"{j:14s} {lang:4s} " + " ".join(f"{a:7.2f}" for a in accs) + f" {overall:6.2f} {p_a:6.2f} {verdict}")
+    return 0 if not stop.is_set() else 3
+
+
+if __name__ == "__main__":
+    sys.exit(main())

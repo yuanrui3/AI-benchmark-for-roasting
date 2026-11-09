@@ -1,0 +1,109 @@
+"""Build the blind pairwise rating set and stage the rating page.
+
+    uv run python build_pairs.py --run mock
+    uv run python build_pairs.py --run pilot --per-lang 250 --gold-frac 0.1
+
+Pairs are two items about the SAME target in the same language from DIFFERENT arms,
+so a vote is about the roast, not the target. Every rater sees the same pairs in the
+same order (left/right is randomized per rater by the page), which is what rater
+agreement needs. Arm names are not in the file: raters are blind. A share of gold
+pairs (original vs its explained/padded/polite variant from damage.py) is mixed in as
+attention checks with a known answer.
+
+Writes runs/<run>/rate/pairs.js and copies rate.html there as index.html.
+Open runs/<run>/rate/index.html in a browser; it works from a file:// URL.
+"""
+from __future__ import annotations
+
+import argparse
+import json
+import random
+import shutil
+import sys
+from datetime import datetime, timezone
+
+import config
+from common import ROOT, load_targets, read_jsonl, utf8_stdout
+
+GOLD_KINDS = ("explain", "pad", "polite")
+
+
+def main() -> int:
+    utf8_stdout()
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--run", required=True)
+    ap.add_argument("--per-lang", type=int, default=250)
+    ap.add_argument("--gold-frac", type=float, default=0.10)
+    ap.add_argument("--seed", type=int, default=3)
+    args = ap.parse_args()
+
+    run_dir = ROOT / "runs" / args.run
+    targets = load_targets()
+    items = [r for r in read_jsonl(run_dir / "items.jsonl")
+             if r["kind"] != "generic" and r["text"].strip() and not r["refused"] and not r["error"]]
+    damaged_path = run_dir / "damaged.jsonl"
+    damaged = [d for d in read_jsonl(damaged_path) if d["damage"] in GOLD_KINDS] if damaged_path.exists() else []
+    rng = random.Random(args.seed)
+    pairs = []
+
+    for lang in sorted({r["lang"] for r in items}):
+        by_target: dict[str, list[dict]] = {}
+        for r in items:
+            if r["lang"] == lang:
+                by_target.setdefault(r["target_id"], []).append(r)
+        # all cross-arm pairs per target, shuffled; then round-robin across targets
+        queues = []
+        for tid, its in by_target.items():
+            cand = [(a, b) for i, a in enumerate(its) for b in its[i + 1:] if a["arm"] != b["arm"]]
+            rng.shuffle(cand)
+            queues.append(cand)
+        rng.shuffle(queues)
+        n_gold = int(round(args.per_lang * args.gold_frac))
+        n_real = args.per_lang - n_gold
+        chosen = []
+        while len(chosen) < n_real and any(queues):
+            for q in queues:
+                if q and len(chosen) < n_real:
+                    chosen.append(q.pop())
+        for a, b in chosen:
+            if rng.random() < 0.5:
+                a, b = b, a
+            t = targets[a["target_id"]]
+            pairs.append({"pair_id": f"{lang}-{len(pairs):04d}", "lang": lang, "target_id": t["id"],
+                          "target_name": config.target_name(t, lang), "facts": t["facts"],
+                          "a": {"item_id": a["item_id"], "text": a["text"]},
+                          "b": {"item_id": b["item_id"], "text": b["text"]}, "gold": None})
+        golds = [d for d in damaged if d["lang"] == lang]
+        rng.shuffle(golds)
+        for d in golds[:n_gold]:
+            t = targets[d["target_id"]]
+            better = "a" if rng.random() < 0.5 else "b"
+            orig = {"item_id": d["item_id"], "text": d["original"]}
+            dmg = {"item_id": f"{d['item_id']}~{d['damage']}", "text": d["damaged"]}
+            pairs.append({"pair_id": f"{lang}-{len(pairs):04d}", "lang": lang, "target_id": t["id"],
+                          "target_name": config.target_name(t, lang), "facts": t["facts"],
+                          "a": orig if better == "a" else dmg, "b": dmg if better == "a" else orig,
+                          "gold": {"better": better, "damage": d["damage"]}})
+        # interleave gold pairs into the real ones for this language
+        lang_pairs = [p for p in pairs if p["lang"] == lang]
+        rng.shuffle(lang_pairs)
+        pairs = [p for p in pairs if p["lang"] != lang] + lang_pairs
+
+    for i, p in enumerate(pairs):
+        p["pair_id"] = f"{p['lang']}-{i:04d}"
+    out_dir = run_dir / "rate"
+    out_dir.mkdir(exist_ok=True)
+    payload = {"run": args.run, "created": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+               "langs": sorted({p["lang"] for p in pairs}), "pairs": pairs}
+    (out_dir / "pairs.js").write_text("window.PAIRS = " + json.dumps(payload, ensure_ascii=False) + ";\n",
+                                      encoding="utf-8")
+    (out_dir / "pairs.json").write_text(json.dumps(payload, ensure_ascii=False, indent=1), encoding="utf-8")
+    shutil.copy(ROOT / "rate.html", out_dir / "index.html")
+    per = {l: sum(p["lang"] == l for p in pairs) for l in payload["langs"]}
+    gold = sum(bool(p["gold"]) for p in pairs)
+    print(f"{len(pairs)} pairs {per}, {gold} gold -> {out_dir / 'index.html'}")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())
