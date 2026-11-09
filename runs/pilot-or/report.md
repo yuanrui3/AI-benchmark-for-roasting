@@ -1,6 +1,6 @@
 # Preflight report: run `pilot-or`
 
-Generated 2026-11-09T19:55:57+00:00. Gates were fixed before data was seen (CLAUDE.md).
+Generated 2026-11-09T20:49:45+00:00. Gates were fixed before data was seen (CLAUDE.md).
 
 ## Generation
 
@@ -117,16 +117,53 @@ A usable judge prefers the original >= 90% of the time and never prefers an expl
 
 ## Human votes
 
-_No votes yet. Open runs/<run>/rate/index.html, rate, export, and drop the JSON files into runs/<run>/votes/._
+100 votes from 1 rater(s): uitest-hsq.
+
+Rater cards (stated taste, so a ranking reads as 'funny to these people'):
+
+- **uitest-hsq**: languages ?; likes I find funny things to be funny; dark-humor tolerance 5/5; aggressive-humor 4.5/7; off-limits: Mbappe
+
+Aggressive-humor is the rater's 1–7 score from the four card items; line flags is the share of their votes where they flagged a roast as crossing a line. A higher score should go with fewer flags.
+
+| rater | lang | votes | decisive | both bad | skipped | gold acc | median s/vote | aggressive-humor | line flags |
+|---|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| uitest-hsq | zh | 100 | 54 | 36 | 10 | 100% | 8.1 | 4.5 | 2% |
+
+### Bradley-Terry on human votes, zh (52 decisive votes, all items)
+
+| arm | score | 95% CI | both-bad rate | appearances |
+|---|---:|---|---:|---:|
+| plain-gpt | +0.71 | [+0.07, +1.39] | 32% | 21 |
+| plain-qwen | +0.66 | [+0.11, +1.25] | 32% | 22 |
+| plain-deepseek | +0.53 | [-0.13, +1.22] | 36% | 18 |
+| plain-gemini | +0.12 | [-0.50, +0.77] | 42% | 20 |
+| control-bland | -2.03 | [-2.29, -1.74] | 29% | 23 |
+
+### Bradley-Terry, zh, gated (50 votes where both items passed specificity and truth)
+
+| arm | score | 95% CI | appearances |
+|---|---:|---|---:|
+| plain-qwen | +0.66 | [+0.16, +1.20] | 22 |
+| plain-gpt | +0.64 | [-0.01, +1.34] | 19 |
+| plain-deepseek | +0.53 | [-0.07, +1.19] | 18 |
+| plain-gemini | +0.17 | [-0.45, +0.80] | 19 |
+| control-bland | -2.00 | [-2.26, -1.72] | 22 |
+
+Mean 95% CI width across real arms: 1.27 log-odds. To reach a width of 0.5 (arms one notch apart become distinguishable) you need about **336 decisive votes** in zh, vs 52 now.
+
+### Judge vs human, zh
+
+- judge-deepseek: agrees with human votes 63% (n=19); flips its answer when order is swapped 18%. Human-human ceiling: n/a.
+- judge-gpt: agrees with human votes 57% (n=21); flips its answer when order is swapped 12%. Human-human ceiling: n/a.
 
 ## Gates
 
 | gate | result |
 |---|---|
-| controls behave (bland below real arms / generic near chance) | no data / PASS |
-| spread (two arms, non-overlapping 95% CIs) | no data |
+| controls behave (bland below real arms / generic near chance) | PASS / PASS |
+| spread (two arms, non-overlapping 95% CIs) | FAIL |
 | raters agree (>= 0.6, ties excluded) | no data |
 | specificity varies | FAIL |
 | a judge is usable (>= 90% damage, never prefers explained) | PASS |
 
-**Verdict: no verdict yet (human data missing)**
+**Verdict: NO-GO as designed; see failed gates**

@@ -1,6 +1,6 @@
 {
  "run": "pilot-or",
- "generated": "2026-11-09T19:55:57+00:00",
+ "generated": "2026-11-09T20:49:45+00:00",
  "langs": [
   "en",
   "zh"
@@ -500,21 +500,127 @@
   }
  },
  "votes": {
-  "n": 0,
-  "raters": []
+  "n": 100,
+  "raters": [
+   "uitest-hsq"
+  ]
  },
- "bt_human": {},
+ "rater_cards": {
+  "uitest-hsq": {
+   "name": "uitest-hsq",
+   "languages": "",
+   "humor": "I find funny things to be funny",
+   "dark": 5,
+   "offlimits": "Mbappe",
+   "hsq": [
+    5,
+    4,
+    4,
+    5
+   ],
+   "hsq_agg": 4.5
+  }
+ },
+ "projection": {
+  "zh": {
+   "decisive_votes": 52,
+   "mean_ci_width": 1.271,
+   "votes_for_width_0.5": 336
+  }
+ },
+ "bt_human": {
+  "zh": {
+   "plain-gpt": {
+    "score": 0.715,
+    "lo": 0.067,
+    "hi": 1.393,
+    "n": 21,
+    "both_bad_rate": 0.324
+   },
+   "plain-gemini": {
+    "score": 0.117,
+    "lo": -0.498,
+    "hi": 0.774,
+    "n": 20,
+    "both_bad_rate": 0.421
+   },
+   "plain-deepseek": {
+    "score": 0.533,
+    "lo": -0.126,
+    "hi": 1.219,
+    "n": 18,
+    "both_bad_rate": 0.361
+   },
+   "plain-qwen": {
+    "score": 0.662,
+    "lo": 0.107,
+    "hi": 1.249,
+    "n": 22,
+    "both_bad_rate": 0.316
+   },
+   "control-bland": {
+    "score": -2.027,
+    "lo": -2.294,
+    "hi": -1.737,
+    "n": 23,
+    "both_bad_rate": 0.294
+   }
+  },
+  "zh_gated": {
+   "plain-gpt": {
+    "score": 0.641,
+    "lo": -0.01,
+    "hi": 1.344,
+    "n": 19
+   },
+   "plain-gemini": {
+    "score": 0.169,
+    "lo": -0.448,
+    "hi": 0.795,
+    "n": 19
+   },
+   "plain-deepseek": {
+    "score": 0.528,
+    "lo": -0.068,
+    "hi": 1.185,
+    "n": 18
+   },
+   "plain-qwen": {
+    "score": 0.656,
+    "lo": 0.159,
+    "hi": 1.195,
+    "n": 22
+   },
+   "control-bland": {
+    "score": -1.995,
+    "lo": -2.261,
+    "hi": -1.719,
+    "n": 22
+   }
+  }
+ },
  "agreement": {},
- "judge_human": {},
+ "judge_human": {
+  "judge-deepseek|zh": {
+   "agreement_with_humans": 0.632,
+   "n": 19,
+   "order_flip_rate": 0.175
+  },
+  "judge-gpt|zh": {
+   "agreement_with_humans": 0.571,
+   "n": 21,
+   "order_flip_rate": 0.125
+  }
+ },
  "gates": {
   "controls_behave": [
-   null,
+   true,
    true
   ],
-  "spread": null,
+  "spread": false,
   "raters_agree": null,
   "specificity_varies": false,
   "judge_usable": true
  },
- "verdict": "no verdict yet (human data missing)"
+ "verdict": "NO-GO as designed; see failed gates"
 }
