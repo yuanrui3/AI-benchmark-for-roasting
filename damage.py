@@ -147,14 +147,19 @@ def main() -> int:
              if r["kind"] in ("plain", "facts", "skill") and not r["refused"] and not r["error"]
              and count_words(r["text"], r["lang"]) >= (40 if r["lang"] == "en" else 60)]
     rng = random.Random(args.seed)
+    variants_path = run_dir / "damaged.jsonl"
+    existing = {(r["item_id"], r["damage"]): r for r in read_jsonl(variants_path)} if variants_path.exists() else {}
+    prior_ids = {item_id for item_id, _ in existing}  # originals from an earlier pass keep their place
     originals = []
     for lang in sorted({r["lang"] for r in items}):
         pool = [r for r in items if r["lang"] == lang]
         rng.shuffle(pool)
+        picked = [r for r in pool if r["item_id"] in prior_ids][: args.per_lang]
         by_arm: dict[str, list] = {}
         for r in pool:
-            by_arm.setdefault(r["arm"], []).append(r)
-        picked, arms = [], sorted(by_arm)
+            if r["item_id"] not in prior_ids:
+                by_arm.setdefault(r["arm"], []).append(r)
+        arms = sorted(by_arm)
         while len(picked) < args.per_lang and any(by_arm.values()):
             for a in arms:
                 if by_arm[a] and len(picked) < args.per_lang:
@@ -167,8 +172,6 @@ def main() -> int:
     damager = config.damager_spec(args.mock)
     judge_names = args.judges.split(",") if args.judges else config.usable_judges(args.mock)
     judges = {j: config.MODELS[config.JUDGES[j]] for j in judge_names}
-    variants_path = run_dir / "damaged.jsonl"
-    existing = {(r["item_id"], r["damage"]): r for r in read_jsonl(variants_path)} if variants_path.exists() else {}
 
     # 1) build variants
     variants = []

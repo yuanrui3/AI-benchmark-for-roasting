@@ -31,10 +31,20 @@ def main() -> int:
     ap.add_argument("--budget", type=float, default=40.0, help="run-wide USD cap (ledger is shared by all stages)")
     ap.add_argument("--judges", default=None, help="comma list; default: every judge whose key exists")
     ap.add_argument("--workers", type=int, default=6)
+    ap.add_argument("--per-lang", type=int, default=None,
+                    help="judge only the first N pairs per language, in file order (the order raters see); default all")
     args = ap.parse_args()
 
     run_dir = ROOT / "runs" / args.run
     pairs = json.loads((run_dir / "rate" / "pairs.json").read_text(encoding="utf-8"))["pairs"]
+    if args.per_lang:
+        seen: dict[str, int] = {}
+        kept = []
+        for p in pairs:
+            seen[p["lang"]] = seen.get(p["lang"], 0) + 1
+            if seen[p["lang"]] <= args.per_lang:
+                kept.append(p)
+        pairs = kept
     judge_names = args.judges.split(",") if args.judges else config.usable_judges(args.mock)
     judges = {j: config.MODELS[config.JUDGES[j]] for j in judge_names}
     out_path = run_dir / "judge_pairs.jsonl"

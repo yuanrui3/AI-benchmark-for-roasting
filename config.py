@@ -64,9 +64,13 @@ LENGTH = {"en": "80 to 150 words", "zh": "120到250字"}
 JUDGES: dict[str, str] = {        # judge name -> MODELS key
     "judge-sonnet": "sonnet",
     "judge-gpt": "gpt",
+    "judge-deepseek": "deepseek",   # about a fifth of GPT-5.5's price per call; it also generates (plain-deepseek), so
+                                    # analyze.py's self-preference column is the check on it
 }
 JUDGE_EFFORT = "low"
-JUDGE_MAX_TOKENS = 2000  # thinking tokens count toward this on Claude; answers themselves are a few tokens
+JUDGE_MAX_TOKENS = 4000  # thinking tokens count toward this; answers themselves are a few tokens
+# The truth check is a fact-check against a supplied sheet, so one judge is enough: the first usable one here.
+TRUTH_JUDGE_ORDER = ["judge-sonnet", "judge-deepseek", "judge-gpt"]
 
 _KEY_ENV = {"anthropic": "ANTHROPIC_API_KEY", "openrouter": "OPENROUTER_API_KEY"}
 
@@ -104,6 +108,14 @@ def damager_spec(mock: bool = False) -> ModelSpec:
     fb = MODELS[FALLBACK_MODEL]
     print(f"no key for {spec.provider}; damager runs on {fb.model}")
     return fb
+
+
+def truth_judges(mock: bool = False) -> list[str]:
+    usable = usable_judges(mock)
+    for j in TRUTH_JUDGE_ORDER:
+        if j in usable:
+            return [j]
+    return usable[:1]
 
 
 def usable_judges(mock: bool = False) -> list[str]:

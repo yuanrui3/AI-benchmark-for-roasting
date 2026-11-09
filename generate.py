@@ -86,6 +86,7 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--run", default=None, help="run name under runs/ (default: date)")
     ap.add_argument("--mock", action="store_true", help="no network, zero cost; run name defaults to 'mock'")
+    ap.add_argument("--target-ids", default=None, help="comma list of target ids (default: all, in file order)")
     ap.add_argument("--budget", type=float, default=40.0, help="hard USD cap for this run")
     ap.add_argument("--arms", default=None, help="comma list of arm names (default: all in config.ARMS)")
     ap.add_argument("--langs", default=",".join(config.LANGS))
@@ -117,6 +118,14 @@ def main() -> int:
             return 2
     langs = args.langs.split(",")
     targets = load_targets()
+    if args.target_ids:
+        wanted = args.target_ids.split(",")
+        by_id = {t["id"]: t for t in targets}
+        missing = [w for w in wanted if w not in by_id]
+        if missing:
+            print(f"unknown target ids: {missing}")
+            return 2
+        targets = [by_id[w] for w in wanted]
     if args.targets:
         targets = targets[: args.targets]
 

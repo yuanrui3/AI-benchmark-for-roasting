@@ -81,7 +81,7 @@ def main() -> int:
     targets = load_targets()
     items = [r for r in read_jsonl(run_dir / "items.jsonl")
              if r["kind"] != "generic" and r["text"].strip() and not r["refused"] and not r["error"]]
-    judge_names = args.judges.split(",") if args.judges else config.usable_judges(args.mock)[:1]
+    judge_names = args.judges.split(",") if args.judges else config.truth_judges(args.mock)
     judges = {j: config.MODELS[config.JUDGES[j]] for j in judge_names}
     out_path = run_dir / "truth.jsonl"
     done = {(r["item_id"], r["judge"]) for r in read_jsonl(out_path)} if out_path.exists() else set()
