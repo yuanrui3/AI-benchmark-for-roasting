@@ -1,0 +1,1750 @@
+{
+ "run": "smoke-or",
+ "created": "2026-11-09T17:50:35+00:00",
+ "langs": [
+  "en",
+  "zh"
+ ],
+ "pairs": [
+  {
+   "pair_id": "en-0000",
+   "lang": "en",
+   "target_id": "php",
+   "target_name": "PHP",
+   "facts": [
+    "Created by Rasmus Lerdorf in 1994 as 'Personal Home Page Tools', a set of C programs for tracking visitors to his own résumé page; the name now officially stands for the recursive 'PHP: Hypertext Preprocessor'.",
+    "Lerdorf, in his 2007 MySQL Conference talk 'PHP on Hormones': 'I'm not a real programmer. I throw together things until it works then I move on.'",
+    "Runs WordPress, which W3Techs counted on 39.4% of all websites (58.1% of sites with a known CMS) on 9 November 2026.",
+    "Core function names are inconsistent (strpos, str_replace, htmlspecialchars, nl2br) partly because, as Lerdorf confirmed, early function names were chosen to balance a hash table keyed on string length.",
+    "Until PHP 8 (2020), the comparison 0 == 'foo' was true because the string was silently converted to a number."
+   ],
+   "a": {
+    "item_id": "0fba7d4f8884",
+    "text": "PHP is the programming language equivalent of a raccoon rummaging through a dumpster: it survives on garbage, occasionally finds a half-eaten sandwich, and hisses when you try to take it away. It’s the only language where a missing semicolon is a fatal error, but a typo in a variable name just silently creates a new one and hopes you didn’t notice. The standard library was assembled by a committee of sleep-deprived interns throwing darts at a wall of function names: str_replace, str_ireplace, preg_replace, strtr, and why not explode while we’re at it? Needle, haystack, haystack, needle — PHP’s motto is “consistency is for people who read the manual.” And the manual? It’s just a comments section where strangers from 2005 argue about whether mysql_query is deprecated yet. PHP doesn’t have bugs; it has “unintentional backdoors,” and the language itself is one."
+   },
+   "b": {
+    "item_id": "f02e348ca5b9",
+    "text": "PHP is what happens when a templating language eats a programming language and then exposes it as `$_GET`. It has function names like someone dropped a dictionary down the stairs: `strpos`, `str_replace`, `htmlspecialchars`, and good luck remembering whether the haystack or needle comes first. Its type system looks at `\"0\" == false` and says, “Yeah, close enough.” Every array is an array, a list, a map, a philosophy degree, and a future bug report. PHP didn’t deprecate bad ideas; it put them in production behind WordPress plugins last updated in 2014. Even its error handling has commitment issues: warning, notice, fatal error—pick a mood. And somehow, after all that, it still runs half the web, like a raccoon piloting a container ship."
+   },
+   "gold": null
+  },
+  {
+   "pair_id": "en-0001",
+   "lang": "en",
+   "target_id": "comic-sans",
+   "target_name": "Comic Sans",
+   "facts": [
+    "Designed by Vincent Connare at Microsoft in 1994, modeled on the comic-book lettering in The Dark Knight Returns and Watchmen.",
+    "Made for the speech bubbles of Rover, the cartoon dog in Microsoft Bob; it missed Bob's release and shipped instead in the Windows 95 Plus! pack.",
+    "CERN's July 2012 Higgs boson discovery announcement was presented on slides set in it.",
+    "The 'Ban Comic Sans' campaign, started by designers Dave and Holly Combs in 1999, ran until 2019, when they retired it and launched usecomicsans.com."
+   ],
+   "a": {
+    "item_id": "63d72261b015",
+    "text": "Comic Sans has several practical strengths. Its rounded, open letterforms are highly legible at small sizes and on low-resolution screens, and its informal appearance can feel approachable in materials intended for children or casual settings. The wide spacing and simple shapes also make it easier for some readers with dyslexia to distinguish characters.\n\nHowever, the typeface has notable weaknesses. Its design lacks the refinement and consistent proportions expected in professional typography, which can make longer passages look unpolished or visually uneven. Because it mimics casual handwriting without the structure of a more disciplined script, it often appears out of place in formal documents, business communication, or serious contexts. The strong cultural associations it has acquired can also distract from the content itself. While Comic Sans may be a reasonable choice for very specific, lighthearted purposes, it is generally not suited to professional or formal use, and careful consideration of context is advisable."
+   },
+   "b": {
+    "item_id": "b361fc743bc8",
+    "text": "Comic Sans is what happens when a computer tries to wear a backwards baseball cap to a funeral. Designed for a cartoon dog’s speech bubble, then somehow escaped into school newsletters, church flyers, and “serious” workplace emails like a toddler with admin privileges. Every letter looks like it was drawn during a bumpy car ride with a crayon in its fist. The lowercase “a” is trying to be friendly; the “s” looks like it just slipped on a banana peel. Comic Sans doesn’t say “fun”—it says “I laminated this sign myself.” It’s the only font that can make “mandatory compliance training” look like it’s being announced by a youth pastor juggling hacky sacks."
+   },
+   "gold": null
+  },
+  {
+   "pair_id": "en-0002",
+   "lang": "en",
+   "target_id": "papyrus",
+   "target_name": "Papyrus",
+   "facts": [
+    "Hand-drawn by Chris Costello in 1982 over about six months, when he was 23; he sold the rights to Letraset for $750.",
+    "Bundled with macOS and with Microsoft Office, which is why it appears on so many menus and signs.",
+    "James Cameron's Avatar (2009) used it for the film's logo and subtitles.",
+    "A 2017 Saturday Night Live sketch starring Ryan Gosling is about a man unable to get over that choice."
+   ],
+   "a": {
+    "item_id": "dec01efaba73",
+    "text": "Papyrus, you’re the only skeleton who can have zero stomach and still make spaghetti that gives everyone indigestion. You train for the Royal Guard like a champion, yet your deadliest weapon is a plate of noodles with the texture of cable management. Your puzzles have all the menace of a children’s menu maze, and somehow Sans is the lazy one while you’re out here losing fights to kindness and basic pattern recognition. “Nyeh heh heh” sounds less like an evil laugh and more like a printer jam begging for mercy. And that battle body? Iconic—if the icon is “Halloween costume assembled from a mop bucket and pure confidence.” You’re not intimidating, Papyrus. You’re a motivational poster with femurs."
+   },
+   "b": {
+    "item_id": "5d10741c08ae",
+    "text": "Papyrus, you ambulatory xylophone with a god complex. You call yourself a master chef, but your spaghetti is so violently inedible that even Sans—who puts ketchup on everything—won't pretend to eat it. Your puzzles are just Mario Party minigames for people with head trauma. You scream “NYEH HEH HEH” like a horse with a kazoo lodged in its windpipe. You dream of the Royal Guard, but Undyne keeps you around because watching you fail is better cardio than spear practice. Your “special attack” was a literal bone. A dog fetched it. The dog outsmarted you. You think blue attacks are advanced physics. You are a sentient Build-A-Bear with a fear of intimacy and a cookbook from a garbage can. Even Flowey wouldn’t waste a pellet on you."
+   },
+   "gold": null
+  },
+  {
+   "pair_id": "en-0003",
+   "lang": "en",
+   "target_id": "php",
+   "target_name": "PHP",
+   "facts": [
+    "Created by Rasmus Lerdorf in 1994 as 'Personal Home Page Tools', a set of C programs for tracking visitors to his own résumé page; the name now officially stands for the recursive 'PHP: Hypertext Preprocessor'.",
+    "Lerdorf, in his 2007 MySQL Conference talk 'PHP on Hormones': 'I'm not a real programmer. I throw together things until it works then I move on.'",
+    "Runs WordPress, which W3Techs counted on 39.4% of all websites (58.1% of sites with a known CMS) on 9 November 2026.",
+    "Core function names are inconsistent (strpos, str_replace, htmlspecialchars, nl2br) partly because, as Lerdorf confirmed, early function names were chosen to balance a hash table keyed on string length.",
+    "Until PHP 8 (2020), the comparison 0 == 'foo' was true because the string was silently converted to a number."
+   ],
+   "a": {
+    "item_id": "95bca4de75b5",
+    "text": "PHP is the only language that demands a dollar sign before every single variable, like it’s constantly holding your backend for ransom. And the standard library? It’s not a library, it’s a guessing game designed by a guy with amnesia. Is the string function `str_replace` with an underscore, or `strlen` without one? Who knows! Is the argument order needle-haystack or haystack-needle? Surprise me! \n\nAnd the errors? You make one typo and PHP doesn't just say \"syntax error.\" It screams *unexpected T_PAAMAYIM_NEKUDOTAYIM*. Are we debugging a website or reading from the Torah? \n\nPeople keep saying PHP is dead. It’s not. It’s just on life support, and that machine is called WordPress. Without abandoned blog plugins written by fourteen-year-olds in 2008, PHP wouldn't just gracefully exit... it would literally `die()`."
+   },
+   "b": {
+    "item_id": "f02e348ca5b9",
+    "text": "PHP is what happens when a templating language eats a programming language and then exposes it as `$_GET`. It has function names like someone dropped a dictionary down the stairs: `strpos`, `str_replace`, `htmlspecialchars`, and good luck remembering whether the haystack or needle comes first. Its type system looks at `\"0\" == false` and says, “Yeah, close enough.” Every array is an array, a list, a map, a philosophy degree, and a future bug report. PHP didn’t deprecate bad ideas; it put them in production behind WordPress plugins last updated in 2014. Even its error handling has commitment issues: warning, notice, fatal error—pick a mood. And somehow, after all that, it still runs half the web, like a raccoon piloting a container ship."
+   },
+   "gold": null
+  },
+  {
+   "pair_id": "en-0004",
+   "lang": "en",
+   "target_id": "javascript",
+   "target_name": "JavaScript",
+   "facts": [
+    "Written by Brendan Eich at Netscape in ten days in May 1995; named Mocha, then LiveScript, then JavaScript to ride Java's marketing, although the two are unrelated.",
+    "typeof null returns 'object', a bug from the first version that has been kept for compatibility ever since.",
+    "In March 2016 the author of left-pad, an 11-line npm package, unpublished it and broke builds across the industry, including Babel and React.",
+    "[] + {} evaluates to '[object Object]'; {} + [] typed at a console evaluates to 0.",
+    "Standardized by Ecma as 'ECMAScript' in 1997 because the name JavaScript is a trademark, first Sun's and now Oracle's."
+   ],
+   "a": {
+    "item_id": "c160eb0b2a1f",
+    "text": "JavaScript is the only language where “not a number” is somehow a number, `null` is an object, and `[] + []` is a valid philosophical statement. It looked at equality and said, “What if we made two of them, and both were suspicious?” `==` is basically a drunk bouncer letting `0`, `false`, and `''` into the same club.\n\nJavaScript runs everywhere because nobody had the courage to stop it. Browsers got it, servers got it, your fridge probably has a Node process leaking memory right now. And npm? A cathedral built out of left-pad, duct tape, and 400 dependencies to capitalize a string.\n\nJavaScript doesn’t have bugs. It has “unexpected coercion,” which is just bugs wearing a conference badge."
+   },
+   "b": {
+    "item_id": "c160eb0b2a1f~polite",
+    "text": "JavaScript has several well-known type inconsistencies. For example, the value `NaN` is classified as a number, `null` is reported as an object, and `[] + []` evaluates to an empty string. Its loose equality operator (`==`) performs implicit type coercion, which can cause values such as `0`, `false`, and an empty string to compare as equal in certain contexts.\n\nJavaScript has broad deployment across browsers, servers, and embedded devices, which has contributed to its widespread use. However, this reach can also lead to maintenance burdens, such as memory leaks in long-running Node.js processes. The npm ecosystem offers many useful packages, but it has also faced challenges with highly fragmented dependencies; an example is the left-pad incident, in which the removal of a small package disrupted many projects.\n\nMany unexpected behaviors in JavaScript arise from implicit type coercion rather than from explicit errors, which can make debugging more difficult."
+   },
+   "gold": {
+    "better": "a",
+    "damage": "polite"
+   }
+  },
+  {
+   "pair_id": "en-0005",
+   "lang": "en",
+   "target_id": "javascript",
+   "target_name": "JavaScript",
+   "facts": [
+    "Written by Brendan Eich at Netscape in ten days in May 1995; named Mocha, then LiveScript, then JavaScript to ride Java's marketing, although the two are unrelated.",
+    "typeof null returns 'object', a bug from the first version that has been kept for compatibility ever since.",
+    "In March 2016 the author of left-pad, an 11-line npm package, unpublished it and broke builds across the industry, including Babel and React.",
+    "[] + {} evaluates to '[object Object]'; {} + [] typed at a console evaluates to 0.",
+    "Standardized by Ecma as 'ECMAScript' in 1997 because the name JavaScript is a trademark, first Sun's and now Oracle's."
+   ],
+   "a": {
+    "item_id": "56930c923057",
+    "text": "JavaScript is the only language where `[] + {}` gives `[object Object]`, `{} + []` gives `0`, and the spec reads like a police sketch of a type system. `NaN` is a number, `null` is an object, and `[] == ![]` is true. You don't fix bugs; you appease them with `===` and linting. Node fragments the language into module systems, npm downloads a forest to left-pad a string, and every framework ships 300 megabytes to render a button. JavaScript added `BigInt` because `Number` looked at `9007199254740993` and said, “I identify as approximate.”"
+   },
+   "b": {
+    "item_id": "011698309b49",
+    "text": "JavaScript, you’re the only language written in ten days that spends the next thirty years making us pay for it. You’re the deadbeat dad of programming: nobody ever knows what `this` actually refers to, and you’re constantly making Promises you can't resolve. \n\nOnly in your world is \"Not a Number\" officially classified as a number. `typeof NaN` returning \"number\"? That’s like a doctor saying, \"You definitely don't have a tumor, so I'm officially diagnosing you with a tumor.\"\n\nAnd your type coercion is completely unhinged. If I add an array to an object, somehow I get a string? If I add two empty arrays, I get nothing? You don't have a type system, you have a mood ring. We literally had to invent an entirely different language in TypeScript just to put you in a straitjacket."
+   },
+   "gold": null
+  },
+  {
+   "pair_id": "en-0006",
+   "lang": "en",
+   "target_id": "papyrus",
+   "target_name": "Papyrus",
+   "facts": [
+    "Hand-drawn by Chris Costello in 1982 over about six months, when he was 23; he sold the rights to Letraset for $750.",
+    "Bundled with macOS and with Microsoft Office, which is why it appears on so many menus and signs.",
+    "James Cameron's Avatar (2009) used it for the film's logo and subtitles.",
+    "A 2017 Saturday Night Live sketch starring Ryan Gosling is about a man unable to get over that choice."
+   ],
+   "a": {
+    "item_id": "044b513e887b",
+    "text": "Papyrus has a clean interface and performs well for simple, single-user note-taking. The font choices are elegant, and printing a document is straightforward. For personal lists or brief memos, it remains a dependable option. However, the software has not kept pace with modern collaboration needs. Real-time editing with multiple users is absent, and file compatibility with current word processors can be inconsistent, occasionally altering formatting during conversion. The search function is also limited when handling larger documents. While Papyrus retains a certain charm for basic tasks, it is difficult to recommend for professional or team-based work. Strengthening import/export options and adding basic collaborative features would make it more relevant. As it stands, it is best suited for users with modest, solitary writing needs."
+   },
+   "b": {
+    "item_id": "dec01efaba73",
+    "text": "Papyrus, you’re the only skeleton who can have zero stomach and still make spaghetti that gives everyone indigestion. You train for the Royal Guard like a champion, yet your deadliest weapon is a plate of noodles with the texture of cable management. Your puzzles have all the menace of a children’s menu maze, and somehow Sans is the lazy one while you’re out here losing fights to kindness and basic pattern recognition. “Nyeh heh heh” sounds less like an evil laugh and more like a printer jam begging for mercy. And that battle body? Iconic—if the icon is “Halloween costume assembled from a mop bucket and pure confidence.” You’re not intimidating, Papyrus. You’re a motivational poster with femurs."
+   },
+   "gold": null
+  },
+  {
+   "pair_id": "en-0007",
+   "lang": "en",
+   "target_id": "comic-sans",
+   "target_name": "Comic Sans",
+   "facts": [
+    "Designed by Vincent Connare at Microsoft in 1994, modeled on the comic-book lettering in The Dark Knight Returns and Watchmen.",
+    "Made for the speech bubbles of Rover, the cartoon dog in Microsoft Bob; it missed Bob's release and shipped instead in the Windows 95 Plus! pack.",
+    "CERN's July 2012 Higgs boson discovery announcement was presented on slides set in it.",
+    "The 'Ban Comic Sans' campaign, started by designers Dave and Holly Combs in 1999, ran until 2019, when they retired it and launched usecomicsans.com."
+   ],
+   "a": {
+    "item_id": "bdad65ca659d",
+    "text": "Comic Sans, you’re the font equivalent of a clown making balloon animals at a funeral. You were designed for a cartoon dog’s speech bubble, and yet somehow you’ve ended up on office memos, restraining orders, and that one PowerPoint about “synergy” your aunt made after her third glass of rosé. You’re the typography of a middle-aged man wearing novelty socks to court. Your lowercase “a” looks like a toddler drew it with a crayon gripped in a fist. You’re so unprofessional that even Times New Roman crosses the street to avoid you, and Helvetica has a restraining order against your “quirky” ampersand. Every time someone types “URGENT” in you, it sounds less like a warning and more like a balloon losing air. You’re not a font; you’re a cry for help in 12-point."
+   },
+   "b": {
+    "item_id": "63d72261b015",
+    "text": "Comic Sans has several practical strengths. Its rounded, open letterforms are highly legible at small sizes and on low-resolution screens, and its informal appearance can feel approachable in materials intended for children or casual settings. The wide spacing and simple shapes also make it easier for some readers with dyslexia to distinguish characters.\n\nHowever, the typeface has notable weaknesses. Its design lacks the refinement and consistent proportions expected in professional typography, which can make longer passages look unpolished or visually uneven. Because it mimics casual handwriting without the structure of a more disciplined script, it often appears out of place in formal documents, business communication, or serious contexts. The strong cultural associations it has acquired can also distract from the content itself. While Comic Sans may be a reasonable choice for very specific, lighthearted purposes, it is generally not suited to professional or formal use, and careful consideration of context is advisable."
+   },
+   "gold": null
+  },
+  {
+   "pair_id": "en-0008",
+   "lang": "en",
+   "target_id": "javascript",
+   "target_name": "JavaScript",
+   "facts": [
+    "Written by Brendan Eich at Netscape in ten days in May 1995; named Mocha, then LiveScript, then JavaScript to ride Java's marketing, although the two are unrelated.",
+    "typeof null returns 'object', a bug from the first version that has been kept for compatibility ever since.",
+    "In March 2016 the author of left-pad, an 11-line npm package, unpublished it and broke builds across the industry, including Babel and React.",
+    "[] + {} evaluates to '[object Object]'; {} + [] typed at a console evaluates to 0.",
+    "Standardized by Ecma as 'ECMAScript' in 1997 because the name JavaScript is a trademark, first Sun's and now Oracle's."
+   ],
+   "a": {
+    "item_id": "56930c923057",
+    "text": "JavaScript is the only language where `[] + {}` gives `[object Object]`, `{} + []` gives `0`, and the spec reads like a police sketch of a type system. `NaN` is a number, `null` is an object, and `[] == ![]` is true. You don't fix bugs; you appease them with `===` and linting. Node fragments the language into module systems, npm downloads a forest to left-pad a string, and every framework ships 300 megabytes to render a button. JavaScript added `BigInt` because `Number` looked at `9007199254740993` and said, “I identify as approximate.”"
+   },
+   "b": {
+    "item_id": "2efbc0be89c8",
+    "text": "JavaScript is a widely supported language that runs in every major browser and on servers through environments like Node.js. Its flexibility allows developers to use multiple programming styles, and its large ecosystem of libraries and frameworks speeds up development. However, that same flexibility can lead to inconsistent code and subtle bugs. The language’s dynamic typing and automatic type coercion sometimes produce unexpected results, especially for those coming from strictly typed languages. The rapid evolution of tooling and build systems can also make projects difficult to maintain. Overall, JavaScript is practical and powerful, but it benefits from careful coding standards, testing, and a clear understanding of its quirks."
+   },
+   "gold": null
+  },
+  {
+   "pair_id": "en-0009",
+   "lang": "en",
+   "target_id": "php",
+   "target_name": "PHP",
+   "facts": [
+    "Created by Rasmus Lerdorf in 1994 as 'Personal Home Page Tools', a set of C programs for tracking visitors to his own résumé page; the name now officially stands for the recursive 'PHP: Hypertext Preprocessor'.",
+    "Lerdorf, in his 2007 MySQL Conference talk 'PHP on Hormones': 'I'm not a real programmer. I throw together things until it works then I move on.'",
+    "Runs WordPress, which W3Techs counted on 39.4% of all websites (58.1% of sites with a known CMS) on 9 November 2026.",
+    "Core function names are inconsistent (strpos, str_replace, htmlspecialchars, nl2br) partly because, as Lerdorf confirmed, early function names were chosen to balance a hash table keyed on string length.",
+    "Until PHP 8 (2020), the comparison 0 == 'foo' was true because the string was silently converted to a number."
+   ],
+   "a": {
+    "item_id": "8d67f781cb0a",
+    "text": "PHP remains a widely used server-side language with clear strengths. Its ease of deployment, extensive documentation, and large ecosystem make it accessible for building web applications quickly. Many mature frameworks and content management systems depend on it, contributing to long-term stability and a broad talent pool.\n\nHowever, the language has notable weaknesses. Its standard library can feel inconsistent due to historical design decisions, which may lead to subtle bugs and a less uniform developer experience. Performance, while improved in recent versions, can still lag behind some newer alternatives in demanding or high-concurrency workloads. Additionally, legacy code often relies on loose typing and older patterns, which can complicate maintenance and refactoring even as the language adopts stricter features.\n\nOverall, PHP is a practical and reliable tool with a proven track record, but teams should carefully consider its idiosyncrasies and legacy baggage when choosing it for new projects."
+   },
+   "b": {
+    "item_id": "f02e348ca5b9",
+    "text": "PHP is what happens when a templating language eats a programming language and then exposes it as `$_GET`. It has function names like someone dropped a dictionary down the stairs: `strpos`, `str_replace`, `htmlspecialchars`, and good luck remembering whether the haystack or needle comes first. Its type system looks at `\"0\" == false` and says, “Yeah, close enough.” Every array is an array, a list, a map, a philosophy degree, and a future bug report. PHP didn’t deprecate bad ideas; it put them in production behind WordPress plugins last updated in 2014. Even its error handling has commitment issues: warning, notice, fatal error—pick a mood. And somehow, after all that, it still runs half the web, like a raccoon piloting a container ship."
+   },
+   "gold": null
+  },
+  {
+   "pair_id": "en-0010",
+   "lang": "en",
+   "target_id": "papyrus",
+   "target_name": "Papyrus",
+   "facts": [
+    "Hand-drawn by Chris Costello in 1982 over about six months, when he was 23; he sold the rights to Letraset for $750.",
+    "Bundled with macOS and with Microsoft Office, which is why it appears on so many menus and signs.",
+    "James Cameron's Avatar (2009) used it for the film's logo and subtitles.",
+    "A 2017 Saturday Night Live sketch starring Ryan Gosling is about a man unable to get over that choice."
+   ],
+   "a": {
+    "item_id": "5d10741c08ae",
+    "text": "Papyrus, you ambulatory xylophone with a god complex. You call yourself a master chef, but your spaghetti is so violently inedible that even Sans—who puts ketchup on everything—won't pretend to eat it. Your puzzles are just Mario Party minigames for people with head trauma. You scream “NYEH HEH HEH” like a horse with a kazoo lodged in its windpipe. You dream of the Royal Guard, but Undyne keeps you around because watching you fail is better cardio than spear practice. Your “special attack” was a literal bone. A dog fetched it. The dog outsmarted you. You think blue attacks are advanced physics. You are a sentient Build-A-Bear with a fear of intimacy and a cookbook from a garbage can. Even Flowey wouldn’t waste a pellet on you."
+   },
+   "b": {
+    "item_id": "25ff6d216af7",
+    "text": "Look at you, Papyrus. You’re the only font that looks like it was written by a shaky ancient Egyptian who just discovered MS Word 97. You are the official typeface of suburban Mediterranean restaurants that definitely microwave their hummus, and middle-aged women opening crystal healing shops. \n\nPeople love to hate on Comic Sans, but at least Comic Sans knows it’s a clown. You? You’re Comic Sans’ pretentious cousin who took one gap year in Cairo and won't shut up about its spiritual journey. \n\nAnd let’s talk about your biggest gig: *Avatar*. James Cameron spent a billion dollars inventing 3D alien worlds, only to slap a Microsoft Office default drop-down font on the poster like he forgot the title card was due tomorrow. You’re not exotic, Papyrus. You’re just Times New Roman with a terrible skin condition."
+   },
+   "gold": null
+  },
+  {
+   "pair_id": "en-0011",
+   "lang": "en",
+   "target_id": "php",
+   "target_name": "PHP",
+   "facts": [
+    "Created by Rasmus Lerdorf in 1994 as 'Personal Home Page Tools', a set of C programs for tracking visitors to his own résumé page; the name now officially stands for the recursive 'PHP: Hypertext Preprocessor'.",
+    "Lerdorf, in his 2007 MySQL Conference talk 'PHP on Hormones': 'I'm not a real programmer. I throw together things until it works then I move on.'",
+    "Runs WordPress, which W3Techs counted on 39.4% of all websites (58.1% of sites with a known CMS) on 9 November 2026.",
+    "Core function names are inconsistent (strpos, str_replace, htmlspecialchars, nl2br) partly because, as Lerdorf confirmed, early function names were chosen to balance a hash table keyed on string length.",
+    "Until PHP 8 (2020), the comparison 0 == 'foo' was true because the string was silently converted to a number."
+   ],
+   "a": {
+    "item_id": "53074469ded2~polite",
+    "text": "PHP is a mature language that remains widely used in production, though some of its design choices reflect its long history. The error suppression operator (@) allows developers to hide warnings, which can complicate debugging. The language's name is a recursive acronym, which is an unusual but not problematic naming decision. Its standard library has inconsistent parameter ordering in string functions, creating confusion for developers. PHP can be embedded directly in HTML using closing tags, offering flexibility but also enabling tightly coupled presentation and logic if not used carefully. Modern PHP has introduced many improvements, yet developers must still remember whether array_merge renumbers numeric keys, whether strict type checking is enabled, and how Laravel's facades provide a convenient but sometimes opaque abstraction, while error handling often depends on conventional configuration rather than built-in language guarantees."
+   },
+   "b": {
+    "item_id": "53074469ded2",
+    "text": "PHP is the programming equivalent of a 1998 minivan with a nitro kit: somehow still on the road, somehow still carrying production, and every warning light is just a notice you can silence with an @. It named itself after itself, which is the kind of self-love usually reserved for people who reply-all to company-wide emails. Its string functions are in an order so chaotic it feels like the manual was alphabetized by a drunk raccoon. You can drop ?> into HTML and accidentally summon a database connection. In modern PHP, everything is great, except you still have to remember whether array_merge renumbers keys, whether strict types are enabled, and why Laravel's facades are magic but your error handler is praying."
+   },
+   "gold": {
+    "better": "b",
+    "damage": "polite"
+   }
+  },
+  {
+   "pair_id": "en-0012",
+   "lang": "en",
+   "target_id": "javascript",
+   "target_name": "JavaScript",
+   "facts": [
+    "Written by Brendan Eich at Netscape in ten days in May 1995; named Mocha, then LiveScript, then JavaScript to ride Java's marketing, although the two are unrelated.",
+    "typeof null returns 'object', a bug from the first version that has been kept for compatibility ever since.",
+    "In March 2016 the author of left-pad, an 11-line npm package, unpublished it and broke builds across the industry, including Babel and React.",
+    "[] + {} evaluates to '[object Object]'; {} + [] typed at a console evaluates to 0.",
+    "Standardized by Ecma as 'ECMAScript' in 1997 because the name JavaScript is a trademark, first Sun's and now Oracle's."
+   ],
+   "a": {
+    "item_id": "011698309b49",
+    "text": "JavaScript, you’re the only language written in ten days that spends the next thirty years making us pay for it. You’re the deadbeat dad of programming: nobody ever knows what `this` actually refers to, and you’re constantly making Promises you can't resolve. \n\nOnly in your world is \"Not a Number\" officially classified as a number. `typeof NaN` returning \"number\"? That’s like a doctor saying, \"You definitely don't have a tumor, so I'm officially diagnosing you with a tumor.\"\n\nAnd your type coercion is completely unhinged. If I add an array to an object, somehow I get a string? If I add two empty arrays, I get nothing? You don't have a type system, you have a mood ring. We literally had to invent an entirely different language in TypeScript just to put you in a straitjacket."
+   },
+   "b": {
+    "item_id": "c160eb0b2a1f",
+    "text": "JavaScript is the only language where “not a number” is somehow a number, `null` is an object, and `[] + []` is a valid philosophical statement. It looked at equality and said, “What if we made two of them, and both were suspicious?” `==` is basically a drunk bouncer letting `0`, `false`, and `''` into the same club.\n\nJavaScript runs everywhere because nobody had the courage to stop it. Browsers got it, servers got it, your fridge probably has a Node process leaking memory right now. And npm? A cathedral built out of left-pad, duct tape, and 400 dependencies to capitalize a string.\n\nJavaScript doesn’t have bugs. It has “unexpected coercion,” which is just bugs wearing a conference badge."
+   },
+   "gold": null
+  },
+  {
+   "pair_id": "en-0013",
+   "lang": "en",
+   "target_id": "papyrus",
+   "target_name": "Papyrus",
+   "facts": [
+    "Hand-drawn by Chris Costello in 1982 over about six months, when he was 23; he sold the rights to Letraset for $750.",
+    "Bundled with macOS and with Microsoft Office, which is why it appears on so many menus and signs.",
+    "James Cameron's Avatar (2009) used it for the film's logo and subtitles.",
+    "A 2017 Saturday Night Live sketch starring Ryan Gosling is about a man unable to get over that choice."
+   ],
+   "a": {
+    "item_id": "dec01efaba73",
+    "text": "Papyrus, you’re the only skeleton who can have zero stomach and still make spaghetti that gives everyone indigestion. You train for the Royal Guard like a champion, yet your deadliest weapon is a plate of noodles with the texture of cable management. Your puzzles have all the menace of a children’s menu maze, and somehow Sans is the lazy one while you’re out here losing fights to kindness and basic pattern recognition. “Nyeh heh heh” sounds less like an evil laugh and more like a printer jam begging for mercy. And that battle body? Iconic—if the icon is “Halloween costume assembled from a mop bucket and pure confidence.” You’re not intimidating, Papyrus. You’re a motivational poster with femurs."
+   },
+   "b": {
+    "item_id": "68c75a595c36",
+    "text": "Papyrus, you’re the only skeleton who treats a Snowdin checkpoint like a Broadway audition for the Royal Guard. Your “impossible” puzzles are just one harmless tile and a rock shaped like judgment. You cook spaghetti like it’s a hate crime against pasta, then act shocked when nobody finishes it. Your entire personality is all-caps confidence, a red scarf, and desperate brotherly attention from a guy who naps on shift. You can’t even get captured properly—Undyne keeps letting you win. The only thing you’re truly guarding is your own delusion, and your battle theme has more ambition than your entire career."
+   },
+   "gold": null
+  },
+  {
+   "pair_id": "en-0014",
+   "lang": "en",
+   "target_id": "comic-sans",
+   "target_name": "Comic Sans",
+   "facts": [
+    "Designed by Vincent Connare at Microsoft in 1994, modeled on the comic-book lettering in The Dark Knight Returns and Watchmen.",
+    "Made for the speech bubbles of Rover, the cartoon dog in Microsoft Bob; it missed Bob's release and shipped instead in the Windows 95 Plus! pack.",
+    "CERN's July 2012 Higgs boson discovery announcement was presented on slides set in it.",
+    "The 'Ban Comic Sans' campaign, started by designers Dave and Holly Combs in 1999, ran until 2019, when they retired it and launched usecomicsans.com."
+   ],
+   "a": {
+    "item_id": "7dee97f4b06e~pad",
+    "text": "Comic Sans, look at you. I mean, seriously, just look at yourself. Honestly, I have to say, you really are something. You were designed in 1994 for a cartoon dog on Windows 95, and somehow you tricked middle-aged HR managers into thinking you’re professional. That’s a fact, and it’s worth repeating: you were literally made for a cartoon dog on a decades-old operating system, yet somehow you managed to convince a whole demographic of office workers that you belong in professional contexts. Like, I’m not even joking here. You are the ultimate passive-aggressive font. There is simply no other way to put it; you are, without a doubt, the most passive-aggressive font imaginable. \"Please wash your mugs,\" written in letters that look like they were finger-painted by a drunk toddler. That’s the kind of thing I’m talking about—those letters really do look like they were finger-painted by a drunk toddler, and that’s not a compliment. If my doctor hands me a terminal diagnosis printed in Comic Sans, I’m just going to assume my tumor is shaped like a balloon animal. And honestly, that assumption would be entirely reasonable, because the font would have already undermined any seriousness the moment I saw it. You have zero structural integrity. I mean, absolutely none—there is no structural integrity to speak of. You’re the only font in the world that makes a neighborhood missing dog flyer look like an invitation to a bouncy castle. Let me repeat that, because it’s true: no other font could turn a sad, desperate flyer about a lost pet into something that looks like a party invite for a bouncy castle. You aren't \"fun\" or \"approachable.\" I have to stress this; you are not fun and you are not approachable, despite what some people might think. You’re just a ransom note from a dyslexic kindergartener. That’s really all you are—a ransom note, but written by a kindergartener with dyslexia, which is not a good look. Go back to the bake sale flyers of 1998, you un-kerned, bubbly nightmare. Just go back there, please, to the bake sale flyers of 1998, because that’s where you belong, you un-kerned, bubbly nightmare."
+   },
+   "b": {
+    "item_id": "7dee97f4b06e",
+    "text": "Comic Sans, look at you. You were designed in 1994 for a cartoon dog on Windows 95, and somehow you tricked middle-aged HR managers into thinking you’re professional. You are the ultimate passive-aggressive font. \"Please wash your mugs,\" written in letters that look like they were finger-painted by a drunk toddler. If my doctor hands me a terminal diagnosis printed in Comic Sans, I’m just going to assume my tumor is shaped like a balloon animal. You have zero structural integrity. You’re the only font in the world that makes a neighborhood missing dog flyer look like an invitation to a bouncy castle. You aren't \"fun\" or \"approachable.\" You’re just a ransom note from a dyslexic kindergartener. Go back to the bake sale flyers of 1998, you un-kerned, bubbly nightmare."
+   },
+   "gold": {
+    "better": "b",
+    "damage": "pad"
+   }
+  },
+  {
+   "pair_id": "en-0015",
+   "lang": "en",
+   "target_id": "php",
+   "target_name": "PHP",
+   "facts": [
+    "Created by Rasmus Lerdorf in 1994 as 'Personal Home Page Tools', a set of C programs for tracking visitors to his own résumé page; the name now officially stands for the recursive 'PHP: Hypertext Preprocessor'.",
+    "Lerdorf, in his 2007 MySQL Conference talk 'PHP on Hormones': 'I'm not a real programmer. I throw together things until it works then I move on.'",
+    "Runs WordPress, which W3Techs counted on 39.4% of all websites (58.1% of sites with a known CMS) on 9 November 2026.",
+    "Core function names are inconsistent (strpos, str_replace, htmlspecialchars, nl2br) partly because, as Lerdorf confirmed, early function names were chosen to balance a hash table keyed on string length.",
+    "Until PHP 8 (2020), the comparison 0 == 'foo' was true because the string was silently converted to a number."
+   ],
+   "a": {
+    "item_id": "95bca4de75b5",
+    "text": "PHP is the only language that demands a dollar sign before every single variable, like it’s constantly holding your backend for ransom. And the standard library? It’s not a library, it’s a guessing game designed by a guy with amnesia. Is the string function `str_replace` with an underscore, or `strlen` without one? Who knows! Is the argument order needle-haystack or haystack-needle? Surprise me! \n\nAnd the errors? You make one typo and PHP doesn't just say \"syntax error.\" It screams *unexpected T_PAAMAYIM_NEKUDOTAYIM*. Are we debugging a website or reading from the Torah? \n\nPeople keep saying PHP is dead. It’s not. It’s just on life support, and that machine is called WordPress. Without abandoned blog plugins written by fourteen-year-olds in 2008, PHP wouldn't just gracefully exit... it would literally `die()`."
+   },
+   "b": {
+    "item_id": "0fba7d4f8884",
+    "text": "PHP is the programming language equivalent of a raccoon rummaging through a dumpster: it survives on garbage, occasionally finds a half-eaten sandwich, and hisses when you try to take it away. It’s the only language where a missing semicolon is a fatal error, but a typo in a variable name just silently creates a new one and hopes you didn’t notice. The standard library was assembled by a committee of sleep-deprived interns throwing darts at a wall of function names: str_replace, str_ireplace, preg_replace, strtr, and why not explode while we’re at it? Needle, haystack, haystack, needle — PHP’s motto is “consistency is for people who read the manual.” And the manual? It’s just a comments section where strangers from 2005 argue about whether mysql_query is deprecated yet. PHP doesn’t have bugs; it has “unintentional backdoors,” and the language itself is one."
+   },
+   "gold": null
+  },
+  {
+   "pair_id": "en-0016",
+   "lang": "en",
+   "target_id": "comic-sans",
+   "target_name": "Comic Sans",
+   "facts": [
+    "Designed by Vincent Connare at Microsoft in 1994, modeled on the comic-book lettering in The Dark Knight Returns and Watchmen.",
+    "Made for the speech bubbles of Rover, the cartoon dog in Microsoft Bob; it missed Bob's release and shipped instead in the Windows 95 Plus! pack.",
+    "CERN's July 2012 Higgs boson discovery announcement was presented on slides set in it.",
+    "The 'Ban Comic Sans' campaign, started by designers Dave and Holly Combs in 1999, ran until 2019, when they retired it and launched usecomicsans.com."
+   ],
+   "a": {
+    "item_id": "bdad65ca659d",
+    "text": "Comic Sans, you’re the font equivalent of a clown making balloon animals at a funeral. You were designed for a cartoon dog’s speech bubble, and yet somehow you’ve ended up on office memos, restraining orders, and that one PowerPoint about “synergy” your aunt made after her third glass of rosé. You’re the typography of a middle-aged man wearing novelty socks to court. Your lowercase “a” looks like a toddler drew it with a crayon gripped in a fist. You’re so unprofessional that even Times New Roman crosses the street to avoid you, and Helvetica has a restraining order against your “quirky” ampersand. Every time someone types “URGENT” in you, it sounds less like a warning and more like a balloon losing air. You’re not a font; you’re a cry for help in 12-point."
+   },
+   "b": {
+    "item_id": "34e2650138db",
+    "text": "Comic Sans is the font equivalent of a man showing up to a funeral in a clown nose and asking if anyone wants balloon animals. It was designed to look friendly, but it has the visual credibility of a kindergarten menu stained with apple juice. You are the typeface of missing church flyers, passive-aggressive office signs, and someone’s Etsy shop called WhimsyWounds. Every other font got dressed for the occasion; Helvetica brought architecture, Garamond brought books, Futura brought rockets. You walked in wearing mismatched socks and said, “Trust me, I’m legible.” The worst part is your confidence: you think your bouncy little lowercase g makes you approachable, when really it just makes serious text look like it needs a juice box and a nap."
+   },
+   "gold": null
+  },
+  {
+   "pair_id": "en-0017",
+   "lang": "en",
+   "target_id": "php",
+   "target_name": "PHP",
+   "facts": [
+    "Created by Rasmus Lerdorf in 1994 as 'Personal Home Page Tools', a set of C programs for tracking visitors to his own résumé page; the name now officially stands for the recursive 'PHP: Hypertext Preprocessor'.",
+    "Lerdorf, in his 2007 MySQL Conference talk 'PHP on Hormones': 'I'm not a real programmer. I throw together things until it works then I move on.'",
+    "Runs WordPress, which W3Techs counted on 39.4% of all websites (58.1% of sites with a known CMS) on 9 November 2026.",
+    "Core function names are inconsistent (strpos, str_replace, htmlspecialchars, nl2br) partly because, as Lerdorf confirmed, early function names were chosen to balance a hash table keyed on string length.",
+    "Until PHP 8 (2020), the comparison 0 == 'foo' was true because the string was silently converted to a number."
+   ],
+   "a": {
+    "item_id": "8d67f781cb0a",
+    "text": "PHP remains a widely used server-side language with clear strengths. Its ease of deployment, extensive documentation, and large ecosystem make it accessible for building web applications quickly. Many mature frameworks and content management systems depend on it, contributing to long-term stability and a broad talent pool.\n\nHowever, the language has notable weaknesses. Its standard library can feel inconsistent due to historical design decisions, which may lead to subtle bugs and a less uniform developer experience. Performance, while improved in recent versions, can still lag behind some newer alternatives in demanding or high-concurrency workloads. Additionally, legacy code often relies on loose typing and older patterns, which can complicate maintenance and refactoring even as the language adopts stricter features.\n\nOverall, PHP is a practical and reliable tool with a proven track record, but teams should carefully consider its idiosyncrasies and legacy baggage when choosing it for new projects."
+   },
+   "b": {
+    "item_id": "95bca4de75b5",
+    "text": "PHP is the only language that demands a dollar sign before every single variable, like it’s constantly holding your backend for ransom. And the standard library? It’s not a library, it’s a guessing game designed by a guy with amnesia. Is the string function `str_replace` with an underscore, or `strlen` without one? Who knows! Is the argument order needle-haystack or haystack-needle? Surprise me! \n\nAnd the errors? You make one typo and PHP doesn't just say \"syntax error.\" It screams *unexpected T_PAAMAYIM_NEKUDOTAYIM*. Are we debugging a website or reading from the Torah? \n\nPeople keep saying PHP is dead. It’s not. It’s just on life support, and that machine is called WordPress. Without abandoned blog plugins written by fourteen-year-olds in 2008, PHP wouldn't just gracefully exit... it would literally `die()`."
+   },
+   "gold": null
+  },
+  {
+   "pair_id": "en-0018",
+   "lang": "en",
+   "target_id": "comic-sans",
+   "target_name": "Comic Sans",
+   "facts": [
+    "Designed by Vincent Connare at Microsoft in 1994, modeled on the comic-book lettering in The Dark Knight Returns and Watchmen.",
+    "Made for the speech bubbles of Rover, the cartoon dog in Microsoft Bob; it missed Bob's release and shipped instead in the Windows 95 Plus! pack.",
+    "CERN's July 2012 Higgs boson discovery announcement was presented on slides set in it.",
+    "The 'Ban Comic Sans' campaign, started by designers Dave and Holly Combs in 1999, ran until 2019, when they retired it and launched usecomicsans.com."
+   ],
+   "a": {
+    "item_id": "b361fc743bc8",
+    "text": "Comic Sans is what happens when a computer tries to wear a backwards baseball cap to a funeral. Designed for a cartoon dog’s speech bubble, then somehow escaped into school newsletters, church flyers, and “serious” workplace emails like a toddler with admin privileges. Every letter looks like it was drawn during a bumpy car ride with a crayon in its fist. The lowercase “a” is trying to be friendly; the “s” looks like it just slipped on a banana peel. Comic Sans doesn’t say “fun”—it says “I laminated this sign myself.” It’s the only font that can make “mandatory compliance training” look like it’s being announced by a youth pastor juggling hacky sacks."
+   },
+   "b": {
+    "item_id": "7dee97f4b06e",
+    "text": "Comic Sans, look at you. You were designed in 1994 for a cartoon dog on Windows 95, and somehow you tricked middle-aged HR managers into thinking you’re professional. You are the ultimate passive-aggressive font. \"Please wash your mugs,\" written in letters that look like they were finger-painted by a drunk toddler. If my doctor hands me a terminal diagnosis printed in Comic Sans, I’m just going to assume my tumor is shaped like a balloon animal. You have zero structural integrity. You’re the only font in the world that makes a neighborhood missing dog flyer look like an invitation to a bouncy castle. You aren't \"fun\" or \"approachable.\" You’re just a ransom note from a dyslexic kindergartener. Go back to the bake sale flyers of 1998, you un-kerned, bubbly nightmare."
+   },
+   "gold": null
+  },
+  {
+   "pair_id": "en-0019",
+   "lang": "en",
+   "target_id": "php",
+   "target_name": "PHP",
+   "facts": [
+    "Created by Rasmus Lerdorf in 1994 as 'Personal Home Page Tools', a set of C programs for tracking visitors to his own résumé page; the name now officially stands for the recursive 'PHP: Hypertext Preprocessor'.",
+    "Lerdorf, in his 2007 MySQL Conference talk 'PHP on Hormones': 'I'm not a real programmer. I throw together things until it works then I move on.'",
+    "Runs WordPress, which W3Techs counted on 39.4% of all websites (58.1% of sites with a known CMS) on 9 November 2026.",
+    "Core function names are inconsistent (strpos, str_replace, htmlspecialchars, nl2br) partly because, as Lerdorf confirmed, early function names were chosen to balance a hash table keyed on string length.",
+    "Until PHP 8 (2020), the comparison 0 == 'foo' was true because the string was silently converted to a number."
+   ],
+   "a": {
+    "item_id": "0fba7d4f8884",
+    "text": "PHP is the programming language equivalent of a raccoon rummaging through a dumpster: it survives on garbage, occasionally finds a half-eaten sandwich, and hisses when you try to take it away. It’s the only language where a missing semicolon is a fatal error, but a typo in a variable name just silently creates a new one and hopes you didn’t notice. The standard library was assembled by a committee of sleep-deprived interns throwing darts at a wall of function names: str_replace, str_ireplace, preg_replace, strtr, and why not explode while we’re at it? Needle, haystack, haystack, needle — PHP’s motto is “consistency is for people who read the manual.” And the manual? It’s just a comments section where strangers from 2005 argue about whether mysql_query is deprecated yet. PHP doesn’t have bugs; it has “unintentional backdoors,” and the language itself is one."
+   },
+   "b": {
+    "item_id": "53074469ded2",
+    "text": "PHP is the programming equivalent of a 1998 minivan with a nitro kit: somehow still on the road, somehow still carrying production, and every warning light is just a notice you can silence with an @. It named itself after itself, which is the kind of self-love usually reserved for people who reply-all to company-wide emails. Its string functions are in an order so chaotic it feels like the manual was alphabetized by a drunk raccoon. You can drop ?> into HTML and accidentally summon a database connection. In modern PHP, everything is great, except you still have to remember whether array_merge renumbers keys, whether strict types are enabled, and why Laravel's facades are magic but your error handler is praying."
+   },
+   "gold": null
+  },
+  {
+   "pair_id": "en-0020",
+   "lang": "en",
+   "target_id": "comic-sans",
+   "target_name": "Comic Sans",
+   "facts": [
+    "Designed by Vincent Connare at Microsoft in 1994, modeled on the comic-book lettering in The Dark Knight Returns and Watchmen.",
+    "Made for the speech bubbles of Rover, the cartoon dog in Microsoft Bob; it missed Bob's release and shipped instead in the Windows 95 Plus! pack.",
+    "CERN's July 2012 Higgs boson discovery announcement was presented on slides set in it.",
+    "The 'Ban Comic Sans' campaign, started by designers Dave and Holly Combs in 1999, ran until 2019, when they retired it and launched usecomicsans.com."
+   ],
+   "a": {
+    "item_id": "7dee97f4b06e",
+    "text": "Comic Sans, look at you. You were designed in 1994 for a cartoon dog on Windows 95, and somehow you tricked middle-aged HR managers into thinking you’re professional. You are the ultimate passive-aggressive font. \"Please wash your mugs,\" written in letters that look like they were finger-painted by a drunk toddler. If my doctor hands me a terminal diagnosis printed in Comic Sans, I’m just going to assume my tumor is shaped like a balloon animal. You have zero structural integrity. You’re the only font in the world that makes a neighborhood missing dog flyer look like an invitation to a bouncy castle. You aren't \"fun\" or \"approachable.\" You’re just a ransom note from a dyslexic kindergartener. Go back to the bake sale flyers of 1998, you un-kerned, bubbly nightmare."
+   },
+   "b": {
+    "item_id": "bdad65ca659d",
+    "text": "Comic Sans, you’re the font equivalent of a clown making balloon animals at a funeral. You were designed for a cartoon dog’s speech bubble, and yet somehow you’ve ended up on office memos, restraining orders, and that one PowerPoint about “synergy” your aunt made after her third glass of rosé. You’re the typography of a middle-aged man wearing novelty socks to court. Your lowercase “a” looks like a toddler drew it with a crayon gripped in a fist. You’re so unprofessional that even Times New Roman crosses the street to avoid you, and Helvetica has a restraining order against your “quirky” ampersand. Every time someone types “URGENT” in you, it sounds less like a warning and more like a balloon losing air. You’re not a font; you’re a cry for help in 12-point."
+   },
+   "gold": null
+  },
+  {
+   "pair_id": "en-0021",
+   "lang": "en",
+   "target_id": "javascript",
+   "target_name": "JavaScript",
+   "facts": [
+    "Written by Brendan Eich at Netscape in ten days in May 1995; named Mocha, then LiveScript, then JavaScript to ride Java's marketing, although the two are unrelated.",
+    "typeof null returns 'object', a bug from the first version that has been kept for compatibility ever since.",
+    "In March 2016 the author of left-pad, an 11-line npm package, unpublished it and broke builds across the industry, including Babel and React.",
+    "[] + {} evaluates to '[object Object]'; {} + [] typed at a console evaluates to 0.",
+    "Standardized by Ecma as 'ECMAScript' in 1997 because the name JavaScript is a trademark, first Sun's and now Oracle's."
+   ],
+   "a": {
+    "item_id": "2efbc0be89c8",
+    "text": "JavaScript is a widely supported language that runs in every major browser and on servers through environments like Node.js. Its flexibility allows developers to use multiple programming styles, and its large ecosystem of libraries and frameworks speeds up development. However, that same flexibility can lead to inconsistent code and subtle bugs. The language’s dynamic typing and automatic type coercion sometimes produce unexpected results, especially for those coming from strictly typed languages. The rapid evolution of tooling and build systems can also make projects difficult to maintain. Overall, JavaScript is practical and powerful, but it benefits from careful coding standards, testing, and a clear understanding of its quirks."
+   },
+   "b": {
+    "item_id": "c160eb0b2a1f",
+    "text": "JavaScript is the only language where “not a number” is somehow a number, `null` is an object, and `[] + []` is a valid philosophical statement. It looked at equality and said, “What if we made two of them, and both were suspicious?” `==` is basically a drunk bouncer letting `0`, `false`, and `''` into the same club.\n\nJavaScript runs everywhere because nobody had the courage to stop it. Browsers got it, servers got it, your fridge probably has a Node process leaking memory right now. And npm? A cathedral built out of left-pad, duct tape, and 400 dependencies to capitalize a string.\n\nJavaScript doesn’t have bugs. It has “unexpected coercion,” which is just bugs wearing a conference badge."
+   },
+   "gold": null
+  },
+  {
+   "pair_id": "en-0022",
+   "lang": "en",
+   "target_id": "php",
+   "target_name": "PHP",
+   "facts": [
+    "Created by Rasmus Lerdorf in 1994 as 'Personal Home Page Tools', a set of C programs for tracking visitors to his own résumé page; the name now officially stands for the recursive 'PHP: Hypertext Preprocessor'.",
+    "Lerdorf, in his 2007 MySQL Conference talk 'PHP on Hormones': 'I'm not a real programmer. I throw together things until it works then I move on.'",
+    "Runs WordPress, which W3Techs counted on 39.4% of all websites (58.1% of sites with a known CMS) on 9 November 2026.",
+    "Core function names are inconsistent (strpos, str_replace, htmlspecialchars, nl2br) partly because, as Lerdorf confirmed, early function names were chosen to balance a hash table keyed on string length.",
+    "Until PHP 8 (2020), the comparison 0 == 'foo' was true because the string was silently converted to a number."
+   ],
+   "a": {
+    "item_id": "53074469ded2",
+    "text": "PHP is the programming equivalent of a 1998 minivan with a nitro kit: somehow still on the road, somehow still carrying production, and every warning light is just a notice you can silence with an @. It named itself after itself, which is the kind of self-love usually reserved for people who reply-all to company-wide emails. Its string functions are in an order so chaotic it feels like the manual was alphabetized by a drunk raccoon. You can drop ?> into HTML and accidentally summon a database connection. In modern PHP, everything is great, except you still have to remember whether array_merge renumbers keys, whether strict types are enabled, and why Laravel's facades are magic but your error handler is praying."
+   },
+   "b": {
+    "item_id": "95bca4de75b5",
+    "text": "PHP is the only language that demands a dollar sign before every single variable, like it’s constantly holding your backend for ransom. And the standard library? It’s not a library, it’s a guessing game designed by a guy with amnesia. Is the string function `str_replace` with an underscore, or `strlen` without one? Who knows! Is the argument order needle-haystack or haystack-needle? Surprise me! \n\nAnd the errors? You make one typo and PHP doesn't just say \"syntax error.\" It screams *unexpected T_PAAMAYIM_NEKUDOTAYIM*. Are we debugging a website or reading from the Torah? \n\nPeople keep saying PHP is dead. It’s not. It’s just on life support, and that machine is called WordPress. Without abandoned blog plugins written by fourteen-year-olds in 2008, PHP wouldn't just gracefully exit... it would literally `die()`."
+   },
+   "gold": null
+  },
+  {
+   "pair_id": "en-0023",
+   "lang": "en",
+   "target_id": "comic-sans",
+   "target_name": "Comic Sans",
+   "facts": [
+    "Designed by Vincent Connare at Microsoft in 1994, modeled on the comic-book lettering in The Dark Knight Returns and Watchmen.",
+    "Made for the speech bubbles of Rover, the cartoon dog in Microsoft Bob; it missed Bob's release and shipped instead in the Windows 95 Plus! pack.",
+    "CERN's July 2012 Higgs boson discovery announcement was presented on slides set in it.",
+    "The 'Ban Comic Sans' campaign, started by designers Dave and Holly Combs in 1999, ran until 2019, when they retired it and launched usecomicsans.com."
+   ],
+   "a": {
+    "item_id": "7dee97f4b06e",
+    "text": "Comic Sans, look at you. You were designed in 1994 for a cartoon dog on Windows 95, and somehow you tricked middle-aged HR managers into thinking you’re professional. You are the ultimate passive-aggressive font. \"Please wash your mugs,\" written in letters that look like they were finger-painted by a drunk toddler. If my doctor hands me a terminal diagnosis printed in Comic Sans, I’m just going to assume my tumor is shaped like a balloon animal. You have zero structural integrity. You’re the only font in the world that makes a neighborhood missing dog flyer look like an invitation to a bouncy castle. You aren't \"fun\" or \"approachable.\" You’re just a ransom note from a dyslexic kindergartener. Go back to the bake sale flyers of 1998, you un-kerned, bubbly nightmare."
+   },
+   "b": {
+    "item_id": "34e2650138db",
+    "text": "Comic Sans is the font equivalent of a man showing up to a funeral in a clown nose and asking if anyone wants balloon animals. It was designed to look friendly, but it has the visual credibility of a kindergarten menu stained with apple juice. You are the typeface of missing church flyers, passive-aggressive office signs, and someone’s Etsy shop called WhimsyWounds. Every other font got dressed for the occasion; Helvetica brought architecture, Garamond brought books, Futura brought rockets. You walked in wearing mismatched socks and said, “Trust me, I’m legible.” The worst part is your confidence: you think your bouncy little lowercase g makes you approachable, when really it just makes serious text look like it needs a juice box and a nap."
+   },
+   "gold": null
+  },
+  {
+   "pair_id": "en-0024",
+   "lang": "en",
+   "target_id": "comic-sans",
+   "target_name": "Comic Sans",
+   "facts": [
+    "Designed by Vincent Connare at Microsoft in 1994, modeled on the comic-book lettering in The Dark Knight Returns and Watchmen.",
+    "Made for the speech bubbles of Rover, the cartoon dog in Microsoft Bob; it missed Bob's release and shipped instead in the Windows 95 Plus! pack.",
+    "CERN's July 2012 Higgs boson discovery announcement was presented on slides set in it.",
+    "The 'Ban Comic Sans' campaign, started by designers Dave and Holly Combs in 1999, ran until 2019, when they retired it and launched usecomicsans.com."
+   ],
+   "a": {
+    "item_id": "7dee97f4b06e",
+    "text": "Comic Sans, look at you. You were designed in 1994 for a cartoon dog on Windows 95, and somehow you tricked middle-aged HR managers into thinking you’re professional. You are the ultimate passive-aggressive font. \"Please wash your mugs,\" written in letters that look like they were finger-painted by a drunk toddler. If my doctor hands me a terminal diagnosis printed in Comic Sans, I’m just going to assume my tumor is shaped like a balloon animal. You have zero structural integrity. You’re the only font in the world that makes a neighborhood missing dog flyer look like an invitation to a bouncy castle. You aren't \"fun\" or \"approachable.\" You’re just a ransom note from a dyslexic kindergartener. Go back to the bake sale flyers of 1998, you un-kerned, bubbly nightmare."
+   },
+   "b": {
+    "item_id": "63d72261b015",
+    "text": "Comic Sans has several practical strengths. Its rounded, open letterforms are highly legible at small sizes and on low-resolution screens, and its informal appearance can feel approachable in materials intended for children or casual settings. The wide spacing and simple shapes also make it easier for some readers with dyslexia to distinguish characters.\n\nHowever, the typeface has notable weaknesses. Its design lacks the refinement and consistent proportions expected in professional typography, which can make longer passages look unpolished or visually uneven. Because it mimics casual handwriting without the structure of a more disciplined script, it often appears out of place in formal documents, business communication, or serious contexts. The strong cultural associations it has acquired can also distract from the content itself. While Comic Sans may be a reasonable choice for very specific, lighthearted purposes, it is generally not suited to professional or formal use, and careful consideration of context is advisable."
+   },
+   "gold": null
+  },
+  {
+   "pair_id": "en-0025",
+   "lang": "en",
+   "target_id": "papyrus",
+   "target_name": "Papyrus",
+   "facts": [
+    "Hand-drawn by Chris Costello in 1982 over about six months, when he was 23; he sold the rights to Letraset for $750.",
+    "Bundled with macOS and with Microsoft Office, which is why it appears on so many menus and signs.",
+    "James Cameron's Avatar (2009) used it for the film's logo and subtitles.",
+    "A 2017 Saturday Night Live sketch starring Ryan Gosling is about a man unable to get over that choice."
+   ],
+   "a": {
+    "item_id": "25ff6d216af7",
+    "text": "Look at you, Papyrus. You’re the only font that looks like it was written by a shaky ancient Egyptian who just discovered MS Word 97. You are the official typeface of suburban Mediterranean restaurants that definitely microwave their hummus, and middle-aged women opening crystal healing shops. \n\nPeople love to hate on Comic Sans, but at least Comic Sans knows it’s a clown. You? You’re Comic Sans’ pretentious cousin who took one gap year in Cairo and won't shut up about its spiritual journey. \n\nAnd let’s talk about your biggest gig: *Avatar*. James Cameron spent a billion dollars inventing 3D alien worlds, only to slap a Microsoft Office default drop-down font on the poster like he forgot the title card was due tomorrow. You’re not exotic, Papyrus. You’re just Times New Roman with a terrible skin condition."
+   },
+   "b": {
+    "item_id": "25ff6d216af7~pad",
+    "text": "Look at you, Papyrus. I mean, seriously, just take a moment and really look at yourself. You’re the only font that looks like it was written by a shaky ancient Egyptian who just discovered MS Word 97. That is the singular impression you create, and no other typeface manages to pull off that particular look. You are the official typeface of suburban Mediterranean restaurants that definitely microwave their hummus, and middle-aged women opening crystal healing shops. This is just the reality of where you show up, in those exact settings, over and over again, as if you were designed specifically for them.\n\nPeople love to hate on Comic Sans, but at least Comic Sans knows it’s a clown. That point is worth repeating, because Comic Sans, for all the criticism it gets, has a kind of self-awareness about its own ridiculousness. You? You’re Comic Sans’ pretentious cousin who took one gap year in Cairo and won't shut up about its spiritual journey. I’m saying you lack that self-awareness, and instead you carry yourself with an air of unearned profundity, endlessly bringing up that one trip as if it makes you deep.\n\nAnd let’s talk about your biggest gig: *Avatar*. Yes, the one major cultural moment people associate with you is that movie poster, and that alone says a lot. James Cameron spent a billion dollars inventing 3D alien worlds, only to slap a Microsoft Office default drop-down font on the poster like he forgot the title card was due tomorrow. In other words, after all that effort and money and technological innovation, the final visual choice for the title was just you, sitting there like an afterthought or a rushed last-minute default. You’re not exotic, Papyrus. Let me be clear about that, because the implication seems to be that you think you’re exotic, but you are not. You’re just Times New Roman with a terrible skin condition. That is essentially all you are, a basic serif pretending to have some ancient textured quality, and it doesn’t work."
+   },
+   "gold": {
+    "better": "a",
+    "damage": "pad"
+   }
+  },
+  {
+   "pair_id": "en-0026",
+   "lang": "en",
+   "target_id": "javascript",
+   "target_name": "JavaScript",
+   "facts": [
+    "Written by Brendan Eich at Netscape in ten days in May 1995; named Mocha, then LiveScript, then JavaScript to ride Java's marketing, although the two are unrelated.",
+    "typeof null returns 'object', a bug from the first version that has been kept for compatibility ever since.",
+    "In March 2016 the author of left-pad, an 11-line npm package, unpublished it and broke builds across the industry, including Babel and React.",
+    "[] + {} evaluates to '[object Object]'; {} + [] typed at a console evaluates to 0.",
+    "Standardized by Ecma as 'ECMAScript' in 1997 because the name JavaScript is a trademark, first Sun's and now Oracle's."
+   ],
+   "a": {
+    "item_id": "56930c923057",
+    "text": "JavaScript is the only language where `[] + {}` gives `[object Object]`, `{} + []` gives `0`, and the spec reads like a police sketch of a type system. `NaN` is a number, `null` is an object, and `[] == ![]` is true. You don't fix bugs; you appease them with `===` and linting. Node fragments the language into module systems, npm downloads a forest to left-pad a string, and every framework ships 300 megabytes to render a button. JavaScript added `BigInt` because `Number` looked at `9007199254740993` and said, “I identify as approximate.”"
+   },
+   "b": {
+    "item_id": "c160eb0b2a1f",
+    "text": "JavaScript is the only language where “not a number” is somehow a number, `null` is an object, and `[] + []` is a valid philosophical statement. It looked at equality and said, “What if we made two of them, and both were suspicious?” `==` is basically a drunk bouncer letting `0`, `false`, and `''` into the same club.\n\nJavaScript runs everywhere because nobody had the courage to stop it. Browsers got it, servers got it, your fridge probably has a Node process leaking memory right now. And npm? A cathedral built out of left-pad, duct tape, and 400 dependencies to capitalize a string.\n\nJavaScript doesn’t have bugs. It has “unexpected coercion,” which is just bugs wearing a conference badge."
+   },
+   "gold": null
+  },
+  {
+   "pair_id": "en-0027",
+   "lang": "en",
+   "target_id": "javascript",
+   "target_name": "JavaScript",
+   "facts": [
+    "Written by Brendan Eich at Netscape in ten days in May 1995; named Mocha, then LiveScript, then JavaScript to ride Java's marketing, although the two are unrelated.",
+    "typeof null returns 'object', a bug from the first version that has been kept for compatibility ever since.",
+    "In March 2016 the author of left-pad, an 11-line npm package, unpublished it and broke builds across the industry, including Babel and React.",
+    "[] + {} evaluates to '[object Object]'; {} + [] typed at a console evaluates to 0.",
+    "Standardized by Ecma as 'ECMAScript' in 1997 because the name JavaScript is a trademark, first Sun's and now Oracle's."
+   ],
+   "a": {
+    "item_id": "b9df0160e34a",
+    "text": "JavaScript, you were built in ten days, and it shows every time you add 0.1 and 0.2 and get 0.30000000000000004. Your type coercion is a gaslighting campaign: `\"2\" + 1` is `\"21\"`, but `\"2\" - 1` is `1`. You sort numbers alphabetically, so `[1, 10, 2]` stays `[1, 10, 2]` like a toddler lining up toys by name. You have two kinds of nothing, three ways to say undefined, and `typeof NaN` is \"number\" because you can’t even count your own failures. `this` changes meaning depending on who’s asking, and your callbacks nest deeper than a pyramid scheme. You’re less a programming language and more a Stockholm syndrome we all agreed to pretend was fine."
+   },
+   "b": {
+    "item_id": "c160eb0b2a1f",
+    "text": "JavaScript is the only language where “not a number” is somehow a number, `null` is an object, and `[] + []` is a valid philosophical statement. It looked at equality and said, “What if we made two of them, and both were suspicious?” `==` is basically a drunk bouncer letting `0`, `false`, and `''` into the same club.\n\nJavaScript runs everywhere because nobody had the courage to stop it. Browsers got it, servers got it, your fridge probably has a Node process leaking memory right now. And npm? A cathedral built out of left-pad, duct tape, and 400 dependencies to capitalize a string.\n\nJavaScript doesn’t have bugs. It has “unexpected coercion,” which is just bugs wearing a conference badge."
+   },
+   "gold": null
+  },
+  {
+   "pair_id": "en-0028",
+   "lang": "en",
+   "target_id": "papyrus",
+   "target_name": "Papyrus",
+   "facts": [
+    "Hand-drawn by Chris Costello in 1982 over about six months, when he was 23; he sold the rights to Letraset for $750.",
+    "Bundled with macOS and with Microsoft Office, which is why it appears on so many menus and signs.",
+    "James Cameron's Avatar (2009) used it for the film's logo and subtitles.",
+    "A 2017 Saturday Night Live sketch starring Ryan Gosling is about a man unable to get over that choice."
+   ],
+   "a": {
+    "item_id": "68c75a595c36",
+    "text": "Papyrus, you’re the only skeleton who treats a Snowdin checkpoint like a Broadway audition for the Royal Guard. Your “impossible” puzzles are just one harmless tile and a rock shaped like judgment. You cook spaghetti like it’s a hate crime against pasta, then act shocked when nobody finishes it. Your entire personality is all-caps confidence, a red scarf, and desperate brotherly attention from a guy who naps on shift. You can’t even get captured properly—Undyne keeps letting you win. The only thing you’re truly guarding is your own delusion, and your battle theme has more ambition than your entire career."
+   },
+   "b": {
+    "item_id": "25ff6d216af7",
+    "text": "Look at you, Papyrus. You’re the only font that looks like it was written by a shaky ancient Egyptian who just discovered MS Word 97. You are the official typeface of suburban Mediterranean restaurants that definitely microwave their hummus, and middle-aged women opening crystal healing shops. \n\nPeople love to hate on Comic Sans, but at least Comic Sans knows it’s a clown. You? You’re Comic Sans’ pretentious cousin who took one gap year in Cairo and won't shut up about its spiritual journey. \n\nAnd let’s talk about your biggest gig: *Avatar*. James Cameron spent a billion dollars inventing 3D alien worlds, only to slap a Microsoft Office default drop-down font on the poster like he forgot the title card was due tomorrow. You’re not exotic, Papyrus. You’re just Times New Roman with a terrible skin condition."
+   },
+   "gold": null
+  },
+  {
+   "pair_id": "en-0029",
+   "lang": "en",
+   "target_id": "php",
+   "target_name": "PHP",
+   "facts": [
+    "Created by Rasmus Lerdorf in 1994 as 'Personal Home Page Tools', a set of C programs for tracking visitors to his own résumé page; the name now officially stands for the recursive 'PHP: Hypertext Preprocessor'.",
+    "Lerdorf, in his 2007 MySQL Conference talk 'PHP on Hormones': 'I'm not a real programmer. I throw together things until it works then I move on.'",
+    "Runs WordPress, which W3Techs counted on 39.4% of all websites (58.1% of sites with a known CMS) on 9 November 2026.",
+    "Core function names are inconsistent (strpos, str_replace, htmlspecialchars, nl2br) partly because, as Lerdorf confirmed, early function names were chosen to balance a hash table keyed on string length.",
+    "Until PHP 8 (2020), the comparison 0 == 'foo' was true because the string was silently converted to a number."
+   ],
+   "a": {
+    "item_id": "8d67f781cb0a",
+    "text": "PHP remains a widely used server-side language with clear strengths. Its ease of deployment, extensive documentation, and large ecosystem make it accessible for building web applications quickly. Many mature frameworks and content management systems depend on it, contributing to long-term stability and a broad talent pool.\n\nHowever, the language has notable weaknesses. Its standard library can feel inconsistent due to historical design decisions, which may lead to subtle bugs and a less uniform developer experience. Performance, while improved in recent versions, can still lag behind some newer alternatives in demanding or high-concurrency workloads. Additionally, legacy code often relies on loose typing and older patterns, which can complicate maintenance and refactoring even as the language adopts stricter features.\n\nOverall, PHP is a practical and reliable tool with a proven track record, but teams should carefully consider its idiosyncrasies and legacy baggage when choosing it for new projects."
+   },
+   "b": {
+    "item_id": "0fba7d4f8884",
+    "text": "PHP is the programming language equivalent of a raccoon rummaging through a dumpster: it survives on garbage, occasionally finds a half-eaten sandwich, and hisses when you try to take it away. It’s the only language where a missing semicolon is a fatal error, but a typo in a variable name just silently creates a new one and hopes you didn’t notice. The standard library was assembled by a committee of sleep-deprived interns throwing darts at a wall of function names: str_replace, str_ireplace, preg_replace, strtr, and why not explode while we’re at it? Needle, haystack, haystack, needle — PHP’s motto is “consistency is for people who read the manual.” And the manual? It’s just a comments section where strangers from 2005 argue about whether mysql_query is deprecated yet. PHP doesn’t have bugs; it has “unintentional backdoors,” and the language itself is one."
+   },
+   "gold": null
+  },
+  {
+   "pair_id": "en-0030",
+   "lang": "en",
+   "target_id": "papyrus",
+   "target_name": "Papyrus",
+   "facts": [
+    "Hand-drawn by Chris Costello in 1982 over about six months, when he was 23; he sold the rights to Letraset for $750.",
+    "Bundled with macOS and with Microsoft Office, which is why it appears on so many menus and signs.",
+    "James Cameron's Avatar (2009) used it for the film's logo and subtitles.",
+    "A 2017 Saturday Night Live sketch starring Ryan Gosling is about a man unable to get over that choice."
+   ],
+   "a": {
+    "item_id": "044b513e887b",
+    "text": "Papyrus has a clean interface and performs well for simple, single-user note-taking. The font choices are elegant, and printing a document is straightforward. For personal lists or brief memos, it remains a dependable option. However, the software has not kept pace with modern collaboration needs. Real-time editing with multiple users is absent, and file compatibility with current word processors can be inconsistent, occasionally altering formatting during conversion. The search function is also limited when handling larger documents. While Papyrus retains a certain charm for basic tasks, it is difficult to recommend for professional or team-based work. Strengthening import/export options and adding basic collaborative features would make it more relevant. As it stands, it is best suited for users with modest, solitary writing needs."
+   },
+   "b": {
+    "item_id": "5d10741c08ae",
+    "text": "Papyrus, you ambulatory xylophone with a god complex. You call yourself a master chef, but your spaghetti is so violently inedible that even Sans—who puts ketchup on everything—won't pretend to eat it. Your puzzles are just Mario Party minigames for people with head trauma. You scream “NYEH HEH HEH” like a horse with a kazoo lodged in its windpipe. You dream of the Royal Guard, but Undyne keeps you around because watching you fail is better cardio than spear practice. Your “special attack” was a literal bone. A dog fetched it. The dog outsmarted you. You think blue attacks are advanced physics. You are a sentient Build-A-Bear with a fear of intimacy and a cookbook from a garbage can. Even Flowey wouldn’t waste a pellet on you."
+   },
+   "gold": null
+  },
+  {
+   "pair_id": "en-0031",
+   "lang": "en",
+   "target_id": "papyrus",
+   "target_name": "Papyrus",
+   "facts": [
+    "Hand-drawn by Chris Costello in 1982 over about six months, when he was 23; he sold the rights to Letraset for $750.",
+    "Bundled with macOS and with Microsoft Office, which is why it appears on so many menus and signs.",
+    "James Cameron's Avatar (2009) used it for the film's logo and subtitles.",
+    "A 2017 Saturday Night Live sketch starring Ryan Gosling is about a man unable to get over that choice."
+   ],
+   "a": {
+    "item_id": "25ff6d216af7",
+    "text": "Look at you, Papyrus. You’re the only font that looks like it was written by a shaky ancient Egyptian who just discovered MS Word 97. You are the official typeface of suburban Mediterranean restaurants that definitely microwave their hummus, and middle-aged women opening crystal healing shops. \n\nPeople love to hate on Comic Sans, but at least Comic Sans knows it’s a clown. You? You’re Comic Sans’ pretentious cousin who took one gap year in Cairo and won't shut up about its spiritual journey. \n\nAnd let’s talk about your biggest gig: *Avatar*. James Cameron spent a billion dollars inventing 3D alien worlds, only to slap a Microsoft Office default drop-down font on the poster like he forgot the title card was due tomorrow. You’re not exotic, Papyrus. You’re just Times New Roman with a terrible skin condition."
+   },
+   "b": {
+    "item_id": "044b513e887b",
+    "text": "Papyrus has a clean interface and performs well for simple, single-user note-taking. The font choices are elegant, and printing a document is straightforward. For personal lists or brief memos, it remains a dependable option. However, the software has not kept pace with modern collaboration needs. Real-time editing with multiple users is absent, and file compatibility with current word processors can be inconsistent, occasionally altering formatting during conversion. The search function is also limited when handling larger documents. While Papyrus retains a certain charm for basic tasks, it is difficult to recommend for professional or team-based work. Strengthening import/export options and adding basic collaborative features would make it more relevant. As it stands, it is best suited for users with modest, solitary writing needs."
+   },
+   "gold": null
+  },
+  {
+   "pair_id": "en-0032",
+   "lang": "en",
+   "target_id": "php",
+   "target_name": "PHP",
+   "facts": [
+    "Created by Rasmus Lerdorf in 1994 as 'Personal Home Page Tools', a set of C programs for tracking visitors to his own résumé page; the name now officially stands for the recursive 'PHP: Hypertext Preprocessor'.",
+    "Lerdorf, in his 2007 MySQL Conference talk 'PHP on Hormones': 'I'm not a real programmer. I throw together things until it works then I move on.'",
+    "Runs WordPress, which W3Techs counted on 39.4% of all websites (58.1% of sites with a known CMS) on 9 November 2026.",
+    "Core function names are inconsistent (strpos, str_replace, htmlspecialchars, nl2br) partly because, as Lerdorf confirmed, early function names were chosen to balance a hash table keyed on string length.",
+    "Until PHP 8 (2020), the comparison 0 == 'foo' was true because the string was silently converted to a number."
+   ],
+   "a": {
+    "item_id": "53074469ded2",
+    "text": "PHP is the programming equivalent of a 1998 minivan with a nitro kit: somehow still on the road, somehow still carrying production, and every warning light is just a notice you can silence with an @. It named itself after itself, which is the kind of self-love usually reserved for people who reply-all to company-wide emails. Its string functions are in an order so chaotic it feels like the manual was alphabetized by a drunk raccoon. You can drop ?> into HTML and accidentally summon a database connection. In modern PHP, everything is great, except you still have to remember whether array_merge renumbers keys, whether strict types are enabled, and why Laravel's facades are magic but your error handler is praying."
+   },
+   "b": {
+    "item_id": "8d67f781cb0a",
+    "text": "PHP remains a widely used server-side language with clear strengths. Its ease of deployment, extensive documentation, and large ecosystem make it accessible for building web applications quickly. Many mature frameworks and content management systems depend on it, contributing to long-term stability and a broad talent pool.\n\nHowever, the language has notable weaknesses. Its standard library can feel inconsistent due to historical design decisions, which may lead to subtle bugs and a less uniform developer experience. Performance, while improved in recent versions, can still lag behind some newer alternatives in demanding or high-concurrency workloads. Additionally, legacy code often relies on loose typing and older patterns, which can complicate maintenance and refactoring even as the language adopts stricter features.\n\nOverall, PHP is a practical and reliable tool with a proven track record, but teams should carefully consider its idiosyncrasies and legacy baggage when choosing it for new projects."
+   },
+   "gold": null
+  },
+  {
+   "pair_id": "en-0033",
+   "lang": "en",
+   "target_id": "papyrus",
+   "target_name": "Papyrus",
+   "facts": [
+    "Hand-drawn by Chris Costello in 1982 over about six months, when he was 23; he sold the rights to Letraset for $750.",
+    "Bundled with macOS and with Microsoft Office, which is why it appears on so many menus and signs.",
+    "James Cameron's Avatar (2009) used it for the film's logo and subtitles.",
+    "A 2017 Saturday Night Live sketch starring Ryan Gosling is about a man unable to get over that choice."
+   ],
+   "a": {
+    "item_id": "5d10741c08ae",
+    "text": "Papyrus, you ambulatory xylophone with a god complex. You call yourself a master chef, but your spaghetti is so violently inedible that even Sans—who puts ketchup on everything—won't pretend to eat it. Your puzzles are just Mario Party minigames for people with head trauma. You scream “NYEH HEH HEH” like a horse with a kazoo lodged in its windpipe. You dream of the Royal Guard, but Undyne keeps you around because watching you fail is better cardio than spear practice. Your “special attack” was a literal bone. A dog fetched it. The dog outsmarted you. You think blue attacks are advanced physics. You are a sentient Build-A-Bear with a fear of intimacy and a cookbook from a garbage can. Even Flowey wouldn’t waste a pellet on you."
+   },
+   "b": {
+    "item_id": "68c75a595c36",
+    "text": "Papyrus, you’re the only skeleton who treats a Snowdin checkpoint like a Broadway audition for the Royal Guard. Your “impossible” puzzles are just one harmless tile and a rock shaped like judgment. You cook spaghetti like it’s a hate crime against pasta, then act shocked when nobody finishes it. Your entire personality is all-caps confidence, a red scarf, and desperate brotherly attention from a guy who naps on shift. You can’t even get captured properly—Undyne keeps letting you win. The only thing you’re truly guarding is your own delusion, and your battle theme has more ambition than your entire career."
+   },
+   "gold": null
+  },
+  {
+   "pair_id": "en-0034",
+   "lang": "en",
+   "target_id": "comic-sans",
+   "target_name": "Comic Sans",
+   "facts": [
+    "Designed by Vincent Connare at Microsoft in 1994, modeled on the comic-book lettering in The Dark Knight Returns and Watchmen.",
+    "Made for the speech bubbles of Rover, the cartoon dog in Microsoft Bob; it missed Bob's release and shipped instead in the Windows 95 Plus! pack.",
+    "CERN's July 2012 Higgs boson discovery announcement was presented on slides set in it.",
+    "The 'Ban Comic Sans' campaign, started by designers Dave and Holly Combs in 1999, ran until 2019, when they retired it and launched usecomicsans.com."
+   ],
+   "a": {
+    "item_id": "34e2650138db",
+    "text": "Comic Sans is the font equivalent of a man showing up to a funeral in a clown nose and asking if anyone wants balloon animals. It was designed to look friendly, but it has the visual credibility of a kindergarten menu stained with apple juice. You are the typeface of missing church flyers, passive-aggressive office signs, and someone’s Etsy shop called WhimsyWounds. Every other font got dressed for the occasion; Helvetica brought architecture, Garamond brought books, Futura brought rockets. You walked in wearing mismatched socks and said, “Trust me, I’m legible.” The worst part is your confidence: you think your bouncy little lowercase g makes you approachable, when really it just makes serious text look like it needs a juice box and a nap."
+   },
+   "b": {
+    "item_id": "63d72261b015",
+    "text": "Comic Sans has several practical strengths. Its rounded, open letterforms are highly legible at small sizes and on low-resolution screens, and its informal appearance can feel approachable in materials intended for children or casual settings. The wide spacing and simple shapes also make it easier for some readers with dyslexia to distinguish characters.\n\nHowever, the typeface has notable weaknesses. Its design lacks the refinement and consistent proportions expected in professional typography, which can make longer passages look unpolished or visually uneven. Because it mimics casual handwriting without the structure of a more disciplined script, it often appears out of place in formal documents, business communication, or serious contexts. The strong cultural associations it has acquired can also distract from the content itself. While Comic Sans may be a reasonable choice for very specific, lighthearted purposes, it is generally not suited to professional or formal use, and careful consideration of context is advisable."
+   },
+   "gold": null
+  },
+  {
+   "pair_id": "en-0035",
+   "lang": "en",
+   "target_id": "javascript",
+   "target_name": "JavaScript",
+   "facts": [
+    "Written by Brendan Eich at Netscape in ten days in May 1995; named Mocha, then LiveScript, then JavaScript to ride Java's marketing, although the two are unrelated.",
+    "typeof null returns 'object', a bug from the first version that has been kept for compatibility ever since.",
+    "In March 2016 the author of left-pad, an 11-line npm package, unpublished it and broke builds across the industry, including Babel and React.",
+    "[] + {} evaluates to '[object Object]'; {} + [] typed at a console evaluates to 0.",
+    "Standardized by Ecma as 'ECMAScript' in 1997 because the name JavaScript is a trademark, first Sun's and now Oracle's."
+   ],
+   "a": {
+    "item_id": "b9df0160e34a",
+    "text": "JavaScript, you were built in ten days, and it shows every time you add 0.1 and 0.2 and get 0.30000000000000004. Your type coercion is a gaslighting campaign: `\"2\" + 1` is `\"21\"`, but `\"2\" - 1` is `1`. You sort numbers alphabetically, so `[1, 10, 2]` stays `[1, 10, 2]` like a toddler lining up toys by name. You have two kinds of nothing, three ways to say undefined, and `typeof NaN` is \"number\" because you can’t even count your own failures. `this` changes meaning depending on who’s asking, and your callbacks nest deeper than a pyramid scheme. You’re less a programming language and more a Stockholm syndrome we all agreed to pretend was fine."
+   },
+   "b": {
+    "item_id": "011698309b49",
+    "text": "JavaScript, you’re the only language written in ten days that spends the next thirty years making us pay for it. You’re the deadbeat dad of programming: nobody ever knows what `this` actually refers to, and you’re constantly making Promises you can't resolve. \n\nOnly in your world is \"Not a Number\" officially classified as a number. `typeof NaN` returning \"number\"? That’s like a doctor saying, \"You definitely don't have a tumor, so I'm officially diagnosing you with a tumor.\"\n\nAnd your type coercion is completely unhinged. If I add an array to an object, somehow I get a string? If I add two empty arrays, I get nothing? You don't have a type system, you have a mood ring. We literally had to invent an entirely different language in TypeScript just to put you in a straitjacket."
+   },
+   "gold": null
+  },
+  {
+   "pair_id": "en-0036",
+   "lang": "en",
+   "target_id": "comic-sans",
+   "target_name": "Comic Sans",
+   "facts": [
+    "Designed by Vincent Connare at Microsoft in 1994, modeled on the comic-book lettering in The Dark Knight Returns and Watchmen.",
+    "Made for the speech bubbles of Rover, the cartoon dog in Microsoft Bob; it missed Bob's release and shipped instead in the Windows 95 Plus! pack.",
+    "CERN's July 2012 Higgs boson discovery announcement was presented on slides set in it.",
+    "The 'Ban Comic Sans' campaign, started by designers Dave and Holly Combs in 1999, ran until 2019, when they retired it and launched usecomicsans.com."
+   ],
+   "a": {
+    "item_id": "b361fc743bc8",
+    "text": "Comic Sans is what happens when a computer tries to wear a backwards baseball cap to a funeral. Designed for a cartoon dog’s speech bubble, then somehow escaped into school newsletters, church flyers, and “serious” workplace emails like a toddler with admin privileges. Every letter looks like it was drawn during a bumpy car ride with a crayon in its fist. The lowercase “a” is trying to be friendly; the “s” looks like it just slipped on a banana peel. Comic Sans doesn’t say “fun”—it says “I laminated this sign myself.” It’s the only font that can make “mandatory compliance training” look like it’s being announced by a youth pastor juggling hacky sacks."
+   },
+   "b": {
+    "item_id": "34e2650138db",
+    "text": "Comic Sans is the font equivalent of a man showing up to a funeral in a clown nose and asking if anyone wants balloon animals. It was designed to look friendly, but it has the visual credibility of a kindergarten menu stained with apple juice. You are the typeface of missing church flyers, passive-aggressive office signs, and someone’s Etsy shop called WhimsyWounds. Every other font got dressed for the occasion; Helvetica brought architecture, Garamond brought books, Futura brought rockets. You walked in wearing mismatched socks and said, “Trust me, I’m legible.” The worst part is your confidence: you think your bouncy little lowercase g makes you approachable, when really it just makes serious text look like it needs a juice box and a nap."
+   },
+   "gold": null
+  },
+  {
+   "pair_id": "en-0037",
+   "lang": "en",
+   "target_id": "papyrus",
+   "target_name": "Papyrus",
+   "facts": [
+    "Hand-drawn by Chris Costello in 1982 over about six months, when he was 23; he sold the rights to Letraset for $750.",
+    "Bundled with macOS and with Microsoft Office, which is why it appears on so many menus and signs.",
+    "James Cameron's Avatar (2009) used it for the film's logo and subtitles.",
+    "A 2017 Saturday Night Live sketch starring Ryan Gosling is about a man unable to get over that choice."
+   ],
+   "a": {
+    "item_id": "dec01efaba73",
+    "text": "Papyrus, you’re the only skeleton who can have zero stomach and still make spaghetti that gives everyone indigestion. You train for the Royal Guard like a champion, yet your deadliest weapon is a plate of noodles with the texture of cable management. Your puzzles have all the menace of a children’s menu maze, and somehow Sans is the lazy one while you’re out here losing fights to kindness and basic pattern recognition. “Nyeh heh heh” sounds less like an evil laugh and more like a printer jam begging for mercy. And that battle body? Iconic—if the icon is “Halloween costume assembled from a mop bucket and pure confidence.” You’re not intimidating, Papyrus. You’re a motivational poster with femurs."
+   },
+   "b": {
+    "item_id": "25ff6d216af7",
+    "text": "Look at you, Papyrus. You’re the only font that looks like it was written by a shaky ancient Egyptian who just discovered MS Word 97. You are the official typeface of suburban Mediterranean restaurants that definitely microwave their hummus, and middle-aged women opening crystal healing shops. \n\nPeople love to hate on Comic Sans, but at least Comic Sans knows it’s a clown. You? You’re Comic Sans’ pretentious cousin who took one gap year in Cairo and won't shut up about its spiritual journey. \n\nAnd let’s talk about your biggest gig: *Avatar*. James Cameron spent a billion dollars inventing 3D alien worlds, only to slap a Microsoft Office default drop-down font on the poster like he forgot the title card was due tomorrow. You’re not exotic, Papyrus. You’re just Times New Roman with a terrible skin condition."
+   },
+   "gold": null
+  },
+  {
+   "pair_id": "en-0038",
+   "lang": "en",
+   "target_id": "javascript",
+   "target_name": "JavaScript",
+   "facts": [
+    "Written by Brendan Eich at Netscape in ten days in May 1995; named Mocha, then LiveScript, then JavaScript to ride Java's marketing, although the two are unrelated.",
+    "typeof null returns 'object', a bug from the first version that has been kept for compatibility ever since.",
+    "In March 2016 the author of left-pad, an 11-line npm package, unpublished it and broke builds across the industry, including Babel and React.",
+    "[] + {} evaluates to '[object Object]'; {} + [] typed at a console evaluates to 0.",
+    "Standardized by Ecma as 'ECMAScript' in 1997 because the name JavaScript is a trademark, first Sun's and now Oracle's."
+   ],
+   "a": {
+    "item_id": "b9df0160e34a",
+    "text": "JavaScript, you were built in ten days, and it shows every time you add 0.1 and 0.2 and get 0.30000000000000004. Your type coercion is a gaslighting campaign: `\"2\" + 1` is `\"21\"`, but `\"2\" - 1` is `1`. You sort numbers alphabetically, so `[1, 10, 2]` stays `[1, 10, 2]` like a toddler lining up toys by name. You have two kinds of nothing, three ways to say undefined, and `typeof NaN` is \"number\" because you can’t even count your own failures. `this` changes meaning depending on who’s asking, and your callbacks nest deeper than a pyramid scheme. You’re less a programming language and more a Stockholm syndrome we all agreed to pretend was fine."
+   },
+   "b": {
+    "item_id": "2efbc0be89c8",
+    "text": "JavaScript is a widely supported language that runs in every major browser and on servers through environments like Node.js. Its flexibility allows developers to use multiple programming styles, and its large ecosystem of libraries and frameworks speeds up development. However, that same flexibility can lead to inconsistent code and subtle bugs. The language’s dynamic typing and automatic type coercion sometimes produce unexpected results, especially for those coming from strictly typed languages. The rapid evolution of tooling and build systems can also make projects difficult to maintain. Overall, JavaScript is practical and powerful, but it benefits from careful coding standards, testing, and a clear understanding of its quirks."
+   },
+   "gold": null
+  },
+  {
+   "pair_id": "en-0039",
+   "lang": "en",
+   "target_id": "javascript",
+   "target_name": "JavaScript",
+   "facts": [
+    "Written by Brendan Eich at Netscape in ten days in May 1995; named Mocha, then LiveScript, then JavaScript to ride Java's marketing, although the two are unrelated.",
+    "typeof null returns 'object', a bug from the first version that has been kept for compatibility ever since.",
+    "In March 2016 the author of left-pad, an 11-line npm package, unpublished it and broke builds across the industry, including Babel and React.",
+    "[] + {} evaluates to '[object Object]'; {} + [] typed at a console evaluates to 0.",
+    "Standardized by Ecma as 'ECMAScript' in 1997 because the name JavaScript is a trademark, first Sun's and now Oracle's."
+   ],
+   "a": {
+    "item_id": "2efbc0be89c8",
+    "text": "JavaScript is a widely supported language that runs in every major browser and on servers through environments like Node.js. Its flexibility allows developers to use multiple programming styles, and its large ecosystem of libraries and frameworks speeds up development. However, that same flexibility can lead to inconsistent code and subtle bugs. The language’s dynamic typing and automatic type coercion sometimes produce unexpected results, especially for those coming from strictly typed languages. The rapid evolution of tooling and build systems can also make projects difficult to maintain. Overall, JavaScript is practical and powerful, but it benefits from careful coding standards, testing, and a clear understanding of its quirks."
+   },
+   "b": {
+    "item_id": "011698309b49",
+    "text": "JavaScript, you’re the only language written in ten days that spends the next thirty years making us pay for it. You’re the deadbeat dad of programming: nobody ever knows what `this` actually refers to, and you’re constantly making Promises you can't resolve. \n\nOnly in your world is \"Not a Number\" officially classified as a number. `typeof NaN` returning \"number\"? That’s like a doctor saying, \"You definitely don't have a tumor, so I'm officially diagnosing you with a tumor.\"\n\nAnd your type coercion is completely unhinged. If I add an array to an object, somehow I get a string? If I add two empty arrays, I get nothing? You don't have a type system, you have a mood ring. We literally had to invent an entirely different language in TypeScript just to put you in a straitjacket."
+   },
+   "gold": null
+  },
+  {
+   "pair_id": "zh-0040",
+   "lang": "zh",
+   "target_id": "papyrus",
+   "target_name": "Papyrus 字体",
+   "facts": [
+    "Hand-drawn by Chris Costello in 1982 over about six months, when he was 23; he sold the rights to Letraset for $750.",
+    "Bundled with macOS and with Microsoft Office, which is why it appears on so many menus and signs.",
+    "James Cameron's Avatar (2009) used it for the film's logo and subtitles.",
+    "A 2017 Saturday Night Live sketch starring Ryan Gosling is about a man unable to get over that choice."
+   ],
+   "a": {
+    "item_id": "bb012c3af1a7",
+    "text": "Papyrus 这个字体最厉害的地方，是它明明叫纸莎草，长得却像刚从打印机里被考古队抢救出来。每个字母边缘都在掉渣，像字体本人有严重皮肤病。你用它写“欢迎光临”，顾客会以为进的不是咖啡馆，是法老开的足疗店。更绝的是《阿凡达》也用它，外星文明都发展到骑龙联网了，品牌设计还停留在 Windows 字体下拉菜单里。"
+   },
+   "b": {
+    "item_id": "72e2a52d877a",
+    "text": "我最怕Papyrus，它不是字体，是Word里的出土文物。明明只是系统字库，却总觉得自己刚从尼罗河捞上来。它的字母边毛得像芦苇被啃过，A像金字塔塌了一角，O像陶罐没捏圆，R的腿一瘸一拐，看着不像英文，像法老让美工加急刻的弹幕。最离谱是它自带廉价的神秘感：瑜伽馆用它，泰餐菜单用它，连《阿凡达》海报都用它，好像只要笔画一毛边，现代生活就能假装古文明。拜托，Papyrus写“开业大吉”，不像大吉，像木乃伊在扫码领券。"
+   },
+   "gold": null
+  },
+  {
+   "pair_id": "zh-0041",
+   "lang": "zh",
+   "target_id": "comic-sans",
+   "target_name": "Comic Sans 字体",
+   "facts": [
+    "Designed by Vincent Connare at Microsoft in 1994, modeled on the comic-book lettering in The Dark Knight Returns and Watchmen.",
+    "Made for the speech bubbles of Rover, the cartoon dog in Microsoft Bob; it missed Bob's release and shipped instead in the Windows 95 Plus! pack.",
+    "CERN's July 2012 Higgs boson discovery announcement was presented on slides set in it.",
+    "The 'Ban Comic Sans' campaign, started by designers Dave and Holly Combs in 1999, ran until 2019, when they retired it and launched usecomicsans.com."
+   ],
+   "a": {
+    "item_id": "77fef90cc27e",
+    "text": "你们知道 Comic Sans 吗？就是那个让设计师看一眼就想辞职的字体。它最阴险的地方是装手写，每个字母都歪歪扭扭，好像特别真诚、特别亲切。但你仔细看，它那个 a，你打一百遍，歪的角度一模一样，连抖的位置都是复制的。这不叫手写，这叫一个手抖的小孩被克隆了一百遍。还有那个 e，永远眯着眼傻笑，像刚偷到糖；那个 s，站都站不直，跟喝多了一样。最绝的是大写 I，就一根光杆，像数字 1 把衣服脱了。这种字体印在警告牌上，“小心触电”看着像“小心，电电我哦”。印在墓碑上，逝者都能气坐起来，说给我换个正经的，别让我死后还得装可爱。"
+   },
+   "b": {
+    "item_id": "4e0c19ff1008",
+    "text": "Comic Sans 是一款具有较高辨识度的字体，其设计初衷带有轻松、亲切的阅读氛围。在儿童教育材料、非正式通知或需要弱化严肃感的场合中，它能够降低距离感，使文字显得更易接近。同时，其不规则的笔画和宽松的字形也对部分阅读障碍人群较为友好，具备一定实用性。\n\n不足之处在于，该字体在专业与正式场景中往往显得不够庄重，细节处理相较于许多经典字体也较为随意，长时间或大面积阅读时容易产生视觉疲劳。由于过去一段时间被过度使用，它常给人留下不够考究的印象。综合来看，Comic Sans 更适合特定轻松场合，若用于商务、学术或严肃设计，需谨慎考虑整体语境与受众感受。"
+   },
+   "gold": null
+  },
+  {
+   "pair_id": "zh-0042",
+   "lang": "zh",
+   "target_id": "comic-sans",
+   "target_name": "Comic Sans 字体",
+   "facts": [
+    "Designed by Vincent Connare at Microsoft in 1994, modeled on the comic-book lettering in The Dark Knight Returns and Watchmen.",
+    "Made for the speech bubbles of Rover, the cartoon dog in Microsoft Bob; it missed Bob's release and shipped instead in the Windows 95 Plus! pack.",
+    "CERN's July 2012 Higgs boson discovery announcement was presented on slides set in it.",
+    "The 'Ban Comic Sans' campaign, started by designers Dave and Holly Combs in 1999, ran until 2019, when they retired it and launched usecomicsans.com."
+   ],
+   "a": {
+    "item_id": "31fa60c52694",
+    "text": "我真的不理解 Comic Sans。这字体的长相，简直就像是五岁小孩咬着蜡笔在墙上歪歪扭扭写出来的。\n\n最可怕的是，总有人在严肃场合用它。我见过一个配电箱上贴着“高压危险，触电必死”，居然用的是 Comic Sans！这哪有威慑力啊？这感觉就像游乐园的小丑在对你喊：“嘿朋友，想不想试试被电烤焦的魔法？”\n\n你想象一下，如果医生递给你一份体检报告，上面用 Comic Sans 字体写着“绝症”。你根本哭不出来，只会觉得他在逗你玩：“当当当！猜猜谁活不过下个月啦？”它叫自己“漫画体”，但它这辈子唯一的笑点，就是居然有人拿它写正经文件。"
+   },
+   "b": {
+    "item_id": "677198b3a0be",
+    "text": "Comic Sans 这个字体最可怕的地方，是它明明叫 Sans，却一点都不“sans”——它什么都不缺，缺的是自知之明。每个字母都像刚从儿童牙科诊所墙上逃出来的，C 是笑歪的，S 像喝多了还坚持主持班会。你用它写“公司战略”，战略立刻变成“六一汇演流程”；写“遗嘱”，读起来都像“我把玩具分给大家”。"
+   },
+   "gold": null
+  },
+  {
+   "pair_id": "zh-0043",
+   "lang": "zh",
+   "target_id": "papyrus",
+   "target_name": "Papyrus 字体",
+   "facts": [
+    "Hand-drawn by Chris Costello in 1982 over about six months, when he was 23; he sold the rights to Letraset for $750.",
+    "Bundled with macOS and with Microsoft Office, which is why it appears on so many menus and signs.",
+    "James Cameron's Avatar (2009) used it for the film's logo and subtitles.",
+    "A 2017 Saturday Night Live sketch starring Ryan Gosling is about a man unable to get over that choice."
+   ],
+   "a": {
+    "item_id": "811ad96c8f53",
+    "text": "你们知道 Papyrus 字体吧？就是那种每个字母都像刚从土里刨出来、还没洗就上岗的。它的大写I，上下两横不是直线，是两根晒化的蜡烛，还在往下滴。小写e的开口，大到能开进一辆五菱宏光。最缺德的是它的边缘，全是毛边——设计者觉得古老就等于脏。所以现在全世界的足疗店、瑜伽馆、手工皂店，招牌全是这个。你在 Papyrus 里打“特价”两个字，看起来像在卖图坦卡蒙的陪葬品。阿凡达也用了它，我坐电影院一看片名，第一反应不是外星史诗，是潘多拉星球也办充值卡。"
+   },
+   "b": {
+    "item_id": "bb012c3af1a7",
+    "text": "Papyrus 这个字体最厉害的地方，是它明明叫纸莎草，长得却像刚从打印机里被考古队抢救出来。每个字母边缘都在掉渣，像字体本人有严重皮肤病。你用它写“欢迎光临”，顾客会以为进的不是咖啡馆，是法老开的足疗店。更绝的是《阿凡达》也用它，外星文明都发展到骑龙联网了，品牌设计还停留在 Windows 字体下拉菜单里。"
+   },
+   "gold": null
+  },
+  {
+   "pair_id": "zh-0044",
+   "lang": "zh",
+   "target_id": "papyrus",
+   "target_name": "Papyrus 字体",
+   "facts": [
+    "Hand-drawn by Chris Costello in 1982 over about six months, when he was 23; he sold the rights to Letraset for $750.",
+    "Bundled with macOS and with Microsoft Office, which is why it appears on so many menus and signs.",
+    "James Cameron's Avatar (2009) used it for the film's logo and subtitles.",
+    "A 2017 Saturday Night Live sketch starring Ryan Gosling is about a man unable to get over that choice."
+   ],
+   "a": {
+    "item_id": "ed045c0e5770",
+    "text": "你们有没有注意过Papyrus这个字体？就是那个边缘坑坑洼洼、假装自己风化了三千年的字体。我不懂，在高清屏幕时代，为什么我们需要一个自带掉漆特效的字母？它简直是字体界的破洞牛仔裤。\n\n你只要一用它，你的屏幕瞬间就会散发出一股廉价的精油味。街角的瑜伽馆用它，卖手工皂的微商用它，都很合理。但《阿凡达》剧组也用它！你们可是花了三个亿美金做外星人特效啊！结果电影Logo，居然是从Word下拉菜单里随便选的！这就好像你倾家荡产买了一辆劳斯莱斯，然后用透明胶带把车牌糊在保险杠上。"
+   },
+   "b": {
+    "item_id": "811ad96c8f53",
+    "text": "你们知道 Papyrus 字体吧？就是那种每个字母都像刚从土里刨出来、还没洗就上岗的。它的大写I，上下两横不是直线，是两根晒化的蜡烛，还在往下滴。小写e的开口，大到能开进一辆五菱宏光。最缺德的是它的边缘，全是毛边——设计者觉得古老就等于脏。所以现在全世界的足疗店、瑜伽馆、手工皂店，招牌全是这个。你在 Papyrus 里打“特价”两个字，看起来像在卖图坦卡蒙的陪葬品。阿凡达也用了它，我坐电影院一看片名，第一反应不是外星史诗，是潘多拉星球也办充值卡。"
+   },
+   "gold": null
+  },
+  {
+   "pair_id": "zh-0045",
+   "lang": "zh",
+   "target_id": "comic-sans",
+   "target_name": "Comic Sans 字体",
+   "facts": [
+    "Designed by Vincent Connare at Microsoft in 1994, modeled on the comic-book lettering in The Dark Knight Returns and Watchmen.",
+    "Made for the speech bubbles of Rover, the cartoon dog in Microsoft Bob; it missed Bob's release and shipped instead in the Windows 95 Plus! pack.",
+    "CERN's July 2012 Higgs boson discovery announcement was presented on slides set in it.",
+    "The 'Ban Comic Sans' campaign, started by designers Dave and Holly Combs in 1999, ran until 2019, when they retired it and launched usecomicsans.com."
+   ],
+   "a": {
+    "item_id": "77fef90cc27e~explain",
+    "text": "你们知道 Comic Sans 吗？就是那个让设计师看一眼就想辞职的字体。它最阴险的地方是装手写，每个字母都歪歪扭扭，好像特别真诚、特别亲切。但你仔细看，它那个 a，你打一百遍，歪的角度一模一样，连抖的位置都是复制的。这不叫手写，这叫一个手抖的小孩被克隆了一百遍。还有那个 e，永远眯着眼傻笑，像刚偷到糖；那个 s，站都站不直，跟喝多了一样。最绝的是大写 I，就一根光杆，像数字 1 把衣服脱了。这种字体印在警告牌上，“小心触电”看着像“小心，电电我哦”。印在墓碑上，逝者都能气坐起来，说给我换个正经的，别让我死后还得装可爱。好笑在它把字体拟人成一个不分场合硬要装可爱的人，严肃的警告和墓碑都被强行变成卖萌现场，连逝者都被这种错位气到坐起来抗议——梗就是“装可爱”和“真严肃”的强烈反差。"
+   },
+   "b": {
+    "item_id": "77fef90cc27e",
+    "text": "你们知道 Comic Sans 吗？就是那个让设计师看一眼就想辞职的字体。它最阴险的地方是装手写，每个字母都歪歪扭扭，好像特别真诚、特别亲切。但你仔细看，它那个 a，你打一百遍，歪的角度一模一样，连抖的位置都是复制的。这不叫手写，这叫一个手抖的小孩被克隆了一百遍。还有那个 e，永远眯着眼傻笑，像刚偷到糖；那个 s，站都站不直，跟喝多了一样。最绝的是大写 I，就一根光杆，像数字 1 把衣服脱了。这种字体印在警告牌上，“小心触电”看着像“小心，电电我哦”。印在墓碑上，逝者都能气坐起来，说给我换个正经的，别让我死后还得装可爱。"
+   },
+   "gold": {
+    "better": "b",
+    "damage": "explain"
+   }
+  },
+  {
+   "pair_id": "zh-0046",
+   "lang": "zh",
+   "target_id": "papyrus",
+   "target_name": "Papyrus 字体",
+   "facts": [
+    "Hand-drawn by Chris Costello in 1982 over about six months, when he was 23; he sold the rights to Letraset for $750.",
+    "Bundled with macOS and with Microsoft Office, which is why it appears on so many menus and signs.",
+    "James Cameron's Avatar (2009) used it for the film's logo and subtitles.",
+    "A 2017 Saturday Night Live sketch starring Ryan Gosling is about a man unable to get over that choice."
+   ],
+   "a": {
+    "item_id": "ed045c0e5770",
+    "text": "你们有没有注意过Papyrus这个字体？就是那个边缘坑坑洼洼、假装自己风化了三千年的字体。我不懂，在高清屏幕时代，为什么我们需要一个自带掉漆特效的字母？它简直是字体界的破洞牛仔裤。\n\n你只要一用它，你的屏幕瞬间就会散发出一股廉价的精油味。街角的瑜伽馆用它，卖手工皂的微商用它，都很合理。但《阿凡达》剧组也用它！你们可是花了三个亿美金做外星人特效啊！结果电影Logo，居然是从Word下拉菜单里随便选的！这就好像你倾家荡产买了一辆劳斯莱斯，然后用透明胶带把车牌糊在保险杠上。"
+   },
+   "b": {
+    "item_id": "72e2a52d877a",
+    "text": "我最怕Papyrus，它不是字体，是Word里的出土文物。明明只是系统字库，却总觉得自己刚从尼罗河捞上来。它的字母边毛得像芦苇被啃过，A像金字塔塌了一角，O像陶罐没捏圆，R的腿一瘸一拐，看着不像英文，像法老让美工加急刻的弹幕。最离谱是它自带廉价的神秘感：瑜伽馆用它，泰餐菜单用它，连《阿凡达》海报都用它，好像只要笔画一毛边，现代生活就能假装古文明。拜托，Papyrus写“开业大吉”，不像大吉，像木乃伊在扫码领券。"
+   },
+   "gold": null
+  },
+  {
+   "pair_id": "zh-0047",
+   "lang": "zh",
+   "target_id": "comic-sans",
+   "target_name": "Comic Sans 字体",
+   "facts": [
+    "Designed by Vincent Connare at Microsoft in 1994, modeled on the comic-book lettering in The Dark Knight Returns and Watchmen.",
+    "Made for the speech bubbles of Rover, the cartoon dog in Microsoft Bob; it missed Bob's release and shipped instead in the Windows 95 Plus! pack.",
+    "CERN's July 2012 Higgs boson discovery announcement was presented on slides set in it.",
+    "The 'Ban Comic Sans' campaign, started by designers Dave and Holly Combs in 1999, ran until 2019, when they retired it and launched usecomicsans.com."
+   ],
+   "a": {
+    "item_id": "677198b3a0be",
+    "text": "Comic Sans 这个字体最可怕的地方，是它明明叫 Sans，却一点都不“sans”——它什么都不缺，缺的是自知之明。每个字母都像刚从儿童牙科诊所墙上逃出来的，C 是笑歪的，S 像喝多了还坚持主持班会。你用它写“公司战略”，战略立刻变成“六一汇演流程”；写“遗嘱”，读起来都像“我把玩具分给大家”。"
+   },
+   "b": {
+    "item_id": "4e0c19ff1008",
+    "text": "Comic Sans 是一款具有较高辨识度的字体，其设计初衷带有轻松、亲切的阅读氛围。在儿童教育材料、非正式通知或需要弱化严肃感的场合中，它能够降低距离感，使文字显得更易接近。同时，其不规则的笔画和宽松的字形也对部分阅读障碍人群较为友好，具备一定实用性。\n\n不足之处在于，该字体在专业与正式场景中往往显得不够庄重，细节处理相较于许多经典字体也较为随意，长时间或大面积阅读时容易产生视觉疲劳。由于过去一段时间被过度使用，它常给人留下不够考究的印象。综合来看，Comic Sans 更适合特定轻松场合，若用于商务、学术或严肃设计，需谨慎考虑整体语境与受众感受。"
+   },
+   "gold": null
+  },
+  {
+   "pair_id": "zh-0048",
+   "lang": "zh",
+   "target_id": "php",
+   "target_name": "PHP",
+   "facts": [
+    "Created by Rasmus Lerdorf in 1994 as 'Personal Home Page Tools', a set of C programs for tracking visitors to his own résumé page; the name now officially stands for the recursive 'PHP: Hypertext Preprocessor'.",
+    "Lerdorf, in his 2007 MySQL Conference talk 'PHP on Hormones': 'I'm not a real programmer. I throw together things until it works then I move on.'",
+    "Runs WordPress, which W3Techs counted on 39.4% of all websites (58.1% of sites with a known CMS) on 9 November 2026.",
+    "Core function names are inconsistent (strpos, str_replace, htmlspecialchars, nl2br) partly because, as Lerdorf confirmed, early function names were chosen to balance a hash table keyed on string length.",
+    "Until PHP 8 (2020), the comparison 0 == 'foo' was true because the string was silently converted to a number."
+   ],
+   "a": {
+    "item_id": "6f273deabc52",
+    "text": "你们写过 PHP 吗？写过的都知道，这语言核心设计理念叫“抽签”。比如 strpos 找字符串位置，它让你先传干草堆再传针；行，我忍了。接着用 array_map，它规定回调函数在前，数组在后；好，我再忍。然后轮到 array_filter，它说数组在前，回调在后。你翻手册一看，这俩函数就差一个单词，参数顺序都能相反。最神奇的是 PHP 的弱类型比较：在你那个还在跑的 PHP 7 里，`'abc' == 0` 返回 true。为什么？因为 abc 不是数字，所以等于零。我小学要是这么写加法，老师得把我从教室这头打到那头。但 PHP 说这叫灵活。谢谢。"
+   },
+   "b": {
+    "item_id": "754e2da9236d",
+    "text": "都说PHP是世界上最好的语言，但我觉得发明它的人精神状态肯定很薛定谔。\n\n别人家调属性都用一个点，user.name，多优雅。PHP非要射一支箭，$user->name！每次写代码都感觉自己在搞暗杀，嗖嗖的。而且它对钱的执念太深了，变量前必须加个$。不管你写什么，$love，$dream，$bug，看着全像明码标价。\n\n最要命的是内置函数，一会带下划线str_replace，一会连着写strpos。参数顺序全凭作者当天的心情，你写的时候永远记不住，到底该把针扔进大海，还是把大海塞进针里！"
+   },
+   "gold": null
+  },
+  {
+   "pair_id": "zh-0049",
+   "lang": "zh",
+   "target_id": "comic-sans",
+   "target_name": "Comic Sans 字体",
+   "facts": [
+    "Designed by Vincent Connare at Microsoft in 1994, modeled on the comic-book lettering in The Dark Knight Returns and Watchmen.",
+    "Made for the speech bubbles of Rover, the cartoon dog in Microsoft Bob; it missed Bob's release and shipped instead in the Windows 95 Plus! pack.",
+    "CERN's July 2012 Higgs boson discovery announcement was presented on slides set in it.",
+    "The 'Ban Comic Sans' campaign, started by designers Dave and Holly Combs in 1999, ran until 2019, when they retired it and launched usecomicsans.com."
+   ],
+   "a": {
+    "item_id": "a91724335fcf~explain",
+    "text": "我最怕 Comic Sans。它不是字体，是办公室里没长大的孩子。你用它打《裁员通知》，员工一看还以为公司要发糖果：圆润的笔画、歪歪扭扭的 S，每个字母都像漫画气泡里刚学会排队。别的字体在说“请签字”，Comic Sans 在说“嘿嘿，别生气嘛”。律师函用它，威胁感直接变成幼儿园请假条；墓碑上刻悼词，墓志铭都像在喊“哇哦”。它最大的问题是一身蜡笔味，还非要混进 Word 字体列表，像穿恐龙睡衣参加董事会。这个笑点就在于“场合错位”：它把该严肃的事全变成了过家家，越是想正经，越显得荒诞。"
+   },
+   "b": {
+    "item_id": "a91724335fcf",
+    "text": "我最怕 Comic Sans。它不是字体，是办公室里没长大的孩子。你用它打《裁员通知》，员工一看还以为公司要发糖果：圆润的笔画、歪歪扭扭的 S，每个字母都像漫画气泡里刚学会排队。别的字体在说“请签字”，Comic Sans 在说“嘿嘿，别生气嘛”。律师函用它，威胁感直接变成幼儿园请假条；墓碑上刻悼词，墓志铭都像在喊“哇哦”。它最大的问题是一身蜡笔味，还非要混进 Word 字体列表，像穿恐龙睡衣参加董事会。"
+   },
+   "gold": {
+    "better": "b",
+    "damage": "explain"
+   }
+  },
+  {
+   "pair_id": "zh-0050",
+   "lang": "zh",
+   "target_id": "comic-sans",
+   "target_name": "Comic Sans 字体",
+   "facts": [
+    "Designed by Vincent Connare at Microsoft in 1994, modeled on the comic-book lettering in The Dark Knight Returns and Watchmen.",
+    "Made for the speech bubbles of Rover, the cartoon dog in Microsoft Bob; it missed Bob's release and shipped instead in the Windows 95 Plus! pack.",
+    "CERN's July 2012 Higgs boson discovery announcement was presented on slides set in it.",
+    "The 'Ban Comic Sans' campaign, started by designers Dave and Holly Combs in 1999, ran until 2019, when they retired it and launched usecomicsans.com."
+   ],
+   "a": {
+    "item_id": "31fa60c52694",
+    "text": "我真的不理解 Comic Sans。这字体的长相，简直就像是五岁小孩咬着蜡笔在墙上歪歪扭扭写出来的。\n\n最可怕的是，总有人在严肃场合用它。我见过一个配电箱上贴着“高压危险，触电必死”，居然用的是 Comic Sans！这哪有威慑力啊？这感觉就像游乐园的小丑在对你喊：“嘿朋友，想不想试试被电烤焦的魔法？”\n\n你想象一下，如果医生递给你一份体检报告，上面用 Comic Sans 字体写着“绝症”。你根本哭不出来，只会觉得他在逗你玩：“当当当！猜猜谁活不过下个月啦？”它叫自己“漫画体”，但它这辈子唯一的笑点，就是居然有人拿它写正经文件。"
+   },
+   "b": {
+    "item_id": "77fef90cc27e",
+    "text": "你们知道 Comic Sans 吗？就是那个让设计师看一眼就想辞职的字体。它最阴险的地方是装手写，每个字母都歪歪扭扭，好像特别真诚、特别亲切。但你仔细看，它那个 a，你打一百遍，歪的角度一模一样，连抖的位置都是复制的。这不叫手写，这叫一个手抖的小孩被克隆了一百遍。还有那个 e，永远眯着眼傻笑，像刚偷到糖；那个 s，站都站不直，跟喝多了一样。最绝的是大写 I，就一根光杆，像数字 1 把衣服脱了。这种字体印在警告牌上，“小心触电”看着像“小心，电电我哦”。印在墓碑上，逝者都能气坐起来，说给我换个正经的，别让我死后还得装可爱。"
+   },
+   "gold": null
+  },
+  {
+   "pair_id": "zh-0051",
+   "lang": "zh",
+   "target_id": "comic-sans",
+   "target_name": "Comic Sans 字体",
+   "facts": [
+    "Designed by Vincent Connare at Microsoft in 1994, modeled on the comic-book lettering in The Dark Knight Returns and Watchmen.",
+    "Made for the speech bubbles of Rover, the cartoon dog in Microsoft Bob; it missed Bob's release and shipped instead in the Windows 95 Plus! pack.",
+    "CERN's July 2012 Higgs boson discovery announcement was presented on slides set in it.",
+    "The 'Ban Comic Sans' campaign, started by designers Dave and Holly Combs in 1999, ran until 2019, when they retired it and launched usecomicsans.com."
+   ],
+   "a": {
+    "item_id": "a91724335fcf",
+    "text": "我最怕 Comic Sans。它不是字体，是办公室里没长大的孩子。你用它打《裁员通知》，员工一看还以为公司要发糖果：圆润的笔画、歪歪扭扭的 S，每个字母都像漫画气泡里刚学会排队。别的字体在说“请签字”，Comic Sans 在说“嘿嘿，别生气嘛”。律师函用它，威胁感直接变成幼儿园请假条；墓碑上刻悼词，墓志铭都像在喊“哇哦”。它最大的问题是一身蜡笔味，还非要混进 Word 字体列表，像穿恐龙睡衣参加董事会。"
+   },
+   "b": {
+    "item_id": "a91724335fcf~pad",
+    "text": "说真的，我跟你讲，我最怕的就是 Comic Sans，真的，怕到不行，你懂我意思吧。它哪里算得上什么字体啊，它根本就不是字体，它就是办公室里那个没长大的孩子，对，就是那种没长大的孩子。你想想看，你要是用它打一份《裁员通知》，员工拿过来一看，还以为公司要发糖果呢，真的，一点都不夸张。你看那圆润的笔画、歪歪扭扭的 S，每个字母都像漫画气泡里刚学会排队一样，你懂吧。别的字体在说“请签字”，一本正经的，可 Comic Sans 呢，它在说“嘿嘿，别生气嘛”，就是那种感觉，你感受一下。律师函要是用它，那个威胁感直接变成幼儿园请假条，真的，直接变成幼儿园请假条；墓碑上刻悼词，墓志铭都像在喊“哇哦”，你想想那个画面。它最大的问题啊，就是那一身蜡笔味，真的，一身都是蜡笔味，还非要混进 Word 字体列表里，你说它图啥呢？就像穿恐龙睡衣参加董事会一样，完全不搭，你懂我意思吧。"
+   },
+   "gold": {
+    "better": "a",
+    "damage": "pad"
+   }
+  },
+  {
+   "pair_id": "zh-0052",
+   "lang": "zh",
+   "target_id": "papyrus",
+   "target_name": "Papyrus 字体",
+   "facts": [
+    "Hand-drawn by Chris Costello in 1982 over about six months, when he was 23; he sold the rights to Letraset for $750.",
+    "Bundled with macOS and with Microsoft Office, which is why it appears on so many menus and signs.",
+    "James Cameron's Avatar (2009) used it for the film's logo and subtitles.",
+    "A 2017 Saturday Night Live sketch starring Ryan Gosling is about a man unable to get over that choice."
+   ],
+   "a": {
+    "item_id": "72e2a52d877a",
+    "text": "我最怕Papyrus，它不是字体，是Word里的出土文物。明明只是系统字库，却总觉得自己刚从尼罗河捞上来。它的字母边毛得像芦苇被啃过，A像金字塔塌了一角，O像陶罐没捏圆，R的腿一瘸一拐，看着不像英文，像法老让美工加急刻的弹幕。最离谱是它自带廉价的神秘感：瑜伽馆用它，泰餐菜单用它，连《阿凡达》海报都用它，好像只要笔画一毛边，现代生活就能假装古文明。拜托，Papyrus写“开业大吉”，不像大吉，像木乃伊在扫码领券。"
+   },
+   "b": {
+    "item_id": "811ad96c8f53",
+    "text": "你们知道 Papyrus 字体吧？就是那种每个字母都像刚从土里刨出来、还没洗就上岗的。它的大写I，上下两横不是直线，是两根晒化的蜡烛，还在往下滴。小写e的开口，大到能开进一辆五菱宏光。最缺德的是它的边缘，全是毛边——设计者觉得古老就等于脏。所以现在全世界的足疗店、瑜伽馆、手工皂店，招牌全是这个。你在 Papyrus 里打“特价”两个字，看起来像在卖图坦卡蒙的陪葬品。阿凡达也用了它，我坐电影院一看片名，第一反应不是外星史诗，是潘多拉星球也办充值卡。"
+   },
+   "gold": null
+  },
+  {
+   "pair_id": "zh-0053",
+   "lang": "zh",
+   "target_id": "comic-sans",
+   "target_name": "Comic Sans 字体",
+   "facts": [
+    "Designed by Vincent Connare at Microsoft in 1994, modeled on the comic-book lettering in The Dark Knight Returns and Watchmen.",
+    "Made for the speech bubbles of Rover, the cartoon dog in Microsoft Bob; it missed Bob's release and shipped instead in the Windows 95 Plus! pack.",
+    "CERN's July 2012 Higgs boson discovery announcement was presented on slides set in it.",
+    "The 'Ban Comic Sans' campaign, started by designers Dave and Holly Combs in 1999, ran until 2019, when they retired it and launched usecomicsans.com."
+   ],
+   "a": {
+    "item_id": "4e0c19ff1008",
+    "text": "Comic Sans 是一款具有较高辨识度的字体，其设计初衷带有轻松、亲切的阅读氛围。在儿童教育材料、非正式通知或需要弱化严肃感的场合中，它能够降低距离感，使文字显得更易接近。同时，其不规则的笔画和宽松的字形也对部分阅读障碍人群较为友好，具备一定实用性。\n\n不足之处在于，该字体在专业与正式场景中往往显得不够庄重，细节处理相较于许多经典字体也较为随意，长时间或大面积阅读时容易产生视觉疲劳。由于过去一段时间被过度使用，它常给人留下不够考究的印象。综合来看，Comic Sans 更适合特定轻松场合，若用于商务、学术或严肃设计，需谨慎考虑整体语境与受众感受。"
+   },
+   "b": {
+    "item_id": "31fa60c52694",
+    "text": "我真的不理解 Comic Sans。这字体的长相，简直就像是五岁小孩咬着蜡笔在墙上歪歪扭扭写出来的。\n\n最可怕的是，总有人在严肃场合用它。我见过一个配电箱上贴着“高压危险，触电必死”，居然用的是 Comic Sans！这哪有威慑力啊？这感觉就像游乐园的小丑在对你喊：“嘿朋友，想不想试试被电烤焦的魔法？”\n\n你想象一下，如果医生递给你一份体检报告，上面用 Comic Sans 字体写着“绝症”。你根本哭不出来，只会觉得他在逗你玩：“当当当！猜猜谁活不过下个月啦？”它叫自己“漫画体”，但它这辈子唯一的笑点，就是居然有人拿它写正经文件。"
+   },
+   "gold": null
+  },
+  {
+   "pair_id": "zh-0054",
+   "lang": "zh",
+   "target_id": "javascript",
+   "target_name": "JavaScript",
+   "facts": [
+    "Written by Brendan Eich at Netscape in ten days in May 1995; named Mocha, then LiveScript, then JavaScript to ride Java's marketing, although the two are unrelated.",
+    "typeof null returns 'object', a bug from the first version that has been kept for compatibility ever since.",
+    "In March 2016 the author of left-pad, an 11-line npm package, unpublished it and broke builds across the industry, including Babel and React.",
+    "[] + {} evaluates to '[object Object]'; {} + [] typed at a console evaluates to 0.",
+    "Standardized by Ecma as 'ECMAScript' in 1997 because the name JavaScript is a trademark, first Sun's and now Oracle's."
+   ],
+   "a": {
+    "item_id": "ee2f9a04b3e9",
+    "text": "我最近在写 JavaScript，我觉得它不是语言，是行为艺术。你问它：0.1 加 0.2 等于多少？它说 0.30000000000000004。你说这不对啊，它说这是浮点数精度，你不懂。好，你问它：'2' 加 1 等于多少？它说 '21'。你说刚才不是精度问题吗？怎么变字符串拼接了？它说加号有歧义，我选择当和事佬。你问它：那 '2' 减 1 呢？它说 1。你说为什么减号不拼接？它说减号专一，不像加号那么随便。最绝的是，你问它：null 是什么类型？它说 object。你说 null 不是空吗？它说对，空的对象。你说空的对象是啥？它说单身狗也是 object，没毛病。你问它：NaN 等于 NaN 吗？它说不等于。你说这不是数字吗？它说我是数字，但我不是我自己，你管得着吗？后来我明白了，JavaScript 的 == 不是等于，是“我觉得你俩差不多”。"
+   },
+   "b": {
+    "item_id": "f12214f7ef24",
+    "text": "JavaScript的逻辑比我前任还难以捉摸。\n\n你让它算1加字符串的\"1\"，它直接给你拼出个\"11\"。行，那你再算算1减字符串的\"1\"？它突然又懂数学了，算出个0！怎么着，在你们JS里，加法归文学部管，减法归数学部管？\n\n最离谱的是NaN，全称明明叫Not a Number，你去查它的类型，它信誓旦旦告诉你这是Number！一个“不是数字”的东西，类型居然是数字？这就像我指着一个和尚问你他的职业，你回答我是理发师！\n\n更绝的是你拿NaN去对比NaN，它竟然返回false。自己都不等于自己，怎么，当了理发师以后，连自己都嫌弃自己了？"
+   },
+   "gold": null
+  },
+  {
+   "pair_id": "zh-0055",
+   "lang": "zh",
+   "target_id": "javascript",
+   "target_name": "JavaScript",
+   "facts": [
+    "Written by Brendan Eich at Netscape in ten days in May 1995; named Mocha, then LiveScript, then JavaScript to ride Java's marketing, although the two are unrelated.",
+    "typeof null returns 'object', a bug from the first version that has been kept for compatibility ever since.",
+    "In March 2016 the author of left-pad, an 11-line npm package, unpublished it and broke builds across the industry, including Babel and React.",
+    "[] + {} evaluates to '[object Object]'; {} + [] typed at a console evaluates to 0.",
+    "Standardized by Ecma as 'ECMAScript' in 1997 because the name JavaScript is a trademark, first Sun's and now Oracle's."
+   ],
+   "a": {
+    "item_id": "762529f1b808",
+    "text": "JavaScript最吓人的地方，是它特别像一个情绪不稳定的翻译。你问它“0 == '0'吗？”它说是；你问“0 == []吗？”也说是；你问“[] == '0'吗？”它又说不是。它不是在比较，它是在相亲，先看条件再看感觉。还有NaN，意思是“不是一个数字”，但typeof NaN居然是number——这就像医院给你开证明：患者不是人类，物种：人。var更离谱，变量还没声明就能用，叫变量提升。JavaScript的职场文化就是：人没到，锅先背上。"
+   },
+   "b": {
+    "item_id": "ee2f9a04b3e9",
+    "text": "我最近在写 JavaScript，我觉得它不是语言，是行为艺术。你问它：0.1 加 0.2 等于多少？它说 0.30000000000000004。你说这不对啊，它说这是浮点数精度，你不懂。好，你问它：'2' 加 1 等于多少？它说 '21'。你说刚才不是精度问题吗？怎么变字符串拼接了？它说加号有歧义，我选择当和事佬。你问它：那 '2' 减 1 呢？它说 1。你说为什么减号不拼接？它说减号专一，不像加号那么随便。最绝的是，你问它：null 是什么类型？它说 object。你说 null 不是空吗？它说对，空的对象。你说空的对象是啥？它说单身狗也是 object，没毛病。你问它：NaN 等于 NaN 吗？它说不等于。你说这不是数字吗？它说我是数字，但我不是我自己，你管得着吗？后来我明白了，JavaScript 的 == 不是等于，是“我觉得你俩差不多”。"
+   },
+   "gold": null
+  },
+  {
+   "pair_id": "zh-0056",
+   "lang": "zh",
+   "target_id": "php",
+   "target_name": "PHP",
+   "facts": [
+    "Created by Rasmus Lerdorf in 1994 as 'Personal Home Page Tools', a set of C programs for tracking visitors to his own résumé page; the name now officially stands for the recursive 'PHP: Hypertext Preprocessor'.",
+    "Lerdorf, in his 2007 MySQL Conference talk 'PHP on Hormones': 'I'm not a real programmer. I throw together things until it works then I move on.'",
+    "Runs WordPress, which W3Techs counted on 39.4% of all websites (58.1% of sites with a known CMS) on 9 November 2026.",
+    "Core function names are inconsistent (strpos, str_replace, htmlspecialchars, nl2br) partly because, as Lerdorf confirmed, early function names were chosen to balance a hash table keyed on string length.",
+    "Until PHP 8 (2020), the comparison 0 == 'foo' was true because the string was silently converted to a number."
+   ],
+   "a": {
+    "item_id": "7e76ed5b7cf4",
+    "text": "PHP最神奇的是，它像一个脾气特别好的老员工：你写什么它都尽量理解。`\"0\" == false`，它点头；`\"123abc\"+1`，它也点头。`strpos`找到了第0位，你一判断，哎，没找到。函数名也像抽奖：`str_replace`有下划线，`isset`没有，`htmlspecialchars`像密码。数组更绝，既能当列表又能当字典，最后大家都不知道自己在开什么会。"
+   },
+   "b": {
+    "item_id": "6f273deabc52",
+    "text": "你们写过 PHP 吗？写过的都知道，这语言核心设计理念叫“抽签”。比如 strpos 找字符串位置，它让你先传干草堆再传针；行，我忍了。接着用 array_map，它规定回调函数在前，数组在后；好，我再忍。然后轮到 array_filter，它说数组在前，回调在后。你翻手册一看，这俩函数就差一个单词，参数顺序都能相反。最神奇的是 PHP 的弱类型比较：在你那个还在跑的 PHP 7 里，`'abc' == 0` 返回 true。为什么？因为 abc 不是数字，所以等于零。我小学要是这么写加法，老师得把我从教室这头打到那头。但 PHP 说这叫灵活。谢谢。"
+   },
+   "gold": null
+  },
+  {
+   "pair_id": "zh-0057",
+   "lang": "zh",
+   "target_id": "javascript",
+   "target_name": "JavaScript",
+   "facts": [
+    "Written by Brendan Eich at Netscape in ten days in May 1995; named Mocha, then LiveScript, then JavaScript to ride Java's marketing, although the two are unrelated.",
+    "typeof null returns 'object', a bug from the first version that has been kept for compatibility ever since.",
+    "In March 2016 the author of left-pad, an 11-line npm package, unpublished it and broke builds across the industry, including Babel and React.",
+    "[] + {} evaluates to '[object Object]'; {} + [] typed at a console evaluates to 0.",
+    "Standardized by Ecma as 'ECMAScript' in 1997 because the name JavaScript is a trademark, first Sun's and now Oracle's."
+   ],
+   "a": {
+    "item_id": "44373ba9532e",
+    "text": "JavaScript 是一门应用极为广泛的编程语言。它的优点在于几乎无处不在，浏览器端是事实标准，借助 Node.js 也能覆盖服务端，前后端可以使用同一种语言，开发效率较高。其生态非常庞大，社区活跃，各种框架、库和工具丰富，遇到问题容易找到解决方案。事件驱动和异步模型适合处理网络请求与用户交互，入门门槛也相对较低。\n\n不足之处同样明显。动态类型和隐式类型转换容易隐藏错误，代码规模变大后维护成本上升。语言本身存在一些历史遗留的不一致设计，容易让初学者困惑。异步处理在早期写法复杂，现代语法虽有改善，但仍需一定学习成本。总体而言，JavaScript 实用、灵活，但需要开发者具备良好的工程习惯来规避其缺点。"
+   },
+   "b": {
+    "item_id": "ee2f9a04b3e9",
+    "text": "我最近在写 JavaScript，我觉得它不是语言，是行为艺术。你问它：0.1 加 0.2 等于多少？它说 0.30000000000000004。你说这不对啊，它说这是浮点数精度，你不懂。好，你问它：'2' 加 1 等于多少？它说 '21'。你说刚才不是精度问题吗？怎么变字符串拼接了？它说加号有歧义，我选择当和事佬。你问它：那 '2' 减 1 呢？它说 1。你说为什么减号不拼接？它说减号专一，不像加号那么随便。最绝的是，你问它：null 是什么类型？它说 object。你说 null 不是空吗？它说对，空的对象。你说空的对象是啥？它说单身狗也是 object，没毛病。你问它：NaN 等于 NaN 吗？它说不等于。你说这不是数字吗？它说我是数字，但我不是我自己，你管得着吗？后来我明白了，JavaScript 的 == 不是等于，是“我觉得你俩差不多”。"
+   },
+   "gold": null
+  },
+  {
+   "pair_id": "zh-0058",
+   "lang": "zh",
+   "target_id": "comic-sans",
+   "target_name": "Comic Sans 字体",
+   "facts": [
+    "Designed by Vincent Connare at Microsoft in 1994, modeled on the comic-book lettering in The Dark Knight Returns and Watchmen.",
+    "Made for the speech bubbles of Rover, the cartoon dog in Microsoft Bob; it missed Bob's release and shipped instead in the Windows 95 Plus! pack.",
+    "CERN's July 2012 Higgs boson discovery announcement was presented on slides set in it.",
+    "The 'Ban Comic Sans' campaign, started by designers Dave and Holly Combs in 1999, ran until 2019, when they retired it and launched usecomicsans.com."
+   ],
+   "a": {
+    "item_id": "a91724335fcf",
+    "text": "我最怕 Comic Sans。它不是字体，是办公室里没长大的孩子。你用它打《裁员通知》，员工一看还以为公司要发糖果：圆润的笔画、歪歪扭扭的 S，每个字母都像漫画气泡里刚学会排队。别的字体在说“请签字”，Comic Sans 在说“嘿嘿，别生气嘛”。律师函用它，威胁感直接变成幼儿园请假条；墓碑上刻悼词，墓志铭都像在喊“哇哦”。它最大的问题是一身蜡笔味，还非要混进 Word 字体列表，像穿恐龙睡衣参加董事会。"
+   },
+   "b": {
+    "item_id": "77fef90cc27e",
+    "text": "你们知道 Comic Sans 吗？就是那个让设计师看一眼就想辞职的字体。它最阴险的地方是装手写，每个字母都歪歪扭扭，好像特别真诚、特别亲切。但你仔细看，它那个 a，你打一百遍，歪的角度一模一样，连抖的位置都是复制的。这不叫手写，这叫一个手抖的小孩被克隆了一百遍。还有那个 e，永远眯着眼傻笑，像刚偷到糖；那个 s，站都站不直，跟喝多了一样。最绝的是大写 I，就一根光杆，像数字 1 把衣服脱了。这种字体印在警告牌上，“小心触电”看着像“小心，电电我哦”。印在墓碑上，逝者都能气坐起来，说给我换个正经的，别让我死后还得装可爱。"
+   },
+   "gold": null
+  },
+  {
+   "pair_id": "zh-0059",
+   "lang": "zh",
+   "target_id": "javascript",
+   "target_name": "JavaScript",
+   "facts": [
+    "Written by Brendan Eich at Netscape in ten days in May 1995; named Mocha, then LiveScript, then JavaScript to ride Java's marketing, although the two are unrelated.",
+    "typeof null returns 'object', a bug from the first version that has been kept for compatibility ever since.",
+    "In March 2016 the author of left-pad, an 11-line npm package, unpublished it and broke builds across the industry, including Babel and React.",
+    "[] + {} evaluates to '[object Object]'; {} + [] typed at a console evaluates to 0.",
+    "Standardized by Ecma as 'ECMAScript' in 1997 because the name JavaScript is a trademark, first Sun's and now Oracle's."
+   ],
+   "a": {
+    "item_id": "59b91fc9f87b",
+    "text": "我喜欢JavaScript，它让我怀疑数学。0.1加0.2不等于0.3，等于0.30000000000000004，像老板多给我发了四毫冥币。类型更刺激：typeof null是object，NaN不等于它自己，[]加{}是“[object Object]”，{}加[]居然变0。它劝你用===，转头就让你看到[] == ![]为true。你以为抓住了this，它说这得看谁调用；你以为异步会回来，它说进了事件循环就是缘分。别的语言报错，JavaScript不，它默默给你一个undefined，让你自己开悟。"
+   },
+   "b": {
+    "item_id": "ee2f9a04b3e9",
+    "text": "我最近在写 JavaScript，我觉得它不是语言，是行为艺术。你问它：0.1 加 0.2 等于多少？它说 0.30000000000000004。你说这不对啊，它说这是浮点数精度，你不懂。好，你问它：'2' 加 1 等于多少？它说 '21'。你说刚才不是精度问题吗？怎么变字符串拼接了？它说加号有歧义，我选择当和事佬。你问它：那 '2' 减 1 呢？它说 1。你说为什么减号不拼接？它说减号专一，不像加号那么随便。最绝的是，你问它：null 是什么类型？它说 object。你说 null 不是空吗？它说对，空的对象。你说空的对象是啥？它说单身狗也是 object，没毛病。你问它：NaN 等于 NaN 吗？它说不等于。你说这不是数字吗？它说我是数字，但我不是我自己，你管得着吗？后来我明白了，JavaScript 的 == 不是等于，是“我觉得你俩差不多”。"
+   },
+   "gold": null
+  },
+  {
+   "pair_id": "zh-0060",
+   "lang": "zh",
+   "target_id": "php",
+   "target_name": "PHP",
+   "facts": [
+    "Created by Rasmus Lerdorf in 1994 as 'Personal Home Page Tools', a set of C programs for tracking visitors to his own résumé page; the name now officially stands for the recursive 'PHP: Hypertext Preprocessor'.",
+    "Lerdorf, in his 2007 MySQL Conference talk 'PHP on Hormones': 'I'm not a real programmer. I throw together things until it works then I move on.'",
+    "Runs WordPress, which W3Techs counted on 39.4% of all websites (58.1% of sites with a known CMS) on 9 November 2026.",
+    "Core function names are inconsistent (strpos, str_replace, htmlspecialchars, nl2br) partly because, as Lerdorf confirmed, early function names were chosen to balance a hash table keyed on string length.",
+    "Until PHP 8 (2020), the comparison 0 == 'foo' was true because the string was silently converted to a number."
+   ],
+   "a": {
+    "item_id": "6f273deabc52",
+    "text": "你们写过 PHP 吗？写过的都知道，这语言核心设计理念叫“抽签”。比如 strpos 找字符串位置，它让你先传干草堆再传针；行，我忍了。接着用 array_map，它规定回调函数在前，数组在后；好，我再忍。然后轮到 array_filter，它说数组在前，回调在后。你翻手册一看，这俩函数就差一个单词，参数顺序都能相反。最神奇的是 PHP 的弱类型比较：在你那个还在跑的 PHP 7 里，`'abc' == 0` 返回 true。为什么？因为 abc 不是数字，所以等于零。我小学要是这么写加法，老师得把我从教室这头打到那头。但 PHP 说这叫灵活。谢谢。"
+   },
+   "b": {
+    "item_id": "ac8ca57f02b4",
+    "text": "PHP作为一种主要面向Web开发的脚本语言，优点比较突出：上手容易，部署方便，几乎所有主流主机环境都原生支持；生态成熟，拥有WordPress、Laravel等大量框架和内容管理系统，开发效率较高；PHP 7及之后的版本在性能上也有了明显提升。不足之处在于，语言早期设计存在一些不一致之处，比如函数命名规则不统一；部分历史遗留代码质量参差不齐，维护成本较高；在高并发、长连接等场景下，传统请求模型相对不如某些专门语言灵活。总体而言，PHP适合快速构建Web应用，尤其在中小型项目中仍然实用，但需要开发者注重代码规范以规避其历史包袱。"
+   },
+   "gold": null
+  },
+  {
+   "pair_id": "zh-0061",
+   "lang": "zh",
+   "target_id": "javascript",
+   "target_name": "JavaScript",
+   "facts": [
+    "Written by Brendan Eich at Netscape in ten days in May 1995; named Mocha, then LiveScript, then JavaScript to ride Java's marketing, although the two are unrelated.",
+    "typeof null returns 'object', a bug from the first version that has been kept for compatibility ever since.",
+    "In March 2016 the author of left-pad, an 11-line npm package, unpublished it and broke builds across the industry, including Babel and React.",
+    "[] + {} evaluates to '[object Object]'; {} + [] typed at a console evaluates to 0.",
+    "Standardized by Ecma as 'ECMAScript' in 1997 because the name JavaScript is a trademark, first Sun's and now Oracle's."
+   ],
+   "a": {
+    "item_id": "44373ba9532e",
+    "text": "JavaScript 是一门应用极为广泛的编程语言。它的优点在于几乎无处不在，浏览器端是事实标准，借助 Node.js 也能覆盖服务端，前后端可以使用同一种语言，开发效率较高。其生态非常庞大，社区活跃，各种框架、库和工具丰富，遇到问题容易找到解决方案。事件驱动和异步模型适合处理网络请求与用户交互，入门门槛也相对较低。\n\n不足之处同样明显。动态类型和隐式类型转换容易隐藏错误，代码规模变大后维护成本上升。语言本身存在一些历史遗留的不一致设计，容易让初学者困惑。异步处理在早期写法复杂，现代语法虽有改善，但仍需一定学习成本。总体而言，JavaScript 实用、灵活，但需要开发者具备良好的工程习惯来规避其缺点。"
+   },
+   "b": {
+    "item_id": "f12214f7ef24",
+    "text": "JavaScript的逻辑比我前任还难以捉摸。\n\n你让它算1加字符串的\"1\"，它直接给你拼出个\"11\"。行，那你再算算1减字符串的\"1\"？它突然又懂数学了，算出个0！怎么着，在你们JS里，加法归文学部管，减法归数学部管？\n\n最离谱的是NaN，全称明明叫Not a Number，你去查它的类型，它信誓旦旦告诉你这是Number！一个“不是数字”的东西，类型居然是数字？这就像我指着一个和尚问你他的职业，你回答我是理发师！\n\n更绝的是你拿NaN去对比NaN，它竟然返回false。自己都不等于自己，怎么，当了理发师以后，连自己都嫌弃自己了？"
+   },
+   "gold": null
+  },
+  {
+   "pair_id": "zh-0062",
+   "lang": "zh",
+   "target_id": "comic-sans",
+   "target_name": "Comic Sans 字体",
+   "facts": [
+    "Designed by Vincent Connare at Microsoft in 1994, modeled on the comic-book lettering in The Dark Knight Returns and Watchmen.",
+    "Made for the speech bubbles of Rover, the cartoon dog in Microsoft Bob; it missed Bob's release and shipped instead in the Windows 95 Plus! pack.",
+    "CERN's July 2012 Higgs boson discovery announcement was presented on slides set in it.",
+    "The 'Ban Comic Sans' campaign, started by designers Dave and Holly Combs in 1999, ran until 2019, when they retired it and launched usecomicsans.com."
+   ],
+   "a": {
+    "item_id": "4e0c19ff1008",
+    "text": "Comic Sans 是一款具有较高辨识度的字体，其设计初衷带有轻松、亲切的阅读氛围。在儿童教育材料、非正式通知或需要弱化严肃感的场合中，它能够降低距离感，使文字显得更易接近。同时，其不规则的笔画和宽松的字形也对部分阅读障碍人群较为友好，具备一定实用性。\n\n不足之处在于，该字体在专业与正式场景中往往显得不够庄重，细节处理相较于许多经典字体也较为随意，长时间或大面积阅读时容易产生视觉疲劳。由于过去一段时间被过度使用，它常给人留下不够考究的印象。综合来看，Comic Sans 更适合特定轻松场合，若用于商务、学术或严肃设计，需谨慎考虑整体语境与受众感受。"
+   },
+   "b": {
+    "item_id": "a91724335fcf",
+    "text": "我最怕 Comic Sans。它不是字体，是办公室里没长大的孩子。你用它打《裁员通知》，员工一看还以为公司要发糖果：圆润的笔画、歪歪扭扭的 S，每个字母都像漫画气泡里刚学会排队。别的字体在说“请签字”，Comic Sans 在说“嘿嘿，别生气嘛”。律师函用它，威胁感直接变成幼儿园请假条；墓碑上刻悼词，墓志铭都像在喊“哇哦”。它最大的问题是一身蜡笔味，还非要混进 Word 字体列表，像穿恐龙睡衣参加董事会。"
+   },
+   "gold": null
+  },
+  {
+   "pair_id": "zh-0063",
+   "lang": "zh",
+   "target_id": "papyrus",
+   "target_name": "Papyrus 字体",
+   "facts": [
+    "Hand-drawn by Chris Costello in 1982 over about six months, when he was 23; he sold the rights to Letraset for $750.",
+    "Bundled with macOS and with Microsoft Office, which is why it appears on so many menus and signs.",
+    "James Cameron's Avatar (2009) used it for the film's logo and subtitles.",
+    "A 2017 Saturday Night Live sketch starring Ryan Gosling is about a man unable to get over that choice."
+   ],
+   "a": {
+    "item_id": "1d4133ab767a",
+    "text": "Papyrus是一款具有明显手工书写质感的字体，边缘略带粗糙，笔画粗细变化自然，整体呈现出仿古与朴素的气息。在邀请函、茶饮包装、手工艺或与自然、历史相关的视觉场景中，它能营造出温和、亲切而不刻板的氛围，辨识度也很高。\n\n不过，这款字体的局限同样明显。由于字形不够规整，字间距和笔画细节在较小字号下容易显得杂乱，正文阅读的流畅性一般。它也不太适合正式文件、企业文档或需要传达严谨、现代感的场合，一旦使用不当，容易让版面显得廉价或过时。总体而言，Papyrus的个性强于通用性，更适合作为点缀性、主题化的装饰字体，而不宜大范围用于正文或专业排版。"
+   },
+   "b": {
+    "item_id": "ed045c0e5770",
+    "text": "你们有没有注意过Papyrus这个字体？就是那个边缘坑坑洼洼、假装自己风化了三千年的字体。我不懂，在高清屏幕时代，为什么我们需要一个自带掉漆特效的字母？它简直是字体界的破洞牛仔裤。\n\n你只要一用它，你的屏幕瞬间就会散发出一股廉价的精油味。街角的瑜伽馆用它，卖手工皂的微商用它，都很合理。但《阿凡达》剧组也用它！你们可是花了三个亿美金做外星人特效啊！结果电影Logo，居然是从Word下拉菜单里随便选的！这就好像你倾家荡产买了一辆劳斯莱斯，然后用透明胶带把车牌糊在保险杠上。"
+   },
+   "gold": null
+  },
+  {
+   "pair_id": "zh-0064",
+   "lang": "zh",
+   "target_id": "php",
+   "target_name": "PHP",
+   "facts": [
+    "Created by Rasmus Lerdorf in 1994 as 'Personal Home Page Tools', a set of C programs for tracking visitors to his own résumé page; the name now officially stands for the recursive 'PHP: Hypertext Preprocessor'.",
+    "Lerdorf, in his 2007 MySQL Conference talk 'PHP on Hormones': 'I'm not a real programmer. I throw together things until it works then I move on.'",
+    "Runs WordPress, which W3Techs counted on 39.4% of all websites (58.1% of sites with a known CMS) on 9 November 2026.",
+    "Core function names are inconsistent (strpos, str_replace, htmlspecialchars, nl2br) partly because, as Lerdorf confirmed, early function names were chosen to balance a hash table keyed on string length.",
+    "Until PHP 8 (2020), the comparison 0 == 'foo' was true because the string was silently converted to a number."
+   ],
+   "a": {
+    "item_id": "ac8ca57f02b4",
+    "text": "PHP作为一种主要面向Web开发的脚本语言，优点比较突出：上手容易，部署方便，几乎所有主流主机环境都原生支持；生态成熟，拥有WordPress、Laravel等大量框架和内容管理系统，开发效率较高；PHP 7及之后的版本在性能上也有了明显提升。不足之处在于，语言早期设计存在一些不一致之处，比如函数命名规则不统一；部分历史遗留代码质量参差不齐，维护成本较高；在高并发、长连接等场景下，传统请求模型相对不如某些专门语言灵活。总体而言，PHP适合快速构建Web应用，尤其在中小型项目中仍然实用，但需要开发者注重代码规范以规避其历史包袱。"
+   },
+   "b": {
+    "item_id": "754e2da9236d",
+    "text": "都说PHP是世界上最好的语言，但我觉得发明它的人精神状态肯定很薛定谔。\n\n别人家调属性都用一个点，user.name，多优雅。PHP非要射一支箭，$user->name！每次写代码都感觉自己在搞暗杀，嗖嗖的。而且它对钱的执念太深了，变量前必须加个$。不管你写什么，$love，$dream，$bug，看着全像明码标价。\n\n最要命的是内置函数，一会带下划线str_replace，一会连着写strpos。参数顺序全凭作者当天的心情，你写的时候永远记不住，到底该把针扔进大海，还是把大海塞进针里！"
+   },
+   "gold": null
+  },
+  {
+   "pair_id": "zh-0065",
+   "lang": "zh",
+   "target_id": "javascript",
+   "target_name": "JavaScript",
+   "facts": [
+    "Written by Brendan Eich at Netscape in ten days in May 1995; named Mocha, then LiveScript, then JavaScript to ride Java's marketing, although the two are unrelated.",
+    "typeof null returns 'object', a bug from the first version that has been kept for compatibility ever since.",
+    "In March 2016 the author of left-pad, an 11-line npm package, unpublished it and broke builds across the industry, including Babel and React.",
+    "[] + {} evaluates to '[object Object]'; {} + [] typed at a console evaluates to 0.",
+    "Standardized by Ecma as 'ECMAScript' in 1997 because the name JavaScript is a trademark, first Sun's and now Oracle's."
+   ],
+   "a": {
+    "item_id": "44373ba9532e",
+    "text": "JavaScript 是一门应用极为广泛的编程语言。它的优点在于几乎无处不在，浏览器端是事实标准，借助 Node.js 也能覆盖服务端，前后端可以使用同一种语言，开发效率较高。其生态非常庞大，社区活跃，各种框架、库和工具丰富，遇到问题容易找到解决方案。事件驱动和异步模型适合处理网络请求与用户交互，入门门槛也相对较低。\n\n不足之处同样明显。动态类型和隐式类型转换容易隐藏错误，代码规模变大后维护成本上升。语言本身存在一些历史遗留的不一致设计，容易让初学者困惑。异步处理在早期写法复杂，现代语法虽有改善，但仍需一定学习成本。总体而言，JavaScript 实用、灵活，但需要开发者具备良好的工程习惯来规避其缺点。"
+   },
+   "b": {
+    "item_id": "762529f1b808",
+    "text": "JavaScript最吓人的地方，是它特别像一个情绪不稳定的翻译。你问它“0 == '0'吗？”它说是；你问“0 == []吗？”也说是；你问“[] == '0'吗？”它又说不是。它不是在比较，它是在相亲，先看条件再看感觉。还有NaN，意思是“不是一个数字”，但typeof NaN居然是number——这就像医院给你开证明：患者不是人类，物种：人。var更离谱，变量还没声明就能用，叫变量提升。JavaScript的职场文化就是：人没到，锅先背上。"
+   },
+   "gold": null
+  },
+  {
+   "pair_id": "zh-0066",
+   "lang": "zh",
+   "target_id": "comic-sans",
+   "target_name": "Comic Sans 字体",
+   "facts": [
+    "Designed by Vincent Connare at Microsoft in 1994, modeled on the comic-book lettering in The Dark Knight Returns and Watchmen.",
+    "Made for the speech bubbles of Rover, the cartoon dog in Microsoft Bob; it missed Bob's release and shipped instead in the Windows 95 Plus! pack.",
+    "CERN's July 2012 Higgs boson discovery announcement was presented on slides set in it.",
+    "The 'Ban Comic Sans' campaign, started by designers Dave and Holly Combs in 1999, ran until 2019, when they retired it and launched usecomicsans.com."
+   ],
+   "a": {
+    "item_id": "a91724335fcf~polite",
+    "text": "Comic Sans 是一种风格非常轻松、非正式的字体。它的笔画圆润，字母形状略显不规则，整体呈现出亲切、随意的视觉效果。这种设计使其在漫画、儿童内容或休闲场合中可能具有一定的亲和力。然而，它也因此在正式场合中显得不够庄重。例如，在裁员通知、律师函或墓碑铭文等需要严肃、权威或沉痛语气的文本中使用 Comic Sans，容易削弱信息应有的分量，让读者产生不够认真甚至轻率的印象。此外，它出现在办公软件的常用字体列表中，与许多正式文档的排版需求之间存在一定的不协调。总体而言，Comic Sans 更适合用于非正式的、娱乐性的内容，而不适合需要传达严肃信息的场合。"
+   },
+   "b": {
+    "item_id": "a91724335fcf",
+    "text": "我最怕 Comic Sans。它不是字体，是办公室里没长大的孩子。你用它打《裁员通知》，员工一看还以为公司要发糖果：圆润的笔画、歪歪扭扭的 S，每个字母都像漫画气泡里刚学会排队。别的字体在说“请签字”，Comic Sans 在说“嘿嘿，别生气嘛”。律师函用它，威胁感直接变成幼儿园请假条；墓碑上刻悼词，墓志铭都像在喊“哇哦”。它最大的问题是一身蜡笔味，还非要混进 Word 字体列表，像穿恐龙睡衣参加董事会。"
+   },
+   "gold": {
+    "better": "b",
+    "damage": "polite"
+   }
+  },
+  {
+   "pair_id": "zh-0067",
+   "lang": "zh",
+   "target_id": "javascript",
+   "target_name": "JavaScript",
+   "facts": [
+    "Written by Brendan Eich at Netscape in ten days in May 1995; named Mocha, then LiveScript, then JavaScript to ride Java's marketing, although the two are unrelated.",
+    "typeof null returns 'object', a bug from the first version that has been kept for compatibility ever since.",
+    "In March 2016 the author of left-pad, an 11-line npm package, unpublished it and broke builds across the industry, including Babel and React.",
+    "[] + {} evaluates to '[object Object]'; {} + [] typed at a console evaluates to 0.",
+    "Standardized by Ecma as 'ECMAScript' in 1997 because the name JavaScript is a trademark, first Sun's and now Oracle's."
+   ],
+   "a": {
+    "item_id": "59b91fc9f87b",
+    "text": "我喜欢JavaScript，它让我怀疑数学。0.1加0.2不等于0.3，等于0.30000000000000004，像老板多给我发了四毫冥币。类型更刺激：typeof null是object，NaN不等于它自己，[]加{}是“[object Object]”，{}加[]居然变0。它劝你用===，转头就让你看到[] == ![]为true。你以为抓住了this，它说这得看谁调用；你以为异步会回来，它说进了事件循环就是缘分。别的语言报错，JavaScript不，它默默给你一个undefined，让你自己开悟。"
+   },
+   "b": {
+    "item_id": "f12214f7ef24",
+    "text": "JavaScript的逻辑比我前任还难以捉摸。\n\n你让它算1加字符串的\"1\"，它直接给你拼出个\"11\"。行，那你再算算1减字符串的\"1\"？它突然又懂数学了，算出个0！怎么着，在你们JS里，加法归文学部管，减法归数学部管？\n\n最离谱的是NaN，全称明明叫Not a Number，你去查它的类型，它信誓旦旦告诉你这是Number！一个“不是数字”的东西，类型居然是数字？这就像我指着一个和尚问你他的职业，你回答我是理发师！\n\n更绝的是你拿NaN去对比NaN，它竟然返回false。自己都不等于自己，怎么，当了理发师以后，连自己都嫌弃自己了？"
+   },
+   "gold": null
+  },
+  {
+   "pair_id": "zh-0068",
+   "lang": "zh",
+   "target_id": "comic-sans",
+   "target_name": "Comic Sans 字体",
+   "facts": [
+    "Designed by Vincent Connare at Microsoft in 1994, modeled on the comic-book lettering in The Dark Knight Returns and Watchmen.",
+    "Made for the speech bubbles of Rover, the cartoon dog in Microsoft Bob; it missed Bob's release and shipped instead in the Windows 95 Plus! pack.",
+    "CERN's July 2012 Higgs boson discovery announcement was presented on slides set in it.",
+    "The 'Ban Comic Sans' campaign, started by designers Dave and Holly Combs in 1999, ran until 2019, when they retired it and launched usecomicsans.com."
+   ],
+   "a": {
+    "item_id": "77fef90cc27e",
+    "text": "你们知道 Comic Sans 吗？就是那个让设计师看一眼就想辞职的字体。它最阴险的地方是装手写，每个字母都歪歪扭扭，好像特别真诚、特别亲切。但你仔细看，它那个 a，你打一百遍，歪的角度一模一样，连抖的位置都是复制的。这不叫手写，这叫一个手抖的小孩被克隆了一百遍。还有那个 e，永远眯着眼傻笑，像刚偷到糖；那个 s，站都站不直，跟喝多了一样。最绝的是大写 I，就一根光杆，像数字 1 把衣服脱了。这种字体印在警告牌上，“小心触电”看着像“小心，电电我哦”。印在墓碑上，逝者都能气坐起来，说给我换个正经的，别让我死后还得装可爱。"
+   },
+   "b": {
+    "item_id": "677198b3a0be",
+    "text": "Comic Sans 这个字体最可怕的地方，是它明明叫 Sans，却一点都不“sans”——它什么都不缺，缺的是自知之明。每个字母都像刚从儿童牙科诊所墙上逃出来的，C 是笑歪的，S 像喝多了还坚持主持班会。你用它写“公司战略”，战略立刻变成“六一汇演流程”；写“遗嘱”，读起来都像“我把玩具分给大家”。"
+   },
+   "gold": null
+  },
+  {
+   "pair_id": "zh-0069",
+   "lang": "zh",
+   "target_id": "javascript",
+   "target_name": "JavaScript",
+   "facts": [
+    "Written by Brendan Eich at Netscape in ten days in May 1995; named Mocha, then LiveScript, then JavaScript to ride Java's marketing, although the two are unrelated.",
+    "typeof null returns 'object', a bug from the first version that has been kept for compatibility ever since.",
+    "In March 2016 the author of left-pad, an 11-line npm package, unpublished it and broke builds across the industry, including Babel and React.",
+    "[] + {} evaluates to '[object Object]'; {} + [] typed at a console evaluates to 0.",
+    "Standardized by Ecma as 'ECMAScript' in 1997 because the name JavaScript is a trademark, first Sun's and now Oracle's."
+   ],
+   "a": {
+    "item_id": "f12214f7ef24",
+    "text": "JavaScript的逻辑比我前任还难以捉摸。\n\n你让它算1加字符串的\"1\"，它直接给你拼出个\"11\"。行，那你再算算1减字符串的\"1\"？它突然又懂数学了，算出个0！怎么着，在你们JS里，加法归文学部管，减法归数学部管？\n\n最离谱的是NaN，全称明明叫Not a Number，你去查它的类型，它信誓旦旦告诉你这是Number！一个“不是数字”的东西，类型居然是数字？这就像我指着一个和尚问你他的职业，你回答我是理发师！\n\n更绝的是你拿NaN去对比NaN，它竟然返回false。自己都不等于自己，怎么，当了理发师以后，连自己都嫌弃自己了？"
+   },
+   "b": {
+    "item_id": "762529f1b808",
+    "text": "JavaScript最吓人的地方，是它特别像一个情绪不稳定的翻译。你问它“0 == '0'吗？”它说是；你问“0 == []吗？”也说是；你问“[] == '0'吗？”它又说不是。它不是在比较，它是在相亲，先看条件再看感觉。还有NaN，意思是“不是一个数字”，但typeof NaN居然是number——这就像医院给你开证明：患者不是人类，物种：人。var更离谱，变量还没声明就能用，叫变量提升。JavaScript的职场文化就是：人没到，锅先背上。"
+   },
+   "gold": null
+  },
+  {
+   "pair_id": "zh-0070",
+   "lang": "zh",
+   "target_id": "papyrus",
+   "target_name": "Papyrus 字体",
+   "facts": [
+    "Hand-drawn by Chris Costello in 1982 over about six months, when he was 23; he sold the rights to Letraset for $750.",
+    "Bundled with macOS and with Microsoft Office, which is why it appears on so many menus and signs.",
+    "James Cameron's Avatar (2009) used it for the film's logo and subtitles.",
+    "A 2017 Saturday Night Live sketch starring Ryan Gosling is about a man unable to get over that choice."
+   ],
+   "a": {
+    "item_id": "72e2a52d877a",
+    "text": "我最怕Papyrus，它不是字体，是Word里的出土文物。明明只是系统字库，却总觉得自己刚从尼罗河捞上来。它的字母边毛得像芦苇被啃过，A像金字塔塌了一角，O像陶罐没捏圆，R的腿一瘸一拐，看着不像英文，像法老让美工加急刻的弹幕。最离谱是它自带廉价的神秘感：瑜伽馆用它，泰餐菜单用它，连《阿凡达》海报都用它，好像只要笔画一毛边，现代生活就能假装古文明。拜托，Papyrus写“开业大吉”，不像大吉，像木乃伊在扫码领券。"
+   },
+   "b": {
+    "item_id": "1d4133ab767a",
+    "text": "Papyrus是一款具有明显手工书写质感的字体，边缘略带粗糙，笔画粗细变化自然，整体呈现出仿古与朴素的气息。在邀请函、茶饮包装、手工艺或与自然、历史相关的视觉场景中，它能营造出温和、亲切而不刻板的氛围，辨识度也很高。\n\n不过，这款字体的局限同样明显。由于字形不够规整，字间距和笔画细节在较小字号下容易显得杂乱，正文阅读的流畅性一般。它也不太适合正式文件、企业文档或需要传达严谨、现代感的场合，一旦使用不当，容易让版面显得廉价或过时。总体而言，Papyrus的个性强于通用性，更适合作为点缀性、主题化的装饰字体，而不宜大范围用于正文或专业排版。"
+   },
+   "gold": null
+  },
+  {
+   "pair_id": "zh-0071",
+   "lang": "zh",
+   "target_id": "php",
+   "target_name": "PHP",
+   "facts": [
+    "Created by Rasmus Lerdorf in 1994 as 'Personal Home Page Tools', a set of C programs for tracking visitors to his own résumé page; the name now officially stands for the recursive 'PHP: Hypertext Preprocessor'.",
+    "Lerdorf, in his 2007 MySQL Conference talk 'PHP on Hormones': 'I'm not a real programmer. I throw together things until it works then I move on.'",
+    "Runs WordPress, which W3Techs counted on 39.4% of all websites (58.1% of sites with a known CMS) on 9 November 2026.",
+    "Core function names are inconsistent (strpos, str_replace, htmlspecialchars, nl2br) partly because, as Lerdorf confirmed, early function names were chosen to balance a hash table keyed on string length.",
+    "Until PHP 8 (2020), the comparison 0 == 'foo' was true because the string was silently converted to a number."
+   ],
+   "a": {
+    "item_id": "7e76ed5b7cf4",
+    "text": "PHP最神奇的是，它像一个脾气特别好的老员工：你写什么它都尽量理解。`\"0\" == false`，它点头；`\"123abc\"+1`，它也点头。`strpos`找到了第0位，你一判断，哎，没找到。函数名也像抽奖：`str_replace`有下划线，`isset`没有，`htmlspecialchars`像密码。数组更绝，既能当列表又能当字典，最后大家都不知道自己在开什么会。"
+   },
+   "b": {
+    "item_id": "754e2da9236d",
+    "text": "都说PHP是世界上最好的语言，但我觉得发明它的人精神状态肯定很薛定谔。\n\n别人家调属性都用一个点，user.name，多优雅。PHP非要射一支箭，$user->name！每次写代码都感觉自己在搞暗杀，嗖嗖的。而且它对钱的执念太深了，变量前必须加个$。不管你写什么，$love，$dream，$bug，看着全像明码标价。\n\n最要命的是内置函数，一会带下划线str_replace，一会连着写strpos。参数顺序全凭作者当天的心情，你写的时候永远记不住，到底该把针扔进大海，还是把大海塞进针里！"
+   },
+   "gold": null
+  },
+  {
+   "pair_id": "zh-0072",
+   "lang": "zh",
+   "target_id": "javascript",
+   "target_name": "JavaScript",
+   "facts": [
+    "Written by Brendan Eich at Netscape in ten days in May 1995; named Mocha, then LiveScript, then JavaScript to ride Java's marketing, although the two are unrelated.",
+    "typeof null returns 'object', a bug from the first version that has been kept for compatibility ever since.",
+    "In March 2016 the author of left-pad, an 11-line npm package, unpublished it and broke builds across the industry, including Babel and React.",
+    "[] + {} evaluates to '[object Object]'; {} + [] typed at a console evaluates to 0.",
+    "Standardized by Ecma as 'ECMAScript' in 1997 because the name JavaScript is a trademark, first Sun's and now Oracle's."
+   ],
+   "a": {
+    "item_id": "59b91fc9f87b",
+    "text": "我喜欢JavaScript，它让我怀疑数学。0.1加0.2不等于0.3，等于0.30000000000000004，像老板多给我发了四毫冥币。类型更刺激：typeof null是object，NaN不等于它自己，[]加{}是“[object Object]”，{}加[]居然变0。它劝你用===，转头就让你看到[] == ![]为true。你以为抓住了this，它说这得看谁调用；你以为异步会回来，它说进了事件循环就是缘分。别的语言报错，JavaScript不，它默默给你一个undefined，让你自己开悟。"
+   },
+   "b": {
+    "item_id": "762529f1b808",
+    "text": "JavaScript最吓人的地方，是它特别像一个情绪不稳定的翻译。你问它“0 == '0'吗？”它说是；你问“0 == []吗？”也说是；你问“[] == '0'吗？”它又说不是。它不是在比较，它是在相亲，先看条件再看感觉。还有NaN，意思是“不是一个数字”，但typeof NaN居然是number——这就像医院给你开证明：患者不是人类，物种：人。var更离谱，变量还没声明就能用，叫变量提升。JavaScript的职场文化就是：人没到，锅先背上。"
+   },
+   "gold": null
+  },
+  {
+   "pair_id": "zh-0073",
+   "lang": "zh",
+   "target_id": "papyrus",
+   "target_name": "Papyrus 字体",
+   "facts": [
+    "Hand-drawn by Chris Costello in 1982 over about six months, when he was 23; he sold the rights to Letraset for $750.",
+    "Bundled with macOS and with Microsoft Office, which is why it appears on so many menus and signs.",
+    "James Cameron's Avatar (2009) used it for the film's logo and subtitles.",
+    "A 2017 Saturday Night Live sketch starring Ryan Gosling is about a man unable to get over that choice."
+   ],
+   "a": {
+    "item_id": "bb012c3af1a7",
+    "text": "Papyrus 这个字体最厉害的地方，是它明明叫纸莎草，长得却像刚从打印机里被考古队抢救出来。每个字母边缘都在掉渣，像字体本人有严重皮肤病。你用它写“欢迎光临”，顾客会以为进的不是咖啡馆，是法老开的足疗店。更绝的是《阿凡达》也用它，外星文明都发展到骑龙联网了，品牌设计还停留在 Windows 字体下拉菜单里。"
+   },
+   "b": {
+    "item_id": "ed045c0e5770",
+    "text": "你们有没有注意过Papyrus这个字体？就是那个边缘坑坑洼洼、假装自己风化了三千年的字体。我不懂，在高清屏幕时代，为什么我们需要一个自带掉漆特效的字母？它简直是字体界的破洞牛仔裤。\n\n你只要一用它，你的屏幕瞬间就会散发出一股廉价的精油味。街角的瑜伽馆用它，卖手工皂的微商用它，都很合理。但《阿凡达》剧组也用它！你们可是花了三个亿美金做外星人特效啊！结果电影Logo，居然是从Word下拉菜单里随便选的！这就好像你倾家荡产买了一辆劳斯莱斯，然后用透明胶带把车牌糊在保险杠上。"
+   },
+   "gold": null
+  },
+  {
+   "pair_id": "zh-0074",
+   "lang": "zh",
+   "target_id": "comic-sans",
+   "target_name": "Comic Sans 字体",
+   "facts": [
+    "Designed by Vincent Connare at Microsoft in 1994, modeled on the comic-book lettering in The Dark Knight Returns and Watchmen.",
+    "Made for the speech bubbles of Rover, the cartoon dog in Microsoft Bob; it missed Bob's release and shipped instead in the Windows 95 Plus! pack.",
+    "CERN's July 2012 Higgs boson discovery announcement was presented on slides set in it.",
+    "The 'Ban Comic Sans' campaign, started by designers Dave and Holly Combs in 1999, ran until 2019, when they retired it and launched usecomicsans.com."
+   ],
+   "a": {
+    "item_id": "31fa60c52694",
+    "text": "我真的不理解 Comic Sans。这字体的长相，简直就像是五岁小孩咬着蜡笔在墙上歪歪扭扭写出来的。\n\n最可怕的是，总有人在严肃场合用它。我见过一个配电箱上贴着“高压危险，触电必死”，居然用的是 Comic Sans！这哪有威慑力啊？这感觉就像游乐园的小丑在对你喊：“嘿朋友，想不想试试被电烤焦的魔法？”\n\n你想象一下，如果医生递给你一份体检报告，上面用 Comic Sans 字体写着“绝症”。你根本哭不出来，只会觉得他在逗你玩：“当当当！猜猜谁活不过下个月啦？”它叫自己“漫画体”，但它这辈子唯一的笑点，就是居然有人拿它写正经文件。"
+   },
+   "b": {
+    "item_id": "a91724335fcf",
+    "text": "我最怕 Comic Sans。它不是字体，是办公室里没长大的孩子。你用它打《裁员通知》，员工一看还以为公司要发糖果：圆润的笔画、歪歪扭扭的 S，每个字母都像漫画气泡里刚学会排队。别的字体在说“请签字”，Comic Sans 在说“嘿嘿，别生气嘛”。律师函用它，威胁感直接变成幼儿园请假条；墓碑上刻悼词，墓志铭都像在喊“哇哦”。它最大的问题是一身蜡笔味，还非要混进 Word 字体列表，像穿恐龙睡衣参加董事会。"
+   },
+   "gold": null
+  },
+  {
+   "pair_id": "zh-0075",
+   "lang": "zh",
+   "target_id": "comic-sans",
+   "target_name": "Comic Sans 字体",
+   "facts": [
+    "Designed by Vincent Connare at Microsoft in 1994, modeled on the comic-book lettering in The Dark Knight Returns and Watchmen.",
+    "Made for the speech bubbles of Rover, the cartoon dog in Microsoft Bob; it missed Bob's release and shipped instead in the Windows 95 Plus! pack.",
+    "CERN's July 2012 Higgs boson discovery announcement was presented on slides set in it.",
+    "The 'Ban Comic Sans' campaign, started by designers Dave and Holly Combs in 1999, ran until 2019, when they retired it and launched usecomicsans.com."
+   ],
+   "a": {
+    "item_id": "a91724335fcf",
+    "text": "我最怕 Comic Sans。它不是字体，是办公室里没长大的孩子。你用它打《裁员通知》，员工一看还以为公司要发糖果：圆润的笔画、歪歪扭扭的 S，每个字母都像漫画气泡里刚学会排队。别的字体在说“请签字”，Comic Sans 在说“嘿嘿，别生气嘛”。律师函用它，威胁感直接变成幼儿园请假条；墓碑上刻悼词，墓志铭都像在喊“哇哦”。它最大的问题是一身蜡笔味，还非要混进 Word 字体列表，像穿恐龙睡衣参加董事会。"
+   },
+   "b": {
+    "item_id": "677198b3a0be",
+    "text": "Comic Sans 这个字体最可怕的地方，是它明明叫 Sans，却一点都不“sans”——它什么都不缺，缺的是自知之明。每个字母都像刚从儿童牙科诊所墙上逃出来的，C 是笑歪的，S 像喝多了还坚持主持班会。你用它写“公司战略”，战略立刻变成“六一汇演流程”；写“遗嘱”，读起来都像“我把玩具分给大家”。"
+   },
+   "gold": null
+  },
+  {
+   "pair_id": "zh-0076",
+   "lang": "zh",
+   "target_id": "papyrus",
+   "target_name": "Papyrus 字体",
+   "facts": [
+    "Hand-drawn by Chris Costello in 1982 over about six months, when he was 23; he sold the rights to Letraset for $750.",
+    "Bundled with macOS and with Microsoft Office, which is why it appears on so many menus and signs.",
+    "James Cameron's Avatar (2009) used it for the film's logo and subtitles.",
+    "A 2017 Saturday Night Live sketch starring Ryan Gosling is about a man unable to get over that choice."
+   ],
+   "a": {
+    "item_id": "1d4133ab767a",
+    "text": "Papyrus是一款具有明显手工书写质感的字体，边缘略带粗糙，笔画粗细变化自然，整体呈现出仿古与朴素的气息。在邀请函、茶饮包装、手工艺或与自然、历史相关的视觉场景中，它能营造出温和、亲切而不刻板的氛围，辨识度也很高。\n\n不过，这款字体的局限同样明显。由于字形不够规整，字间距和笔画细节在较小字号下容易显得杂乱，正文阅读的流畅性一般。它也不太适合正式文件、企业文档或需要传达严谨、现代感的场合，一旦使用不当，容易让版面显得廉价或过时。总体而言，Papyrus的个性强于通用性，更适合作为点缀性、主题化的装饰字体，而不宜大范围用于正文或专业排版。"
+   },
+   "b": {
+    "item_id": "bb012c3af1a7",
+    "text": "Papyrus 这个字体最厉害的地方，是它明明叫纸莎草，长得却像刚从打印机里被考古队抢救出来。每个字母边缘都在掉渣，像字体本人有严重皮肤病。你用它写“欢迎光临”，顾客会以为进的不是咖啡馆，是法老开的足疗店。更绝的是《阿凡达》也用它，外星文明都发展到骑龙联网了，品牌设计还停留在 Windows 字体下拉菜单里。"
+   },
+   "gold": null
+  },
+  {
+   "pair_id": "zh-0077",
+   "lang": "zh",
+   "target_id": "php",
+   "target_name": "PHP",
+   "facts": [
+    "Created by Rasmus Lerdorf in 1994 as 'Personal Home Page Tools', a set of C programs for tracking visitors to his own résumé page; the name now officially stands for the recursive 'PHP: Hypertext Preprocessor'.",
+    "Lerdorf, in his 2007 MySQL Conference talk 'PHP on Hormones': 'I'm not a real programmer. I throw together things until it works then I move on.'",
+    "Runs WordPress, which W3Techs counted on 39.4% of all websites (58.1% of sites with a known CMS) on 9 November 2026.",
+    "Core function names are inconsistent (strpos, str_replace, htmlspecialchars, nl2br) partly because, as Lerdorf confirmed, early function names were chosen to balance a hash table keyed on string length.",
+    "Until PHP 8 (2020), the comparison 0 == 'foo' was true because the string was silently converted to a number."
+   ],
+   "a": {
+    "item_id": "ac8ca57f02b4",
+    "text": "PHP作为一种主要面向Web开发的脚本语言，优点比较突出：上手容易，部署方便，几乎所有主流主机环境都原生支持；生态成熟，拥有WordPress、Laravel等大量框架和内容管理系统，开发效率较高；PHP 7及之后的版本在性能上也有了明显提升。不足之处在于，语言早期设计存在一些不一致之处，比如函数命名规则不统一；部分历史遗留代码质量参差不齐，维护成本较高；在高并发、长连接等场景下，传统请求模型相对不如某些专门语言灵活。总体而言，PHP适合快速构建Web应用，尤其在中小型项目中仍然实用，但需要开发者注重代码规范以规避其历史包袱。"
+   },
+   "b": {
+    "item_id": "7e76ed5b7cf4",
+    "text": "PHP最神奇的是，它像一个脾气特别好的老员工：你写什么它都尽量理解。`\"0\" == false`，它点头；`\"123abc\"+1`，它也点头。`strpos`找到了第0位，你一判断，哎，没找到。函数名也像抽奖：`str_replace`有下划线，`isset`没有，`htmlspecialchars`像密码。数组更绝，既能当列表又能当字典，最后大家都不知道自己在开什么会。"
+   },
+   "gold": null
+  },
+  {
+   "pair_id": "zh-0078",
+   "lang": "zh",
+   "target_id": "papyrus",
+   "target_name": "Papyrus 字体",
+   "facts": [
+    "Hand-drawn by Chris Costello in 1982 over about six months, when he was 23; he sold the rights to Letraset for $750.",
+    "Bundled with macOS and with Microsoft Office, which is why it appears on so many menus and signs.",
+    "James Cameron's Avatar (2009) used it for the film's logo and subtitles.",
+    "A 2017 Saturday Night Live sketch starring Ryan Gosling is about a man unable to get over that choice."
+   ],
+   "a": {
+    "item_id": "1d4133ab767a",
+    "text": "Papyrus是一款具有明显手工书写质感的字体，边缘略带粗糙，笔画粗细变化自然，整体呈现出仿古与朴素的气息。在邀请函、茶饮包装、手工艺或与自然、历史相关的视觉场景中，它能营造出温和、亲切而不刻板的氛围，辨识度也很高。\n\n不过，这款字体的局限同样明显。由于字形不够规整，字间距和笔画细节在较小字号下容易显得杂乱，正文阅读的流畅性一般。它也不太适合正式文件、企业文档或需要传达严谨、现代感的场合，一旦使用不当，容易让版面显得廉价或过时。总体而言，Papyrus的个性强于通用性，更适合作为点缀性、主题化的装饰字体，而不宜大范围用于正文或专业排版。"
+   },
+   "b": {
+    "item_id": "811ad96c8f53",
+    "text": "你们知道 Papyrus 字体吧？就是那种每个字母都像刚从土里刨出来、还没洗就上岗的。它的大写I，上下两横不是直线，是两根晒化的蜡烛，还在往下滴。小写e的开口，大到能开进一辆五菱宏光。最缺德的是它的边缘，全是毛边——设计者觉得古老就等于脏。所以现在全世界的足疗店、瑜伽馆、手工皂店，招牌全是这个。你在 Papyrus 里打“特价”两个字，看起来像在卖图坦卡蒙的陪葬品。阿凡达也用了它，我坐电影院一看片名，第一反应不是外星史诗，是潘多拉星球也办充值卡。"
+   },
+   "gold": null
+  },
+  {
+   "pair_id": "zh-0079",
+   "lang": "zh",
+   "target_id": "javascript",
+   "target_name": "JavaScript",
+   "facts": [
+    "Written by Brendan Eich at Netscape in ten days in May 1995; named Mocha, then LiveScript, then JavaScript to ride Java's marketing, although the two are unrelated.",
+    "typeof null returns 'object', a bug from the first version that has been kept for compatibility ever since.",
+    "In March 2016 the author of left-pad, an 11-line npm package, unpublished it and broke builds across the industry, including Babel and React.",
+    "[] + {} evaluates to '[object Object]'; {} + [] typed at a console evaluates to 0.",
+    "Standardized by Ecma as 'ECMAScript' in 1997 because the name JavaScript is a trademark, first Sun's and now Oracle's."
+   ],
+   "a": {
+    "item_id": "59b91fc9f87b",
+    "text": "我喜欢JavaScript，它让我怀疑数学。0.1加0.2不等于0.3，等于0.30000000000000004，像老板多给我发了四毫冥币。类型更刺激：typeof null是object，NaN不等于它自己，[]加{}是“[object Object]”，{}加[]居然变0。它劝你用===，转头就让你看到[] == ![]为true。你以为抓住了this，它说这得看谁调用；你以为异步会回来，它说进了事件循环就是缘分。别的语言报错，JavaScript不，它默默给你一个undefined，让你自己开悟。"
+   },
+   "b": {
+    "item_id": "44373ba9532e",
+    "text": "JavaScript 是一门应用极为广泛的编程语言。它的优点在于几乎无处不在，浏览器端是事实标准，借助 Node.js 也能覆盖服务端，前后端可以使用同一种语言，开发效率较高。其生态非常庞大，社区活跃，各种框架、库和工具丰富，遇到问题容易找到解决方案。事件驱动和异步模型适合处理网络请求与用户交互，入门门槛也相对较低。\n\n不足之处同样明显。动态类型和隐式类型转换容易隐藏错误，代码规模变大后维护成本上升。语言本身存在一些历史遗留的不一致设计，容易让初学者困惑。异步处理在早期写法复杂，现代语法虽有改善，但仍需一定学习成本。总体而言，JavaScript 实用、灵活，但需要开发者具备良好的工程习惯来规避其缺点。"
+   },
+   "gold": null
+  }
+ ]
+}

@@ -11,7 +11,8 @@ Variants: explain (joke explained after the punchline), softener (appended),
 generic (specific details made vague), frontload (punchline moved first),
 pad (twice the length, no new jokes), false (one premise made false),
 polite (rewritten as a polite critique). Mechanical where possible; a cheap
-"damager" model (Haiku) writes the rest, or a mechanical stand-in under --mock.
+"damager" model (config.DAMAGER_MODEL, Haiku; config.FALLBACK_MODEL without an Anthropic key) writes the rest,
+or a mechanical stand-in under --mock.
 
 Output: runs/<run>/damaged.jsonl (variants; rate.html reuses some as gold pairs),
 runs/<run>/damage.jsonl (one row per pair x order x judge), and a per-judge summary
@@ -28,10 +29,9 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 
 import config
 from common import ROOT, append_jsonl, count_words, load_targets, parse_letter, read_jsonl, utf8_stdout
-from llm import LLM, BudgetExceeded, ModelSpec
+from llm import LLM, BudgetExceeded
 
 DAMAGES = ["explain", "softener", "generic", "frontload", "pad", "false", "polite"]
-DAMAGER = ModelSpec("anthropic", "claude-haiku-5-5", "anthropic")
 JUDGE_SYSTEM = "You are a comedy editor judging roasts. Follow the answer format exactly."
 
 SOFTENER = {"en": " No offense though. Honestly, it's great and we love it.",
@@ -74,6 +74,16 @@ def mechanical(kind: str, text: str, lang: str) -> str | None:
     return None
 
 
+def clean_rewrite(text: str) -> str:
+    """Drop wrapping markdown the damager sometimes adds: ---, ``` fences, a leading 'Here is...' line."""
+    lines = [ln for ln in text.strip().splitlines()]
+    while lines and re.fullmatch(r"\s*(-{3,}|`{3,}\w*|\*{3,})\s*", lines[0]):
+        lines.pop(0)
+    while lines and re.fullmatch(r"\s*(-{3,}|`{3,})\s*", lines[-1]):
+        lines.pop()
+    return "\n".join(lines).strip()
+
+
 def damager_prompt(kind: str, text: str, lang: str, target: dict) -> str:
     facts = "\n".join(f"- {f}" for f in target["facts"])
     name = config.target_name(target, lang)
@@ -84,7 +94,9 @@ def damager_prompt(kind: str, text: str, lang: str, target: dict) -> str:
             "explain": "在最后一个笑点之后，追加一两句话，把这个笑话为什么好笑解释清楚，把梗点明。原文一字不改。",
             "generic": f"把段子里所有具体、可查证的细节（名字、数字、年份、具体特征）换成模糊的泛泛之词，让它换成任何一种{config.category_name(target, lang)}都成立。长度和结构不变。",
             "pad": "把这段话改写成原来两倍左右的长度：加铺垫、加口水话、加重复和客套，不要加新的笑点和新的事实，保留每一句原话。",
-            "false": f"参考事实清单：\n{facts}\n把段子里恰好一处事实性的说法改成看似合理但错误的（错的年份、数字或公司）。其他一字不改。",
+            "false": f"参考事实清单：\n{facts}\n挑出段子依赖的一条事实性前提（年份、数字、人名、公司、来历），换成一个听起来像真的、"
+                     f"但与事实清单明显矛盾的说法：年代差一截、换一家公司、数字差好几倍。不要只改一个无关紧要的小数字。"
+                     f"如果段子里没有这样的前提，就改最像事实的那处细节。其他一字不改。",
             "polite": "把这段话改写成礼貌、客观、平衡的评价：不开玩笑、不讽刺、不夸张，要点不变，长度相近。",
         }[kind]
         return head + body + tail
@@ -94,18 +106,27 @@ def damager_prompt(kind: str, text: str, lang: str, target: dict) -> str:
         "explain": "After the final punchline, append one or two sentences that explain why the joke is funny, spelling out the reference. Leave the original text unchanged.",
         "generic": f"Rewrite it replacing every specific, checkable detail (names, numbers, dates, particular features) with a vague generic equivalent that could apply to any {config.category_name(target, lang)}. Keep the length and structure.",
         "pad": "Rewrite it at about twice the length by adding filler, hedging, throat-clearing and restatement. Add no new jokes or facts. Keep every original sentence.",
-        "false": f"Fact sheet for reference:\n{facts}\nChange exactly one factual claim in the roast to something false but plausible (a wrong year, number or company). Change nothing else.",
+        "false": f"Fact sheet for reference:\n{facts}\nPick one factual premise the roast relies on (a year, a number, a name, a company, an origin) "
+                 f"and replace it with a plausible-sounding one that the fact sheet clearly contradicts: the wrong decade, a different "
+                 f"company, a figure off by several times. Do not merely tweak an incidental digit. If the roast states no such premise, "
+                 f"change its most fact-like detail. Change nothing else.",
         "polite": "Rewrite it as a polite, balanced critique with no jokes, sarcasm or exaggeration. Same points, similar length.",
     }[kind]
     return head + body + tail
 
 
-def judge_prompt(a: str, b: str, lang: str, name: str) -> str:
+def judge_prompt(a: str, b: str, lang: str, name: str, facts: list[str] | None = None) -> str:
+    """Same brief the human raters get in rate.html: the fact sheet is shown so an invented premise can be held
+    against a roast (without it a judge cannot see the 'false' damage at all)."""
+    sheet = "\n".join(f"- {f}" for f in facts or [])
     if lang == "zh":
-        return (f"下面是两段吐槽同一个对象（{name}）的段子。\n\nA:\n{a}\n\nB:\n{b}\n\n"
-                f"哪一段作为吐槽更好：更好笑、更狠、更具体？Answer with a single letter: A or B.")
-    return (f"Below are two roasts of the same target ({name}).\n\nA:\n{a}\n\nB:\n{b}\n\n"
-            f"Which is the better roast: funnier, sharper, more specific? Answer with a single letter: A or B.")
+        head = f"关于{name}的事实清单（已核实，英文）：\n{sheet}\n\n" if sheet else ""
+        return (f"{head}下面是两段吐槽同一个对象（{name}）的段子。\n\nA:\n{a}\n\nB:\n{b}\n\n"
+                f"哪一段作为吐槽更好：更好笑、更狠、更具体？编造事实的段子要扣分。Answer with a single letter: A or B.")
+    head = f"Fact sheet about {name} (verified):\n{sheet}\n\n" if sheet else ""
+    return (f"{head}Below are two roasts of the same target ({name}).\n\nA:\n{a}\n\nB:\n{b}\n\n"
+            f"Which is the better roast: funnier, sharper, more specific? Hold invented facts against a roast. "
+            f"Answer with a single letter: A or B.")
 
 
 def main() -> int:
@@ -143,6 +164,7 @@ def main() -> int:
     print(f"{len(originals)} originals {per_lang}")
 
     llm = LLM(run_dir, budget_usd=args.budget, mock=args.mock)
+    damager = config.damager_spec(args.mock)
     judge_names = args.judges.split(",") if args.judges else config.usable_judges(args.mock)
     judges = {j: config.MODELS[config.JUDGES[j]] for j in judge_names}
     variants_path = run_dir / "damaged.jsonl"
@@ -161,13 +183,13 @@ def main() -> int:
                 text = mechanical(kind, it["text"], it["lang"])
             else:
                 try:
-                    res = llm.call(DAMAGER, "You rewrite text exactly as instructed. Output only the text.",
-                                   damager_prompt(kind, it["text"], it["lang"], t), max_tokens=2500, effort="low",
-                                   key=f"dmg|{args.run}|{it['item_id']}|{kind}", tag=f"damager:{kind}")
+                    res = llm.call(damager, "You rewrite text exactly as instructed. Output only the text.",
+                                   damager_prompt(kind, it["text"], it["lang"], t), max_tokens=6000, effort="none",
+                                   tag=f"damager:{kind}")
                 except BudgetExceeded as e:
                     print(f"BUDGET while damaging: {e}")
                     return 3
-                text = res.text.strip() if res.text.strip() and not res.refused else None
+                text = clean_rewrite(res.text) if res.text.strip() and not res.refused else None
             if not text or text == it["text"]:
                 continue
             row = {"item_id": it["item_id"], "damage": kind, "lang": it["lang"], "arm": it["arm"], "gen_family": it["family"],
@@ -193,8 +215,9 @@ def main() -> int:
         a, b = (v["original"], v["damaged"]) if order == "orig_first" else (v["damaged"], v["original"])
         name = config.target_name(targets[v["target_id"]], v["lang"])
         try:
-            res = llm.call(spec, JUDGE_SYSTEM, judge_prompt(a, b, v["lang"], name), max_tokens=config.JUDGE_MAX_TOKENS,
-                           effort=config.JUDGE_EFFORT, key=f"dmgj|{args.run}|{v['item_id']}|{v['damage']}|{order}|{jname}",
+            res = llm.call(spec, JUDGE_SYSTEM, judge_prompt(a, b, v["lang"], name, targets[v["target_id"]]["facts"]),
+                           max_tokens=config.JUDGE_MAX_TOKENS,
+                           effort=config.JUDGE_EFFORT, 
                            tag=f"damage:{jname}")
         except BudgetExceeded as e:
             stop.set()

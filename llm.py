@@ -21,6 +21,8 @@ from __future__ import annotations
 import hashlib
 import json
 import os
+import random
+import re
 import threading
 import time
 from dataclasses import asdict, dataclass
@@ -45,6 +47,47 @@ DEFAULT_PRICE = (2.00, 8.00)
 
 class BudgetExceeded(RuntimeError):
     pass
+
+
+MAX_ATTEMPTS = 8  # per request, on 429 / 5xx / connection errors
+
+
+class _Throttle:
+    """Per-model spacing between requests, switched on by the first 429.
+
+    OpenRouter limits new accounts to 20 requests per minute per model (seen 9 Nov 2026 on
+    openai/gpt-5.5); the judge stages fire fast calls from several workers and hit it at once.
+    """
+
+    def __init__(self) -> None:
+        self._lock = threading.Lock()
+        self._interval: dict[str, float] = {}
+        self._next_ok: dict[str, float] = {}
+
+    def wait(self, model: str) -> None:
+        with self._lock:
+            iv = self._interval.get(model)
+            if not iv:
+                return
+            now = time.time()
+            t = max(now, self._next_ok.get(model, now))
+            self._next_ok[model] = t + iv
+        if t > time.time():
+            time.sleep(t - time.time())
+
+    def slow_down(self, model: str, rpm: float) -> float:
+        with self._lock:
+            iv = max(self._interval.get(model, 0.0), 60.0 / rpm)
+            self._interval[model] = iv
+            return iv
+
+
+def _retry_after(exc) -> Optional[float]:
+    try:
+        v = exc.response.headers.get("retry-after")
+        return float(v) if v else None
+    except Exception:  # noqa: BLE001
+        return None
 
 
 @dataclass(frozen=True)
@@ -87,6 +130,7 @@ class LLM:
         self._spent = self._load_spent()
         self._anthropic = None
         self._openrouter = None
+        self._throttle = _Throttle()
 
     # ---- ledger -----------------------------------------------------------
     def _load_spent(self) -> float:
@@ -133,7 +177,7 @@ class LLM:
             if not key:
                 raise RuntimeError("OPENROUTER_API_KEY not set")
             self._openrouter = OpenAI(
-                base_url="https://openrouter.ai/api/v1", api_key=key, max_retries=3, timeout=180.0,
+                base_url="https://openrouter.ai/api/v1", api_key=key, max_retries=1, timeout=180.0,  # retries live in _call_openrouter
             )
         return self._openrouter
 
@@ -176,7 +220,7 @@ class LLM:
             elif provider == "anthropic":
                 fields, raw = self._call_anthropic(spec, system, user, max_tokens, effort)
             elif provider == "openrouter":
-                fields, raw = self._call_openrouter(spec, system, user, max_tokens, temperature)
+                fields, raw = self._call_openrouter(spec, system, user, max_tokens, temperature, effort)
             else:
                 raise ValueError(f"unknown provider {provider!r}")
         except BudgetExceeded:
@@ -202,7 +246,7 @@ class LLM:
         client = self._get_anthropic()
         kwargs = dict(model=spec.model, max_tokens=max_tokens, system=system,
                       messages=[{"role": "user", "content": user}])
-        if effort:
+        if effort and effort != "none":
             kwargs["output_config"] = {"effort": effort}
         r = client.messages.create(**kwargs)
         text = "".join(b.text for b in r.content if b.type == "text")
@@ -221,18 +265,45 @@ class LLM:
         )
         return fields, r.to_dict()
 
-    def _call_openrouter(self, spec: ModelSpec, system: str, user: str, max_tokens: int, temperature: Optional[float]):
+    def _call_openrouter(self, spec: ModelSpec, system: str, user: str, max_tokens: int, temperature: Optional[float],
+                         effort: Optional[str] = None):
         client = self._get_openrouter()
+        extra_body: dict = {"usage": {"include": True}}
+        if effort == "none":  # mechanical tasks (the damager): no thinking at all
+            extra_body["reasoning"] = {"enabled": False}
+        elif effort:  # OpenRouter normalises reasoning effort across OpenAI, Google, DeepSeek and Qwen
+            extra_body["reasoning"] = {"effort": effort}
         kwargs = dict(
             model=spec.model,
             max_tokens=max_tokens,
             messages=[{"role": "system", "content": system}, {"role": "user", "content": user}],
-            extra_body={"usage": {"include": True}},
+            extra_body=extra_body,
             extra_headers={"X-Title": "roast-bench"},
         )
         if temperature is not None:
             kwargs["temperature"] = temperature
-        r = client.chat.completions.create(**kwargs)
+        import openai
+
+        for attempt in range(MAX_ATTEMPTS):
+            self._throttle.wait(spec.model)
+            try:
+                r = client.chat.completions.create(**kwargs)
+                break
+            except openai.RateLimitError as e:
+                m = re.search(r"(\d+)\s+requests per minute", str(e))
+                rpm = float(m.group(1)) if m else 20.0
+                iv = self._throttle.slow_down(spec.model, rpm * 0.8)
+                if attempt == MAX_ATTEMPTS - 1:
+                    raise
+                delay = _retry_after(e) or min(60.0, 5.0 * 2 ** attempt)
+                print(f"429 on {spec.model}: spacing requests {iv:.1f}s, retry in {delay:.0f}s", flush=True)
+                time.sleep(delay + random.uniform(0, 1))
+            except (openai.APIConnectionError, openai.APITimeoutError, openai.InternalServerError) as e:
+                if attempt == MAX_ATTEMPTS - 1:
+                    raise
+                delay = min(60.0, 3.0 * 2 ** attempt)
+                print(f"{type(e).__name__} on {spec.model}: retry in {delay:.0f}s", flush=True)
+                time.sleep(delay + random.uniform(0, 1))
         choice = r.choices[0] if r.choices else None
         text = (choice.message.content or "") if choice else ""
         finish = (choice.finish_reason or "") if choice else "no_choice"
@@ -246,7 +317,10 @@ class LLM:
         if cost is None:
             p_in, p_out = DEFAULT_PRICE
             cost = (in_tok * p_in + out_tok * p_out) / 1e6
-        refused = finish == "content_filter" or (finish != "length" and text.strip() == "")
+        if finish == "length" and not text.strip():
+            # reasoning ate the whole max_tokens budget: an error (retried on resume), not a roast
+            raise RuntimeError(f"length: no visible text after {max_tokens} tokens")
+        refused = finish == "content_filter" or text.strip() == ""
         fields = dict(text=text, stop_reason=finish, refused=refused, input_tokens=in_tok,
                       output_tokens=out_tok, cost_usd=round(float(cost), 6))
         return fields, r.model_dump()

@@ -1,0 +1,77 @@
+{
+ "run": "smoke-or",
+ "created": "2026-11-09T17:28:33+00:00",
+ "mock": false,
+ "budget_usd": 4.0,
+ "langs": [
+  "en",
+  "zh"
+ ],
+ "samples": 1,
+ "n_targets": 4,
+ "arms": [
+  {
+   "name": "plain-gpt",
+   "kind": "plain",
+   "model": "gpt",
+   "spec": {
+    "provider": "openrouter",
+    "model": "openai/gpt-5.5",
+    "family": "openai"
+   }
+  },
+  {
+   "name": "plain-gemini",
+   "kind": "plain",
+   "model": "gemini",
+   "spec": {
+    "provider": "openrouter",
+    "model": "google/gemini-3.1-pro-preview",
+    "family": "google"
+   }
+  },
+  {
+   "name": "plain-deepseek",
+   "kind": "plain",
+   "model": "deepseek",
+   "spec": {
+    "provider": "openrouter",
+    "model": "deepseek/deepseek-v4-pro-0813",
+    "family": "deepseek"
+   }
+  },
+  {
+   "name": "plain-qwen",
+   "kind": "plain",
+   "model": "qwen",
+   "spec": {
+    "provider": "openrouter",
+    "model": "qwen/qwen3.8-max-0902",
+    "family": "alibaba"
+   }
+  },
+  {
+   "name": "control-bland",
+   "kind": "bland",
+   "model": "deepseek",
+   "fallback": true,
+   "spec": {
+    "provider": "openrouter",
+    "model": "deepseek/deepseek-v4-pro-0813",
+    "family": "deepseek"
+   }
+  },
+  {
+   "name": "control-generic",
+   "kind": "generic",
+   "model": "deepseek",
+   "fallback": true,
+   "spec": {
+    "provider": "openrouter",
+    "model": "deepseek/deepseek-v4-pro-0813",
+    "family": "deepseek"
+   }
+  }
+ ],
+ "sampling_policy": "provider default; Claude 5.5 models accept no temperature"
+}

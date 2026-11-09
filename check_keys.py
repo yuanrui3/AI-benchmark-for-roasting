@@ -86,5 +86,9 @@ if __name__ == "__main__":
     if ok_a:
         print("Anthropic only: Claude arms and judges will run; other model families will be skipped.")
         sys.exit(0)
+    if ok_o:
+        print("OpenRouter only: GPT, Gemini, DeepSeek and Qwen arms and the GPT judge will run; the Claude arms are "
+              "skipped, and the controls and the damager run on config.FALLBACK_MODEL.")
+        sys.exit(0)
     print("No usable key yet. The pipeline will run in mock mode.")
     sys.exit(1)

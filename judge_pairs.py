@@ -53,9 +53,9 @@ def main() -> int:
         spec = judges[jname]
         first, second = (p["a"], p["b"]) if order == "ab" else (p["b"], p["a"])
         try:
-            res = llm.call(spec, JUDGE_SYSTEM, judge_prompt(first["text"], second["text"], p["lang"], p["target_name"]),
+            res = llm.call(spec, JUDGE_SYSTEM, judge_prompt(first["text"], second["text"], p["lang"], p["target_name"], p["facts"]),
                            max_tokens=config.JUDGE_MAX_TOKENS, effort=config.JUDGE_EFFORT,
-                           key=f"jp|{args.run}|{p['pair_id']}|{order}|{jname}", tag=f"judge_pairs:{jname}")
+                           tag=f"judge_pairs:{jname}")
         except BudgetExceeded as e:
             stop.set()
             print(f"BUDGET: {e}")

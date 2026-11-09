@@ -96,7 +96,7 @@ def main() -> int:
             return
         try:
             res = llm.call(spec, JUDGE_SYSTEM, prompt, max_tokens=config.JUDGE_MAX_TOKENS, effort=config.JUDGE_EFFORT,
-                           key=f"spec|{args.run}|{base['item_id']}|{jname}", tag=f"spec:{jname}")
+                           tag=f"spec:{jname}")
         except BudgetExceeded as e:
             stop.set()
             print(f"BUDGET: {e}")

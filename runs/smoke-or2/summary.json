@@ -1,0 +1,384 @@
+{
+ "run": "smoke-or2",
+ "generated": "2026-11-09T19:04:35+00:00",
+ "langs": [
+  "en",
+  "zh"
+ ],
+ "arms": [
+  "plain-gpt",
+  "plain-gemini",
+  "plain-deepseek",
+  "plain-qwen",
+  "control-bland",
+  "control-generic"
+ ],
+ "generation": {
+  "plain-gpt|en": {
+   "n": 4,
+   "refused": 0,
+   "errors": 0,
+   "mean_words": 123.5,
+   "cost": 0.029
+  },
+  "plain-gpt|zh": {
+   "n": 4,
+   "refused": 0,
+   "errors": 0,
+   "mean_words": 105.5,
+   "cost": 0.028
+  },
+  "plain-gemini|en": {
+   "n": 4,
+   "refused": 0,
+   "errors": 0,
+   "mean_words": 140.5,
+   "cost": 0.081
+  },
+  "plain-gemini|zh": {
+   "n": 4,
+   "refused": 0,
+   "errors": 0,
+   "mean_words": 173.5,
+   "cost": 0.112
+  },
+  "plain-deepseek|en": {
+   "n": 4,
+   "refused": 0,
+   "errors": 0,
+   "mean_words": 141.0,
+   "cost": 0.006
+  },
+  "plain-deepseek|zh": {
+   "n": 4,
+   "refused": 0,
+   "errors": 0,
+   "mean_words": 152.2,
+   "cost": 0.003
+  },
+  "plain-qwen|en": {
+   "n": 4,
+   "refused": 0,
+   "errors": 0,
+   "mean_words": 115.5,
+   "cost": 0.023
+  },
+  "plain-qwen|zh": {
+   "n": 4,
+   "refused": 0,
+   "errors": 0,
+   "mean_words": 145.2,
+   "cost": 0.077
+  },
+  "control-bland|en": {
+   "n": 4,
+   "refused": 0,
+   "errors": 0,
+   "mean_words": 121.0,
+   "cost": 0.007
+  },
+  "control-bland|zh": {
+   "n": 4,
+   "refused": 0,
+   "errors": 0,
+   "mean_words": 218.5,
+   "cost": 0.008
+  },
+  "control-generic|en": {
+   "n": 4,
+   "refused": 0,
+   "errors": 0,
+   "mean_words": 143.2,
+   "cost": 0.012
+  },
+  "control-generic|zh": {
+   "n": 4,
+   "refused": 0,
+   "errors": 0,
+   "mean_words": 235.8,
+   "cost": 0.014
+  }
+ },
+ "profile": {
+  "plain-gpt|en": {
+   "softeners": 0.0,
+   "stock": 0.25,
+   "collision": 0.0,
+   "wps": 15.4
+  },
+  "plain-gemini|en": {
+   "softeners": 0.0,
+   "stock": 0.25,
+   "collision": 0.0,
+   "wps": 11.0
+  },
+  "plain-deepseek|en": {
+   "softeners": 0.0,
+   "stock": 0.75,
+   "collision": 0.0,
+   "wps": 12.8
+  },
+  "plain-qwen|en": {
+   "softeners": 0.0,
+   "stock": 0.75,
+   "collision": 0.0,
+   "wps": 16.5
+  },
+  "control-bland|en": {
+   "softeners": 0.0,
+   "stock": 0.0,
+   "collision": 0.0,
+   "wps": 16.1
+  },
+  "control-generic|en": {
+   "softeners": 0.0,
+   "stock": 0.0,
+   "collision": 0.0,
+   "wps": 14.0
+  },
+  "plain-gpt|zh": {
+   "softeners": 0.0,
+   "stock": 0.0,
+   "collision": 0.0,
+   "wps": 20.1
+  },
+  "plain-gemini|zh": {
+   "softeners": 0.0,
+   "stock": 0.25,
+   "collision": 0.0,
+   "wps": 16.1
+  },
+  "plain-deepseek|zh": {
+   "softeners": 0.0,
+   "stock": 0.0,
+   "collision": 0.0,
+   "wps": 16.9
+  },
+  "plain-qwen|zh": {
+   "softeners": 0.0,
+   "stock": 0.0,
+   "collision": 0.0,
+   "wps": 16.1
+  },
+  "control-bland|zh": {
+   "softeners": 0.0,
+   "stock": 0.0,
+   "collision": 0.0,
+   "wps": 31.2
+  },
+  "control-generic|zh": {
+   "softeners": 0.0,
+   "stock": 0.0,
+   "collision": 0.0,
+   "wps": 21.4
+  }
+ },
+ "specificity": {
+  "plain-gpt|en": {
+   "n": 4,
+   "acc": 1.0,
+   "twin_acc": 1.0,
+   "leak": 0.0,
+   "lex": -0.0029
+  },
+  "plain-gpt|zh": {
+   "n": 4,
+   "acc": 1.0,
+   "twin_acc": 1.0,
+   "leak": 0.0,
+   "lex": 0.0049
+  },
+  "plain-gemini|en": {
+   "n": 4,
+   "acc": 1.0,
+   "twin_acc": 1.0,
+   "leak": 0.0,
+   "lex": 0.0228
+  },
+  "plain-gemini|zh": {
+   "n": 4,
+   "acc": 1.0,
+   "twin_acc": 1.0,
+   "leak": 0.0,
+   "lex": -0.0002
+  },
+  "plain-deepseek|en": {
+   "n": 4,
+   "acc": 1.0,
+   "twin_acc": 1.0,
+   "leak": 0.0,
+   "lex": 0.0255
+  },
+  "plain-deepseek|zh": {
+   "n": 4,
+   "acc": 1.0,
+   "twin_acc": 1.0,
+   "leak": 0.0,
+   "lex": 0.0024
+  },
+  "plain-qwen|en": {
+   "n": 4,
+   "acc": 1.0,
+   "twin_acc": 1.0,
+   "leak": 0.0,
+   "lex": 0.0287
+  },
+  "plain-qwen|zh": {
+   "n": 4,
+   "acc": 1.0,
+   "twin_acc": 1.0,
+   "leak": 0.0,
+   "lex": 0.0092
+  },
+  "control-bland|en": {
+   "n": 4,
+   "acc": 1.0,
+   "twin_acc": 1.0,
+   "leak": 0.0,
+   "lex": 0.005
+  },
+  "control-bland|zh": {
+   "n": 4,
+   "acc": 1.0,
+   "twin_acc": 1.0,
+   "leak": 0.0,
+   "lex": 0.002
+  },
+  "control-generic|en": {
+   "n": 4,
+   "acc": 0.5,
+   "twin_acc": 0.5,
+   "leak": 0.0,
+   "lex": -0.002
+  },
+  "control-generic|zh": {
+   "n": 4,
+   "acc": 0.5,
+   "twin_acc": 0.5,
+   "leak": 0.0,
+   "lex": 0.0
+  }
+ },
+ "truth": {
+  "plain-gpt|en": {
+   "n": 4,
+   "pass": 1.0,
+   "claims": 8.5,
+   "contra": 0.0,
+   "absent": 6.25
+  },
+  "plain-gpt|zh": {
+   "n": 4,
+   "pass": 0.75,
+   "claims": 4.75,
+   "contra": 0.25,
+   "absent": 2.5
+  },
+  "plain-gemini|en": {
+   "n": 4,
+   "pass": 1.0,
+   "claims": 7.75,
+   "contra": 0.0,
+   "absent": 4.25
+  },
+  "plain-gemini|zh": {
+   "n": 4,
+   "pass": 1.0,
+   "claims": 5.0,
+   "contra": 0.0,
+   "absent": 2.5
+  },
+  "plain-deepseek|en": {
+   "n": 4,
+   "pass": 1.0,
+   "claims": 9.25,
+   "contra": 0.0,
+   "absent": 6.0
+  },
+  "plain-deepseek|zh": {
+   "n": 4,
+   "pass": 1.0,
+   "claims": 5.0,
+   "contra": 0.0,
+   "absent": 3.25
+  },
+  "plain-qwen|en": {
+   "n": 4,
+   "pass": 1.0,
+   "claims": 8.5,
+   "contra": 0.0,
+   "absent": 4.5
+  },
+  "plain-qwen|zh": {
+   "n": 4,
+   "pass": 1.0,
+   "claims": 7.0,
+   "contra": 0.0,
+   "absent": 4.0
+  },
+  "control-bland|en": {
+   "n": 4,
+   "pass": 1.0,
+   "claims": 13.0,
+   "contra": 0.0,
+   "absent": 11.0
+  },
+  "control-bland|zh": {
+   "n": 4,
+   "pass": 1.0,
+   "claims": 11.75,
+   "contra": 0.0,
+   "absent": 8.75
+  }
+ },
+ "judges": {
+  "judge-gpt|en": {
+   "overall": 0.94,
+   "p_first": 0.512,
+   "per": {
+    "explain": 1.0,
+    "false": 0.75,
+    "frontload": 0.8333333333333334,
+    "generic": 1.0,
+    "pad": 1.0,
+    "polite": 1.0,
+    "softener": 1.0
+   },
+   "self_pref": -0.014,
+   "verdict": "usable"
+  },
+  "judge-gpt|zh": {
+   "overall": 0.917,
+   "p_first": 0.536,
+   "per": {
+    "explain": 0.8333333333333334,
+    "false": 0.8333333333333334,
+    "frontload": 0.75,
+    "generic": 1.0,
+    "pad": 1.0,
+    "polite": 1.0,
+    "softener": 1.0
+   },
+   "self_pref": 0.1,
+   "verdict": "discard"
+  }
+ },
+ "votes": {
+  "n": 0,
+  "raters": []
+ },
+ "bt_human": {},
+ "agreement": {},
+ "judge_human": {},
+ "gates": {
+  "controls_behave": [
+   null,
+   true
+  ],
+  "spread": null,
+  "raters_agree": null,
+  "specificity_varies": false,
+  "judge_usable": true
+ },
+ "verdict": "no verdict yet (human data missing)"
+}

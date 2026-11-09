@@ -168,7 +168,7 @@ def main() -> int:
         spec = config.MODELS[arm["model"]]
         try:
             res = llm.call(spec, j["system"], j["user"], max_tokens=config.GEN_MAX_TOKENS,
-                           key=f"gen|{run}|{j['item_id']}", tag=f"gen:{arm['name']}:{j['lang']}")
+                           key=f"gen|{run}|{j['item_id']}|{hashlib.sha1((j['system'] + j['user']).encode('utf-8')).hexdigest()[:8]}", tag=f"gen:{arm['name']}:{j['lang']}")
         except BudgetExceeded as e:
             stop.set()
             print(f"\nBUDGET: {e}")
