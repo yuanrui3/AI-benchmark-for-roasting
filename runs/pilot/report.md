@@ -1,6 +1,6 @@
 # Preflight report: run `pilot`
 
-Generated 2026-11-11T19:48:50+00:00. Gates were fixed before data was seen (CLAUDE.md).
+Generated 2026-11-11T19:51:01+00:00. Gates were fixed before data was seen (CLAUDE.md).
 
 ## Generation
 
@@ -61,41 +61,45 @@ One judge call per target and language groups that target's roasts by the image 
 | arm | lang | judge | items | cross-arm | self-repeat |
 |---|---|---|---:|---:|---:|
 | plain-opus | en | judge-opus | 88 | 44% | 68% |
-| plain-opus | en | judge-sonnet | 88 | 22% | 84% |
+| plain-opus | en | judge-sonnet | 88 | 57% | 80% |
 | plain-opus | zh | judge-opus | 88 | 51% | 66% |
-| plain-opus | zh | judge-sonnet | 88 | 18% | 80% |
+| plain-opus | zh | judge-sonnet | 88 | 73% | 70% |
 | facts-opus | en | judge-opus | 88 | 73% | 91% |
-| facts-opus | en | judge-sonnet | 88 | 73% | 86% |
+| facts-opus | en | judge-sonnet | 88 | 86% | 89% |
 | facts-opus | zh | judge-opus | 88 | 75% | 95% |
-| facts-opus | zh | judge-sonnet | 88 | 72% | 89% |
+| facts-opus | zh | judge-sonnet | 88 | 86% | 98% |
 | skill-opus | en | judge-opus | 88 | 67% | 91% |
-| skill-opus | en | judge-sonnet | 88 | 58% | 75% |
+| skill-opus | en | judge-sonnet | 88 | 76% | 86% |
 | skill-opus | zh | judge-opus | 88 | 75% | 93% |
-| skill-opus | zh | judge-sonnet | 88 | 60% | 70% |
+| skill-opus | zh | judge-sonnet | 88 | 81% | 82% |
 | plain-sonnet | en | judge-opus | 88 | 41% | 61% |
+| plain-sonnet | en | judge-sonnet | 88 | 62% | 77% |
 | plain-sonnet | zh | judge-opus | 88 | 51% | 64% |
+| plain-sonnet | zh | judge-sonnet | 88 | 70% | 64% |
 | plain-haiku | en | judge-opus | 88 | 32% | 57% |
+| plain-haiku | en | judge-sonnet | 88 | 51% | 70% |
 | plain-haiku | zh | judge-opus | 88 | 27% | 59% |
+| plain-haiku | zh | judge-sonnet | 88 | 40% | 64% |
 
 - judge-opus: 88 cells, 10.0 roasts from 5.0 arms per cell
-- judge-sonnet: 88 cells, 6.0 roasts from 3.0 arms per cell
-- en: judge-opus and judge-sonnet agree on whether two roasts share a device for 81% of 660 roast pairs both grouped (judge-opus puts 36% of them in one device, judge-sonnet 36%).
-- zh: judge-opus and judge-sonnet agree on whether two roasts share a device for 83% of 660 roast pairs both grouped (judge-opus puts 39% of them in one device, judge-sonnet 36%).
+- judge-sonnet: 88 cells, 10.0 roasts from 5.0 arms per cell
+- en: judge-opus and judge-sonnet agree on whether two roasts share a device for 83% of 1980 roast pairs both grouped (judge-opus puts 20% of them in one device, judge-sonnet 28%).
+- zh: judge-opus and judge-sonnet agree on whether two roasts share a device for 87% of 1980 roast pairs both grouped (judge-opus puts 23% of them in one device, judge-sonnet 28%).
 
 Attractors:
 
-- 4 arms, nfts (en): You bought a receipt, not art [judge-opus]
-- 4 arms, oat-milk (zh): 燕麦奶就是粥汤 [judge-opus]
-- 3 arms, beanie-babies (en): Beanie Babies as a fake retirement plan [judge-sonnet]
-- 3 arms, chicago-deep-dish (en): casserole that got an ID/agent [judge-opus]
-- 3 arms, crocs (zh): 先卖洞再卖堵洞 [judge-opus]
-- 3 arms, durian (en): Spiky mace that smells like crime scene [judge-opus]
-- 3 arms, emacs (zh): 操作系统缺好编辑器 [judge-opus]
-- 3 arms, excel (zh): 身份证号被改成000 [judge-opus]
-- 3 arms, google-glass (zh): 斜眼翻白眼看屏遭误会 [judge-opus]
-- 3 arms, graphene (en): Pencil lead that got upgraded [judge-opus]
-- 3 arms, jackfruit (en): deadly falling weapon fruit [judge-opus]
-- 3 arms, keurig (zh): 发明人后悔亲爹不认 [judge-sonnet]
+- 5 arms, nuclear-fusion (zh): 永远还差三十年 [judge-sonnet]
+- 4 arms, emacs (en): Great OS lacking a good editor [judge-sonnet]
+- 4 arms, emacs (zh): 操作系统缺好编辑器 [judge-opus, judge-sonnet]
+- 4 arms, javascript (en): Quirk catalogue: rapid-fire list of language gotchas [judge-sonnet]
+- 4 arms, juicero (en): Hands beat the machine; bag-squeezing absurdity [judge-sonnet]
+- 4 arms, luosifen (zh): 螺蛳背锅酸笋干活 [judge-opus, judge-sonnet]
+- 4 arms, nfts (en): You bought a receipt, not art [judge-opus, judge-sonnet]
+- 4 arms, nfts (zh): 买了个收藏夹/网址收据 [judge-opus, judge-sonnet]
+- 4 arms, oat-milk (zh): 燕麦奶就是粥汤 [judge-opus, judge-sonnet]
+- 4 arms, vim (en): Vim as a hostage situation [judge-sonnet]
+- 3 arms, almond-milk (en): Almond milk as a rumor of a nut, diluted [judge-sonnet]
+- 3 arms, almond-milk (zh): 杏仁路过的水 [judge-sonnet]
 
 ## Specificity gate (masked swap test, k=5)
 

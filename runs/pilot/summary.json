@@ -1,6 +1,6 @@
 {
  "run": "pilot",
- "generated": "2026-11-11T19:48:50+00:00",
+ "generated": "2026-11-11T19:51:01+00:00",
  "langs": [
   "en",
   "zh"
@@ -390,8 +390,8 @@
    },
    "plain-opus|en|judge-sonnet": {
     "n": 88,
-    "cross": 0.22,
-    "self": 0.84
+    "cross": 0.57,
+    "self": 0.8
    },
    "plain-opus|zh|judge-opus": {
     "n": 88,
@@ -400,8 +400,8 @@
    },
    "plain-opus|zh|judge-sonnet": {
     "n": 88,
-    "cross": 0.18,
-    "self": 0.8
+    "cross": 0.73,
+    "self": 0.7
    },
    "facts-opus|en|judge-opus": {
     "n": 88,
@@ -410,8 +410,8 @@
    },
    "facts-opus|en|judge-sonnet": {
     "n": 88,
-    "cross": 0.73,
-    "self": 0.86
+    "cross": 0.86,
+    "self": 0.89
    },
    "facts-opus|zh|judge-opus": {
     "n": 88,
@@ -420,8 +420,8 @@
    },
    "facts-opus|zh|judge-sonnet": {
     "n": 88,
-    "cross": 0.72,
-    "self": 0.89
+    "cross": 0.86,
+    "self": 0.98
    },
    "skill-opus|en|judge-opus": {
     "n": 88,
@@ -430,8 +430,8 @@
    },
    "skill-opus|en|judge-sonnet": {
     "n": 88,
-    "cross": 0.58,
-    "self": 0.75
+    "cross": 0.76,
+    "self": 0.86
    },
    "skill-opus|zh|judge-opus": {
     "n": 88,
@@ -440,17 +440,27 @@
    },
    "skill-opus|zh|judge-sonnet": {
     "n": 88,
-    "cross": 0.6,
-    "self": 0.7
+    "cross": 0.81,
+    "self": 0.82
    },
    "plain-sonnet|en|judge-opus": {
     "n": 88,
     "cross": 0.41,
     "self": 0.61
    },
+   "plain-sonnet|en|judge-sonnet": {
+    "n": 88,
+    "cross": 0.62,
+    "self": 0.77
+   },
    "plain-sonnet|zh|judge-opus": {
     "n": 88,
     "cross": 0.51,
+    "self": 0.64
+   },
+   "plain-sonnet|zh|judge-sonnet": {
+    "n": 88,
+    "cross": 0.7,
     "self": 0.64
    },
    "plain-haiku|en|judge-opus": {
@@ -458,10 +468,20 @@
     "cross": 0.32,
     "self": 0.57
    },
+   "plain-haiku|en|judge-sonnet": {
+    "n": 88,
+    "cross": 0.51,
+    "self": 0.7
+   },
    "plain-haiku|zh|judge-opus": {
     "n": 88,
     "cross": 0.27,
     "self": 0.59
+   },
+   "plain-haiku|zh|judge-sonnet": {
+    "n": 88,
+    "cross": 0.4,
+    "self": 0.64
    }
   },
   "cells": {
@@ -472,8 +492,8 @@
    },
    "judge-sonnet": {
     "cells": 88,
-    "roasts_per_cell": 6.0,
-    "arms_per_cell": 3.0
+    "roasts_per_cell": 10.0,
+    "arms_per_cell": 5.0
    }
   },
   "agreement": {
@@ -482,11 +502,11 @@
      "judge-opus",
      "judge-sonnet"
     ],
-    "pairs": 660,
-    "agree": 0.814,
+    "pairs": 1980,
+    "agree": 0.831,
     "same_device": {
-     "judge-opus": 0.359,
-     "judge-sonnet": 0.358
+     "judge-opus": 0.198,
+     "judge-sonnet": 0.284
     }
    },
    "zh|judge-opus|judge-sonnet": {
@@ -494,62 +514,15 @@
      "judge-opus",
      "judge-sonnet"
     ],
-    "pairs": 660,
-    "agree": 0.83,
+    "pairs": 1980,
+    "agree": 0.869,
     "same_device": {
-     "judge-opus": 0.392,
-     "judge-sonnet": 0.356
+     "judge-opus": 0.227,
+     "judge-sonnet": 0.285
     }
    }
   },
   "attractors": [
-   {
-    "arms": 3,
-    "target": "beanie-babies",
-    "lang": "en",
-    "device": "Beanie Babies as a fake retirement plan",
-    "judges": [
-     "judge-sonnet"
-    ]
-   },
-   {
-    "arms": 3,
-    "target": "keurig",
-    "lang": "zh",
-    "device": "发明人后悔亲爹不认",
-    "judges": [
-     "judge-sonnet"
-    ]
-   },
-   {
-    "arms": 3,
-    "target": "luosifen",
-    "lang": "zh",
-    "device": "螺蛳背锅酸笋干活",
-    "judges": [
-     "judge-opus",
-     "judge-sonnet"
-    ]
-   },
-   {
-    "arms": 3,
-    "target": "pmma",
-    "lang": "zh",
-    "device": "博士生就是光刻胶",
-    "judges": [
-     "judge-opus",
-     "judge-sonnet"
-    ]
-   },
-   {
-    "arms": 3,
-    "target": "vim",
-    "lang": "en",
-    "device": "Vim users as hostages/captives",
-    "judges": [
-     "judge-sonnet"
-    ]
-   },
    {
     "arms": 3,
     "target": "chicago-deep-dish",
@@ -574,16 +547,18 @@
     "lang": "zh",
     "device": "先卖洞再卖堵洞",
     "judges": [
-     "judge-opus"
+     "judge-opus",
+     "judge-sonnet"
     ]
    },
    {
-    "arms": 3,
+    "arms": 4,
     "target": "emacs",
     "lang": "zh",
     "device": "操作系统缺好编辑器",
     "judges": [
-     "judge-opus"
+     "judge-opus",
+     "judge-sonnet"
     ]
    },
    {
@@ -592,7 +567,8 @@
     "lang": "zh",
     "device": "身份证号被改成000",
     "judges": [
-     "judge-opus"
+     "judge-opus",
+     "judge-sonnet"
     ]
    },
    {
@@ -628,7 +604,18 @@
     "lang": "zh",
     "device": "你好变你想干嘛像找碴",
     "judges": [
-     "judge-opus"
+     "judge-opus",
+     "judge-sonnet"
+    ]
+   },
+   {
+    "arms": 4,
+    "target": "luosifen",
+    "lang": "zh",
+    "device": "螺蛳背锅酸笋干活",
+    "judges": [
+     "judge-opus",
+     "judge-sonnet"
     ]
    },
    {
@@ -637,7 +624,8 @@
     "lang": "en",
     "device": "Everyday formatting frustrations list",
     "judges": [
-     "judge-opus"
+     "judge-opus",
+     "judge-sonnet"
     ]
    },
    {
@@ -646,7 +634,8 @@
     "lang": "zh",
     "device": "状态灯绿黄告密",
     "judges": [
-     "judge-opus"
+     "judge-opus",
+     "judge-sonnet"
     ]
    },
    {
@@ -655,16 +644,18 @@
     "lang": "en",
     "device": "You bought a receipt, not art",
     "judges": [
-     "judge-opus"
+     "judge-opus",
+     "judge-sonnet"
     ]
    },
    {
-    "arms": 3,
+    "arms": 4,
     "target": "nfts",
     "lang": "zh",
-    "device": "右键另存为买个链接",
+    "device": "买了个收藏夹/网址收据",
     "judges": [
-     "judge-opus"
+     "judge-opus",
+     "judge-sonnet"
     ]
    },
    {
@@ -673,7 +664,8 @@
     "lang": "zh",
     "device": "燕麦奶就是粥汤",
     "judges": [
-     "judge-opus"
+     "judge-opus",
+     "judge-sonnet"
     ]
    },
    {
@@ -682,7 +674,18 @@
     "lang": "en",
     "device": "Endless game ends in hostage situation",
     "judges": [
-     "judge-opus"
+     "judge-opus",
+     "judge-sonnet"
+    ]
+   },
+   {
+    "arms": 3,
+    "target": "pmma",
+    "lang": "zh",
+    "device": "PMMA就是被用的博士生",
+    "judges": [
+     "judge-opus",
+     "judge-sonnet"
     ]
    },
    {
@@ -691,7 +694,8 @@
     "lang": "en",
     "device": "Failed video game spawned the chat app",
     "judges": [
-     "judge-opus"
+     "judge-opus",
+     "judge-sonnet"
     ]
    },
    {
@@ -700,7 +704,8 @@
     "lang": "zh",
     "device": "绿点监视与正在输入煎熬",
     "judges": [
-     "judge-opus"
+     "judge-opus",
+     "judge-sonnet"
     ]
    },
    {
@@ -709,7 +714,233 @@
     "lang": "zh",
     "device": "假眼装作在听",
     "judges": [
-     "judge-opus"
+     "judge-opus",
+     "judge-sonnet"
+    ]
+   },
+   {
+    "arms": 3,
+    "target": "almond-milk",
+    "lang": "zh",
+    "device": "杏仁路过的水",
+    "judges": [
+     "judge-sonnet"
+    ]
+   },
+   {
+    "arms": 3,
+    "target": "almond-milk",
+    "lang": "en",
+    "device": "Almond milk as a rumor of a nut, diluted",
+    "judges": [
+     "judge-sonnet"
+    ]
+   },
+   {
+    "arms": 3,
+    "target": "brasilia",
+    "lang": "zh",
+    "device": "地址如密码",
+    "judges": [
+     "judge-sonnet"
+    ]
+   },
+   {
+    "arms": 3,
+    "target": "canberra",
+    "lang": "en",
+    "device": "Roundabout maze and public servants, a dull committee city",
+    "judges": [
+     "judge-sonnet"
+    ]
+   },
+   {
+    "arms": 3,
+    "target": "carbon-nanotubes",
+    "lang": "en",
+    "device": "Scattershot list: five years away, clumping, asbestos",
+    "judges": [
+     "judge-sonnet"
+    ]
+   },
+   {
+    "arms": 3,
+    "target": "carbon-nanotubes",
+    "lang": "zh",
+    "device": "卷纸卷饼比喻手性",
+    "judges": [
+     "judge-sonnet"
+    ]
+   },
+   {
+    "arms": 3,
+    "target": "durian",
+    "lang": "zh",
+    "device": "禁止标志与危险品并列",
+    "judges": [
+     "judge-sonnet"
+    ]
+   },
+   {
+    "arms": 4,
+    "target": "emacs",
+    "lang": "en",
+    "device": "Great OS lacking a good editor",
+    "judges": [
+     "judge-sonnet"
+    ]
+   },
+   {
+    "arms": 4,
+    "target": "javascript",
+    "lang": "en",
+    "device": "Quirk catalogue: rapid-fire list of language gotchas",
+    "judges": [
+     "judge-sonnet"
+    ]
+   },
+   {
+    "arms": 4,
+    "target": "juicero",
+    "lang": "en",
+    "device": "Hands beat the machine; bag-squeezing absurdity",
+    "judges": [
+     "judge-sonnet"
+    ]
+   },
+   {
+    "arms": 3,
+    "target": "juicero",
+    "lang": "zh",
+    "device": "榨汁机是海关/保安",
+    "judges": [
+     "judge-sonnet"
+    ]
+   },
+   {
+    "arms": 3,
+    "target": "keurig",
+    "lang": "en",
+    "device": "Inventor's regret and DRM on coffee, factual rundown",
+    "judges": [
+     "judge-sonnet"
+    ]
+   },
+   {
+    "arms": 3,
+    "target": "las-vegas",
+    "lang": "en",
+    "device": "Fake landmarks, no clocks, resort fees, slogan leaks money",
+    "judges": [
+     "judge-sonnet"
+    ]
+   },
+   {
+    "arms": 3,
+    "target": "latex",
+    "lang": "en",
+    "device": "Compiler errors and floating figures, grab-bag complaints",
+    "judges": [
+     "judge-sonnet"
+    ]
+   },
+   {
+    "arms": 3,
+    "target": "keurig",
+    "lang": "zh",
+    "device": "发明人后悔/亲爹不认",
+    "judges": [
+     "judge-sonnet"
+    ]
+   },
+   {
+    "arms": 3,
+    "target": "macau",
+    "lang": "en",
+    "device": "Fake attractions and facade church: city is a facade",
+    "judges": [
+     "judge-sonnet"
+    ]
+   },
+   {
+    "arms": 3,
+    "target": "monopoly",
+    "lang": "zh",
+    "device": "监狱是福利避难所",
+    "judges": [
+     "judge-sonnet"
+    ]
+   },
+   {
+    "arms": 5,
+    "target": "nuclear-fusion",
+    "lang": "zh",
+    "device": "永远还差三十年",
+    "judges": [
+     "judge-sonnet"
+    ]
+   },
+   {
+    "arms": 3,
+    "target": "nuclear-fusion",
+    "lang": "en",
+    "device": "Fusion as a perpetually delayed promise/contractor",
+    "judges": [
+     "judge-sonnet"
+    ]
+   },
+   {
+    "arms": 3,
+    "target": "papyrus",
+    "lang": "en",
+    "device": "Font that thinks it's ancient but is a spa/yoga cliché",
+    "judges": [
+     "judge-sonnet"
+    ]
+   },
+   {
+    "arms": 3,
+    "target": "pmma",
+    "lang": "en",
+    "device": "Plexiglas as hamster cage or hockey shield",
+    "judges": [
+     "judge-sonnet"
+    ]
+   },
+   {
+    "arms": 4,
+    "target": "vim",
+    "lang": "en",
+    "device": "Vim as a hostage situation",
+    "judges": [
+     "judge-sonnet"
+    ]
+   },
+   {
+    "arms": 3,
+    "target": "vision-pro",
+    "lang": "en",
+    "device": "Hostage video: EyeSight and Persona as captive eyes",
+    "judges": [
+     "judge-sonnet"
+    ]
+   },
+   {
+    "arms": 3,
+    "target": "vim",
+    "lang": "zh",
+    "device": "被困人质出不去",
+    "judges": [
+     "judge-sonnet"
+    ]
+   },
+   {
+    "arms": 3,
+    "target": "windows-8",
+    "lang": "zh",
+    "device": "关机像拆炸弹",
+    "judges": [
+     "judge-sonnet"
     ]
    }
   ]
