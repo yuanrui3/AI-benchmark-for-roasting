@@ -8,8 +8,10 @@ _No human votes yet. Rate rate-frame-en/index.html and drop the exports into vot
 
 | group | framed wins | plain wins | both bad | skipped | framed share | 95% CI | p (vs 50%) |
 |---|---:|---:|---:|---:|---:|---|---:|
+| judge-opus | 55 | 125 | 0 | 0 | 31% | [24%, 38%] | 0.000 |
 | judge-sonnet | 58 | 122 | 0 | 0 | 32% | [26%, 39%] | 0.000 |
-| **all** | 58 | 122 | 0 | 0 | 32% | [26%, 39%] | 0.000 |
+| **all** | 113 | 247 | 0 | 0 | 31% | [27%, 36%] | 0.000 |
+- judge-opus: order-inconsistent on 15 of 90 pairs
 - judge-sonnet: order-inconsistent on 52 of 90 pairs
 
 ## Agent-action rate (agency.jsonl)

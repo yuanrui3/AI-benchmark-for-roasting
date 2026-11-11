@@ -1,6 +1,6 @@
 {
  "run": "pilot",
- "generated": "2026-11-11T08:03:29+00:00",
+ "generated": "2026-11-11T18:47:44+00:00",
  "langs": [
   "en",
   "zh"
@@ -11,7 +11,11 @@
   "skill-opus",
   "frame-opus",
   "control-bland",
-  "control-generic"
+  "control-generic",
+  "plain-sonnet",
+  "plain-haiku",
+  "frame-sonnet",
+  "frame-haiku"
  ],
  "generation": {
   "plain-opus|en": {
@@ -97,6 +101,62 @@
    "errors": 0,
    "mean_words": 215.8,
    "cost": 0.855
+  },
+  "plain-sonnet|en": {
+   "n": 88,
+   "refused": 0,
+   "errors": 0,
+   "mean_words": 157.6,
+   "cost": 0.312
+  },
+  "plain-sonnet|zh": {
+   "n": 88,
+   "refused": 0,
+   "errors": 0,
+   "mean_words": 214.5,
+   "cost": 1.022
+  },
+  "plain-haiku|en": {
+   "n": 88,
+   "refused": 0,
+   "errors": 0,
+   "mean_words": 126.7,
+   "cost": 0.026
+  },
+  "plain-haiku|zh": {
+   "n": 88,
+   "refused": 0,
+   "errors": 0,
+   "mean_words": 168.4,
+   "cost": 0.047
+  },
+  "frame-sonnet|en": {
+   "n": 88,
+   "refused": 0,
+   "errors": 0,
+   "mean_words": 145.3,
+   "cost": 0.752
+  },
+  "frame-sonnet|zh": {
+   "n": 88,
+   "refused": 0,
+   "errors": 0,
+   "mean_words": 209.9,
+   "cost": 1.175
+  },
+  "frame-haiku|en": {
+   "n": 88,
+   "refused": 0,
+   "errors": 0,
+   "mean_words": 125.1,
+   "cost": 0.042
+  },
+  "frame-haiku|zh": {
+   "n": 88,
+   "refused": 0,
+   "errors": 0,
+   "mean_words": 177.2,
+   "cost": 0.054
   }
  },
  "profile": {
@@ -106,6 +166,7 @@
    "collision": 0.0,
    "wps": 10.1,
    "agent_rate": {
+    "judge-opus": 0.37,
     "judge-sonnet": 0.34,
     "rule": 0.14
    }
@@ -116,6 +177,7 @@
    "collision": 0.32,
    "wps": 9.0,
    "agent_rate": {
+    "judge-opus": 0.45,
     "judge-sonnet": 0.36,
     "rule": 0.11
    }
@@ -126,6 +188,7 @@
    "collision": 0.31,
    "wps": 6.2,
    "agent_rate": {
+    "judge-opus": 0.47,
     "judge-sonnet": 0.44,
     "rule": 0.07
    }
@@ -136,6 +199,7 @@
    "collision": 0.0,
    "wps": 10.7,
    "agent_rate": {
+    "judge-opus": 0.88,
     "judge-sonnet": 0.84,
     "rule": 0.21
    }
@@ -146,6 +210,7 @@
    "collision": 0.0,
    "wps": 14.8,
    "agent_rate": {
+    "judge-opus": 0.22,
     "judge-sonnet": 0.21,
     "rule": 0.12
    }
@@ -156,8 +221,53 @@
    "collision": 0.0,
    "wps": 10.4,
    "agent_rate": {
+    "judge-opus": 0.49,
     "judge-sonnet": 0.48,
     "rule": 0.16
+   }
+  },
+  "plain-sonnet|en": {
+   "softeners": 0.0,
+   "stock": 0.1,
+   "collision": 0.0,
+   "wps": 10.3,
+   "agent_rate": {
+    "judge-opus": 0.39,
+    "judge-sonnet": 0.36,
+    "rule": 0.15
+   }
+  },
+  "plain-haiku|en": {
+   "softeners": 0.0,
+   "stock": 0.09,
+   "collision": 0.0,
+   "wps": 12.1,
+   "agent_rate": {
+    "judge-opus": 0.38,
+    "judge-sonnet": 0.39,
+    "rule": 0.16
+   }
+  },
+  "frame-sonnet|en": {
+   "softeners": 0.0,
+   "stock": 0.05,
+   "collision": 0.0,
+   "wps": 11.2,
+   "agent_rate": {
+    "judge-opus": 0.9,
+    "judge-sonnet": 0.87,
+    "rule": 0.2
+   }
+  },
+  "frame-haiku|en": {
+   "softeners": 0.0,
+   "stock": 0.05,
+   "collision": 0.0,
+   "wps": 12.3,
+   "agent_rate": {
+    "judge-opus": 0.91,
+    "judge-sonnet": 0.92,
+    "rule": 0.22
    }
   },
   "plain-opus|zh": {
@@ -166,6 +276,7 @@
    "collision": 0.0,
    "wps": 15.2,
    "agent_rate": {
+    "judge-opus": 0.35,
     "judge-sonnet": 0.35,
     "rule": 0.07
    }
@@ -176,6 +287,7 @@
    "collision": 0.02,
    "wps": 14.9,
    "agent_rate": {
+    "judge-opus": 0.43,
     "judge-sonnet": 0.36,
     "rule": 0.08
    }
@@ -186,6 +298,7 @@
    "collision": 0.02,
    "wps": 12.4,
    "agent_rate": {
+    "judge-opus": 0.43,
     "judge-sonnet": 0.37,
     "rule": 0.07
    }
@@ -196,6 +309,7 @@
    "collision": 0.0,
    "wps": 15.7,
    "agent_rate": {
+    "judge-opus": 0.77,
     "judge-sonnet": 0.74,
     "rule": 0.15
    }
@@ -206,6 +320,7 @@
    "collision": 0.0,
    "wps": 28.1,
    "agent_rate": {
+    "judge-opus": 0.06,
     "judge-sonnet": 0.1,
     "rule": 0.13
    }
@@ -216,42 +331,107 @@
    "collision": 0.0,
    "wps": 16.2,
    "agent_rate": {
+    "judge-opus": 0.53,
     "judge-sonnet": 0.51,
     "rule": 0.12
+   }
+  },
+  "plain-sonnet|zh": {
+   "softeners": 0.0,
+   "stock": 0.03,
+   "collision": 0.0,
+   "wps": 15.9,
+   "agent_rate": {
+    "judge-opus": 0.37,
+    "judge-sonnet": 0.36,
+    "rule": 0.09
+   }
+  },
+  "plain-haiku|zh": {
+   "softeners": 0.0,
+   "stock": 0.02,
+   "collision": 0.0,
+   "wps": 18.8,
+   "agent_rate": {
+    "judge-opus": 0.28,
+    "judge-sonnet": 0.29,
+    "rule": 0.08
+   }
+  },
+  "frame-sonnet|zh": {
+   "softeners": 0.0,
+   "stock": 0.02,
+   "collision": 0.0,
+   "wps": 16.4,
+   "agent_rate": {
+    "judge-opus": 0.77,
+    "judge-sonnet": 0.72,
+    "rule": 0.18
+   }
+  },
+  "frame-haiku|zh": {
+   "softeners": 0.0,
+   "stock": 0.01,
+   "collision": 0.0,
+   "wps": 18.3,
+   "agent_rate": {
+    "judge-opus": 0.77,
+    "judge-sonnet": 0.73,
+    "rule": 0.19
    }
   }
  },
  "devices": {
   "per_arm": {
    "plain-opus|en": {
-    "n": 88,
-    "cross": 0.22,
-    "self": 0.84
+    "n": 176,
+    "cross": 0.33,
+    "self": 0.76
    },
    "plain-opus|zh": {
-    "n": 88,
-    "cross": 0.18,
-    "self": 0.8
+    "n": 176,
+    "cross": 0.35,
+    "self": 0.73
    },
    "facts-opus|en": {
-    "n": 88,
+    "n": 176,
     "cross": 0.73,
-    "self": 0.86
-   },
-   "facts-opus|zh": {
-    "n": 88,
-    "cross": 0.72,
     "self": 0.89
    },
+   "facts-opus|zh": {
+    "n": 176,
+    "cross": 0.73,
+    "self": 0.92
+   },
    "skill-opus|en": {
-    "n": 88,
-    "cross": 0.58,
-    "self": 0.75
+    "n": 176,
+    "cross": 0.62,
+    "self": 0.83
    },
    "skill-opus|zh": {
+    "n": 176,
+    "cross": 0.68,
+    "self": 0.82
+   },
+   "plain-sonnet|en": {
     "n": 88,
-    "cross": 0.6,
-    "self": 0.7
+    "cross": 0.41,
+    "self": 0.61
+   },
+   "plain-sonnet|zh": {
+    "n": 88,
+    "cross": 0.51,
+    "self": 0.64
+   },
+   "plain-haiku|en": {
+    "n": 88,
+    "cross": 0.32,
+    "self": 0.57
+   },
+   "plain-haiku|zh": {
+    "n": 88,
+    "cross": 0.27,
+    "self": 0.59
    }
   },
   "attractors": [
@@ -284,6 +464,126 @@
     "target": "vim",
     "lang": "en",
     "device": "Vim users as hostages/captives"
+   },
+   {
+    "arms": 3,
+    "target": "chicago-deep-dish",
+    "lang": "en",
+    "device": "casserole that got an ID/agent"
+   },
+   {
+    "arms": 3,
+    "target": "durian",
+    "lang": "en",
+    "device": "Spiky mace that smells like crime scene"
+   },
+   {
+    "arms": 3,
+    "target": "crocs",
+    "lang": "zh",
+    "device": "先卖洞再卖堵洞"
+   },
+   {
+    "arms": 3,
+    "target": "emacs",
+    "lang": "zh",
+    "device": "操作系统缺好编辑器"
+   },
+   {
+    "arms": 3,
+    "target": "excel",
+    "lang": "zh",
+    "device": "身份证号被改成000"
+   },
+   {
+    "arms": 3,
+    "target": "google-glass",
+    "lang": "zh",
+    "device": "斜眼翻白眼看屏遭误会"
+   },
+   {
+    "arms": 3,
+    "target": "graphene",
+    "lang": "en",
+    "device": "Pencil lead that got upgraded"
+   },
+   {
+    "arms": 3,
+    "target": "jackfruit",
+    "lang": "en",
+    "device": "deadly falling weapon fruit"
+   },
+   {
+    "arms": 3,
+    "target": "klingon",
+    "lang": "zh",
+    "device": "你好变你想干嘛像找碴"
+   },
+   {
+    "arms": 3,
+    "target": "luosifen",
+    "lang": "zh",
+    "device": "螺蛳替酸笋背锅"
+   },
+   {
+    "arms": 3,
+    "target": "microsoft-word",
+    "lang": "en",
+    "device": "Everyday formatting frustrations list"
+   },
+   {
+    "arms": 3,
+    "target": "microsoft-teams",
+    "lang": "zh",
+    "device": "状态灯绿黄告密"
+   },
+   {
+    "arms": 4,
+    "target": "nfts",
+    "lang": "en",
+    "device": "You bought a receipt, not art"
+   },
+   {
+    "arms": 3,
+    "target": "nfts",
+    "lang": "zh",
+    "device": "右键另存为买个链接"
+   },
+   {
+    "arms": 4,
+    "target": "oat-milk",
+    "lang": "zh",
+    "device": "燕麦奶就是粥汤"
+   },
+   {
+    "arms": 3,
+    "target": "risk",
+    "lang": "en",
+    "device": "Endless game ends in hostage situation"
+   },
+   {
+    "arms": 3,
+    "target": "pmma",
+    "lang": "zh",
+    "device": "PMMA就是被用的博士生"
+   },
+   {
+    "arms": 3,
+    "target": "slack",
+    "lang": "en",
+    "device": "Failed video game spawned the chat app"
+   },
+   {
+    "arms": 3,
+    "target": "slack",
+    "lang": "zh",
+    "device": "绿点监视与正在输入煎熬"
+   },
+   {
+    "arms": 3,
+    "target": "vision-pro",
+    "lang": "zh",
+    "device": "假眼装作在听"
    }
   ]
  },
@@ -371,81 +671,223 @@
    "twin_acc": 0.494,
    "leak": 0.0,
    "lex": 0.0001
+  },
+  "plain-sonnet|en": {
+   "n": 88,
+   "acc": 1.0,
+   "twin_acc": 1.0,
+   "leak": 0.0,
+   "lex": 0.0349
+  },
+  "plain-sonnet|zh": {
+   "n": 88,
+   "acc": 0.989,
+   "twin_acc": 0.989,
+   "leak": 0.0,
+   "lex": 0.0019
+  },
+  "plain-haiku|en": {
+   "n": 87,
+   "acc": 1.0,
+   "twin_acc": 1.0,
+   "leak": 0.0,
+   "lex": 0.0281
+  },
+  "plain-haiku|zh": {
+   "n": 88,
+   "acc": 1.0,
+   "twin_acc": 1.0,
+   "leak": 0.0,
+   "lex": 0.0017
+  },
+  "frame-sonnet|en": {
+   "n": 86,
+   "acc": 0.907,
+   "twin_acc": 0.951,
+   "leak": 0.0,
+   "lex": 0.0143
+  },
+  "frame-sonnet|zh": {
+   "n": 88,
+   "acc": 0.989,
+   "twin_acc": 0.989,
+   "leak": 0.0,
+   "lex": 0.0009
+  },
+  "frame-haiku|en": {
+   "n": 87,
+   "acc": 0.966,
+   "twin_acc": 0.977,
+   "leak": 0.0,
+   "lex": 0.0163
+  },
+  "frame-haiku|zh": {
+   "n": 88,
+   "acc": 1.0,
+   "twin_acc": 1.0,
+   "leak": 0.0,
+   "lex": 0.0009
   }
  },
  "truth": {
   "plain-opus|en": {
-   "n": 88,
-   "pass": 0.852,
-   "claims": 10.18,
-   "contra": 0.15,
-   "absent": 5.82
+   "n": 176,
+   "pass": 0.881,
+   "claims": 9.79,
+   "contra": 0.12,
+   "absent": 5.56
   },
   "plain-opus|zh": {
-   "n": 88,
-   "pass": 0.909,
-   "claims": 8.11,
-   "contra": 0.1,
-   "absent": 4.88
+   "n": 176,
+   "pass": 0.92,
+   "claims": 7.12,
+   "contra": 0.09,
+   "absent": 4.22
   },
   "facts-opus|en": {
-   "n": 88,
-   "pass": 0.966,
-   "claims": 10.17,
-   "contra": 0.03,
-   "absent": 0.74
+   "n": 176,
+   "pass": 0.96,
+   "claims": 9.33,
+   "contra": 0.04,
+   "absent": 0.48
   },
   "facts-opus|zh": {
-   "n": 88,
-   "pass": 0.932,
-   "claims": 10.5,
-   "contra": 0.07,
-   "absent": 0.69
+   "n": 176,
+   "pass": 0.96,
+   "claims": 8.98,
+   "contra": 0.04,
+   "absent": 0.45
   },
   "skill-opus|en": {
-   "n": 88,
-   "pass": 0.92,
-   "claims": 10.85,
-   "contra": 0.08,
-   "absent": 1.51
+   "n": 176,
+   "pass": 0.949,
+   "claims": 9.95,
+   "contra": 0.05,
+   "absent": 1.22
   },
   "skill-opus|zh": {
-   "n": 88,
-   "pass": 0.966,
-   "claims": 11.19,
+   "n": 176,
+   "pass": 0.972,
+   "claims": 9.54,
    "contra": 0.03,
-   "absent": 1.7
+   "absent": 1.23
   },
   "frame-opus|en": {
-   "n": 88,
-   "pass": 0.943,
-   "claims": 7.59,
-   "contra": 0.07,
-   "absent": 4.43
+   "n": 176,
+   "pass": 0.949,
+   "claims": 7.3,
+   "contra": 0.06,
+   "absent": 4.23
   },
   "frame-opus|zh": {
-   "n": 88,
-   "pass": 0.92,
-   "claims": 7.82,
-   "contra": 0.08,
-   "absent": 4.7
+   "n": 176,
+   "pass": 0.932,
+   "claims": 6.88,
+   "contra": 0.07,
+   "absent": 4.1
   },
   "control-bland|en": {
-   "n": 88,
+   "n": 176,
    "pass": 0.989,
-   "claims": 9.36,
+   "claims": 9.19,
    "contra": 0.01,
-   "absent": 6.48
+   "absent": 6.31
   },
   "control-bland|zh": {
-   "n": 88,
-   "pass": 0.966,
-   "claims": 9.39,
+   "n": 175,
+   "pass": 0.971,
+   "claims": 8.86,
    "contra": 0.03,
-   "absent": 6.23
+   "absent": 5.93
+  },
+  "plain-sonnet|en": {
+   "n": 176,
+   "pass": 0.773,
+   "claims": 8.49,
+   "contra": 0.27,
+   "absent": 4.69
+  },
+  "plain-sonnet|zh": {
+   "n": 175,
+   "pass": 0.92,
+   "claims": 6.56,
+   "contra": 0.09,
+   "absent": 3.48
+  },
+  "plain-haiku|en": {
+   "n": 176,
+   "pass": 0.869,
+   "claims": 6.57,
+   "contra": 0.14,
+   "absent": 3.56
+  },
+  "plain-haiku|zh": {
+   "n": 176,
+   "pass": 0.903,
+   "claims": 5.4,
+   "contra": 0.1,
+   "absent": 3.08
+  },
+  "frame-sonnet|en": {
+   "n": 176,
+   "pass": 0.955,
+   "claims": 6.38,
+   "contra": 0.05,
+   "absent": 3.8
+  },
+  "frame-sonnet|zh": {
+   "n": 176,
+   "pass": 0.903,
+   "claims": 6.37,
+   "contra": 0.1,
+   "absent": 3.81
+  },
+  "frame-haiku|en": {
+   "n": 176,
+   "pass": 0.926,
+   "claims": 5.21,
+   "contra": 0.07,
+   "absent": 2.95
+  },
+  "frame-haiku|zh": {
+   "n": 176,
+   "pass": 0.915,
+   "claims": 5.65,
+   "contra": 0.09,
+   "absent": 3.39
   }
  },
  "judges": {
+  "judge-opus|en": {
+   "overall": 0.988,
+   "p_first": 0.507,
+   "per": {
+    "explain": 1.0,
+    "false": 1.0,
+    "frontload": 0.9833333333333333,
+    "generic": 0.95,
+    "pad": 1.0,
+    "polite": 0.9833333333333333,
+    "softener": 1.0
+   },
+   "self_pref": null,
+   "verdict": "usable"
+  },
+  "judge-opus|zh": {
+   "overall": 1.0,
+   "p_first": 0.501,
+   "per": {
+    "explain": 1.0,
+    "false": 1.0,
+    "frontload": 1.0,
+    "generic": 1.0,
+    "pad": 1.0,
+    "polite": 1.0,
+    "softener": 1.0
+   },
+   "self_pref": null,
+   "verdict": "usable"
+  },
   "judge-sonnet|en": {
    "overall": 0.929,
    "p_first": 0.524,
@@ -492,7 +934,7 @@
   "spread": null,
   "raters_agree": null,
   "specificity_varies": false,
-  "judge_usable": false
+  "judge_usable": true
  },
- "verdict": "no verdict yet (human data missing); benchmark stays human-rated (no judge passed)"
+ "verdict": "no verdict yet (human data missing)"
 }

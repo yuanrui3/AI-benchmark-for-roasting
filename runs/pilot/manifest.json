@@ -1,8 +1,8 @@
 {
  "run": "pilot",
- "created": "2026-11-11T06:41:56+00:00",
+ "created": "2026-11-11T17:58:24+00:00",
  "mock": false,
- "budget_usd": 100.0,
+ "budget_usd": 80.0,
  "langs": [
   "en",
   "zh"
@@ -11,50 +11,29 @@
  "n_targets": 44,
  "arms": [
   {
-   "name": "plain-opus",
+   "name": "plain-sonnet",
    "kind": "plain",
-   "model": "opus",
+   "model": "sonnet",
    "spec": {
     "provider": "anthropic",
-    "model": "claude-opus-5-5",
+    "model": "claude-sonnet-5-5",
     "family": "anthropic"
    }
   },
   {
-   "name": "facts-opus",
-   "kind": "facts",
-   "model": "opus",
+   "name": "plain-haiku",
+   "kind": "plain",
+   "model": "haiku",
    "spec": {
     "provider": "anthropic",
-    "model": "claude-opus-5-5",
+    "model": "claude-haiku-5-5",
     "family": "anthropic"
    }
   },
   {
-   "name": "skill-opus",
-   "kind": "skill",
-   "model": "opus",
-   "spec": {
-    "provider": "anthropic",
-    "model": "claude-opus-5-5",
-    "family": "anthropic"
-   }
-  },
-  {
-   "name": "frame-opus",
+   "name": "frame-sonnet",
    "kind": "frame",
-   "model": "opus",
-   "spec": {
-    "provider": "anthropic",
-    "model": "claude-opus-5-5",
-    "family": "anthropic"
-   }
-  },
-  {
-   "name": "control-bland",
-   "kind": "bland",
    "model": "sonnet",
-   "fallback": true,
    "spec": {
     "provider": "anthropic",
     "model": "claude-sonnet-5-5",
@@ -62,13 +41,12 @@
    }
   },
   {
-   "name": "control-generic",
-   "kind": "generic",
-   "model": "sonnet",
-   "fallback": true,
+   "name": "frame-haiku",
+   "kind": "frame",
+   "model": "haiku",
    "spec": {
     "provider": "anthropic",
-    "model": "claude-sonnet-5-5",
+    "model": "claude-haiku-5-5",
     "family": "anthropic"
    }
   }
