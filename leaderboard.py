@@ -54,12 +54,24 @@ def main() -> int:
     utf8_stdout()
     ap = argparse.ArgumentParser()
     ap.add_argument("--run", required=True)
-    ap.add_argument("--judge", default="judge-opus")
+    ap.add_argument("--judge", default=None, help="default: judge-opus if it judged anything, else the judge with the most judgements")
     ap.add_argument("--boot", type=int, default=200)
     ap.add_argument("--seed", type=int, default=5)
     args = ap.parse_args()
     run_dir = ROOT / "runs" / args.run
     items = {r["item_id"]: r for r in read_jsonl(run_dir / "items.jsonl")}
+    if args.judge is None:
+        counts: dict[str, int] = defaultdict(int)
+        for jf in POOLS.values():
+            if (run_dir / jf).exists():
+                for r in read_jsonl(run_dir / jf):
+                    if r.get("winner") in ("a", "b"):
+                        counts[r["judge"]] += 1
+        if not counts:
+            print("no judgements found in any pool")
+            return 1
+        args.judge = "judge-opus" if counts.get("judge-opus") else max(counts, key=counts.get)
+        print(f"judge: {args.judge} ({counts[args.judge]} judgements)")
 
     # pair-level votes: (lang, winner arm, loser arm), one per judgement
     votes_by_pair: dict[tuple[str, str], list[tuple[str, str]]] = defaultdict(list)
