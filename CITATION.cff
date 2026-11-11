@@ -1,0 +1,26 @@
+cff-version: 1.2.0
+message: "If you use this benchmark, its targets, or its judge-validation recipe, please cite it."
+title: "Roast Anything: a roast-generation benchmark with specificity and truth gates and a damage-test-validated LLM judge"
+authors:
+  - family-names: Chen
+    given-names: Yuanrui
+version: 0.1.0
+date-released: 2026-11-12
+url: "https://github.com/yuanrui3/AI-benchmark-for-roasting"
+repository-code: "https://github.com/yuanrui3/AI-benchmark-for-roasting"
+license: MIT
+keywords:
+  - LLM humor benchmark
+  - roast generation
+  - computational humor
+  - LLM-as-a-judge
+  - humor evaluation
+  - Chinese humor
+  - comedy writing evaluation
+  - Bradley-Terry leaderboard
+abstract: >-
+  A bilingual (English and Chinese) benchmark for roast generation. A roast counts only if it passes a specificity
+  test against a near-twin and a truth check against a verified fact sheet; taste is then scored by blind pairwise
+  comparison. The LLM judge is validated without human raters by seven damage tests and anchored to public
+  crowd-preference data from the New Yorker caption contest and SemEval-2020 FunLines. Results order Claude Opus 5.5
+  above Sonnet 5.5 above Haiku 5.5 and show that a house-style comedy skill beats plain and fact-fed prompting.
