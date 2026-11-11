@@ -1,6 +1,6 @@
 # Preflight report: run `pilot-or`
 
-Generated 2026-11-09T21:12:52+00:00. Gates were fixed before data was seen (CLAUDE.md).
+Generated 2026-11-11T18:01:33+00:00. Gates were fixed before data was seen (CLAUDE.md).
 
 ## Generation
 
@@ -114,6 +114,8 @@ A usable judge prefers the original >= 90% of the time and never prefers an expl
 | judge-deepseek | zh | 100% | 67% | 83% | 100% | 92% | 100% | 100% | 92% | 0.54 | +0.07 | usable |
 | judge-gpt | en | 100% | 75% | 83% | 100% | 100% | 100% | 100% | 93% | 0.51 | -0.02 | usable |
 | judge-gpt | zh | n/a | 83% | 75% | 100% | 100% | 100% | 100% | 93% | 0.54 | +0.08 | usable |
+| judge-opus | en | 100% | 67% | 92% | 100% | 100% | 100% | 100% | 94% | 0.51 | n/a | usable |
+| judge-opus | zh | 100% | 92% | 100% | 100% | 100% | 100% | 100% | 99% | 0.49 | n/a | usable |
 
 ## Human votes
 
@@ -170,6 +172,7 @@ Mean 95% CI width across real arms: 1.27 log-odds. To reach a width of 0.5 (arms
 
 - judge-deepseek: agrees with human votes 63% (n=19); flips its answer when order is swapped 18%. Human-human ceiling: n/a.
 - judge-gpt: agrees with human votes 57% (n=21); flips its answer when order is swapped 12%. Human-human ceiling: n/a.
+- judge-opus: agrees with human votes 77% (n=47); flips its answer when order is swapped 13%. Human-human ceiling: n/a.
 
 ## Gates
 

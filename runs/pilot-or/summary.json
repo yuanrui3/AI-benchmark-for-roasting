@@ -1,6 +1,6 @@
 {
  "run": "pilot-or",
- "generated": "2026-11-09T21:12:52+00:00",
+ "generated": "2026-11-11T18:01:33+00:00",
  "langs": [
   "en",
   "zh"
@@ -533,6 +533,36 @@
    },
    "self_pref": 0.083,
    "verdict": "usable"
+  },
+  "judge-opus|en": {
+   "overall": 0.94,
+   "p_first": 0.512,
+   "per": {
+    "explain": 1.0,
+    "false": 0.6666666666666666,
+    "frontload": 0.9166666666666666,
+    "generic": 1.0,
+    "pad": 1.0,
+    "polite": 1.0,
+    "softener": 1.0
+   },
+   "self_pref": null,
+   "verdict": "usable"
+  },
+  "judge-opus|zh": {
+   "overall": 0.988,
+   "p_first": 0.488,
+   "per": {
+    "explain": 1.0,
+    "false": 0.9166666666666666,
+    "frontload": 1.0,
+    "generic": 1.0,
+    "pad": 1.0,
+    "polite": 1.0,
+    "softener": 1.0
+   },
+   "self_pref": null,
+   "verdict": "usable"
   }
  },
  "votes": {
@@ -768,6 +798,11 @@
    "agreement_with_humans": 0.571,
    "n": 21,
    "order_flip_rate": 0.125
+  },
+  "judge-opus|zh": {
+   "agreement_with_humans": 0.766,
+   "n": 47,
+   "order_flip_rate": 0.13
   }
  },
  "gates": {
