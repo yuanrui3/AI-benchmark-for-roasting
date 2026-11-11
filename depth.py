@@ -22,7 +22,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 
 import config
 from agency import sentences
-from common import ROOT, append_jsonl, load_targets, read_jsonl, utf8_stdout
+from common import ROOT, append_jsonl, load_targets, read_jsonl, tokens, utf8_stdout
 from llm import LLM, BudgetExceeded
 
 JUDGE_SYSTEM = "You label the sentences of a comedy text against a fact sheet. Follow the output format exactly."
@@ -61,10 +61,21 @@ def parse_labels(text: str, n: int) -> list[str] | None:
     return labs if all(l in ("T", "B", "N") for l in labs) else None
 
 
+def mock_labels(sents: list[str], facts: list[str]) -> list[str]:
+    """No model: a sentence that shares a content token with the fact sheet is T, a very short one N, the rest B."""
+    sheet = set().union(*(tokens(f) for f in facts)) if facts else set()
+    out = []
+    for s in sents:
+        toks = tokens(s)
+        out.append("N" if len(toks) < 3 else ("T" if toks & sheet else "B"))
+    return out
+
+
 def main() -> int:
     utf8_stdout()
     ap = argparse.ArgumentParser()
     ap.add_argument("--run", required=True)
+    ap.add_argument("--mock", action="store_true", help="no model: keyword labels against the fact sheet")
     ap.add_argument("--budget", type=float, default=40.0, help="run-wide USD cap (ledger is shared by all stages)")
     ap.add_argument("--judges", default=None, help="comma list; default: config.truth_judges()")
     ap.add_argument("--arms", default=None, help="comma list of arms (default: all)")
@@ -76,14 +87,14 @@ def main() -> int:
     items = [r for r in read_jsonl(run_dir / "items.jsonl") if r["text"].strip() and not r["refused"] and not r["error"]]
     if args.arms:
         items = [r for r in items if r["arm"] in set(args.arms.split(","))]
-    judge_names = args.judges.split(",") if args.judges else config.truth_judges()
+    judge_names = args.judges.split(",") if args.judges else config.truth_judges(args.mock)
     judges = {j: config.MODELS[config.JUDGES[j]] for j in judge_names}
     out_path = run_dir / "depth.jsonl"
     done = {(r["item_id"], r["judge"]) for r in read_jsonl(out_path)} if out_path.exists() else set()
     jobs = [(it, j) for it in items for j in judges if (it["item_id"], j) not in done]
     print(f"{len(items)} items, {len(judges)} judge(s) -> {len(jobs)} calls to do")
 
-    llm = LLM(run_dir, budget_usd=args.budget)
+    llm = LLM(run_dir, budget_usd=args.budget, mock=args.mock)
     lock = threading.Lock()
     stop = threading.Event()
 
@@ -97,20 +108,25 @@ def main() -> int:
         sents = sentences(it["text"], it["lang"])
         if not sents:
             return
-        try:
-            res = llm.call(spec, JUDGE_SYSTEM,
-                           prompt(sents, it["lang"], config.target_name(t, it["lang"]),
-                                  config.target_name(twin, it["lang"]) if twin else ("同类的东西" if it["lang"] == "zh" else "a similar thing"),
-                                  t["facts"]),
-                           max_tokens=config.JUDGE_MAX_TOKENS, effort=config.JUDGE_EFFORT, tag=f"depth:{jname}")
-        except BudgetExceeded as e:
-            stop.set()
-            print(f"BUDGET: {e}")
-            return
-        if res.error:
-            print(f"  failed, will retry next run: {res.error[:80]}", flush=True)
-            return
-        labs = parse_labels(res.text, len(sents))
+        cost = 0.0
+        if args.mock:
+            labs = mock_labels(sents, t["facts"])
+        else:
+            try:
+                res = llm.call(spec, JUDGE_SYSTEM,
+                               prompt(sents, it["lang"], config.target_name(t, it["lang"]),
+                                      config.target_name(twin, it["lang"]) if twin else ("同类的东西" if it["lang"] == "zh" else "a similar thing"),
+                                      t["facts"]),
+                               max_tokens=config.JUDGE_MAX_TOKENS, effort=config.JUDGE_EFFORT, tag=f"depth:{jname}")
+            except BudgetExceeded as e:
+                stop.set()
+                print(f"BUDGET: {e}")
+                return
+            if res.error:
+                print(f"  failed, will retry next run: {res.error[:80]}", flush=True)
+                return
+            labs = parse_labels(res.text, len(sents))
+            cost = res.cost_usd
         n_t = labs.count("T") if labs else 0
         n_b = labs.count("B") if labs else 0
         n_n = labs.count("N") if labs else 0
@@ -118,7 +134,7 @@ def main() -> int:
                "lang": it["lang"], "model": it["model"], "judge": jname, "judge_family": spec.family,
                "n_sent": len(sents), "labels": labs, "n_target": n_t, "n_both": n_b, "n_other": n_n,
                "depth": (n_t / (n_t + n_b)) if labs and (n_t + n_b) else None,
-               "parse_fail": labs is None, "cost_usd": res.cost_usd}
+               "parse_fail": labs is None, "cost_usd": cost}
         with lock:
             append_jsonl(out_path, row)
 

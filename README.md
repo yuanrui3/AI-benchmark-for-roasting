@@ -65,6 +65,23 @@ Leaderboard (judge opinion, Bradley–Terry over every judged pool, 95% bootstra
 
 A one-point gap is about a 73% win rate. These are a validated judge's preferences, not human votes.
 
+## Setup
+
+Python 3.12 or newer and [uv](https://docs.astral.sh/uv/). Then:
+
+```
+uv sync                          # the pipeline's dependencies (add --extra anchor for external_pairs.py)
+cp .env.example .env             # fill in ANTHROPIC_API_KEY and/or OPENROUTER_API_KEY; .env is git-ignored
+uv run python check_keys.py      # free: confirms what each key can reach
+uv run python test_common.py     # unit checks, no network
+uv run python run_all.py --mock  # the whole pipeline on a fake provider, zero cost, about a minute
+```
+
+Either key alone works: arms and judges whose provider is missing are skipped and reported. On Windows set
+`PYTHONUTF8=1` (or run `python -X utf8`) so Chinese output prints. Every real call is cached under
+`runs/<run>/raw/` and logged to `runs/<run>/ledger.jsonl`, so interrupted runs resume and nothing is paid twice;
+`--budget` is a hard cap per run.
+
 ## Running it
 
 ```
@@ -78,6 +95,30 @@ Stages: `generate.py` → `specificity.py` → `truth.py` → `devices.py` → `
 `build_pairs.py` → `judge_pairs.py` → `analyze.py` (report) → `leaderboard.py`, `pool_rank.py`, `metric_check.py`,
 `frame_test.py`. `external_pairs.py` and `external_anchor.py` validate a judge against public crowd humor
 preferences. Every call is cached on disk and logged to a cost ledger; `--budget` is a run-wide cap.
+
+## Layout
+
+- `config.py`: models, arms (prompt × model), judges, prompts in both languages, lengths, effort. Add a model or an arm here.
+- `targets.jsonl`: one target per line: names in both languages, aliases, a near-twin, a practice form, four to five verified facts with sources. Add targets here; the pipeline picks them up by id.
+- `llm.py`: the one logged client (Anthropic, OpenRouter, mock) with the disk cache, cost ledger and retries.
+- Stage scripts (each reads `runs/<run>/items.jsonl`, writes one `.jsonl`, resumes): `generate`, `specificity`, `truth`, `devices`, `agency`, `depth`, `damage`, `build_pairs`, `judge_pairs`.
+- Readers: `analyze.py` (report and gates), `leaderboard.py`, `pool_rank.py`, `metric_check.py`, `frame_test.py`.
+- Judge validation against public crowd data: `external_pairs.py`, `external_anchor.py`.
+- `rate.html`: the blind human rating page (no server needed; open a pool's `index.html`).
+- `runs/pilot/`: the full Claude-side run, 60 targets, 2,080 roasts, every judge file, `report.md`, `leaderboard.md`.
+- `docs/`: design notes, rater instructions, model-access notes. `CLAUDE.md`: the project's working log and decisions.
+
+## Adding things
+
+- **A model**: add it to `MODELS` in `config.py` (provider and id), then an arm `{"name": ..., "kind": "plain", "model": ...}`. Run `generate.py --run <run> --arms <name>`, the gate stages, then `judge_pairs.py --judges judge-opus` on a pool built with `build_pairs.py --arms <name>,plain-opus,...`.
+- **A judge**: add it to `JUDGES`, run `damage.py --judges <name>`; it is usable only if it clears the damage tests in `analyze.py`.
+- **A target**: a line in `targets.jsonl` with a twin, facts you have checked against the sources you list, and a practice form; `generate.py --target-ids <id>` fills the arms.
+
+## Licence
+
+Code is MIT; the targets, run data and docs are CC BY 4.0; the house-style skill and the chapters under
+`reference/` are the author's, all rights reserved (see `LICENSE`). The public humour datasets fetched by
+`external_pairs.py` are not included and keep their own licences.
 
 ## Limits
 
