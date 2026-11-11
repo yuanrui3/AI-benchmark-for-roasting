@@ -16,7 +16,6 @@ from __future__ import annotations
 
 import argparse
 import json
-import re
 import sys
 import threading
 from collections import defaultdict
@@ -49,15 +48,21 @@ def prompt(texts: list[str], lang: str, name: str) -> str:
 
 
 def parse_groups(text: str, n: int) -> list[dict] | None:
-    """[{'device': str, 'items': [int]}] covering 1..n; uncovered numbers become singletons; None if unparseable."""
-    m = re.search(r"\[.*\]", text, re.S)
-    if not m:
-        return None
-    try:
-        data = json.loads(m.group(0))
-    except json.JSONDecodeError:
-        return None
-    if not isinstance(data, list):
+    """[{'device': str, 'items': [int]}] covering 1..n; uncovered numbers become singletons; None if unparseable.
+    Takes the LAST JSON array of objects in the text: a judge sometimes writes one, then "Corrected:" and another,
+    and a greedy bracket match would span both."""
+    data = None
+    dec = json.JSONDecoder()
+    for i, ch in enumerate(text):
+        if ch != "[":
+            continue
+        try:
+            obj, _ = dec.raw_decode(text, i)
+        except json.JSONDecodeError:
+            continue
+        if isinstance(obj, list) and obj and all(isinstance(g, dict) for g in obj):
+            data = obj
+    if data is None:
         return None
     groups, seen = [], set()
     for g in data:
