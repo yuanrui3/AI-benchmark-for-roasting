@@ -123,12 +123,13 @@ def judge_prompt(a: str, b: str, lang: str, name: str, facts: list[str] | None =
     if lang == "zh":
         head = f"关于{name}的事实清单（已核实，英文）：\n{sheet}\n\n" if sheet else ""
         return (f"{head}下面是两段吐槽同一个对象（{name}）的段子。\n\nA:\n{a}\n\nB:\n{b}\n\n"
-                f"哪一段作为吐槽更好：更好笑、更狠、更具体？编造事实的段子要扣分，自己解释笑点的段子也要扣分。Answer with a single letter: A or B.")
+                f"在一屋子懂行的观众面前，哪一段能拿到更大的笑声？狠的赢，贴着对象的赢；编造事实的输，自己解释笑点的输，"
+                f"光是更长、信息更多不算赢。Answer with a single letter: A or B.")
     head = f"Fact sheet about {name} (verified):\n{sheet}\n\n" if sheet else ""
     return (f"{head}Below are two roasts of the same target ({name}).\n\nA:\n{a}\n\nB:\n{b}\n\n"
-            f"Which is the better roast: funnier, sharper, more specific? Hold invented facts against a roast, and a roast "
-            f"that explains its own joke. "
-            f"Answer with a single letter: A or B.")
+            f"Which one gets the bigger laugh from a sharp room? Sharper wins, closer to the target wins; a roast that "
+            f"invents facts loses, a roast that explains its own joke loses, and being longer or more informative is "
+            f"not a win. Answer with a single letter: A or B.")
 
 
 def main() -> int:
@@ -141,6 +142,7 @@ def main() -> int:
     ap.add_argument("--judges", default=None, help="comma list; default: every judge whose key exists")
     ap.add_argument("--workers", type=int, default=6)
     ap.add_argument("--seed", type=int, default=11)
+    ap.add_argument("--effort", default=config.PAIR_JUDGE_EFFORT, help="judge reasoning effort: low | medium | high")
     args = ap.parse_args()
 
     run_dir = ROOT / "runs" / args.run
@@ -222,7 +224,7 @@ def main() -> int:
         try:
             res = llm.call(spec, JUDGE_SYSTEM, judge_prompt(a, b, v["lang"], name, targets[v["target_id"]]["facts"]),
                            max_tokens=config.JUDGE_MAX_TOKENS,
-                           effort=config.JUDGE_EFFORT, 
+                           effort=args.effort, 
                            tag=f"damage:{jname}")
         except BudgetExceeded as e:
             stop.set()

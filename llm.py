@@ -248,7 +248,26 @@ class LLM:
                       messages=[{"role": "user", "content": user}])
         if effort and effort != "none":
             kwargs["output_config"] = {"effort": effort}
-        r = client.messages.create(**kwargs)
+        import anthropic
+
+        for attempt in range(MAX_ATTEMPTS):
+            self._throttle.wait(spec.model)
+            try:
+                r = client.messages.create(**kwargs)
+                break
+            except anthropic.RateLimitError as e:
+                iv = self._throttle.slow_down(spec.model, 30.0)  # new orgs: tens of requests a minute per model
+                if attempt == MAX_ATTEMPTS - 1:
+                    raise
+                delay = _retry_after(e) or min(60.0, 5.0 * 2 ** attempt)
+                print(f"429 on {spec.model}: spacing requests {iv:.1f}s, retry in {delay:.0f}s", flush=True)
+                time.sleep(delay + random.uniform(0, 1))
+            except (anthropic.APIConnectionError, anthropic.APITimeoutError, anthropic.InternalServerError) as e:
+                if attempt == MAX_ATTEMPTS - 1:
+                    raise
+                delay = min(60.0, 3.0 * 2 ** attempt)
+                print(f"{type(e).__name__} on {spec.model}: retry in {delay:.0f}s", flush=True)
+                time.sleep(delay + random.uniform(0, 1))
         text = "".join(b.text for b in r.content if b.type == "text")
         u = r.usage
         p_in, p_out = PRICES_PER_M.get(spec.model, DEFAULT_PRICE)

@@ -3,7 +3,7 @@ from __future__ import annotations
 
 import sys
 
-from common import distinctive_words, leaked_words, load_targets, mask_text, parse_digit, parse_letter, utf8_stdout
+from common import clean_output, distinctive_words, leaked_words, load_targets, mask_text, parse_digit, parse_letter, utf8_stdout
 from truth import parse_claims as parse_claims_safe
 
 
@@ -36,6 +36,8 @@ def main() -> int:
     canb = T["canberra"]
     check("no 'the act' over-mask", mask_text("the act of walking in Canberra", canb, T["brasilia"], D), "the act of walking in [TARGET]")
     check("leak detector", leaked_words("Vimmers everywhere", D["vim"]), [])  # inflection not an exact word: not flagged, by design
+    check("clean cues", clean_output("Line one.\n(beat)\nLine two. [laughter]\n\n[Laughter]\n\n【笑】\n（停一拍）\nIn 2009 (Avatar) it won.\n"),
+          "Line one.\nLine two.\n\nIn 2009 (Avatar) it won.")
     check("parse digit", parse_digit("I think it is 3.", 5), 3)
     check("parse digit out of range", parse_digit("7", 5), None)
     check("parse letter", parse_letter("**B** is sharper"), "B")

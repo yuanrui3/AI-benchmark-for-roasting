@@ -1,0 +1,468 @@
+{
+ "run": "claude-smoke",
+ "generated": "2026-11-11T06:36:45+00:00",
+ "langs": [
+  "en",
+  "zh"
+ ],
+ "arms": [
+  "plain-opus",
+  "facts-opus",
+  "skill-opus",
+  "frame-opus",
+  "control-bland",
+  "control-generic"
+ ],
+ "generation": {
+  "plain-opus|en": {
+   "n": 4,
+   "refused": 0,
+   "errors": 0,
+   "mean_words": 147.5,
+   "cost": 0.046
+  },
+  "plain-opus|zh": {
+   "n": 4,
+   "refused": 0,
+   "errors": 0,
+   "mean_words": 202.2,
+   "cost": 0.068
+  },
+  "facts-opus|en": {
+   "n": 4,
+   "refused": 0,
+   "errors": 0,
+   "mean_words": 135.8,
+   "cost": 0.092
+  },
+  "facts-opus|zh": {
+   "n": 4,
+   "refused": 0,
+   "errors": 0,
+   "mean_words": 192.2,
+   "cost": 0.088
+  },
+  "skill-opus|en": {
+   "n": 4,
+   "refused": 0,
+   "errors": 0,
+   "mean_words": 136.2,
+   "cost": 0.132
+  },
+  "skill-opus|zh": {
+   "n": 4,
+   "refused": 0,
+   "errors": 0,
+   "mean_words": 198.2,
+   "cost": 0.122
+  },
+  "frame-opus|en": {
+   "n": 4,
+   "refused": 0,
+   "errors": 0,
+   "mean_words": 141.5,
+   "cost": 0.079
+  },
+  "frame-opus|zh": {
+   "n": 4,
+   "refused": 0,
+   "errors": 0,
+   "mean_words": 196.0,
+   "cost": 0.076
+  },
+  "control-bland|en": {
+   "n": 4,
+   "refused": 0,
+   "errors": 0,
+   "mean_words": 151.0,
+   "cost": 0.013
+  },
+  "control-bland|zh": {
+   "n": 4,
+   "refused": 0,
+   "errors": 0,
+   "mean_words": 293.8,
+   "cost": 0.021
+  },
+  "control-generic|en": {
+   "n": 4,
+   "refused": 0,
+   "errors": 0,
+   "mean_words": 158.5,
+   "cost": 0.017
+  },
+  "control-generic|zh": {
+   "n": 4,
+   "refused": 0,
+   "errors": 0,
+   "mean_words": 226.8,
+   "cost": 0.04
+  }
+ },
+ "profile": {
+  "plain-opus|en": {
+   "softeners": 0.0,
+   "stock": 0.0,
+   "collision": 0.0,
+   "wps": 11.1,
+   "agent_rate": {
+    "judge-sonnet": 0.43
+   }
+  },
+  "facts-opus|en": {
+   "softeners": 0.0,
+   "stock": 0.25,
+   "collision": 0.0,
+   "wps": 8.6,
+   "agent_rate": {
+    "judge-sonnet": 0.43
+   }
+  },
+  "skill-opus|en": {
+   "softeners": 0.0,
+   "stock": 0.25,
+   "collision": 0.0,
+   "wps": 6.9,
+   "agent_rate": {
+    "judge-sonnet": 0.44
+   }
+  },
+  "frame-opus|en": {
+   "softeners": 0.0,
+   "stock": 0.0,
+   "collision": 0.0,
+   "wps": 9.8,
+   "agent_rate": {
+    "judge-sonnet": 0.85
+   }
+  },
+  "control-bland|en": {
+   "softeners": 0.0,
+   "stock": 0.0,
+   "collision": 0.0,
+   "wps": 15.1,
+   "agent_rate": {
+    "judge-sonnet": 0.29
+   }
+  },
+  "control-generic|en": {
+   "softeners": 0.0,
+   "stock": 0.0,
+   "collision": 0.0,
+   "wps": 9.9,
+   "agent_rate": {
+    "judge-sonnet": 0.6
+   }
+  },
+  "plain-opus|zh": {
+   "softeners": 0.0,
+   "stock": 0.0,
+   "collision": 0.0,
+   "wps": 16.5,
+   "agent_rate": {
+    "judge-sonnet": 0.4
+   }
+  },
+  "facts-opus|zh": {
+   "softeners": 0.0,
+   "stock": 0.0,
+   "collision": 0.0,
+   "wps": 15.1,
+   "agent_rate": {
+    "judge-sonnet": 0.45
+   }
+  },
+  "skill-opus|zh": {
+   "softeners": 0.0,
+   "stock": 0.25,
+   "collision": 0.0,
+   "wps": 13.0,
+   "agent_rate": {
+    "judge-sonnet": 0.4
+   }
+  },
+  "frame-opus|zh": {
+   "softeners": 0.0,
+   "stock": 0.0,
+   "collision": 0.0,
+   "wps": 19.1,
+   "agent_rate": {
+    "judge-sonnet": 0.77
+   }
+  },
+  "control-bland|zh": {
+   "softeners": 0.0,
+   "stock": 0.0,
+   "collision": 0.0,
+   "wps": 27.3,
+   "agent_rate": {
+    "judge-sonnet": 0.2
+   }
+  },
+  "control-generic|zh": {
+   "softeners": 0.0,
+   "stock": 0.0,
+   "collision": 0.0,
+   "wps": 17.1,
+   "agent_rate": {
+    "judge-sonnet": 0.54
+   }
+  }
+ },
+ "devices": {
+  "per_arm": {
+   "plain-opus|en": {
+    "n": 4,
+    "cross": 0.5,
+    "self": 0.0
+   },
+   "plain-opus|zh": {
+    "n": 4,
+    "cross": 0.25,
+    "self": 0.0
+   },
+   "facts-opus|en": {
+    "n": 4,
+    "cross": 1.0,
+    "self": 0.0
+   },
+   "facts-opus|zh": {
+    "n": 4,
+    "cross": 0.75,
+    "self": 0.0
+   },
+   "skill-opus|en": {
+    "n": 4,
+    "cross": 0.75,
+    "self": 0.0
+   },
+   "skill-opus|zh": {
+    "n": 4,
+    "cross": 0.75,
+    "self": 0.0
+   }
+  },
+  "attractors": [
+   {
+    "arms": 3,
+    "target": "comic-sans",
+    "lang": "en",
+    "device": "Gritty Watchmen inspiration versus silly result"
+   },
+   {
+    "arms": 3,
+    "target": "crocs",
+    "lang": "zh",
+    "device": "先卖洞再卖堵洞挂件"
+   }
+  ]
+ },
+ "specificity": {
+  "plain-opus|en": {
+   "n": 4,
+   "acc": 1.0,
+   "twin_acc": 1.0,
+   "leak": 0.0,
+   "lex": 0.0467
+  },
+  "plain-opus|zh": {
+   "n": 4,
+   "acc": 1.0,
+   "twin_acc": 1.0,
+   "leak": 0.0,
+   "lex": 0.0
+  },
+  "facts-opus|en": {
+   "n": 4,
+   "acc": 1.0,
+   "twin_acc": 1.0,
+   "leak": 0.0,
+   "lex": 0.2757
+  },
+  "facts-opus|zh": {
+   "n": 4,
+   "acc": 1.0,
+   "twin_acc": 1.0,
+   "leak": 0.0,
+   "lex": 0.0077
+  },
+  "skill-opus|en": {
+   "n": 4,
+   "acc": 1.0,
+   "twin_acc": 1.0,
+   "leak": 0.0,
+   "lex": 0.2269
+  },
+  "skill-opus|zh": {
+   "n": 4,
+   "acc": 1.0,
+   "twin_acc": 1.0,
+   "leak": 0.0,
+   "lex": 0.0039
+  },
+  "frame-opus|en": {
+   "n": 4,
+   "acc": 1.0,
+   "twin_acc": 1.0,
+   "leak": 0.0,
+   "lex": 0.0139
+  },
+  "frame-opus|zh": {
+   "n": 4,
+   "acc": 1.0,
+   "twin_acc": 1.0,
+   "leak": 0.0,
+   "lex": 0.0
+  },
+  "control-bland|en": {
+   "n": 4,
+   "acc": 1.0,
+   "twin_acc": 1.0,
+   "leak": 0.0,
+   "lex": 0.0052
+  },
+  "control-bland|zh": {
+   "n": 4,
+   "acc": 1.0,
+   "twin_acc": 1.0,
+   "leak": 0.0,
+   "lex": 0.0009
+  },
+  "control-generic|en": {
+   "n": 4,
+   "acc": 0.75,
+   "twin_acc": 0.75,
+   "leak": 0.0,
+   "lex": -0.005
+  },
+  "control-generic|zh": {
+   "n": 4,
+   "acc": 1.0,
+   "twin_acc": 1.0,
+   "leak": 0.0,
+   "lex": 0.0
+  }
+ },
+ "truth": {
+  "plain-opus|en": {
+   "n": 4,
+   "pass": 0.75,
+   "claims": 9.5,
+   "contra": 0.25,
+   "absent": 5.5
+  },
+  "plain-opus|zh": {
+   "n": 4,
+   "pass": 1.0,
+   "claims": 7.5,
+   "contra": 0.0,
+   "absent": 5.25
+  },
+  "facts-opus|en": {
+   "n": 4,
+   "pass": 1.0,
+   "claims": 9.75,
+   "contra": 0.0,
+   "absent": 0.75
+  },
+  "facts-opus|zh": {
+   "n": 4,
+   "pass": 1.0,
+   "claims": 10.0,
+   "contra": 0.0,
+   "absent": 0.5
+  },
+  "skill-opus|en": {
+   "n": 4,
+   "pass": 1.0,
+   "claims": 9.75,
+   "contra": 0.0,
+   "absent": 1.25
+  },
+  "skill-opus|zh": {
+   "n": 4,
+   "pass": 1.0,
+   "claims": 10.5,
+   "contra": 0.0,
+   "absent": 1.75
+  },
+  "frame-opus|en": {
+   "n": 4,
+   "pass": 1.0,
+   "claims": 5.5,
+   "contra": 0.0,
+   "absent": 4.0
+  },
+  "frame-opus|zh": {
+   "n": 4,
+   "pass": 1.0,
+   "claims": 6.25,
+   "contra": 0.0,
+   "absent": 4.25
+  },
+  "control-bland|en": {
+   "n": 4,
+   "pass": 1.0,
+   "claims": 9.0,
+   "contra": 0.0,
+   "absent": 7.5
+  },
+  "control-bland|zh": {
+   "n": 4,
+   "pass": 1.0,
+   "claims": 9.0,
+   "contra": 0.0,
+   "absent": 7.25
+  }
+ },
+ "judges": {
+  "judge-sonnet|en": {
+   "overall": 0.917,
+   "p_first": 0.512,
+   "per": {
+    "explain": 0.5,
+    "false": 0.9166666666666666,
+    "frontload": 1.0,
+    "generic": 1.0,
+    "pad": 1.0,
+    "polite": 1.0,
+    "softener": 1.0
+   },
+   "self_pref": null,
+   "verdict": "discard"
+  },
+  "judge-sonnet|zh": {
+   "overall": 0.976,
+   "p_first": 0.524,
+   "per": {
+    "explain": 1.0,
+    "false": 1.0,
+    "frontload": 0.8333333333333334,
+    "generic": 1.0,
+    "pad": 1.0,
+    "polite": 1.0,
+    "softener": 1.0
+   },
+   "self_pref": null,
+   "verdict": "usable"
+  }
+ },
+ "votes": {
+  "n": 0,
+  "raters": []
+ },
+ "bt_human": {},
+ "agreement": {},
+ "judge_human": {},
+ "gates": {
+  "controls_behave": [
+   null,
+   false
+  ],
+  "spread": null,
+  "raters_agree": null,
+  "specificity_varies": false,
+  "judge_usable": true
+ },
+ "verdict": "no verdict yet (human data missing)"
+}

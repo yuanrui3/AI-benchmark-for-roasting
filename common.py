@@ -133,6 +133,20 @@ def parse_letter(text: str, letters: str = "AB") -> str | None:
     return m.group(1) if m else None
 
 
+_CUE_LINE = re.compile(r"^[ \t]*[\[【(（][^\]】)）\n]{1,14}[\]】)）][ \t]*\n?", re.M)
+_CUE_INLINE = re.compile(r"[ \t]*[\[【][^\]】\n]{1,14}[\]】]")
+
+
+def clean_output(text: str) -> str:
+    """Remove stage directions a performable script carries: whole lines such as (beat), (pause), [laughter],
+    （停一拍）, 【笑】, and inline [laughter] / 【笑】. They are not jokes, they announce one, and they identify
+    the skill arm to every rater and judge. Parenthesised text inside a sentence (a year, an aside) is kept."""
+    out = _CUE_LINE.sub("", text)
+    out = _CUE_INLINE.sub("", out)
+    out = re.sub(r"\n{3,}", "\n\n", out)
+    return out.strip()
+
+
 def count_words(text: str, lang: str) -> int:
     if lang == "zh":
         return len(CJK.findall(text))

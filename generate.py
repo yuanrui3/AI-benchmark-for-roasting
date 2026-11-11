@@ -23,6 +23,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 import config
+from common import clean_output
 from llm import LLM, PRICES_PER_M, BudgetExceeded
 
 ROOT = Path(__file__).resolve().parent
@@ -186,7 +187,8 @@ def main() -> int:
             "item_id": j["item_id"], "target_id": j["target"]["id"], "twin_id": j["target"]["twin"],
             "lang": j["lang"], "arm": arm["name"], "kind": arm["kind"], "model": spec.model,
             "provider": res.provider, "family": spec.family, "sample": j["sample"],
-            "text": res.text, "refused": res.refused, "stop_reason": res.stop_reason, "error": res.error,
+            "text": clean_output(res.text), "text_raw": res.text if clean_output(res.text) != res.text else None,
+            "refused": res.refused, "stop_reason": res.stop_reason, "error": res.error,
             "input_tokens": res.input_tokens, "output_tokens": res.output_tokens, "cost_usd": res.cost_usd,
             "latency_s": res.latency_s, "timestamp": res.timestamp, "cached": res.cached,
         }

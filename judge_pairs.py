@@ -31,6 +31,7 @@ def main() -> int:
     ap.add_argument("--budget", type=float, default=40.0, help="run-wide USD cap (ledger is shared by all stages)")
     ap.add_argument("--judges", default=None, help="comma list; default: every judge whose key exists")
     ap.add_argument("--workers", type=int, default=6)
+    ap.add_argument("--effort", default=config.PAIR_JUDGE_EFFORT, help="judge reasoning effort: low | medium | high")
     ap.add_argument("--pairs", default="rate/pairs.json", help="pool to judge, under runs/<run>")
     ap.add_argument("--out", default="judge_pairs.jsonl", help="output file under runs/<run>")
     ap.add_argument("--per-lang", type=int, default=None,
@@ -66,7 +67,7 @@ def main() -> int:
         first, second = (p["a"], p["b"]) if order == "ab" else (p["b"], p["a"])
         try:
             res = llm.call(spec, JUDGE_SYSTEM, judge_prompt(first["text"], second["text"], p["lang"], p["target_name"], p["facts"]),
-                           max_tokens=config.JUDGE_MAX_TOKENS, effort=config.JUDGE_EFFORT,
+                           max_tokens=config.JUDGE_MAX_TOKENS, effort=args.effort,
                            tag=f"judge_pairs:{jname}")
         except BudgetExceeded as e:
             stop.set()

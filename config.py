@@ -74,7 +74,8 @@ JUDGES: dict[str, str] = {        # judge name -> MODELS key
     "judge-deepseek": "deepseek",   # about a fifth of GPT-5.5's price per call; it also generates (plain-deepseek), so
                                     # analyze.py's self-preference column is the check on it
 }
-JUDGE_EFFORT = "low"
+JUDGE_EFFORT = "low"        # classification tasks: swap test, truth, agency, devices
+PAIR_JUDGE_EFFORT = "low"   # comparative tasks: damage tests, pair judging (position-tied answers at low effort on Sonnet)
 JUDGE_MAX_TOKENS = 8000  # thinking tokens count toward this; answers are a few tokens. DeepSeek V4 Pro spent
                          # more than 2000 on most truth checks and more than 4000 on a few swap tests at effort=low.
 # The truth check is a fact-check against a supplied sheet, so one judge is enough: the first usable one here.
