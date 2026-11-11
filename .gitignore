@@ -9,3 +9,5 @@ runs/*/raw/
 runs/mock*/
 # zipped rating pages for sending to raters
 runs/*/rate-*.zip
+# third-party humor datasets downloaded by external_pairs.py; never commit their text
+ext-data/
