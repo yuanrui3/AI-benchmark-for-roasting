@@ -7,7 +7,7 @@ The pool is built by build_pairs.py --same-model --arms plain-X,frame-X,...: eve
 the same model on the same target, so a vote is about the framing, not the model. This reports, per rater and
 per model, framed wins / plain wins / both bad / skipped; the framed share of decisive votes with a Wilson 95%
 interval and an exact binomial p-value against 50%; the same for a judge file if one exists; and the
-agent-action rates (agency.jsonl) of the two framings. Writes runs/<run>/<pool>/frame_test.md.
+agent-action rates (agency.jsonl) of the two framings, one row per labeller. Writes runs/<run>/<pool>/frame_test.md.
 """
 from __future__ import annotations
 
@@ -150,16 +150,17 @@ def main() -> int:
     apath = run_dir / "agency.jsonl"
     if apath.exists():
         langs = {p["lang"] for p in pairs.values()}
-        rates: dict[tuple[str, str], list[float]] = defaultdict(list)
+        # one row per labeller: a judge model and the free keyword rule label at very different levels, so never pool them
+        rates: dict[tuple[str, str, str], list[float]] = defaultdict(list)
         for r in read_jsonl(apath):
             if r["lang"] in langs and r["kind"] in ("plain", "frame") and r["agent_rate"] is not None:
-                rates[(r["kind"], r["lang"])].append(r["agent_rate"])
+                rates[(r["judge"], r["kind"], r["lang"])].append(r["agent_rate"])
         if rates:
             lines.append("\n## Agent-action rate (agency.jsonl)\n")
-            lines.append("| framing | lang | items | mean agent rate |")
-            lines.append("|---|---|---:|---:|")
-            for (k, lang), vals in sorted(rates.items()):
-                lines.append(f"| {k} | {lang} | {len(vals)} | {sum(vals) / len(vals):.2f} |")
+            lines.append("| labeller | framing | lang | items | mean agent rate |")
+            lines.append("|---|---|---|---:|---:|")
+            for (j, k, lang), vals in sorted(rates.items()):
+                lines.append(f"| {j} | {k} | {lang} | {len(vals)} | {sum(vals) / len(vals):.2f} |")
 
     text = "\n".join(lines) + "\n"
     (run_dir / args.pool / "frame_test.md").write_text(text, encoding="utf-8")

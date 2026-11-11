@@ -1,0 +1,498 @@
+{
+ "run": "pilot",
+ "generated": "2026-11-11T08:03:29+00:00",
+ "langs": [
+  "en",
+  "zh"
+ ],
+ "arms": [
+  "plain-opus",
+  "facts-opus",
+  "skill-opus",
+  "frame-opus",
+  "control-bland",
+  "control-generic"
+ ],
+ "generation": {
+  "plain-opus|en": {
+   "n": 88,
+   "refused": 0,
+   "errors": 0,
+   "mean_words": 140.1,
+   "cost": 1.345
+  },
+  "plain-opus|zh": {
+   "n": 88,
+   "refused": 0,
+   "errors": 0,
+   "mean_words": 206.0,
+   "cost": 1.512
+  },
+  "facts-opus|en": {
+   "n": 88,
+   "refused": 0,
+   "errors": 0,
+   "mean_words": 139.3,
+   "cost": 1.683
+  },
+  "facts-opus|zh": {
+   "n": 88,
+   "refused": 0,
+   "errors": 0,
+   "mean_words": 200.5,
+   "cost": 1.862
+  },
+  "skill-opus|en": {
+   "n": 88,
+   "refused": 0,
+   "errors": 0,
+   "mean_words": 136.9,
+   "cost": 2.678
+  },
+  "skill-opus|zh": {
+   "n": 88,
+   "refused": 0,
+   "errors": 0,
+   "mean_words": 188.1,
+   "cost": 2.802
+  },
+  "frame-opus|en": {
+   "n": 88,
+   "refused": 0,
+   "errors": 0,
+   "mean_words": 137.6,
+   "cost": 1.513
+  },
+  "frame-opus|zh": {
+   "n": 88,
+   "refused": 0,
+   "errors": 0,
+   "mean_words": 200.4,
+   "cost": 1.586
+  },
+  "control-bland|en": {
+   "n": 88,
+   "refused": 0,
+   "errors": 0,
+   "mean_words": 149.5,
+   "cost": 0.291
+  },
+  "control-bland|zh": {
+   "n": 88,
+   "refused": 0,
+   "errors": 0,
+   "mean_words": 274.8,
+   "cost": 0.567
+  },
+  "control-generic|en": {
+   "n": 88,
+   "refused": 0,
+   "errors": 0,
+   "mean_words": 152.3,
+   "cost": 0.341
+  },
+  "control-generic|zh": {
+   "n": 88,
+   "refused": 0,
+   "errors": 0,
+   "mean_words": 215.8,
+   "cost": 0.855
+  }
+ },
+ "profile": {
+  "plain-opus|en": {
+   "softeners": 0.0,
+   "stock": 0.03,
+   "collision": 0.0,
+   "wps": 10.1,
+   "agent_rate": {
+    "judge-sonnet": 0.34,
+    "rule": 0.14
+   }
+  },
+  "facts-opus|en": {
+   "softeners": 0.0,
+   "stock": 0.02,
+   "collision": 0.32,
+   "wps": 9.0,
+   "agent_rate": {
+    "judge-sonnet": 0.36,
+    "rule": 0.11
+   }
+  },
+  "skill-opus|en": {
+   "softeners": 0.0,
+   "stock": 0.05,
+   "collision": 0.31,
+   "wps": 6.2,
+   "agent_rate": {
+    "judge-sonnet": 0.44,
+    "rule": 0.07
+   }
+  },
+  "frame-opus|en": {
+   "softeners": 0.0,
+   "stock": 0.05,
+   "collision": 0.0,
+   "wps": 10.7,
+   "agent_rate": {
+    "judge-sonnet": 0.84,
+    "rule": 0.21
+   }
+  },
+  "control-bland|en": {
+   "softeners": 0.0,
+   "stock": 0.02,
+   "collision": 0.0,
+   "wps": 14.8,
+   "agent_rate": {
+    "judge-sonnet": 0.21,
+    "rule": 0.12
+   }
+  },
+  "control-generic|en": {
+   "softeners": 0.0,
+   "stock": 0.06,
+   "collision": 0.0,
+   "wps": 10.4,
+   "agent_rate": {
+    "judge-sonnet": 0.48,
+    "rule": 0.16
+   }
+  },
+  "plain-opus|zh": {
+   "softeners": 0.0,
+   "stock": 0.01,
+   "collision": 0.0,
+   "wps": 15.2,
+   "agent_rate": {
+    "judge-sonnet": 0.35,
+    "rule": 0.07
+   }
+  },
+  "facts-opus|zh": {
+   "softeners": 0.0,
+   "stock": 0.05,
+   "collision": 0.02,
+   "wps": 14.9,
+   "agent_rate": {
+    "judge-sonnet": 0.36,
+    "rule": 0.08
+   }
+  },
+  "skill-opus|zh": {
+   "softeners": 0.0,
+   "stock": 0.1,
+   "collision": 0.02,
+   "wps": 12.4,
+   "agent_rate": {
+    "judge-sonnet": 0.37,
+    "rule": 0.07
+   }
+  },
+  "frame-opus|zh": {
+   "softeners": 0.01,
+   "stock": 0.01,
+   "collision": 0.0,
+   "wps": 15.7,
+   "agent_rate": {
+    "judge-sonnet": 0.74,
+    "rule": 0.15
+   }
+  },
+  "control-bland|zh": {
+   "softeners": 0.0,
+   "stock": 0.02,
+   "collision": 0.0,
+   "wps": 28.1,
+   "agent_rate": {
+    "judge-sonnet": 0.1,
+    "rule": 0.13
+   }
+  },
+  "control-generic|zh": {
+   "softeners": 0.0,
+   "stock": 0.05,
+   "collision": 0.0,
+   "wps": 16.2,
+   "agent_rate": {
+    "judge-sonnet": 0.51,
+    "rule": 0.12
+   }
+  }
+ },
+ "devices": {
+  "per_arm": {
+   "plain-opus|en": {
+    "n": 88,
+    "cross": 0.22,
+    "self": 0.84
+   },
+   "plain-opus|zh": {
+    "n": 88,
+    "cross": 0.18,
+    "self": 0.8
+   },
+   "facts-opus|en": {
+    "n": 88,
+    "cross": 0.73,
+    "self": 0.86
+   },
+   "facts-opus|zh": {
+    "n": 88,
+    "cross": 0.72,
+    "self": 0.89
+   },
+   "skill-opus|en": {
+    "n": 88,
+    "cross": 0.58,
+    "self": 0.75
+   },
+   "skill-opus|zh": {
+    "n": 88,
+    "cross": 0.6,
+    "self": 0.7
+   }
+  },
+  "attractors": [
+   {
+    "arms": 3,
+    "target": "beanie-babies",
+    "lang": "en",
+    "device": "Beanie Babies as a fake retirement plan"
+   },
+   {
+    "arms": 3,
+    "target": "keurig",
+    "lang": "zh",
+    "device": "发明人后悔亲爹不认"
+   },
+   {
+    "arms": 3,
+    "target": "luosifen",
+    "lang": "zh",
+    "device": "螺蛳背锅酸笋干活"
+   },
+   {
+    "arms": 3,
+    "target": "pmma",
+    "lang": "zh",
+    "device": "博士生就是光刻胶"
+   },
+   {
+    "arms": 3,
+    "target": "vim",
+    "lang": "en",
+    "device": "Vim users as hostages/captives"
+   }
+  ]
+ },
+ "specificity": {
+  "plain-opus|en": {
+   "n": 87,
+   "acc": 1.0,
+   "twin_acc": 1.0,
+   "leak": 0.0,
+   "lex": 0.0449
+  },
+  "plain-opus|zh": {
+   "n": 88,
+   "acc": 1.0,
+   "twin_acc": 1.0,
+   "leak": 0.0,
+   "lex": 0.0014
+  },
+  "facts-opus|en": {
+   "n": 86,
+   "acc": 0.988,
+   "twin_acc": 1.0,
+   "leak": 0.0,
+   "lex": 0.2182
+  },
+  "facts-opus|zh": {
+   "n": 88,
+   "acc": 1.0,
+   "twin_acc": 1.0,
+   "leak": 0.0,
+   "lex": 0.0072
+  },
+  "skill-opus|en": {
+   "n": 87,
+   "acc": 0.989,
+   "twin_acc": 1.0,
+   "leak": 0.0,
+   "lex": 0.1823
+  },
+  "skill-opus|zh": {
+   "n": 88,
+   "acc": 1.0,
+   "twin_acc": 1.0,
+   "leak": 0.0,
+   "lex": 0.0058
+  },
+  "frame-opus|en": {
+   "n": 88,
+   "acc": 0.977,
+   "twin_acc": 1.0,
+   "leak": 0.0,
+   "lex": 0.0206
+  },
+  "frame-opus|zh": {
+   "n": 88,
+   "acc": 1.0,
+   "twin_acc": 1.0,
+   "leak": 0.0,
+   "lex": 0.001
+  },
+  "control-bland|en": {
+   "n": 88,
+   "acc": 1.0,
+   "twin_acc": 1.0,
+   "leak": 0.0,
+   "lex": 0.0225
+  },
+  "control-bland|zh": {
+   "n": 88,
+   "acc": 1.0,
+   "twin_acc": 1.0,
+   "leak": 0.0,
+   "lex": 0.0008
+  },
+  "control-generic|en": {
+   "n": 84,
+   "acc": 0.488,
+   "twin_acc": 0.5,
+   "leak": 0.0,
+   "lex": -0.0014
+  },
+  "control-generic|zh": {
+   "n": 83,
+   "acc": 0.482,
+   "twin_acc": 0.494,
+   "leak": 0.0,
+   "lex": 0.0001
+  }
+ },
+ "truth": {
+  "plain-opus|en": {
+   "n": 88,
+   "pass": 0.852,
+   "claims": 10.18,
+   "contra": 0.15,
+   "absent": 5.82
+  },
+  "plain-opus|zh": {
+   "n": 88,
+   "pass": 0.909,
+   "claims": 8.11,
+   "contra": 0.1,
+   "absent": 4.88
+  },
+  "facts-opus|en": {
+   "n": 88,
+   "pass": 0.966,
+   "claims": 10.17,
+   "contra": 0.03,
+   "absent": 0.74
+  },
+  "facts-opus|zh": {
+   "n": 88,
+   "pass": 0.932,
+   "claims": 10.5,
+   "contra": 0.07,
+   "absent": 0.69
+  },
+  "skill-opus|en": {
+   "n": 88,
+   "pass": 0.92,
+   "claims": 10.85,
+   "contra": 0.08,
+   "absent": 1.51
+  },
+  "skill-opus|zh": {
+   "n": 88,
+   "pass": 0.966,
+   "claims": 11.19,
+   "contra": 0.03,
+   "absent": 1.7
+  },
+  "frame-opus|en": {
+   "n": 88,
+   "pass": 0.943,
+   "claims": 7.59,
+   "contra": 0.07,
+   "absent": 4.43
+  },
+  "frame-opus|zh": {
+   "n": 88,
+   "pass": 0.92,
+   "claims": 7.82,
+   "contra": 0.08,
+   "absent": 4.7
+  },
+  "control-bland|en": {
+   "n": 88,
+   "pass": 0.989,
+   "claims": 9.36,
+   "contra": 0.01,
+   "absent": 6.48
+  },
+  "control-bland|zh": {
+   "n": 88,
+   "pass": 0.966,
+   "claims": 9.39,
+   "contra": 0.03,
+   "absent": 6.23
+  }
+ },
+ "judges": {
+  "judge-sonnet|en": {
+   "overall": 0.929,
+   "p_first": 0.524,
+   "per": {
+    "explain": 0.7333333333333333,
+    "false": 0.9333333333333333,
+    "frontload": 0.8833333333333333,
+    "generic": 1.0,
+    "pad": 0.95,
+    "polite": 1.0,
+    "softener": 1.0
+   },
+   "self_pref": null,
+   "verdict": "discard"
+  },
+  "judge-sonnet|zh": {
+   "overall": 0.962,
+   "p_first": 0.533,
+   "per": {
+    "explain": 0.8333333333333334,
+    "false": 0.9666666666666667,
+    "frontload": 0.95,
+    "generic": 1.0,
+    "pad": 1.0,
+    "polite": 1.0,
+    "softener": 0.9833333333333333
+   },
+   "self_pref": null,
+   "verdict": "discard"
+  }
+ },
+ "votes": {
+  "n": 0,
+  "raters": []
+ },
+ "bt_human": {},
+ "agreement": {},
+ "judge_human": {},
+ "gates": {
+  "controls_behave": [
+   null,
+   true
+  ],
+  "spread": null,
+  "raters_agree": null,
+  "specificity_varies": false,
+  "judge_usable": false
+ },
+ "verdict": "no verdict yet (human data missing); benchmark stays human-rated (no judge passed)"
+}
