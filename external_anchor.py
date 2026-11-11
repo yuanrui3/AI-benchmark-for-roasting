@@ -111,7 +111,10 @@ def main() -> int:
         for _ in as_completed([ex.submit(work, j) for j in jobs]):
             pass
 
-    rows = [r for r in read_jsonl(out_path) if r["id"] in by_id]
+    rows = [r for r in read_jsonl(out_path) if r["id"] in by_id] if out_path.exists() else []
+    if not rows:
+        print(f"spent ${llm.spent_usd:.2f}; no judgements written (every call failed?)")
+        return 1
     print(f"spent ${llm.spent_usd:.2f}; {len(rows)} judgements -> {out_path}")
     print(f"{'judge':13s} {'band':8s} {'n':>5s} {'acc':>6s} {'P(first)':>9s} {'flip':>6s} {'parse✗':>7s}")
     for j in judges:

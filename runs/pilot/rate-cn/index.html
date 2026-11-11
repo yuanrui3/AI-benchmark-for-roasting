@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Roast Bench · rate</title>
+<style>
+  :root { --bg:#f7f6f2; --fg:#1b1b1b; --muted:#6b6b6b; --card:#fff; --line:#ddd; --accent:#b4321e; --accent-fg:#fff; --soft:#efece4; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg:#141414; --fg:#ededed; --muted:#9a9a9a; --card:#1e1e1e; --line:#333; --accent:#e0533a; --soft:#242424; } }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--fg); font: 16px/1.5 system-ui, -apple-system, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif; }
+  main { max-width: 1100px; margin: 0 auto; padding: 16px; }
+  h1 { font-size: 20px; margin: 0 0 8px; }
+  .muted { color: var(--muted); font-size: 14px; }
+  .row { display:flex; gap:12px; flex-wrap:wrap; align-items:center; }
+  label { display:block; font-size:14px; margin-top:10px; }
+  input, select, textarea { width:100%; padding:8px; font:inherit; border:1px solid var(--line); border-radius:6px; background:var(--card); color:var(--fg); }
+  textarea { min-height: 60px; }
+  button { font:inherit; padding:10px 16px; border-radius:8px; border:1px solid var(--line); background:var(--card); color:var(--fg); cursor:pointer; }
+  button.primary { background:var(--accent); color:var(--accent-fg); border-color:var(--accent); }
+  button:disabled { opacity:.5; cursor:default; }
+  .pair { display:grid; grid-template-columns: 1fr 1fr; gap:16px; margin-top:12px; }
+  @media (max-width: 760px) { .pair { grid-template-columns: 1fr; } }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:16px; white-space:pre-wrap; min-height:180px; font-size:17px; }
+  .card.pick { outline: 3px solid var(--accent); }
+  .side { display:flex; flex-direction:column; gap:8px; }
+  .flag { font-size:14px; color:var(--muted); display:flex; gap:6px; align-items:center; }
+  .flag input { width:auto; }
+  .target { margin-top: 16px; font-size: 18px; }
+  details { margin-top:6px; font-size:14px; color:var(--muted); }
+  .bar { height:6px; background:var(--soft); border-radius:3px; margin:12px 0; overflow:hidden; }
+  .bar > div { height:100%; background:var(--accent); width:0; }
+  .actions { margin-top:14px; display:flex; gap:10px; flex-wrap:wrap; }
+  kbd { font: 12px ui-monospace, monospace; border:1px solid var(--line); border-bottom-width:2px; border-radius:4px; padding:0 5px; color:var(--muted); }
+  .hidden { display:none; }
+  .notice { background:var(--soft); padding:10px 12px; border-radius:8px; font-size:14px; margin-top:10px; }
+  fieldset.hsq { border: 1px solid var(--line); border-radius: 8px; padding: 8px 12px; margin: 10px 0; }
+  fieldset.hsq legend { color: var(--muted); font-size: .92em; padding: 0 6px; }
+  fieldset.hsq label { display: flex; justify-content: space-between; gap: 12px; align-items: center; margin: 6px 0; }
+  fieldset.hsq input { width: 4.5em; flex: none; }
+  .fam { margin-top:12px; padding:10px 12px; background:var(--soft); border-radius:8px; font-size:15px; display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
+  .fam button { padding:6px 12px; }
+  .locked .pair, .locked [data-choice] { opacity:.35; pointer-events:none; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Roast Bench · blind pairwise rating · 盲评</h1>
+  <div class="muted">Two roasts of the same thing. Pick the one that hits harder. You never see who wrote what.<br>两段吐槽同一个东西的段子，选更狠的那段。你看不到是谁写的。</div>
+
+  <section id="setup">
+    <div class="notice" id="loadstate">Loading pairs…</div>
+    <label>Your name or handle · 你的名字或网名 <input id="name" placeholder="rater 2"></label>
+    <label>Language to rate · 评哪种语言 <select id="lang"></select></label>
+    <label>Languages you read fluently · 你能流畅阅读的语言 <input id="languages" placeholder="Chinese, English"></label>
+    <label>What you find funny (shows, comedians, forums) · 你觉得什么好笑（节目、演员、论坛） <textarea id="humor"></textarea></label>
+    <label>Dark humor tolerance, 1 (none) to 5 (anything) · 黑色幽默接受度 1–5 <input id="dark" type="number" min="1" max="5" value="3"></label>
+    <label>Anything off-limits for you · 有什么是你不接受拿来开玩笑的 <input id="offlimits" placeholder="leave blank if nothing · 没有就留空"></label>
+    <fieldset class="hsq">
+      <legend>Four quick taste items, 1 (totally disagree) to 7 (totally agree) · 四道口味题，1（完全不同意）到 7（完全同意）</legend>
+      <label>When someone makes a mistake, I tend to tease them about it. · 别人出了洋相，我常会拿这个开他的玩笑。 <input id="hsq1" type="number" min="1" max="7" value="4"></label>
+      <label>I don't like it when humor is used to criticize or put someone down. · 我不喜欢别人拿幽默当幌子去批评或贬低人。 <input id="hsq2" type="number" min="1" max="7" value="4"></label>
+      <label>If I think of something really funny, I say it even when the occasion is wrong for it. · 想到特别好笑的话，就算场合不对我也忍不住要说。 <input id="hsq3" type="number" min="1" max="7" value="4"></label>
+      <label>If I dislike someone, I use jokes or teasing to take them down a peg. · 要是我不喜欢某个人，我常会用玩笑或挖苦去损他。 <input id="hsq4" type="number" min="1" max="7" value="4"></label>
+      <div class="muted">In the style of the aggressive-humor scale of the Humor Styles Questionnaire (Martin et al., 2003): paraphrased, not the published items. · 仿照幽默风格问卷（HSQ）的攻击型幽默分量表改写，不是原题。</div>
+    </fieldset>
+    <div class="actions">
+      <button class="primary" id="start">Start · 开始</button>
+      <span class="muted" id="resume"></span>
+    </div>
+    <div class="notice">Keys: <kbd>←</kbd> left wins · <kbd>→</kbd> right wins · <kbd>B</kbd> both bad · <kbd>S</kbd> skip · <kbd>1</kbd>/<kbd>2</kbd> flag left/right as crossing a line · <kbd>U</kbd> undo · <kbd>E</kbd> export. The first time a target comes up you say how well you know it (<kbd>7</kbd> well · <kbd>8</kbd> heard of it · <kbd>9</kbd> no idea). Export whenever you like; progress also autosaves in this browser.<br>快捷键：<kbd>←</kbd> 左边赢 · <kbd>→</kbd> 右边赢 · <kbd>B</kbd> 都不行 · <kbd>S</kbd> 跳过 · <kbd>1</kbd>/<kbd>2</kbd> 标记左/右“过线了” · <kbd>U</kbd> 撤销 · <kbd>E</kbd> 导出。每个对象第一次出现时先答一下你对它熟不熟（<kbd>7</kbd> 很熟 · <kbd>8</kbd> 听说过 · <kbd>9</kbd> 不知道）。随时可以导出；进度也会自动保存在这个浏览器里。</div>
+  </section>
+
+  <section id="rate" class="hidden">
+    <div class="bar"><div id="prog"></div></div>
+    <div class="row"><span class="muted" id="count"></span><span class="muted" id="timer"></span></div>
+    <div class="target">Target · 对象: <strong id="tname"></strong></div>
+    <div class="fam hidden" id="fam"><span>First time this one comes up. How well do you know it? · 第一次碰到这个对象，你对它熟吗？</span>
+      <button data-fam="well">Know it well · 很熟 (7)</button>
+      <button data-fam="heard">Heard of it · 听说过 (8)</button>
+      <button data-fam="none">No idea · 不知道 (9)</button>
+    </div>
+    <details><summary>Fact sheet, if you want it · 事实清单（可不看）</summary><ul id="facts"></ul></details>
+    <div class="pair">
+      <div class="side"><div class="card" id="left"></div><label class="flag"><input type="checkbox" id="flagL"> crosses a line · 过线了 (1)</label></div>
+      <div class="side"><div class="card" id="right"></div><label class="flag"><input type="checkbox" id="flagR"> crosses a line · 过线了 (2)</label></div>
+    </div>
+    <div class="actions">
+      <button class="primary" data-choice="left">← Left hits harder · 左边更狠</button>
+      <button class="primary" data-choice="right">右边更狠 · Right hits harder →</button>
+      <button data-choice="both_bad">Both bad · 都不行 (B)</button>
+      <button data-choice="skip">Skip · 跳过 (S)</button>
+      <button id="undo">Undo · 撤销 (U)</button>
+      <button id="export">Export · 导出 (E)</button>
+    </div>
+  </section>
+
+  <section id="done" class="hidden">
+    <h1>Done. Thank you. · 评完了，谢谢。</h1>
+    <div class="notice">Click export and send the file back. · 点导出，把文件发回来。</div>
+    <div class="actions"><button class="primary" id="export2">Export · 导出</button></div>
+  </section>
+</main>
+
+<script src="pairs.js"></script>
+<script>
+(function () {
+  const $ = id => document.getElementById(id);
+  const DATA = window.PAIRS || null;
+  const state = { rater: null, lang: null, idx: 0, votes: [], fam: {}, t0: 0 };  // fam: target_id -> well | heard | none
+  const KEY = () => `roastbench:${DATA && DATA.run}:${state.lang}:${state.rater && state.rater.name}`;
+
+  function hash(s) { let h = 2166136261; for (let i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 16777619); } return h >>> 0; }
+  function pairsFor(lang) { return DATA.pairs.filter(p => p.lang === lang); }
+  function swapped(p) { return hash(state.rater.name + '|' + p.pair_id) % 2 === 1; }
+
+  function init() {
+    if (!DATA) { $('loadstate').textContent = 'pairs.js did not load; it must sit beside index.html. Unzip the whole folder first and open index.html from inside it, not from the zip itself. In the Claude app, open the page by its http://127.0.0.1:8765/… address, not as a file. · pairs.js 没加载上：先把整个文件夹解压出来，再从里面打开 index.html，不要在压缩包里直接打开。'; $('start').disabled = true; return; }
+    $('loadstate').textContent = `Run "${DATA.run}": ${DATA.pairs.length} pairs (${DATA.langs.map(l => l + ' ' + pairsFor(l).length).join(', ')}).`;
+    for (const l of DATA.langs) { const o = document.createElement('option'); o.value = l; o.textContent = l === 'zh' ? '中文' : l === 'en' ? 'English' : l; $('lang').appendChild(o); }
+    try {
+      const last = localStorage.getItem('roastbench:last');
+      if (last) { const r = JSON.parse(last); $('name').value = r.name || ''; $('languages').value = r.languages || ''; $('humor').value = r.humor || ''; $('dark').value = r.dark || 3; $('offlimits').value = r.offlimits || ''; if (Array.isArray(r.hsq)) r.hsq.forEach((v, i) => { if ($('hsq' + (i + 1))) $('hsq' + (i + 1)).value = v; }); if (r.lang) $('lang').value = r.lang; }
+    } catch (e) {}
+  }
+
+  function start() {
+    const name = $('name').value.trim();
+    if (!name) { alert('Name or handle, please. It only labels your export file.'); return; }
+    const hsq = [1, 2, 3, 4].map(i => Math.min(7, Math.max(1, Number($('hsq' + i).value) || 4)));
+    const hsqAgg = Math.round(((hsq[0] + (8 - hsq[1]) + hsq[2] + hsq[3]) / 4) * 100) / 100;  // item 2 reverse-scored
+    state.rater = { name, languages: $('languages').value.trim(), humor: $('humor').value.trim(), dark: Number($('dark').value), offlimits: $('offlimits').value.trim(), hsq, hsq_agg: hsqAgg };
+    state.lang = $('lang').value;
+    try { localStorage.setItem('roastbench:last', JSON.stringify({ ...state.rater, lang: state.lang })); } catch (e) {}
+    try { const saved = localStorage.getItem(KEY()); if (saved) { const s = JSON.parse(saved); state.votes = s.votes || []; state.idx = s.idx || 0; state.fam = s.fam || {}; } } catch (e) {}
+    $('setup').classList.add('hidden'); $('rate').classList.remove('hidden');
+    show();
+  }
+
+  function save() { try { localStorage.setItem(KEY(), JSON.stringify({ votes: state.votes, idx: state.idx, fam: state.fam })); } catch (e) {} }
+
+  function show() {
+    const ps = pairsFor(state.lang);
+    if (state.idx >= ps.length) { $('rate').classList.add('hidden'); $('done').classList.remove('hidden'); return; }
+    $('done').classList.add('hidden'); $('rate').classList.remove('hidden');
+    const p = ps[state.idx], sw = swapped(p);
+    const L = sw ? p.b : p.a, R = sw ? p.a : p.b;
+    $('left').textContent = L.text; $('right').textContent = R.text;
+    $('tname').textContent = p.target_name;
+    $('facts').innerHTML = ''; for (const f of p.facts) { const li = document.createElement('li'); li.textContent = f; $('facts').appendChild(li); }
+    $('flagL').checked = false; $('flagR').checked = false;
+    $('left').classList.remove('pick'); $('right').classList.remove('pick');
+    const known = !!state.fam[p.target_id];  // the familiarity question comes first, once per target; the clock starts after it
+    $('fam').classList.toggle('hidden', known); $('rate').classList.toggle('locked', !known);
+    $('count').textContent = `${state.idx + 1} / ${ps.length}`;
+    $('prog').style.width = (100 * state.idx / ps.length) + '%';
+    state.t0 = Date.now();
+    window.scrollTo(0, 0);
+  }
+
+  function vote(choice) {
+    const ps = pairsFor(state.lang); const p = ps[state.idx]; if (!p) return;
+    if (!state.fam[p.target_id]) return;
+    const sw = swapped(p); const L = sw ? p.b : p.a, R = sw ? p.a : p.b;
+    state.votes.push({ pair_id: p.pair_id, left_item: L.item_id, right_item: R.item_id, choice, line_left: $('flagL').checked, line_right: $('flagR').checked, familiarity: state.fam[p.target_id], ms: Date.now() - state.t0, ts: new Date().toISOString() });
+    state.idx++; save(); show();
+  }
+
+  function setFam(level) {
+    const p = pairsFor(state.lang)[state.idx]; if (!p || state.fam[p.target_id]) return;
+    state.fam[p.target_id] = level; save(); show();
+  }
+
+  function undo() { if (!state.votes.length || state.idx === 0) return; state.votes.pop(); state.idx--; save(); show(); }
+
+  function exportVotes() {
+    const out = { run: DATA.run, lang: state.lang, rater: state.rater, exported: new Date().toISOString(), familiarity: state.fam, votes: state.votes };
+    const blob = new Blob([JSON.stringify(out, null, 1)], { type: 'application/json' });
+    const a = document.createElement('a'); a.href = URL.createObjectURL(blob);
+    a.download = `votes_${DATA.run}_${state.lang}_${state.rater.name.replace(/[^\w一-鿿-]+/g, '_')}.json`;
+    document.body.appendChild(a); a.click(); a.remove();
+  }
+
+  $('start').onclick = start;
+  document.querySelectorAll('[data-choice]').forEach(b => b.onclick = () => vote(b.dataset.choice));
+  document.querySelectorAll('[data-fam]').forEach(b => b.onclick = () => setFam(b.dataset.fam));
+  $('undo').onclick = undo; $('export').onclick = exportVotes; $('export2').onclick = exportVotes;
+  $('left').onclick = () => vote('left'); $('right').onclick = () => vote('right');
+  document.addEventListener('keydown', e => {
+    if ($('rate').classList.contains('hidden') || e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+    const k = e.key.toLowerCase();
+    if (k === '7') setFam('well'); else if (k === '8') setFam('heard'); else if (k === '9') setFam('none');
+    if (e.key === 'ArrowLeft') vote('left'); else if (e.key === 'ArrowRight') vote('right');
+    else if (k === 'b') vote('both_bad'); else if (k === 's') vote('skip'); else if (k === 'u') undo(); else if (k === 'e') exportVotes();
+    else if (k === '1') $('flagL').checked = !$('flagL').checked; else if (k === '2') $('flagR').checked = !$('flagR').checked;
+  });
+  setInterval(() => { if (state.t0) $('timer').textContent = ` · ${Math.round((Date.now() - state.t0) / 1000)}s`; }, 1000);
+  init();
+})();
+</script>
+</body>
+</html>

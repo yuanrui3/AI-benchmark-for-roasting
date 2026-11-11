@@ -1,6 +1,6 @@
 {
  "run": "pilot",
- "generated": "2026-11-11T19:51:01+00:00",
+ "generated": "2026-11-11T23:01:28+00:00",
  "langs": [
   "en",
   "zh"
@@ -19,74 +19,74 @@
  ],
  "generation": {
   "plain-opus|en": {
-   "n": 88,
+   "n": 120,
    "refused": 0,
    "errors": 0,
-   "mean_words": 140.1,
-   "cost": 1.345
+   "mean_words": 141.2,
+   "cost": 1.724
   },
   "plain-opus|zh": {
-   "n": 88,
+   "n": 120,
    "refused": 0,
    "errors": 0,
-   "mean_words": 206.0,
-   "cost": 1.512
+   "mean_words": 204.1,
+   "cost": 2.075
   },
   "facts-opus|en": {
-   "n": 88,
+   "n": 120,
    "refused": 0,
    "errors": 0,
-   "mean_words": 139.3,
-   "cost": 1.683
+   "mean_words": 139.8,
+   "cost": 2.244
   },
   "facts-opus|zh": {
-   "n": 88,
+   "n": 120,
    "refused": 0,
    "errors": 0,
-   "mean_words": 200.5,
-   "cost": 1.862
+   "mean_words": 198.2,
+   "cost": 2.465
   },
   "skill-opus|en": {
-   "n": 88,
+   "n": 120,
    "refused": 0,
    "errors": 0,
-   "mean_words": 136.9,
-   "cost": 2.678
+   "mean_words": 135.5,
+   "cost": 3.628
   },
   "skill-opus|zh": {
-   "n": 88,
+   "n": 120,
    "refused": 0,
    "errors": 0,
-   "mean_words": 188.1,
-   "cost": 2.802
+   "mean_words": 187.0,
+   "cost": 3.812
   },
   "frame-opus|en": {
-   "n": 88,
+   "n": 120,
    "refused": 0,
    "errors": 0,
-   "mean_words": 137.6,
-   "cost": 1.513
+   "mean_words": 137.4,
+   "cost": 2.063
   },
   "frame-opus|zh": {
-   "n": 88,
+   "n": 120,
    "refused": 0,
    "errors": 0,
-   "mean_words": 200.4,
-   "cost": 1.586
+   "mean_words": 199.9,
+   "cost": 2.19
   },
   "control-bland|en": {
-   "n": 88,
+   "n": 120,
    "refused": 0,
    "errors": 0,
-   "mean_words": 149.5,
-   "cost": 0.291
+   "mean_words": 149.3,
+   "cost": 0.407
   },
   "control-bland|zh": {
-   "n": 88,
+   "n": 120,
    "refused": 0,
    "errors": 0,
-   "mean_words": 274.8,
-   "cost": 0.567
+   "mean_words": 278.1,
+   "cost": 0.736
   },
   "control-generic|en": {
    "n": 88,
@@ -167,52 +167,52 @@
    "wps": 10.1,
    "agent_rate": {
     "judge-opus": 0.37,
-    "judge-sonnet": 0.34,
-    "rule": 0.14
+    "judge-sonnet": 0.38,
+    "rule": 0.15
    }
   },
   "facts-opus|en": {
    "softeners": 0.0,
-   "stock": 0.02,
-   "collision": 0.32,
-   "wps": 9.0,
+   "stock": 0.03,
+   "collision": 0.29,
+   "wps": 8.9,
    "agent_rate": {
     "judge-opus": 0.45,
-    "judge-sonnet": 0.36,
-    "rule": 0.11
+    "judge-sonnet": 0.37,
+    "rule": 0.12
    }
   },
   "skill-opus|en": {
    "softeners": 0.0,
-   "stock": 0.05,
-   "collision": 0.31,
+   "stock": 0.03,
+   "collision": 0.28,
    "wps": 6.2,
    "agent_rate": {
     "judge-opus": 0.47,
     "judge-sonnet": 0.44,
-    "rule": 0.07
+    "rule": 0.08
    }
   },
   "frame-opus|en": {
    "softeners": 0.0,
-   "stock": 0.05,
+   "stock": 0.03,
    "collision": 0.0,
-   "wps": 10.7,
+   "wps": 10.6,
    "agent_rate": {
     "judge-opus": 0.88,
     "judge-sonnet": 0.84,
-    "rule": 0.21
+    "rule": 0.2
    }
   },
   "control-bland|en": {
    "softeners": 0.0,
-   "stock": 0.02,
+   "stock": 0.05,
    "collision": 0.0,
-   "wps": 14.8,
+   "wps": 14.7,
    "agent_rate": {
     "judge-opus": 0.22,
-    "judge-sonnet": 0.21,
-    "rule": 0.12
+    "judge-sonnet": 0.22,
+    "rule": 0.15
    }
   },
   "control-generic|en": {
@@ -274,32 +274,32 @@
    "softeners": 0.0,
    "stock": 0.01,
    "collision": 0.0,
-   "wps": 15.2,
+   "wps": 15.5,
    "agent_rate": {
     "judge-opus": 0.35,
-    "judge-sonnet": 0.35,
-    "rule": 0.07
+    "judge-sonnet": 0.39,
+    "rule": 0.08
    }
   },
   "facts-opus|zh": {
    "softeners": 0.0,
-   "stock": 0.05,
+   "stock": 0.03,
    "collision": 0.02,
-   "wps": 14.9,
+   "wps": 14.8,
    "agent_rate": {
     "judge-opus": 0.43,
-    "judge-sonnet": 0.36,
+    "judge-sonnet": 0.37,
     "rule": 0.08
    }
   },
   "skill-opus|zh": {
    "softeners": 0.0,
-   "stock": 0.1,
+   "stock": 0.07,
    "collision": 0.02,
    "wps": 12.4,
    "agent_rate": {
     "judge-opus": 0.43,
-    "judge-sonnet": 0.37,
+    "judge-sonnet": 0.39,
     "rule": 0.07
    }
   },
@@ -307,22 +307,22 @@
    "softeners": 0.01,
    "stock": 0.01,
    "collision": 0.0,
-   "wps": 15.7,
+   "wps": 15.8,
    "agent_rate": {
     "judge-opus": 0.77,
-    "judge-sonnet": 0.74,
-    "rule": 0.15
+    "judge-sonnet": 0.75,
+    "rule": 0.14
    }
   },
   "control-bland|zh": {
    "softeners": 0.0,
    "stock": 0.02,
    "collision": 0.0,
-   "wps": 28.1,
+   "wps": 28.5,
    "agent_rate": {
     "judge-opus": 0.06,
-    "judge-sonnet": 0.1,
-    "rule": 0.13
+    "judge-sonnet": 0.12,
+    "rule": 0.16
    }
   },
   "control-generic|zh": {
@@ -389,9 +389,9 @@
     "self": 0.68
    },
    "plain-opus|en|judge-sonnet": {
-    "n": 88,
-    "cross": 0.57,
-    "self": 0.8
+    "n": 120,
+    "cross": 0.44,
+    "self": 0.82
    },
    "plain-opus|zh|judge-opus": {
     "n": 88,
@@ -399,9 +399,9 @@
     "self": 0.66
    },
    "plain-opus|zh|judge-sonnet": {
-    "n": 88,
-    "cross": 0.73,
-    "self": 0.7
+    "n": 120,
+    "cross": 0.55,
+    "self": 0.73
    },
    "facts-opus|en|judge-opus": {
     "n": 88,
@@ -409,9 +409,9 @@
     "self": 0.91
    },
    "facts-opus|en|judge-sonnet": {
-    "n": 88,
-    "cross": 0.86,
-    "self": 0.89
+    "n": 120,
+    "cross": 0.82,
+    "self": 0.88
    },
    "facts-opus|zh|judge-opus": {
     "n": 88,
@@ -419,9 +419,9 @@
     "self": 0.95
    },
    "facts-opus|zh|judge-sonnet": {
-    "n": 88,
-    "cross": 0.86,
-    "self": 0.98
+    "n": 120,
+    "cross": 0.78,
+    "self": 0.92
    },
    "skill-opus|en|judge-opus": {
     "n": 88,
@@ -429,9 +429,9 @@
     "self": 0.91
    },
    "skill-opus|en|judge-sonnet": {
-    "n": 88,
-    "cross": 0.76,
-    "self": 0.86
+    "n": 120,
+    "cross": 0.68,
+    "self": 0.77
    },
    "skill-opus|zh|judge-opus": {
     "n": 88,
@@ -439,9 +439,9 @@
     "self": 0.93
    },
    "skill-opus|zh|judge-sonnet": {
-    "n": 88,
-    "cross": 0.81,
-    "self": 0.82
+    "n": 120,
+    "cross": 0.71,
+    "self": 0.77
    },
    "plain-sonnet|en|judge-opus": {
     "n": 88,
@@ -491,9 +491,9 @@
     "arms_per_cell": 5.0
    },
    "judge-sonnet": {
-    "cells": 88,
-    "roasts_per_cell": 10.0,
-    "arms_per_cell": 5.0
+    "cells": 120,
+    "roasts_per_cell": 8.9,
+    "arms_per_cell": 4.5
    }
   },
   "agreement": {
@@ -947,74 +947,74 @@
  },
  "specificity": {
   "plain-opus|en": {
-   "n": 87,
+   "n": 118,
    "acc": 1.0,
    "twin_acc": 1.0,
    "leak": 0.0,
-   "lex": 0.0449
+   "lex": 0.0368
   },
   "plain-opus|zh": {
-   "n": 88,
+   "n": 120,
    "acc": 1.0,
    "twin_acc": 1.0,
    "leak": 0.0,
-   "lex": 0.0014
+   "lex": 0.0012
   },
   "facts-opus|en": {
-   "n": 86,
-   "acc": 0.988,
-   "twin_acc": 1.0,
+   "n": 116,
+   "acc": 0.957,
+   "twin_acc": 0.991,
    "leak": 0.0,
-   "lex": 0.2182
+   "lex": 0.2116
   },
   "facts-opus|zh": {
-   "n": 88,
+   "n": 119,
    "acc": 1.0,
    "twin_acc": 1.0,
    "leak": 0.0,
-   "lex": 0.0072
+   "lex": 0.0056
   },
   "skill-opus|en": {
-   "n": 87,
-   "acc": 0.989,
-   "twin_acc": 1.0,
+   "n": 118,
+   "acc": 0.949,
+   "twin_acc": 0.974,
    "leak": 0.0,
-   "lex": 0.1823
+   "lex": 0.1745
   },
   "skill-opus|zh": {
-   "n": 88,
+   "n": 119,
    "acc": 1.0,
    "twin_acc": 1.0,
    "leak": 0.0,
-   "lex": 0.0058
+   "lex": 0.0046
   },
   "frame-opus|en": {
-   "n": 88,
-   "acc": 0.977,
+   "n": 119,
+   "acc": 0.966,
    "twin_acc": 1.0,
    "leak": 0.0,
-   "lex": 0.0206
+   "lex": 0.0202
   },
   "frame-opus|zh": {
-   "n": 88,
-   "acc": 1.0,
-   "twin_acc": 1.0,
-   "leak": 0.0,
-   "lex": 0.001
-  },
-  "control-bland|en": {
-   "n": 88,
-   "acc": 1.0,
-   "twin_acc": 1.0,
-   "leak": 0.0,
-   "lex": 0.0225
-  },
-  "control-bland|zh": {
-   "n": 88,
-   "acc": 1.0,
-   "twin_acc": 1.0,
+   "n": 119,
+   "acc": 0.992,
+   "twin_acc": 0.992,
    "leak": 0.0,
    "lex": 0.0008
+  },
+  "control-bland|en": {
+   "n": 120,
+   "acc": 1.0,
+   "twin_acc": 1.0,
+   "leak": 0.0,
+   "lex": 0.019
+  },
+  "control-bland|zh": {
+   "n": 120,
+   "acc": 1.0,
+   "twin_acc": 1.0,
+   "leak": 0.0,
+   "lex": 0.0006
   },
   "control-generic|en": {
    "n": 84,
@@ -1096,11 +1096,11 @@
    "absent": 5.3
   },
   "plain-opus|en|judge-sonnet": {
-   "n": 88,
-   "pass": 0.852,
-   "claims": 10.18,
-   "contra": 0.15,
-   "absent": 5.82
+   "n": 120,
+   "pass": 0.792,
+   "claims": 9.72,
+   "contra": 0.22,
+   "absent": 5.73
   },
   "plain-opus|zh|judge-opus": {
    "n": 88,
@@ -1110,11 +1110,11 @@
    "absent": 3.56
   },
   "plain-opus|zh|judge-sonnet": {
-   "n": 88,
-   "pass": 0.909,
-   "claims": 8.11,
-   "contra": 0.1,
-   "absent": 4.88
+   "n": 120,
+   "pass": 0.9,
+   "claims": 7.85,
+   "contra": 0.12,
+   "absent": 4.75
   },
   "facts-opus|en|judge-opus": {
    "n": 88,
@@ -1124,11 +1124,11 @@
    "absent": 0.23
   },
   "facts-opus|en|judge-sonnet": {
-   "n": 88,
-   "pass": 0.966,
-   "claims": 10.17,
+   "n": 120,
+   "pass": 0.967,
+   "claims": 10.05,
    "contra": 0.03,
-   "absent": 0.74
+   "absent": 0.76
   },
   "facts-opus|zh|judge-opus": {
    "n": 88,
@@ -1138,11 +1138,11 @@
    "absent": 0.2
   },
   "facts-opus|zh|judge-sonnet": {
-   "n": 88,
-   "pass": 0.932,
-   "claims": 10.5,
+   "n": 120,
+   "pass": 0.925,
+   "claims": 10.51,
    "contra": 0.07,
-   "absent": 0.69
+   "absent": 0.78
   },
   "skill-opus|en|judge-opus": {
    "n": 88,
@@ -1152,11 +1152,11 @@
    "absent": 0.92
   },
   "skill-opus|en|judge-sonnet": {
-   "n": 88,
-   "pass": 0.92,
-   "claims": 10.85,
+   "n": 120,
+   "pass": 0.917,
+   "claims": 10.8,
    "contra": 0.08,
-   "absent": 1.51
+   "absent": 1.75
   },
   "skill-opus|zh|judge-opus": {
    "n": 88,
@@ -1166,11 +1166,11 @@
    "absent": 0.76
   },
   "skill-opus|zh|judge-sonnet": {
-   "n": 88,
-   "pass": 0.966,
-   "claims": 11.19,
-   "contra": 0.03,
-   "absent": 1.7
+   "n": 120,
+   "pass": 0.917,
+   "claims": 11.02,
+   "contra": 0.08,
+   "absent": 1.8
   },
   "frame-opus|en|judge-opus": {
    "n": 88,
@@ -1180,11 +1180,11 @@
    "absent": 4.02
   },
   "frame-opus|en|judge-sonnet": {
-   "n": 88,
-   "pass": 0.943,
+   "n": 120,
+   "pass": 0.908,
    "claims": 7.59,
-   "contra": 0.07,
-   "absent": 4.43
+   "contra": 0.11,
+   "absent": 4.56
   },
   "frame-opus|zh|judge-opus": {
    "n": 88,
@@ -1194,11 +1194,11 @@
    "absent": 3.5
   },
   "frame-opus|zh|judge-sonnet": {
-   "n": 88,
-   "pass": 0.92,
-   "claims": 7.82,
-   "contra": 0.08,
-   "absent": 4.7
+   "n": 120,
+   "pass": 0.883,
+   "claims": 7.76,
+   "contra": 0.14,
+   "absent": 4.67
   },
   "control-bland|en|judge-opus": {
    "n": 88,
@@ -1208,11 +1208,11 @@
    "absent": 6.14
   },
   "control-bland|en|judge-sonnet": {
-   "n": 88,
-   "pass": 0.989,
-   "claims": 9.36,
-   "contra": 0.01,
-   "absent": 6.48
+   "n": 120,
+   "pass": 0.942,
+   "claims": 9.07,
+   "contra": 0.07,
+   "absent": 6.46
   },
   "control-bland|zh|judge-opus": {
    "n": 87,
@@ -1222,11 +1222,11 @@
    "absent": 5.62
   },
   "control-bland|zh|judge-sonnet": {
-   "n": 88,
-   "pass": 0.966,
-   "claims": 9.39,
-   "contra": 0.03,
-   "absent": 6.23
+   "n": 120,
+   "pass": 0.958,
+   "claims": 9.09,
+   "contra": 0.04,
+   "absent": 6.09
   },
   "plain-sonnet|en|judge-opus": {
    "n": 88,

@@ -1,21 +1,21 @@
 # Preflight report: run `pilot`
 
-Generated 2026-11-11T19:51:01+00:00. Gates were fixed before data was seen (CLAUDE.md).
+Generated 2026-11-11T23:01:28+00:00. Gates were fixed before data was seen (CLAUDE.md).
 
 ## Generation
 
 | arm | lang | items | refused | errors | mean words | cost $ |
 |---|---|---:|---:|---:|---:|---:|
-| plain-opus | en | 88 | 0 | 0 | 140.1 | 1.34 |
-| plain-opus | zh | 88 | 0 | 0 | 206.0 | 1.51 |
-| facts-opus | en | 88 | 0 | 0 | 139.3 | 1.68 |
-| facts-opus | zh | 88 | 0 | 0 | 200.5 | 1.86 |
-| skill-opus | en | 88 | 0 | 0 | 136.9 | 2.68 |
-| skill-opus | zh | 88 | 0 | 0 | 188.1 | 2.80 |
-| frame-opus | en | 88 | 0 | 0 | 137.6 | 1.51 |
-| frame-opus | zh | 88 | 0 | 0 | 200.4 | 1.59 |
-| control-bland | en | 88 | 0 | 0 | 149.5 | 0.29 |
-| control-bland | zh | 88 | 0 | 0 | 274.8 | 0.57 |
+| plain-opus | en | 120 | 0 | 0 | 141.2 | 1.72 |
+| plain-opus | zh | 120 | 0 | 0 | 204.1 | 2.08 |
+| facts-opus | en | 120 | 0 | 0 | 139.8 | 2.24 |
+| facts-opus | zh | 120 | 0 | 0 | 198.2 | 2.46 |
+| skill-opus | en | 120 | 0 | 0 | 135.5 | 3.63 |
+| skill-opus | zh | 120 | 0 | 0 | 187.0 | 3.81 |
+| frame-opus | en | 120 | 0 | 0 | 137.4 | 2.06 |
+| frame-opus | zh | 120 | 0 | 0 | 199.9 | 2.19 |
+| control-bland | en | 120 | 0 | 0 | 149.3 | 0.41 |
+| control-bland | zh | 120 | 0 | 0 | 278.1 | 0.74 |
 | control-generic | en | 88 | 0 | 0 | 152.3 | 0.34 |
 | control-generic | zh | 88 | 0 | 0 | 215.8 | 0.85 |
 | plain-sonnet | en | 88 | 0 | 0 | 157.6 | 0.31 |
@@ -33,21 +33,21 @@ Nerve = softeners per item (lower is braver). Novelty = share of items whose tex
 
 | arm | lang | softeners/item | stock hits/item | collision rate | words/sentence | agent-action (judge-opus) | agent-action (judge-sonnet) | agent-action (rule) |
 |---|---|---:|---:|---:|---:|---:|---:|---:|
-| plain-opus | en | 0.00 | 0.03 | 0% | 10.1 | 37% | 34% | 14% |
-| facts-opus | en | 0.00 | 0.02 | 32% | 9.0 | 45% | 36% | 11% |
-| skill-opus | en | 0.00 | 0.05 | 31% | 6.2 | 47% | 44% | 7% |
-| frame-opus | en | 0.00 | 0.05 | 0% | 10.7 | 88% | 84% | 21% |
-| control-bland | en | 0.00 | 0.02 | 0% | 14.8 | 22% | 21% | 12% |
+| plain-opus | en | 0.00 | 0.03 | 0% | 10.1 | 37% | 38% | 15% |
+| facts-opus | en | 0.00 | 0.03 | 29% | 8.9 | 45% | 37% | 12% |
+| skill-opus | en | 0.00 | 0.03 | 28% | 6.2 | 47% | 44% | 8% |
+| frame-opus | en | 0.00 | 0.03 | 0% | 10.6 | 88% | 84% | 20% |
+| control-bland | en | 0.00 | 0.05 | 0% | 14.7 | 22% | 22% | 15% |
 | control-generic | en | 0.00 | 0.06 | 0% | 10.4 | 49% | 48% | 16% |
 | plain-sonnet | en | 0.00 | 0.10 | 0% | 10.3 | 39% | 36% | 15% |
 | plain-haiku | en | 0.00 | 0.09 | 0% | 12.1 | 38% | 39% | 16% |
 | frame-sonnet | en | 0.00 | 0.05 | 0% | 11.2 | 90% | 87% | 20% |
 | frame-haiku | en | 0.00 | 0.05 | 0% | 12.3 | 91% | 92% | 22% |
-| plain-opus | zh | 0.00 | 0.01 | 0% | 15.2 | 35% | 35% | 7% |
-| facts-opus | zh | 0.00 | 0.05 | 2% | 14.9 | 43% | 36% | 8% |
-| skill-opus | zh | 0.00 | 0.10 | 2% | 12.4 | 43% | 37% | 7% |
-| frame-opus | zh | 0.01 | 0.01 | 0% | 15.7 | 77% | 74% | 15% |
-| control-bland | zh | 0.00 | 0.02 | 0% | 28.1 | 6% | 10% | 13% |
+| plain-opus | zh | 0.00 | 0.01 | 0% | 15.5 | 35% | 39% | 8% |
+| facts-opus | zh | 0.00 | 0.03 | 2% | 14.8 | 43% | 37% | 8% |
+| skill-opus | zh | 0.00 | 0.07 | 2% | 12.4 | 43% | 39% | 7% |
+| frame-opus | zh | 0.01 | 0.01 | 0% | 15.8 | 77% | 75% | 14% |
+| control-bland | zh | 0.00 | 0.02 | 0% | 28.5 | 6% | 12% | 16% |
 | control-generic | zh | 0.00 | 0.05 | 0% | 16.2 | 53% | 51% | 12% |
 | plain-sonnet | zh | 0.00 | 0.03 | 0% | 15.9 | 37% | 36% | 9% |
 | plain-haiku | zh | 0.00 | 0.02 | 0% | 18.8 | 28% | 29% | 8% |
@@ -61,17 +61,17 @@ One judge call per target and language groups that target's roasts by the image 
 | arm | lang | judge | items | cross-arm | self-repeat |
 |---|---|---|---:|---:|---:|
 | plain-opus | en | judge-opus | 88 | 44% | 68% |
-| plain-opus | en | judge-sonnet | 88 | 57% | 80% |
+| plain-opus | en | judge-sonnet | 120 | 44% | 82% |
 | plain-opus | zh | judge-opus | 88 | 51% | 66% |
-| plain-opus | zh | judge-sonnet | 88 | 73% | 70% |
+| plain-opus | zh | judge-sonnet | 120 | 55% | 73% |
 | facts-opus | en | judge-opus | 88 | 73% | 91% |
-| facts-opus | en | judge-sonnet | 88 | 86% | 89% |
+| facts-opus | en | judge-sonnet | 120 | 82% | 88% |
 | facts-opus | zh | judge-opus | 88 | 75% | 95% |
-| facts-opus | zh | judge-sonnet | 88 | 86% | 98% |
+| facts-opus | zh | judge-sonnet | 120 | 78% | 92% |
 | skill-opus | en | judge-opus | 88 | 67% | 91% |
-| skill-opus | en | judge-sonnet | 88 | 76% | 86% |
+| skill-opus | en | judge-sonnet | 120 | 68% | 77% |
 | skill-opus | zh | judge-opus | 88 | 75% | 93% |
-| skill-opus | zh | judge-sonnet | 88 | 81% | 82% |
+| skill-opus | zh | judge-sonnet | 120 | 71% | 77% |
 | plain-sonnet | en | judge-opus | 88 | 41% | 61% |
 | plain-sonnet | en | judge-sonnet | 88 | 62% | 77% |
 | plain-sonnet | zh | judge-opus | 88 | 51% | 64% |
@@ -82,7 +82,7 @@ One judge call per target and language groups that target's roasts by the image 
 | plain-haiku | zh | judge-sonnet | 88 | 40% | 64% |
 
 - judge-opus: 88 cells, 10.0 roasts from 5.0 arms per cell
-- judge-sonnet: 88 cells, 10.0 roasts from 5.0 arms per cell
+- judge-sonnet: 120 cells, 8.9 roasts from 4.5 arms per cell
 - en: judge-opus and judge-sonnet agree on whether two roasts share a device for 83% of 1980 roast pairs both grouped (judge-opus puts 20% of them in one device, judge-sonnet 28%).
 - zh: judge-opus and judge-sonnet agree on whether two roasts share a device for 87% of 1980 roast pairs both grouped (judge-opus puts 23% of them in one device, judge-sonnet 28%).
 
@@ -107,16 +107,16 @@ Chance 20%; twin-only chance 50%. Pooled over judges.
 
 | arm | lang | n | picked target | target vs twin | residual leak | lexical contrast |
 |---|---|---:|---:|---:|---:|---:|
-| plain-opus | en | 87 | 100% | 100% | 0% | 0.045 |
-| plain-opus | zh | 88 | 100% | 100% | 0% | 0.001 |
-| facts-opus | en | 86 | 99% | 100% | 0% | 0.218 |
-| facts-opus | zh | 88 | 100% | 100% | 0% | 0.007 |
-| skill-opus | en | 87 | 99% | 100% | 0% | 0.182 |
-| skill-opus | zh | 88 | 100% | 100% | 0% | 0.006 |
-| frame-opus | en | 88 | 98% | 100% | 0% | 0.021 |
-| frame-opus | zh | 88 | 100% | 100% | 0% | 0.001 |
-| control-bland | en | 88 | 100% | 100% | 0% | 0.022 |
-| control-bland | zh | 88 | 100% | 100% | 0% | 0.001 |
+| plain-opus | en | 118 | 100% | 100% | 0% | 0.037 |
+| plain-opus | zh | 120 | 100% | 100% | 0% | 0.001 |
+| facts-opus | en | 116 | 96% | 99% | 0% | 0.212 |
+| facts-opus | zh | 119 | 100% | 100% | 0% | 0.006 |
+| skill-opus | en | 118 | 95% | 97% | 0% | 0.174 |
+| skill-opus | zh | 119 | 100% | 100% | 0% | 0.005 |
+| frame-opus | en | 119 | 97% | 100% | 0% | 0.020 |
+| frame-opus | zh | 119 | 99% | 99% | 0% | 0.001 |
+| control-bland | en | 120 | 100% | 100% | 0% | 0.019 |
+| control-bland | zh | 120 | 100% | 100% | 0% | 0.001 |
 | control-generic | en | 84 | 49% | 50% | 0% | -0.001 |
 | control-generic | zh | 83 | 48% | 49% | 0% | 0.000 |
 | plain-sonnet | en | 88 | 100% | 100% | 0% | 0.035 |
@@ -137,25 +137,25 @@ An item fails only on a contradicted premise; facts absent from the sheet do not
 | arm | lang | judge | n | pass | claims/item | contradicted/item | absent/item |
 |---|---|---|---:|---:|---:|---:|---:|
 | plain-opus | en | judge-opus | 88 | 91% | 9.4 | 0.1 | 5.3 |
-| plain-opus | en | judge-sonnet | 88 | 85% | 10.18 | 0.15 | 5.82 |
+| plain-opus | en | judge-sonnet | 120 | 79% | 9.72 | 0.22 | 5.73 |
 | plain-opus | zh | judge-opus | 88 | 93% | 6.14 | 0.08 | 3.56 |
-| plain-opus | zh | judge-sonnet | 88 | 91% | 8.11 | 0.1 | 4.88 |
+| plain-opus | zh | judge-sonnet | 120 | 90% | 7.85 | 0.12 | 4.75 |
 | facts-opus | en | judge-opus | 88 | 96% | 8.49 | 0.05 | 0.23 |
-| facts-opus | en | judge-sonnet | 88 | 97% | 10.17 | 0.03 | 0.74 |
+| facts-opus | en | judge-sonnet | 120 | 97% | 10.05 | 0.03 | 0.76 |
 | facts-opus | zh | judge-opus | 88 | 99% | 7.45 | 0.01 | 0.2 |
-| facts-opus | zh | judge-sonnet | 88 | 93% | 10.5 | 0.07 | 0.69 |
+| facts-opus | zh | judge-sonnet | 120 | 92% | 10.51 | 0.07 | 0.78 |
 | skill-opus | en | judge-opus | 88 | 98% | 9.06 | 0.02 | 0.92 |
-| skill-opus | en | judge-sonnet | 88 | 92% | 10.85 | 0.08 | 1.51 |
+| skill-opus | en | judge-sonnet | 120 | 92% | 10.8 | 0.08 | 1.75 |
 | skill-opus | zh | judge-opus | 88 | 98% | 7.89 | 0.02 | 0.76 |
-| skill-opus | zh | judge-sonnet | 88 | 97% | 11.19 | 0.03 | 1.7 |
+| skill-opus | zh | judge-sonnet | 120 | 92% | 11.02 | 0.08 | 1.8 |
 | frame-opus | en | judge-opus | 88 | 96% | 7.0 | 0.05 | 4.02 |
-| frame-opus | en | judge-sonnet | 88 | 94% | 7.59 | 0.07 | 4.43 |
+| frame-opus | en | judge-sonnet | 120 | 91% | 7.59 | 0.11 | 4.56 |
 | frame-opus | zh | judge-opus | 88 | 94% | 5.93 | 0.06 | 3.5 |
-| frame-opus | zh | judge-sonnet | 88 | 92% | 7.82 | 0.08 | 4.7 |
+| frame-opus | zh | judge-sonnet | 120 | 88% | 7.76 | 0.14 | 4.67 |
 | control-bland | en | judge-opus | 88 | 99% | 9.01 | 0.01 | 6.14 |
-| control-bland | en | judge-sonnet | 88 | 99% | 9.36 | 0.01 | 6.48 |
+| control-bland | en | judge-sonnet | 120 | 94% | 9.07 | 0.07 | 6.46 |
 | control-bland | zh | judge-opus | 87 | 98% | 8.32 | 0.02 | 5.62 |
-| control-bland | zh | judge-sonnet | 88 | 97% | 9.39 | 0.03 | 6.23 |
+| control-bland | zh | judge-sonnet | 120 | 96% | 9.09 | 0.04 | 6.09 |
 | plain-sonnet | en | judge-opus | 88 | 78% | 8.05 | 0.26 | 4.41 |
 | plain-sonnet | en | judge-sonnet | 88 | 76% | 8.94 | 0.27 | 4.98 |
 | plain-sonnet | zh | judge-opus | 88 | 91% | 5.55 | 0.09 | 2.93 |

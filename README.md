@@ -39,20 +39,29 @@ judge's ranking and tested against it with `metric_check.py`.
   and three Claude models reach the same device on oat milk, NFTs, nuclear fusion and Emacs.
 - **The truth gate catches invention**: Sonnet's plain English roasts fail it most (0.76–0.78 pass), below Haiku and
   Opus; the judge prefers the truthful roast in 85–90% of decided pairs where truth differs.
+- **Specificity depth** (`depth.py`, the share of a roast's target-bearing sentences that would not land on the
+  twin) spreads the arms the swap test cannot: generic control 0.04–0.07, bland 0.31, Haiku 0.36–0.55, Sonnet
+  0.40–0.64, plain Opus 0.67, house style 0.77, fact-fed 0.81; the deeper roast wins 64–79% of decided pairs.
+- **The framing has to match the target**: on sixteen practice-first targets (砍一刀, 996, 相亲角, 考研, 盲盒, 老头乐,
+  预制菜, 瑞幸 and their twins) the roast aimed at the people doing the thing beats the plain roast in both
+  languages (70% en, 57% zh), the reverse of the 44 things; plain Opus also invents more on these topics and
+  the truth gate drops it to 62% in English.
+- **Free metrics that track the judge** (`metric_check.py`): truth, more sentences, fewer words per sentence and
+  fact density predict the judge's pick; novelty of comic device does not (the shared obvious joke wins).
 
 Leaderboard (judge opinion, Bradley–Terry over every judged pool, 95% bootstrap intervals; `runs/pilot/leaderboard.md`):
 
 | arm | en score | zh score |
 |---|---:|---:|
-| skill-opus | +1.94 [+1.74, +2.19] | +2.16 [+1.99, +2.30] |
-| facts-opus | +1.86 [+1.65, +2.09] | +1.29 [+1.15, +1.46] |
-| plain-opus | +1.71 [+1.49, +1.93] | +1.58 [+1.45, +1.71] |
-| frame-opus | +0.83 [+0.67, +1.03] | +1.58 [+1.46, +1.71] |
-| frame-sonnet | +0.26 [-0.03, +0.57] | +0.80 [+0.48, +1.04] |
-| plain-sonnet | -0.00 [-0.28, +0.30] | +0.51 [+0.31, +0.73] |
-| plain-haiku | -1.02 [-1.37, -0.72] | -2.33 [-2.80, -1.92] |
-| frame-haiku | -2.29 [-2.78, -1.88] | -1.33 [-1.67, -1.01] |
-| control-bland | -3.28 [-4.41, -2.49] | -4.25 [-4.44, -4.05] |
+| skill-opus | +2.03 [+1.86, +2.27] | +2.16 [+2.01, +2.33] |
+| facts-opus | +1.91 [+1.71, +2.13] | +1.31 [+1.17, +1.46] |
+| plain-opus | +1.53 [+1.39, +1.73] | +1.57 [+1.45, +1.71] |
+| frame-opus | +0.95 [+0.80, +1.16] | +1.58 [+1.47, +1.72] |
+| frame-sonnet | +0.37 [+0.16, +0.68] | +0.80 [+0.55, +1.00] |
+| plain-sonnet | -0.18 [-0.52, +0.21] | +0.49 [+0.21, +0.75] |
+| plain-haiku | -1.19 [-1.55, -0.79] | -2.34 [-2.91, -1.93] |
+| frame-haiku | -2.17 [-2.58, -1.81] | -1.33 [-1.74, -0.97] |
+| control-bland | -3.24 [-4.37, -2.38] | -4.25 [-4.44, -3.99] |
 
 A one-point gap is about a 73% win rate. These are a validated judge's preferences, not human votes.
 
@@ -74,4 +83,5 @@ preferences. Every call is cached on disk and logged to a cost ledger; `--budget
 
 Generation is Claude-only until the other families run; the judge and most generators share a family, so
 self-preference is bounded (at most five points across runs) but not measured. Human calibration is one rater and
-two public English sets; Chinese has no public preference data. Targets number 60 (44 things plus 16 practices).
+two public English sets; Chinese has no public preference data. Targets number 60 (44 things plus 16 practices); the Chinese half of the practice pool is only part-judged, the
+November credits having run out there.
