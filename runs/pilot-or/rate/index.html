@@ -115,7 +115,7 @@
   function swapped(p) { return hash(state.rater.name + '|' + p.pair_id) % 2 === 1; }
 
   function init() {
-    if (!DATA) { $('loadstate').textContent = 'pairs.js not found next to this page. Run build_pairs.py first.'; $('start').disabled = true; return; }
+    if (!DATA) { $('loadstate').textContent = 'pairs.js did not load; it must sit beside index.html. Unzip the whole folder first and open index.html from inside it, not from the zip itself. In the Claude app, open the page by its http://127.0.0.1:8765/… address, not as a file. · pairs.js 没加载上：先把整个文件夹解压出来，再从里面打开 index.html，不要在压缩包里直接打开。'; $('start').disabled = true; return; }
     $('loadstate').textContent = `Run "${DATA.run}": ${DATA.pairs.length} pairs (${DATA.langs.map(l => l + ' ' + pairsFor(l).length).join(', ')}).`;
     for (const l of DATA.langs) { const o = document.createElement('option'); o.value = l; o.textContent = l === 'zh' ? '中文' : l === 'en' ? 'English' : l; $('lang').appendChild(o); }
     try {
