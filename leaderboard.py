@@ -24,7 +24,8 @@ from common import ROOT, read_jsonl, utf8_stdout
 
 POOLS = {"rate": "judge_pairs.jsonl", "rate-opus": "judge_pairs_opus.jsonl",
          "rate-ladder-plain": "judge_pairs_ladder_plain.jsonl", "rate-ladder-frame": "judge_pairs_ladder_frame.jsonl",
-         "rate-frame": "judge_pairs_frame.jsonl", "rate-frame-en": "judge_pairs_frame_en.jsonl"}
+         "rate-frame": "judge_pairs_frame.jsonl", "rate-frame-en": "judge_pairs_frame_en.jsonl",
+         "rate-cn": "judge_pairs_cn.jsonl"}
 
 
 def bradley_terry(votes: list[tuple[str, str]], iters: int = 200) -> dict[str, float]:
