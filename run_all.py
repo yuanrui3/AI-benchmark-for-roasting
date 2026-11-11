@@ -8,7 +8,8 @@ The budget is a single run-wide cap: every stage shares runs/<run>/ledger.jsonl,
 the number is the most this run can ever spend. Re-running resumes; nothing is paid twice.
 
 Stages: generate -> specificity -> truth -> devices -> agency -> depth -> damage -> build_pairs -> judge_pairs -> analyze
--> leaderboard (Bradley-Terry over every judged pool; needs Opus judgements, so it is a notice, not a failure, when none exist).
+-> leaderboard (Bradley-Terry over every judged pool, Opus if it judged anything, else the busiest judge; a run with no
+judged pairs gets a notice, not a failure).
 Human votes are not part of this: open runs/<run>/rate/index.html, rate, export, drop the
 JSON files into runs/<run>/votes/, then run analyze.py again.
 """
@@ -84,7 +85,7 @@ def main() -> int:
     if run("analyze.py", "--run", run_name) != 0:
         return 1
     if run("leaderboard.py", "--run", run_name) != 0:
-        print("leaderboard skipped: it reads judge-opus judgements (judge_pairs.py --judges judge-opus); the pipeline is complete without it")
+        print("leaderboard skipped: no judged pairs in this run yet; the pipeline is complete without it")
     print(f"\nAll stages done. Report: runs/{run_name}/report.md. Rating page: runs/{run_name}/rate/index.html")
     return 0
 
