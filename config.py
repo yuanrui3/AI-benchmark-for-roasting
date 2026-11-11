@@ -86,7 +86,15 @@ _KEY_ENV = {"anthropic": "ANTHROPIC_API_KEY", "openrouter": "OPENROUTER_API_KEY"
 
 
 def has_key(provider: str) -> bool:
-    return provider == "mock" or bool(os.environ.get(_KEY_ENV.get(provider, ""), "").strip())
+    """A provider is usable when its key is set and it is not parked in DISABLED_PROVIDERS (.env, comma list).
+    Parking is for a key that exists but has no credit: every arm, judge and fallback then skips it cleanly
+    instead of failing call by call."""
+    if provider == "mock":
+        return True
+    parked = {p.strip() for p in os.environ.get("DISABLED_PROVIDERS", "").split(",") if p.strip()}
+    if provider in parked:
+        return False
+    return bool(os.environ.get(_KEY_ENV.get(provider, ""), "").strip())
 
 
 def usable_arms(mock: bool = False) -> list[dict]:
