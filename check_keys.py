@@ -77,9 +77,15 @@ def check_openrouter() -> bool:
     return True
 
 
+def parked() -> set[str]:
+    return {p.strip() for p in os.environ.get("DISABLED_PROVIDERS", "").split(",") if p.strip()}
+
+
 if __name__ == "__main__":
-    ok_a = check_anthropic()
-    ok_o = check_openrouter()
+    ok_a = check_anthropic() and "anthropic" not in parked()
+    ok_o = check_openrouter() and "openrouter" not in parked()
+    if parked():
+        print(f"parked by DISABLED_PROVIDERS (skipped by every stage): {sorted(parked())}")
     if ok_a and ok_o:
         print("Both keys work. Real runs can start.")
         sys.exit(0)

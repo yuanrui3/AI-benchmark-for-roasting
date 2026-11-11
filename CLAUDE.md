@@ -49,6 +49,7 @@ Score each judge's accuracy, position bias (run both orders) and self-preference
 
 - **Real runs**: direct API calls with a fixed prompt and temperature, fully logged, from the owner's machine. An Anthropic API key plus one OpenRouter key covers Claude, GPT, Gemini, Qwen, DeepSeek and Llama.
 - **Billing**: the owner's Ultra plan includes $200/month of Claude API credits (claimed once by linking a Console organization; no rollover; API requests stop when they run out and nothing is charged to the plan; they do not cover Claude Code itself). OpenRouter is the only out-of-pocket cost, about $10–15 for a full run. Verified on platform.claude.com, 9 Nov 2026.
+- **Parking a provider**: `DISABLED_PROVIDERS=openrouter` in `.env` makes `config.has_key()` treat that provider as absent, so its arms, judges and fallbacks are skipped cleanly instead of failing call by call when the key exists but the balance is empty. Remove it after a top-up.
 - **OpenRouter rate limit**: new accounts get 20 requests per minute per model (hit on `openai/gpt-5.5`, 9 Nov 2026). `llm.py` spaces requests per model after the first 429 and retries with backoff, so judge stages run at about 16 calls a minute per model: a full run's ~3000 GPT judge calls take about three hours.
 - **Smoke tests only**: headless Claude Code.
   `claude -p --model haiku --system-prompt "…" --tools "" --strict-mcp-config --mcp-config '{"mcpServers":{}}' --disable-slash-commands --setting-sources "" --no-session-persistence --max-turns 1 --output-format json "<prompt>"`
