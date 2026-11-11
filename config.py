@@ -47,8 +47,12 @@ DAMAGER_MODEL = "haiku"
 #       generic = roast of the category, no target (specificity floor)
 #       frame   = agent-action framing (owner, 9 Nov 2026): roast the practice ("wearing Crocs out of the house"),
 #                 aim at the people doing it, not the object. Same system prompt as plain; needs target.practice.
+#   Model-size ladder (11 Nov 2026): plain and frame on Sonnet 5.5 and Haiku 5.5 next to Opus 5.5. A benchmark that
+#   cannot order Opus above Haiku on the same prompt is not measuring anything; the ladder is the cheapest validity check.
 ARMS: list[dict] = [
     {"name": "plain-opus", "kind": "plain", "model": "opus"},
+    {"name": "plain-sonnet", "kind": "plain", "model": "sonnet"},
+    {"name": "plain-haiku", "kind": "plain", "model": "haiku"},
     {"name": "plain-gpt", "kind": "plain", "model": "gpt"},
     {"name": "plain-gemini", "kind": "plain", "model": "gemini"},
     {"name": "plain-deepseek", "kind": "plain", "model": "deepseek"},
@@ -56,6 +60,8 @@ ARMS: list[dict] = [
     {"name": "facts-opus", "kind": "facts", "model": "opus"},
     {"name": "skill-opus", "kind": "skill", "model": "opus"},
     {"name": "frame-opus", "kind": "frame", "model": "opus"},
+    {"name": "frame-sonnet", "kind": "frame", "model": "sonnet"},
+    {"name": "frame-haiku", "kind": "frame", "model": "haiku"},
     {"name": "frame-gpt", "kind": "frame", "model": "gpt"},
     {"name": "frame-gemini", "kind": "frame", "model": "gemini"},
     {"name": "frame-deepseek", "kind": "frame", "model": "deepseek"},
@@ -73,7 +79,10 @@ JUDGES: dict[str, str] = {        # judge name -> MODELS key
     "judge-gpt": "gpt",
     "judge-deepseek": "deepseek",   # about a fifth of GPT-5.5's price per call; it also generates (plain-deepseek), so
                                     # analyze.py's self-preference column is the check on it
+    "judge-opus": "opus",           # twice Sonnet's price and the generator of most arms (self-preference check applies);
+                                    # on request only: name it with --judges, the default judge set leaves it out
 }
+ON_REQUEST_JUDGES = {"judge-opus"}
 JUDGE_EFFORT = "low"        # classification tasks: swap test, truth, agency, devices
 PAIR_JUDGE_EFFORT = "low"   # comparative tasks: damage tests, pair judging (position-tied answers at low effort on Sonnet)
 JUDGE_MAX_TOKENS = 8000  # thinking tokens count toward this; answers are a few tokens. DeepSeek V4 Pro spent
@@ -146,10 +155,11 @@ def agency_judges(mock: bool = False) -> list[str]:
 
 
 def usable_judges(mock: bool = False) -> list[str]:
+    """The default judge set: every judge whose key exists, minus the on-request ones (pass --judges to use those)."""
     if mock:
-        return list(JUDGES)
-    keep = [j for j, m in JUDGES.items() if has_key(MODELS[m].provider)]
-    dropped = [j for j in JUDGES if j not in keep]
+        return [j for j in JUDGES if j not in ON_REQUEST_JUDGES]
+    keep = [j for j, m in JUDGES.items() if has_key(MODELS[m].provider) and j not in ON_REQUEST_JUDGES]
+    dropped = [j for j in JUDGES if j not in keep and j not in ON_REQUEST_JUDGES]
     if dropped:
         print(f"no key for provider; skipping judges: {dropped}")
     return keep
