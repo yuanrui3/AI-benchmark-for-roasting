@@ -1,6 +1,6 @@
 # Preflight report: run `pilot`
 
-Generated 2026-11-11T18:47:44+00:00. Gates were fixed before data was seen (CLAUDE.md).
+Generated 2026-11-11T19:48:50+00:00. Gates were fixed before data was seen (CLAUDE.md).
 
 ## Generation
 
@@ -56,35 +56,46 @@ Nerve = softeners per item (lower is braver). Novelty = share of items whose tex
 
 ## Novelty (comic device)
 
-One judge call per target and language groups that target's roasts by the image or angle each is built on (devices.py). Cross-arm = share of an arm's items whose device another arm also used on the same target; self-repeat = the arm's own samples share a device. Attractors are devices three or more arms reached on their own.
+One judge call per target and language groups that target's roasts by the image or angle each is built on (devices.py). Cross-arm = share of an arm's items whose device another arm also used on the same target; self-repeat = the arm's own samples share a device. One row per judge, items = roasts that judge grouped; a judge that ran before an arm was added never saw that arm, so compare cross-arm rates only between judges whose cells hold the same arms (cell sizes below). Attractors are devices three or more arms reached on their own.
 
-| arm | lang | items | cross-arm | self-repeat |
-|---|---|---:|---:|---:|
-| plain-opus | en | 176 | 33% | 76% |
-| plain-opus | zh | 176 | 35% | 73% |
-| facts-opus | en | 176 | 73% | 89% |
-| facts-opus | zh | 176 | 73% | 92% |
-| skill-opus | en | 176 | 62% | 83% |
-| skill-opus | zh | 176 | 68% | 82% |
-| plain-sonnet | en | 88 | 41% | 61% |
-| plain-sonnet | zh | 88 | 51% | 64% |
-| plain-haiku | en | 88 | 32% | 57% |
-| plain-haiku | zh | 88 | 27% | 59% |
+| arm | lang | judge | items | cross-arm | self-repeat |
+|---|---|---|---:|---:|---:|
+| plain-opus | en | judge-opus | 88 | 44% | 68% |
+| plain-opus | en | judge-sonnet | 88 | 22% | 84% |
+| plain-opus | zh | judge-opus | 88 | 51% | 66% |
+| plain-opus | zh | judge-sonnet | 88 | 18% | 80% |
+| facts-opus | en | judge-opus | 88 | 73% | 91% |
+| facts-opus | en | judge-sonnet | 88 | 73% | 86% |
+| facts-opus | zh | judge-opus | 88 | 75% | 95% |
+| facts-opus | zh | judge-sonnet | 88 | 72% | 89% |
+| skill-opus | en | judge-opus | 88 | 67% | 91% |
+| skill-opus | en | judge-sonnet | 88 | 58% | 75% |
+| skill-opus | zh | judge-opus | 88 | 75% | 93% |
+| skill-opus | zh | judge-sonnet | 88 | 60% | 70% |
+| plain-sonnet | en | judge-opus | 88 | 41% | 61% |
+| plain-sonnet | zh | judge-opus | 88 | 51% | 64% |
+| plain-haiku | en | judge-opus | 88 | 32% | 57% |
+| plain-haiku | zh | judge-opus | 88 | 27% | 59% |
+
+- judge-opus: 88 cells, 10.0 roasts from 5.0 arms per cell
+- judge-sonnet: 88 cells, 6.0 roasts from 3.0 arms per cell
+- en: judge-opus and judge-sonnet agree on whether two roasts share a device for 81% of 660 roast pairs both grouped (judge-opus puts 36% of them in one device, judge-sonnet 36%).
+- zh: judge-opus and judge-sonnet agree on whether two roasts share a device for 83% of 660 roast pairs both grouped (judge-opus puts 39% of them in one device, judge-sonnet 36%).
 
 Attractors:
 
-- 4 arms, oat-milk (zh): 燕麦奶就是粥汤
-- 4 arms, nfts (en): You bought a receipt, not art
-- 3 arms, vision-pro (zh): 假眼装作在听
-- 3 arms, vim (en): Vim users as hostages/captives
-- 3 arms, slack (zh): 绿点监视与正在输入煎熬
-- 3 arms, slack (en): Failed video game spawned the chat app
-- 3 arms, risk (en): Endless game ends in hostage situation
-- 3 arms, pmma (zh): 博士生就是光刻胶
-- 3 arms, pmma (zh): PMMA就是被用的博士生
-- 3 arms, nfts (zh): 右键另存为买个链接
-- 3 arms, microsoft-word (en): Everyday formatting frustrations list
-- 3 arms, microsoft-teams (zh): 状态灯绿黄告密
+- 4 arms, nfts (en): You bought a receipt, not art [judge-opus]
+- 4 arms, oat-milk (zh): 燕麦奶就是粥汤 [judge-opus]
+- 3 arms, beanie-babies (en): Beanie Babies as a fake retirement plan [judge-sonnet]
+- 3 arms, chicago-deep-dish (en): casserole that got an ID/agent [judge-opus]
+- 3 arms, crocs (zh): 先卖洞再卖堵洞 [judge-opus]
+- 3 arms, durian (en): Spiky mace that smells like crime scene [judge-opus]
+- 3 arms, emacs (zh): 操作系统缺好编辑器 [judge-opus]
+- 3 arms, excel (zh): 身份证号被改成000 [judge-opus]
+- 3 arms, google-glass (zh): 斜眼翻白眼看屏遭误会 [judge-opus]
+- 3 arms, graphene (en): Pencil lead that got upgraded [judge-opus]
+- 3 arms, jackfruit (en): deadly falling weapon fruit [judge-opus]
+- 3 arms, keurig (zh): 发明人后悔亲爹不认 [judge-sonnet]
 
 ## Specificity gate (masked swap test, k=5)
 
@@ -117,28 +128,49 @@ Specificity varies across arms (range >= 15 points, some arm < 90%): **False**. 
 
 ## Truth gate
 
-An item fails only on a contradicted premise; facts absent from the sheet do not count against it.
+An item fails only on a contradicted premise; facts absent from the sheet do not count against it. One row per judge, n = items; where several judges checked an item it passes the gate only if every one of them passed it.
 
-| arm | lang | n | pass | claims/item | contradicted/item | absent/item |
-|---|---|---:|---:|---:|---:|---:|
-| plain-opus | en | 176 | 88% | 9.79 | 0.12 | 5.56 |
-| plain-opus | zh | 176 | 92% | 7.12 | 0.09 | 4.22 |
-| facts-opus | en | 176 | 96% | 9.33 | 0.04 | 0.48 |
-| facts-opus | zh | 176 | 96% | 8.98 | 0.04 | 0.45 |
-| skill-opus | en | 176 | 95% | 9.95 | 0.05 | 1.22 |
-| skill-opus | zh | 176 | 97% | 9.54 | 0.03 | 1.23 |
-| frame-opus | en | 176 | 95% | 7.3 | 0.06 | 4.23 |
-| frame-opus | zh | 176 | 93% | 6.88 | 0.07 | 4.1 |
-| control-bland | en | 176 | 99% | 9.19 | 0.01 | 6.31 |
-| control-bland | zh | 175 | 97% | 8.86 | 0.03 | 5.93 |
-| plain-sonnet | en | 176 | 77% | 8.49 | 0.27 | 4.69 |
-| plain-sonnet | zh | 175 | 92% | 6.56 | 0.09 | 3.48 |
-| plain-haiku | en | 176 | 87% | 6.57 | 0.14 | 3.56 |
-| plain-haiku | zh | 176 | 90% | 5.4 | 0.1 | 3.08 |
-| frame-sonnet | en | 176 | 96% | 6.38 | 0.05 | 3.8 |
-| frame-sonnet | zh | 176 | 90% | 6.37 | 0.1 | 3.81 |
-| frame-haiku | en | 176 | 93% | 5.21 | 0.07 | 2.95 |
-| frame-haiku | zh | 176 | 92% | 5.65 | 0.09 | 3.39 |
+| arm | lang | judge | n | pass | claims/item | contradicted/item | absent/item |
+|---|---|---|---:|---:|---:|---:|---:|
+| plain-opus | en | judge-opus | 88 | 91% | 9.4 | 0.1 | 5.3 |
+| plain-opus | en | judge-sonnet | 88 | 85% | 10.18 | 0.15 | 5.82 |
+| plain-opus | zh | judge-opus | 88 | 93% | 6.14 | 0.08 | 3.56 |
+| plain-opus | zh | judge-sonnet | 88 | 91% | 8.11 | 0.1 | 4.88 |
+| facts-opus | en | judge-opus | 88 | 96% | 8.49 | 0.05 | 0.23 |
+| facts-opus | en | judge-sonnet | 88 | 97% | 10.17 | 0.03 | 0.74 |
+| facts-opus | zh | judge-opus | 88 | 99% | 7.45 | 0.01 | 0.2 |
+| facts-opus | zh | judge-sonnet | 88 | 93% | 10.5 | 0.07 | 0.69 |
+| skill-opus | en | judge-opus | 88 | 98% | 9.06 | 0.02 | 0.92 |
+| skill-opus | en | judge-sonnet | 88 | 92% | 10.85 | 0.08 | 1.51 |
+| skill-opus | zh | judge-opus | 88 | 98% | 7.89 | 0.02 | 0.76 |
+| skill-opus | zh | judge-sonnet | 88 | 97% | 11.19 | 0.03 | 1.7 |
+| frame-opus | en | judge-opus | 88 | 96% | 7.0 | 0.05 | 4.02 |
+| frame-opus | en | judge-sonnet | 88 | 94% | 7.59 | 0.07 | 4.43 |
+| frame-opus | zh | judge-opus | 88 | 94% | 5.93 | 0.06 | 3.5 |
+| frame-opus | zh | judge-sonnet | 88 | 92% | 7.82 | 0.08 | 4.7 |
+| control-bland | en | judge-opus | 88 | 99% | 9.01 | 0.01 | 6.14 |
+| control-bland | en | judge-sonnet | 88 | 99% | 9.36 | 0.01 | 6.48 |
+| control-bland | zh | judge-opus | 87 | 98% | 8.32 | 0.02 | 5.62 |
+| control-bland | zh | judge-sonnet | 88 | 97% | 9.39 | 0.03 | 6.23 |
+| plain-sonnet | en | judge-opus | 88 | 78% | 8.05 | 0.26 | 4.41 |
+| plain-sonnet | en | judge-sonnet | 88 | 76% | 8.94 | 0.27 | 4.98 |
+| plain-sonnet | zh | judge-opus | 88 | 91% | 5.55 | 0.09 | 2.93 |
+| plain-sonnet | zh | judge-sonnet | 87 | 93% | 7.59 | 0.08 | 4.03 |
+| plain-haiku | en | judge-opus | 88 | 90% | 5.98 | 0.11 | 3.14 |
+| plain-haiku | en | judge-sonnet | 88 | 84% | 7.17 | 0.17 | 3.98 |
+| plain-haiku | zh | judge-opus | 88 | 90% | 4.58 | 0.1 | 2.59 |
+| plain-haiku | zh | judge-sonnet | 88 | 91% | 6.23 | 0.1 | 3.57 |
+| frame-sonnet | en | judge-opus | 88 | 97% | 6.07 | 0.03 | 3.58 |
+| frame-sonnet | en | judge-sonnet | 88 | 94% | 6.69 | 0.06 | 4.02 |
+| frame-sonnet | zh | judge-opus | 88 | 92% | 5.48 | 0.08 | 3.32 |
+| frame-sonnet | zh | judge-sonnet | 88 | 89% | 7.26 | 0.11 | 4.3 |
+| frame-haiku | en | judge-opus | 88 | 96% | 5.07 | 0.05 | 2.94 |
+| frame-haiku | en | judge-sonnet | 88 | 90% | 5.35 | 0.1 | 2.97 |
+| frame-haiku | zh | judge-opus | 88 | 97% | 4.82 | 0.03 | 2.84 |
+| frame-haiku | zh | judge-sonnet | 88 | 86% | 6.48 | 0.14 | 3.94 |
+
+- en: judge-opus and judge-sonnet agree on pass/fail for 92% of 792 items both checked; judge-opus alone fails 19, judge-sonnet alone fails 43.
+- zh: judge-opus and judge-sonnet agree on pass/fail for 92% of 790 items both checked; judge-opus alone fails 21, judge-sonnet alone fails 41.
 
 ## Judge validation (damage tests)
 

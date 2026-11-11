@@ -1,6 +1,6 @@
 # Preflight report: run `pilot-or`
 
-Generated 2026-11-11T18:01:33+00:00. Gates were fixed before data was seen (CLAUDE.md).
+Generated 2026-11-11T19:48:52+00:00. Gates were fixed before data was seen (CLAUDE.md).
 
 ## Generation
 
@@ -40,31 +40,33 @@ Nerve = softeners per item (lower is braver). Novelty = share of items whose tex
 
 ## Novelty (comic device)
 
-One judge call per target and language groups that target's roasts by the image or angle each is built on (devices.py). Cross-arm = share of an arm's items whose device another arm also used on the same target; self-repeat = the arm's own samples share a device. Attractors are devices three or more arms reached on their own.
+One judge call per target and language groups that target's roasts by the image or angle each is built on (devices.py). Cross-arm = share of an arm's items whose device another arm also used on the same target; self-repeat = the arm's own samples share a device. One row per judge, items = roasts that judge grouped; a judge that ran before an arm was added never saw that arm, so compare cross-arm rates only between judges whose cells hold the same arms (cell sizes below). Attractors are devices three or more arms reached on their own.
 
-| arm | lang | items | cross-arm | self-repeat |
-|---|---|---:|---:|---:|
-| plain-gpt | en | 10 | 80% | 0% |
-| plain-gpt | zh | 10 | 90% | 0% |
-| plain-gemini | en | 10 | 60% | 0% |
-| plain-gemini | zh | 10 | 60% | 0% |
-| plain-deepseek | en | 10 | 90% | 0% |
-| plain-deepseek | zh | 10 | 90% | 0% |
-| plain-qwen | en | 10 | 70% | 0% |
-| plain-qwen | zh | 10 | 60% | 0% |
+| arm | lang | judge | items | cross-arm | self-repeat |
+|---|---|---|---:|---:|---:|
+| plain-gpt | en | judge-deepseek | 10 | 80% | 0% |
+| plain-gpt | zh | judge-deepseek | 10 | 90% | 0% |
+| plain-gemini | en | judge-deepseek | 10 | 60% | 0% |
+| plain-gemini | zh | judge-deepseek | 10 | 60% | 0% |
+| plain-deepseek | en | judge-deepseek | 10 | 90% | 0% |
+| plain-deepseek | zh | judge-deepseek | 10 | 90% | 0% |
+| plain-qwen | en | judge-deepseek | 10 | 70% | 0% |
+| plain-qwen | zh | judge-deepseek | 10 | 60% | 0% |
+
+- judge-deepseek: 20 cells, 4.0 roasts from 4.0 arms per cell
 
 Attractors:
 
-- 4 arms, papyrus (en): appropriated spiritual font for faux-authentic media
-- 4 arms, macau (zh): 大三巴只是一堵墙
-- 4 arms, las-vegas (zh): 机场老虎机
-- 4 arms, javascript (en): gaslighting logic and weird type coercion
-- 3 arms, ugg (en): shapeless food-like foot (bread/marshmallow/pillow)
-- 3 arms, las-vegas (en): fake landmarks and overpriced cheap experiences
-- 3 arms, jackfruit (en): medieval weapon fruit
-- 3 arms, durian (en): Medieval weapon / biological weapon
-- 3 arms, crocs (zh): 花钱堵洞
-- 3 arms, comic-sans (zh): 幼儿园手工/涂鸦
+- 4 arms, javascript (en): gaslighting logic and weird type coercion [judge-deepseek]
+- 4 arms, las-vegas (zh): 机场老虎机 [judge-deepseek]
+- 4 arms, macau (zh): 大三巴只是一堵墙 [judge-deepseek]
+- 4 arms, papyrus (en): appropriated spiritual font for faux-authentic media [judge-deepseek]
+- 3 arms, comic-sans (zh): 幼儿园手工/涂鸦 [judge-deepseek]
+- 3 arms, crocs (zh): 花钱堵洞 [judge-deepseek]
+- 3 arms, durian (en): Medieval weapon / biological weapon [judge-deepseek]
+- 3 arms, jackfruit (en): medieval weapon fruit [judge-deepseek]
+- 3 arms, las-vegas (en): fake landmarks and overpriced cheap experiences [judge-deepseek]
+- 3 arms, ugg (en): shapeless food-like foot (bread/marshmallow/pillow) [judge-deepseek]
 
 ## Specificity gate (masked swap test, k=5)
 
@@ -89,20 +91,33 @@ Specificity varies across arms (range >= 15 points, some arm < 90%): **False**. 
 
 ## Truth gate
 
-An item fails only on a contradicted premise; facts absent from the sheet do not count against it.
+An item fails only on a contradicted premise; facts absent from the sheet do not count against it. One row per judge, n = items; where several judges checked an item it passes the gate only if every one of them passed it.
 
-| arm | lang | n | pass | claims/item | contradicted/item | absent/item |
-|---|---|---:|---:|---:|---:|---:|
-| plain-gpt | en | 12 | 100% | 7.42 | 0.0 | 5.25 |
-| plain-gpt | zh | 11 | 91% | 4.82 | 0.09 | 2.64 |
-| plain-gemini | en | 12 | 100% | 6.83 | 0.0 | 3.83 |
-| plain-gemini | zh | 10 | 100% | 4.9 | 0.0 | 3.2 |
-| plain-deepseek | en | 10 | 90% | 7.2 | 0.1 | 4.9 |
-| plain-deepseek | zh | 13 | 100% | 5.15 | 0.0 | 3.38 |
-| plain-qwen | en | 13 | 92% | 7.54 | 0.08 | 4.0 |
-| plain-qwen | zh | 11 | 100% | 6.0 | 0.0 | 3.73 |
-| control-bland | en | 9 | 100% | 11.78 | 0.0 | 9.78 |
-| control-bland | zh | 12 | 100% | 9.92 | 0.0 | 7.5 |
+| arm | lang | judge | n | pass | claims/item | contradicted/item | absent/item |
+|---|---|---|---:|---:|---:|---:|---:|
+| plain-gpt | en | judge-deepseek | 8 | 100% | 6.88 | 0.0 | 4.75 |
+| plain-gpt | en | judge-gpt | 4 | 100% | 8.5 | 0.0 | 6.25 |
+| plain-gpt | zh | judge-deepseek | 7 | 100% | 4.86 | 0.0 | 2.71 |
+| plain-gpt | zh | judge-gpt | 4 | 75% | 4.75 | 0.25 | 2.5 |
+| plain-gemini | en | judge-deepseek | 8 | 100% | 6.38 | 0.0 | 3.62 |
+| plain-gemini | en | judge-gpt | 4 | 100% | 7.75 | 0.0 | 4.25 |
+| plain-gemini | zh | judge-deepseek | 6 | 100% | 4.83 | 0.0 | 3.67 |
+| plain-gemini | zh | judge-gpt | 4 | 100% | 5.0 | 0.0 | 2.5 |
+| plain-deepseek | en | judge-deepseek | 6 | 83% | 5.83 | 0.17 | 4.17 |
+| plain-deepseek | en | judge-gpt | 4 | 100% | 9.25 | 0.0 | 6.0 |
+| plain-deepseek | zh | judge-deepseek | 9 | 100% | 5.22 | 0.0 | 3.44 |
+| plain-deepseek | zh | judge-gpt | 4 | 100% | 5.0 | 0.0 | 3.25 |
+| plain-qwen | en | judge-deepseek | 9 | 89% | 7.11 | 0.11 | 3.78 |
+| plain-qwen | en | judge-gpt | 4 | 100% | 8.5 | 0.0 | 4.5 |
+| plain-qwen | zh | judge-deepseek | 7 | 100% | 5.43 | 0.0 | 3.57 |
+| plain-qwen | zh | judge-gpt | 4 | 100% | 7.0 | 0.0 | 4.0 |
+| control-bland | en | judge-deepseek | 5 | 100% | 10.8 | 0.0 | 8.8 |
+| control-bland | en | judge-gpt | 4 | 100% | 13.0 | 0.0 | 11.0 |
+| control-bland | zh | judge-deepseek | 8 | 100% | 9.0 | 0.0 | 6.88 |
+| control-bland | zh | judge-gpt | 4 | 100% | 11.75 | 0.0 | 8.75 |
+
+- en: judge-deepseek and judge-gpt agree on pass/fail for 100% of 20 items both checked; judge-deepseek alone fails 0, judge-gpt alone fails 0.
+- zh: judge-deepseek and judge-gpt agree on pass/fail for 95% of 19 items both checked; judge-deepseek alone fails 0, judge-gpt alone fails 1.
 
 ## Judge validation (damage tests)
 

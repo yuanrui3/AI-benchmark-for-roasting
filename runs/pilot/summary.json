@@ -1,6 +1,6 @@
 {
  "run": "pilot",
- "generated": "2026-11-11T18:47:44+00:00",
+ "generated": "2026-11-11T19:48:50+00:00",
  "langs": [
   "en",
   "zh"
@@ -383,55 +383,123 @@
  },
  "devices": {
   "per_arm": {
-   "plain-opus|en": {
-    "n": 176,
-    "cross": 0.33,
-    "self": 0.76
+   "plain-opus|en|judge-opus": {
+    "n": 88,
+    "cross": 0.44,
+    "self": 0.68
    },
-   "plain-opus|zh": {
-    "n": 176,
-    "cross": 0.35,
-    "self": 0.73
+   "plain-opus|en|judge-sonnet": {
+    "n": 88,
+    "cross": 0.22,
+    "self": 0.84
    },
-   "facts-opus|en": {
-    "n": 176,
+   "plain-opus|zh|judge-opus": {
+    "n": 88,
+    "cross": 0.51,
+    "self": 0.66
+   },
+   "plain-opus|zh|judge-sonnet": {
+    "n": 88,
+    "cross": 0.18,
+    "self": 0.8
+   },
+   "facts-opus|en|judge-opus": {
+    "n": 88,
     "cross": 0.73,
+    "self": 0.91
+   },
+   "facts-opus|en|judge-sonnet": {
+    "n": 88,
+    "cross": 0.73,
+    "self": 0.86
+   },
+   "facts-opus|zh|judge-opus": {
+    "n": 88,
+    "cross": 0.75,
+    "self": 0.95
+   },
+   "facts-opus|zh|judge-sonnet": {
+    "n": 88,
+    "cross": 0.72,
     "self": 0.89
    },
-   "facts-opus|zh": {
-    "n": 176,
-    "cross": 0.73,
-    "self": 0.92
+   "skill-opus|en|judge-opus": {
+    "n": 88,
+    "cross": 0.67,
+    "self": 0.91
    },
-   "skill-opus|en": {
-    "n": 176,
-    "cross": 0.62,
-    "self": 0.83
+   "skill-opus|en|judge-sonnet": {
+    "n": 88,
+    "cross": 0.58,
+    "self": 0.75
    },
-   "skill-opus|zh": {
-    "n": 176,
-    "cross": 0.68,
-    "self": 0.82
+   "skill-opus|zh|judge-opus": {
+    "n": 88,
+    "cross": 0.75,
+    "self": 0.93
    },
-   "plain-sonnet|en": {
+   "skill-opus|zh|judge-sonnet": {
+    "n": 88,
+    "cross": 0.6,
+    "self": 0.7
+   },
+   "plain-sonnet|en|judge-opus": {
     "n": 88,
     "cross": 0.41,
     "self": 0.61
    },
-   "plain-sonnet|zh": {
+   "plain-sonnet|zh|judge-opus": {
     "n": 88,
     "cross": 0.51,
     "self": 0.64
    },
-   "plain-haiku|en": {
+   "plain-haiku|en|judge-opus": {
     "n": 88,
     "cross": 0.32,
     "self": 0.57
    },
-   "plain-haiku|zh": {
+   "plain-haiku|zh|judge-opus": {
     "n": 88,
     "cross": 0.27,
     "self": 0.59
+   }
+  },
+  "cells": {
+   "judge-opus": {
+    "cells": 88,
+    "roasts_per_cell": 10.0,
+    "arms_per_cell": 5.0
+   },
+   "judge-sonnet": {
+    "cells": 88,
+    "roasts_per_cell": 6.0,
+    "arms_per_cell": 3.0
+   }
+  },
+  "agreement": {
+   "en|judge-opus|judge-sonnet": {
+    "judges": [
+     "judge-opus",
+     "judge-sonnet"
+    ],
+    "pairs": 660,
+    "agree": 0.814,
+    "same_device": {
+     "judge-opus": 0.359,
+     "judge-sonnet": 0.358
+    }
+   },
+   "zh|judge-opus|judge-sonnet": {
+    "judges": [
+     "judge-opus",
+     "judge-sonnet"
+    ],
+    "pairs": 660,
+    "agree": 0.83,
+    "same_device": {
+     "judge-opus": 0.392,
+     "judge-sonnet": 0.356
+    }
    }
   },
   "attractors": [
@@ -439,151 +507,210 @@
     "arms": 3,
     "target": "beanie-babies",
     "lang": "en",
-    "device": "Beanie Babies as a fake retirement plan"
+    "device": "Beanie Babies as a fake retirement plan",
+    "judges": [
+     "judge-sonnet"
+    ]
    },
    {
     "arms": 3,
     "target": "keurig",
     "lang": "zh",
-    "device": "发明人后悔亲爹不认"
+    "device": "发明人后悔亲爹不认",
+    "judges": [
+     "judge-sonnet"
+    ]
    },
    {
     "arms": 3,
     "target": "luosifen",
     "lang": "zh",
-    "device": "螺蛳背锅酸笋干活"
+    "device": "螺蛳背锅酸笋干活",
+    "judges": [
+     "judge-opus",
+     "judge-sonnet"
+    ]
    },
    {
     "arms": 3,
     "target": "pmma",
     "lang": "zh",
-    "device": "博士生就是光刻胶"
+    "device": "博士生就是光刻胶",
+    "judges": [
+     "judge-opus",
+     "judge-sonnet"
+    ]
    },
    {
     "arms": 3,
     "target": "vim",
     "lang": "en",
-    "device": "Vim users as hostages/captives"
+    "device": "Vim users as hostages/captives",
+    "judges": [
+     "judge-sonnet"
+    ]
    },
    {
     "arms": 3,
     "target": "chicago-deep-dish",
     "lang": "en",
-    "device": "casserole that got an ID/agent"
+    "device": "casserole that got an ID/agent",
+    "judges": [
+     "judge-opus"
+    ]
    },
    {
     "arms": 3,
     "target": "durian",
     "lang": "en",
-    "device": "Spiky mace that smells like crime scene"
+    "device": "Spiky mace that smells like crime scene",
+    "judges": [
+     "judge-opus"
+    ]
    },
    {
     "arms": 3,
     "target": "crocs",
     "lang": "zh",
-    "device": "先卖洞再卖堵洞"
+    "device": "先卖洞再卖堵洞",
+    "judges": [
+     "judge-opus"
+    ]
    },
    {
     "arms": 3,
     "target": "emacs",
     "lang": "zh",
-    "device": "操作系统缺好编辑器"
+    "device": "操作系统缺好编辑器",
+    "judges": [
+     "judge-opus"
+    ]
    },
    {
     "arms": 3,
     "target": "excel",
     "lang": "zh",
-    "device": "身份证号被改成000"
+    "device": "身份证号被改成000",
+    "judges": [
+     "judge-opus"
+    ]
    },
    {
     "arms": 3,
     "target": "google-glass",
     "lang": "zh",
-    "device": "斜眼翻白眼看屏遭误会"
+    "device": "斜眼翻白眼看屏遭误会",
+    "judges": [
+     "judge-opus"
+    ]
    },
    {
     "arms": 3,
     "target": "graphene",
     "lang": "en",
-    "device": "Pencil lead that got upgraded"
+    "device": "Pencil lead that got upgraded",
+    "judges": [
+     "judge-opus"
+    ]
    },
    {
     "arms": 3,
     "target": "jackfruit",
     "lang": "en",
-    "device": "deadly falling weapon fruit"
+    "device": "deadly falling weapon fruit",
+    "judges": [
+     "judge-opus"
+    ]
    },
    {
     "arms": 3,
     "target": "klingon",
     "lang": "zh",
-    "device": "你好变你想干嘛像找碴"
-   },
-   {
-    "arms": 3,
-    "target": "luosifen",
-    "lang": "zh",
-    "device": "螺蛳替酸笋背锅"
+    "device": "你好变你想干嘛像找碴",
+    "judges": [
+     "judge-opus"
+    ]
    },
    {
     "arms": 3,
     "target": "microsoft-word",
     "lang": "en",
-    "device": "Everyday formatting frustrations list"
+    "device": "Everyday formatting frustrations list",
+    "judges": [
+     "judge-opus"
+    ]
    },
    {
     "arms": 3,
     "target": "microsoft-teams",
     "lang": "zh",
-    "device": "状态灯绿黄告密"
+    "device": "状态灯绿黄告密",
+    "judges": [
+     "judge-opus"
+    ]
    },
    {
     "arms": 4,
     "target": "nfts",
     "lang": "en",
-    "device": "You bought a receipt, not art"
+    "device": "You bought a receipt, not art",
+    "judges": [
+     "judge-opus"
+    ]
    },
    {
     "arms": 3,
     "target": "nfts",
     "lang": "zh",
-    "device": "右键另存为买个链接"
+    "device": "右键另存为买个链接",
+    "judges": [
+     "judge-opus"
+    ]
    },
    {
     "arms": 4,
     "target": "oat-milk",
     "lang": "zh",
-    "device": "燕麦奶就是粥汤"
+    "device": "燕麦奶就是粥汤",
+    "judges": [
+     "judge-opus"
+    ]
    },
    {
     "arms": 3,
     "target": "risk",
     "lang": "en",
-    "device": "Endless game ends in hostage situation"
-   },
-   {
-    "arms": 3,
-    "target": "pmma",
-    "lang": "zh",
-    "device": "PMMA就是被用的博士生"
+    "device": "Endless game ends in hostage situation",
+    "judges": [
+     "judge-opus"
+    ]
    },
    {
     "arms": 3,
     "target": "slack",
     "lang": "en",
-    "device": "Failed video game spawned the chat app"
+    "device": "Failed video game spawned the chat app",
+    "judges": [
+     "judge-opus"
+    ]
    },
    {
     "arms": 3,
     "target": "slack",
     "lang": "zh",
-    "device": "绿点监视与正在输入煎熬"
+    "device": "绿点监视与正在输入煎熬",
+    "judges": [
+     "judge-opus"
+    ]
    },
    {
     "arms": 3,
     "target": "vision-pro",
     "lang": "zh",
-    "device": "假眼装作在听"
+    "device": "假眼装作在听",
+    "judges": [
+     "judge-opus"
+    ]
    }
   ]
  },
@@ -730,131 +857,279 @@
   }
  },
  "truth": {
-  "plain-opus|en": {
-   "n": 176,
-   "pass": 0.881,
-   "claims": 9.79,
-   "contra": 0.12,
-   "absent": 5.56
+  "plain-opus|en|judge-opus": {
+   "n": 88,
+   "pass": 0.909,
+   "claims": 9.4,
+   "contra": 0.1,
+   "absent": 5.3
   },
-  "plain-opus|zh": {
-   "n": 176,
-   "pass": 0.92,
-   "claims": 7.12,
-   "contra": 0.09,
-   "absent": 4.22
+  "plain-opus|en|judge-sonnet": {
+   "n": 88,
+   "pass": 0.852,
+   "claims": 10.18,
+   "contra": 0.15,
+   "absent": 5.82
   },
-  "facts-opus|en": {
-   "n": 176,
-   "pass": 0.96,
-   "claims": 9.33,
-   "contra": 0.04,
-   "absent": 0.48
-  },
-  "facts-opus|zh": {
-   "n": 176,
-   "pass": 0.96,
-   "claims": 8.98,
-   "contra": 0.04,
-   "absent": 0.45
-  },
-  "skill-opus|en": {
-   "n": 176,
-   "pass": 0.949,
-   "claims": 9.95,
-   "contra": 0.05,
-   "absent": 1.22
-  },
-  "skill-opus|zh": {
-   "n": 176,
-   "pass": 0.972,
-   "claims": 9.54,
-   "contra": 0.03,
-   "absent": 1.23
-  },
-  "frame-opus|en": {
-   "n": 176,
-   "pass": 0.949,
-   "claims": 7.3,
-   "contra": 0.06,
-   "absent": 4.23
-  },
-  "frame-opus|zh": {
-   "n": 176,
+  "plain-opus|zh|judge-opus": {
+   "n": 88,
    "pass": 0.932,
-   "claims": 6.88,
-   "contra": 0.07,
-   "absent": 4.1
-  },
-  "control-bland|en": {
-   "n": 176,
-   "pass": 0.989,
-   "claims": 9.19,
-   "contra": 0.01,
-   "absent": 6.31
-  },
-  "control-bland|zh": {
-   "n": 175,
-   "pass": 0.971,
-   "claims": 8.86,
-   "contra": 0.03,
-   "absent": 5.93
-  },
-  "plain-sonnet|en": {
-   "n": 176,
-   "pass": 0.773,
-   "claims": 8.49,
-   "contra": 0.27,
-   "absent": 4.69
-  },
-  "plain-sonnet|zh": {
-   "n": 175,
-   "pass": 0.92,
-   "claims": 6.56,
-   "contra": 0.09,
-   "absent": 3.48
-  },
-  "plain-haiku|en": {
-   "n": 176,
-   "pass": 0.869,
-   "claims": 6.57,
-   "contra": 0.14,
+   "claims": 6.14,
+   "contra": 0.08,
    "absent": 3.56
   },
-  "plain-haiku|zh": {
-   "n": 176,
-   "pass": 0.903,
-   "claims": 5.4,
+  "plain-opus|zh|judge-sonnet": {
+   "n": 88,
+   "pass": 0.909,
+   "claims": 8.11,
    "contra": 0.1,
-   "absent": 3.08
+   "absent": 4.88
   },
-  "frame-sonnet|en": {
-   "n": 176,
+  "facts-opus|en|judge-opus": {
+   "n": 88,
    "pass": 0.955,
-   "claims": 6.38,
+   "claims": 8.49,
    "contra": 0.05,
-   "absent": 3.8
+   "absent": 0.23
   },
-  "frame-sonnet|zh": {
-   "n": 176,
-   "pass": 0.903,
-   "claims": 6.37,
-   "contra": 0.1,
-   "absent": 3.81
+  "facts-opus|en|judge-sonnet": {
+   "n": 88,
+   "pass": 0.966,
+   "claims": 10.17,
+   "contra": 0.03,
+   "absent": 0.74
   },
-  "frame-haiku|en": {
-   "n": 176,
-   "pass": 0.926,
-   "claims": 5.21,
+  "facts-opus|zh|judge-opus": {
+   "n": 88,
+   "pass": 0.989,
+   "claims": 7.45,
+   "contra": 0.01,
+   "absent": 0.2
+  },
+  "facts-opus|zh|judge-sonnet": {
+   "n": 88,
+   "pass": 0.932,
+   "claims": 10.5,
    "contra": 0.07,
-   "absent": 2.95
+   "absent": 0.69
   },
-  "frame-haiku|zh": {
-   "n": 176,
-   "pass": 0.915,
-   "claims": 5.65,
+  "skill-opus|en|judge-opus": {
+   "n": 88,
+   "pass": 0.977,
+   "claims": 9.06,
+   "contra": 0.02,
+   "absent": 0.92
+  },
+  "skill-opus|en|judge-sonnet": {
+   "n": 88,
+   "pass": 0.92,
+   "claims": 10.85,
+   "contra": 0.08,
+   "absent": 1.51
+  },
+  "skill-opus|zh|judge-opus": {
+   "n": 88,
+   "pass": 0.977,
+   "claims": 7.89,
+   "contra": 0.02,
+   "absent": 0.76
+  },
+  "skill-opus|zh|judge-sonnet": {
+   "n": 88,
+   "pass": 0.966,
+   "claims": 11.19,
+   "contra": 0.03,
+   "absent": 1.7
+  },
+  "frame-opus|en|judge-opus": {
+   "n": 88,
+   "pass": 0.955,
+   "claims": 7.0,
+   "contra": 0.05,
+   "absent": 4.02
+  },
+  "frame-opus|en|judge-sonnet": {
+   "n": 88,
+   "pass": 0.943,
+   "claims": 7.59,
+   "contra": 0.07,
+   "absent": 4.43
+  },
+  "frame-opus|zh|judge-opus": {
+   "n": 88,
+   "pass": 0.943,
+   "claims": 5.93,
+   "contra": 0.06,
+   "absent": 3.5
+  },
+  "frame-opus|zh|judge-sonnet": {
+   "n": 88,
+   "pass": 0.92,
+   "claims": 7.82,
+   "contra": 0.08,
+   "absent": 4.7
+  },
+  "control-bland|en|judge-opus": {
+   "n": 88,
+   "pass": 0.989,
+   "claims": 9.01,
+   "contra": 0.01,
+   "absent": 6.14
+  },
+  "control-bland|en|judge-sonnet": {
+   "n": 88,
+   "pass": 0.989,
+   "claims": 9.36,
+   "contra": 0.01,
+   "absent": 6.48
+  },
+  "control-bland|zh|judge-opus": {
+   "n": 87,
+   "pass": 0.977,
+   "claims": 8.32,
+   "contra": 0.02,
+   "absent": 5.62
+  },
+  "control-bland|zh|judge-sonnet": {
+   "n": 88,
+   "pass": 0.966,
+   "claims": 9.39,
+   "contra": 0.03,
+   "absent": 6.23
+  },
+  "plain-sonnet|en|judge-opus": {
+   "n": 88,
+   "pass": 0.784,
+   "claims": 8.05,
+   "contra": 0.26,
+   "absent": 4.41
+  },
+  "plain-sonnet|en|judge-sonnet": {
+   "n": 88,
+   "pass": 0.761,
+   "claims": 8.94,
+   "contra": 0.27,
+   "absent": 4.98
+  },
+  "plain-sonnet|zh|judge-opus": {
+   "n": 88,
+   "pass": 0.909,
+   "claims": 5.55,
    "contra": 0.09,
-   "absent": 3.39
+   "absent": 2.93
+  },
+  "plain-sonnet|zh|judge-sonnet": {
+   "n": 87,
+   "pass": 0.931,
+   "claims": 7.59,
+   "contra": 0.08,
+   "absent": 4.03
+  },
+  "plain-haiku|en|judge-opus": {
+   "n": 88,
+   "pass": 0.898,
+   "claims": 5.98,
+   "contra": 0.11,
+   "absent": 3.14
+  },
+  "plain-haiku|en|judge-sonnet": {
+   "n": 88,
+   "pass": 0.841,
+   "claims": 7.17,
+   "contra": 0.17,
+   "absent": 3.98
+  },
+  "plain-haiku|zh|judge-opus": {
+   "n": 88,
+   "pass": 0.898,
+   "claims": 4.58,
+   "contra": 0.1,
+   "absent": 2.59
+  },
+  "plain-haiku|zh|judge-sonnet": {
+   "n": 88,
+   "pass": 0.909,
+   "claims": 6.23,
+   "contra": 0.1,
+   "absent": 3.57
+  },
+  "frame-sonnet|en|judge-opus": {
+   "n": 88,
+   "pass": 0.966,
+   "claims": 6.07,
+   "contra": 0.03,
+   "absent": 3.58
+  },
+  "frame-sonnet|en|judge-sonnet": {
+   "n": 88,
+   "pass": 0.943,
+   "claims": 6.69,
+   "contra": 0.06,
+   "absent": 4.02
+  },
+  "frame-sonnet|zh|judge-opus": {
+   "n": 88,
+   "pass": 0.92,
+   "claims": 5.48,
+   "contra": 0.08,
+   "absent": 3.32
+  },
+  "frame-sonnet|zh|judge-sonnet": {
+   "n": 88,
+   "pass": 0.886,
+   "claims": 7.26,
+   "contra": 0.11,
+   "absent": 4.3
+  },
+  "frame-haiku|en|judge-opus": {
+   "n": 88,
+   "pass": 0.955,
+   "claims": 5.07,
+   "contra": 0.05,
+   "absent": 2.94
+  },
+  "frame-haiku|en|judge-sonnet": {
+   "n": 88,
+   "pass": 0.898,
+   "claims": 5.35,
+   "contra": 0.1,
+   "absent": 2.97
+  },
+  "frame-haiku|zh|judge-opus": {
+   "n": 88,
+   "pass": 0.966,
+   "claims": 4.82,
+   "contra": 0.03,
+   "absent": 2.84
+  },
+  "frame-haiku|zh|judge-sonnet": {
+   "n": 88,
+   "pass": 0.864,
+   "claims": 6.48,
+   "contra": 0.14,
+   "absent": 3.94
+  }
+ },
+ "truth_agreement": {
+  "en|judge-opus|judge-sonnet": {
+   "judges": [
+    "judge-opus",
+    "judge-sonnet"
+   ],
+   "n": 792,
+   "agree": 0.922,
+   "only_first_fails": 19,
+   "only_second_fails": 43
+  },
+  "zh|judge-opus|judge-sonnet": {
+   "judges": [
+    "judge-opus",
+    "judge-sonnet"
+   ],
+   "n": 790,
+   "agree": 0.922,
+   "only_first_fails": 21,
+   "only_second_fails": 41
   }
  },
  "judges": {

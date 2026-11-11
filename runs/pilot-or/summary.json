@@ -1,6 +1,6 @@
 {
  "run": "pilot-or",
- "generated": "2026-11-11T18:01:33+00:00",
+ "generated": "2026-11-11T19:48:52+00:00",
  "langs": [
   "en",
   "zh"
@@ -211,107 +211,145 @@
  },
  "devices": {
   "per_arm": {
-   "plain-gpt|en": {
+   "plain-gpt|en|judge-deepseek": {
     "n": 10,
     "cross": 0.8,
     "self": 0.0
    },
-   "plain-gpt|zh": {
+   "plain-gpt|zh|judge-deepseek": {
     "n": 10,
     "cross": 0.9,
     "self": 0.0
    },
-   "plain-gemini|en": {
+   "plain-gemini|en|judge-deepseek": {
     "n": 10,
     "cross": 0.6,
     "self": 0.0
    },
-   "plain-gemini|zh": {
+   "plain-gemini|zh|judge-deepseek": {
     "n": 10,
     "cross": 0.6,
     "self": 0.0
    },
-   "plain-deepseek|en": {
+   "plain-deepseek|en|judge-deepseek": {
     "n": 10,
     "cross": 0.9,
     "self": 0.0
    },
-   "plain-deepseek|zh": {
+   "plain-deepseek|zh|judge-deepseek": {
     "n": 10,
     "cross": 0.9,
     "self": 0.0
    },
-   "plain-qwen|en": {
+   "plain-qwen|en|judge-deepseek": {
     "n": 10,
     "cross": 0.7,
     "self": 0.0
    },
-   "plain-qwen|zh": {
+   "plain-qwen|zh|judge-deepseek": {
     "n": 10,
     "cross": 0.6,
     "self": 0.0
    }
   },
+  "cells": {
+   "judge-deepseek": {
+    "cells": 20,
+    "roasts_per_cell": 4.0,
+    "arms_per_cell": 4.0
+   }
+  },
+  "agreement": {},
   "attractors": [
    {
     "arms": 3,
     "target": "comic-sans",
     "lang": "zh",
-    "device": "幼儿园手工/涂鸦"
+    "device": "幼儿园手工/涂鸦",
+    "judges": [
+     "judge-deepseek"
+    ]
    },
    {
     "arms": 3,
     "target": "durian",
     "lang": "en",
-    "device": "Medieval weapon / biological weapon"
+    "device": "Medieval weapon / biological weapon",
+    "judges": [
+     "judge-deepseek"
+    ]
    },
    {
     "arms": 3,
     "target": "jackfruit",
     "lang": "en",
-    "device": "medieval weapon fruit"
+    "device": "medieval weapon fruit",
+    "judges": [
+     "judge-deepseek"
+    ]
    },
    {
     "arms": 3,
     "target": "crocs",
     "lang": "zh",
-    "device": "花钱堵洞"
+    "device": "花钱堵洞",
+    "judges": [
+     "judge-deepseek"
+    ]
    },
    {
     "arms": 4,
     "target": "javascript",
     "lang": "en",
-    "device": "gaslighting logic and weird type coercion"
+    "device": "gaslighting logic and weird type coercion",
+    "judges": [
+     "judge-deepseek"
+    ]
    },
    {
     "arms": 3,
     "target": "las-vegas",
     "lang": "en",
-    "device": "fake landmarks and overpriced cheap experiences"
+    "device": "fake landmarks and overpriced cheap experiences",
+    "judges": [
+     "judge-deepseek"
+    ]
    },
    {
     "arms": 4,
     "target": "las-vegas",
     "lang": "zh",
-    "device": "机场老虎机"
+    "device": "机场老虎机",
+    "judges": [
+     "judge-deepseek"
+    ]
    },
    {
     "arms": 4,
     "target": "macau",
     "lang": "zh",
-    "device": "大三巴只是一堵墙"
+    "device": "大三巴只是一堵墙",
+    "judges": [
+     "judge-deepseek"
+    ]
    },
    {
     "arms": 4,
     "target": "papyrus",
     "lang": "en",
-    "device": "appropriated spiritual font for faux-authentic media"
+    "device": "appropriated spiritual font for faux-authentic media",
+    "judges": [
+     "judge-deepseek"
+    ]
    },
    {
     "arms": 3,
     "target": "ugg",
     "lang": "en",
-    "device": "shapeless food-like foot (bread/marshmallow/pillow)"
+    "device": "shapeless food-like foot (bread/marshmallow/pillow)",
+    "judges": [
+     "judge-deepseek"
+    ]
    }
   ]
  },
@@ -402,75 +440,167 @@
   }
  },
  "truth": {
-  "plain-gpt|en": {
-   "n": 12,
+  "plain-gpt|en|judge-deepseek": {
+   "n": 8,
    "pass": 1.0,
-   "claims": 7.42,
+   "claims": 6.88,
    "contra": 0.0,
-   "absent": 5.25
+   "absent": 4.75
   },
-  "plain-gpt|zh": {
-   "n": 11,
-   "pass": 0.909,
-   "claims": 4.82,
-   "contra": 0.09,
-   "absent": 2.64
-  },
-  "plain-gemini|en": {
-   "n": 12,
+  "plain-gpt|en|judge-gpt": {
+   "n": 4,
    "pass": 1.0,
-   "claims": 6.83,
+   "claims": 8.5,
    "contra": 0.0,
-   "absent": 3.83
+   "absent": 6.25
   },
-  "plain-gemini|zh": {
-   "n": 10,
+  "plain-gpt|zh|judge-deepseek": {
+   "n": 7,
    "pass": 1.0,
-   "claims": 4.9,
+   "claims": 4.86,
    "contra": 0.0,
-   "absent": 3.2
+   "absent": 2.71
   },
-  "plain-deepseek|en": {
-   "n": 10,
-   "pass": 0.9,
-   "claims": 7.2,
-   "contra": 0.1,
-   "absent": 4.9
+  "plain-gpt|zh|judge-gpt": {
+   "n": 4,
+   "pass": 0.75,
+   "claims": 4.75,
+   "contra": 0.25,
+   "absent": 2.5
   },
-  "plain-deepseek|zh": {
-   "n": 13,
+  "plain-gemini|en|judge-deepseek": {
+   "n": 8,
    "pass": 1.0,
-   "claims": 5.15,
+   "claims": 6.38,
    "contra": 0.0,
-   "absent": 3.38
+   "absent": 3.62
   },
-  "plain-qwen|en": {
-   "n": 13,
-   "pass": 0.923,
-   "claims": 7.54,
-   "contra": 0.08,
-   "absent": 4.0
-  },
-  "plain-qwen|zh": {
-   "n": 11,
+  "plain-gemini|en|judge-gpt": {
+   "n": 4,
    "pass": 1.0,
-   "claims": 6.0,
+   "claims": 7.75,
    "contra": 0.0,
-   "absent": 3.73
+   "absent": 4.25
   },
-  "control-bland|en": {
+  "plain-gemini|zh|judge-deepseek": {
+   "n": 6,
+   "pass": 1.0,
+   "claims": 4.83,
+   "contra": 0.0,
+   "absent": 3.67
+  },
+  "plain-gemini|zh|judge-gpt": {
+   "n": 4,
+   "pass": 1.0,
+   "claims": 5.0,
+   "contra": 0.0,
+   "absent": 2.5
+  },
+  "plain-deepseek|en|judge-deepseek": {
+   "n": 6,
+   "pass": 0.833,
+   "claims": 5.83,
+   "contra": 0.17,
+   "absent": 4.17
+  },
+  "plain-deepseek|en|judge-gpt": {
+   "n": 4,
+   "pass": 1.0,
+   "claims": 9.25,
+   "contra": 0.0,
+   "absent": 6.0
+  },
+  "plain-deepseek|zh|judge-deepseek": {
    "n": 9,
    "pass": 1.0,
-   "claims": 11.78,
+   "claims": 5.22,
    "contra": 0.0,
-   "absent": 9.78
+   "absent": 3.44
   },
-  "control-bland|zh": {
-   "n": 12,
+  "plain-deepseek|zh|judge-gpt": {
+   "n": 4,
    "pass": 1.0,
-   "claims": 9.92,
+   "claims": 5.0,
    "contra": 0.0,
-   "absent": 7.5
+   "absent": 3.25
+  },
+  "plain-qwen|en|judge-deepseek": {
+   "n": 9,
+   "pass": 0.889,
+   "claims": 7.11,
+   "contra": 0.11,
+   "absent": 3.78
+  },
+  "plain-qwen|en|judge-gpt": {
+   "n": 4,
+   "pass": 1.0,
+   "claims": 8.5,
+   "contra": 0.0,
+   "absent": 4.5
+  },
+  "plain-qwen|zh|judge-deepseek": {
+   "n": 7,
+   "pass": 1.0,
+   "claims": 5.43,
+   "contra": 0.0,
+   "absent": 3.57
+  },
+  "plain-qwen|zh|judge-gpt": {
+   "n": 4,
+   "pass": 1.0,
+   "claims": 7.0,
+   "contra": 0.0,
+   "absent": 4.0
+  },
+  "control-bland|en|judge-deepseek": {
+   "n": 5,
+   "pass": 1.0,
+   "claims": 10.8,
+   "contra": 0.0,
+   "absent": 8.8
+  },
+  "control-bland|en|judge-gpt": {
+   "n": 4,
+   "pass": 1.0,
+   "claims": 13.0,
+   "contra": 0.0,
+   "absent": 11.0
+  },
+  "control-bland|zh|judge-deepseek": {
+   "n": 8,
+   "pass": 1.0,
+   "claims": 9.0,
+   "contra": 0.0,
+   "absent": 6.88
+  },
+  "control-bland|zh|judge-gpt": {
+   "n": 4,
+   "pass": 1.0,
+   "claims": 11.75,
+   "contra": 0.0,
+   "absent": 8.75
+  }
+ },
+ "truth_agreement": {
+  "en|judge-deepseek|judge-gpt": {
+   "judges": [
+    "judge-deepseek",
+    "judge-gpt"
+   ],
+   "n": 20,
+   "agree": 1.0,
+   "only_first_fails": 0,
+   "only_second_fails": 0
+  },
+  "zh|judge-deepseek|judge-gpt": {
+   "judges": [
+    "judge-deepseek",
+    "judge-gpt"
+   ],
+   "n": 19,
+   "agree": 0.947,
+   "only_first_fails": 0,
+   "only_second_fails": 1
   }
  },
  "judges": {

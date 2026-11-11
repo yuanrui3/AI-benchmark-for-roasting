@@ -197,37 +197,74 @@ def main() -> int:
     dev_path = run_dir / "devices.jsonl"
     if dev_path.exists():
         dev_rows = [r for r in read_jsonl(dev_path) if not r.get("parse_fail")]
+        d_judges = sorted({r["judge"] for r in dev_rows})
         md += ["## Novelty (comic device)", "",
                "One judge call per target and language groups that target's roasts by the image or angle each is built on "
                "(devices.py). Cross-arm = share of an arm's items whose device another arm also used on the same target; "
-               "self-repeat = the arm's own samples share a device. Attractors are devices three or more arms reached on their own.", "",
-               "| arm | lang | items | cross-arm | self-repeat |", "|---|---|---:|---:|---:|"]
+               "self-repeat = the arm's own samples share a device. One row per judge, items = roasts that judge grouped; "
+               "a judge that ran before an arm was added never saw that arm, so compare cross-arm rates only between judges "
+               "whose cells hold the same arms (cell sizes below). Attractors are devices three or more arms reached on their own.", "",
+               "| arm | lang | judge | items | cross-arm | self-repeat |", "|---|---|---|---:|---:|---:|"]
         dstat: dict = defaultdict(lambda: {"n": 0, "cross": 0, "self": 0})
-        attract = []
+        attract: dict = {}
+        attr_judges: dict = defaultdict(set)
+        cell_group: dict = {}  # (target, lang, judge) -> {item_id: group index}
+        cell_size: dict = defaultdict(list)  # judge -> [(roasts, arms)] per cell
         for r in dev_rows:
+            key = (r["target_id"], r["lang"], r["judge"])
+            cell_group[key] = {i: k for k, g in enumerate(r["groups"]) for i in g["item_ids"] if i in by_item}
+            cell_size[r["judge"]].append((len(cell_group[key]), len({by_item[i]["arm"] for i in cell_group[key]})))
             for g in r["groups"]:
                 garms = [by_item[i]["arm"] for i in g["item_ids"] if i in by_item]
                 if len(set(garms)) >= 3:
-                    attract.append((len(set(garms)), r["target_id"], r["lang"], g["device"]))
+                    k = (r["target_id"], r["lang"])
+                    if k not in attract or len(set(garms)) > attract[k]["arms"]:
+                        attract[k] = {"arms": len(set(garms)), "device": g["device"]}
+                    attr_judges[k].add(r["judge"])
                 for iid in g["item_ids"]:
                     it = by_item.get(iid)
                     if not it:
                         continue
-                    st = dstat[(it["arm"], it["lang"])]
+                    st = dstat[(it["arm"], it["lang"], r["judge"])]
                     st["n"] += 1
                     others = [by_item[j]["arm"] for j in g["item_ids"] if j != iid and j in by_item]
                     st["cross"] += any(a != it["arm"] for a in others)
                     st["self"] += any(a == it["arm"] for a in others)
         devp = {}
-        for (a, lang), st in sorted(dstat.items(), key=lambda kv: (arms.index(kv[0][0]) if kv[0][0] in arms else 99, kv[0][1])):
-            devp[f"{a}|{lang}"] = {"n": st["n"], "cross": round(st["cross"] / st["n"], 2), "self": round(st["self"] / st["n"], 2)}
-            md.append(f"| {a} | {lang} | {st['n']} | {fmt_pct(st['cross'] / st['n'])} | {fmt_pct(st['self'] / st['n'])} |")
+        for (a, lang, j), st in sorted(dstat.items(), key=lambda kv: (arms.index(kv[0][0]) if kv[0][0] in arms else 99, kv[0][1], kv[0][2])):
+            devp[f"{a}|{lang}|{j}"] = {"n": st["n"], "cross": round(st["cross"] / st["n"], 2), "self": round(st["self"] / st["n"], 2)}
+            md.append(f"| {a} | {lang} | {j} | {st['n']} | {fmt_pct(st['cross'] / st['n'])} | {fmt_pct(st['self'] / st['n'])} |")
+        md.append("")
+        cells = {j: {"cells": len(cs), "roasts_per_cell": round(sum(n for n, _ in cs) / len(cs), 1),
+                     "arms_per_cell": round(sum(k for _, k in cs) / len(cs), 1)} for j, cs in sorted(cell_size.items())}
+        md += [f"- {j}: {c['cells']} cells, {c['roasts_per_cell']} roasts from {c['arms_per_cell']} arms per cell" for j, c in cells.items()]
+        dev_agree = {}
+        for lang in langs:
+            for j1, j2 in combinations(d_judges, 2):
+                n_pairs = agree = same1 = same2 = 0
+                for (tid, lg, j), g1 in cell_group.items():
+                    if lg != lang or j != j1 or (tid, lg, j2) not in cell_group:
+                        continue
+                    g2 = cell_group[(tid, lg, j2)]
+                    for x, y in combinations(sorted(set(g1) & set(g2)), 2):
+                        s1, s2 = g1[x] == g1[y], g2[x] == g2[y]
+                        n_pairs += 1
+                        agree += s1 == s2
+                        same1 += s1
+                        same2 += s2
+                if n_pairs:
+                    dev_agree[f"{lang}|{j1}|{j2}"] = {"judges": [j1, j2], "pairs": n_pairs, "agree": round(agree / n_pairs, 3),
+                                                      "same_device": {j1: round(same1 / n_pairs, 3), j2: round(same2 / n_pairs, 3)}}
+                    md.append(f"- {lang}: {j1} and {j2} agree on whether two roasts share a device for {fmt_pct(agree / n_pairs)} of "
+                              f"{n_pairs} roast pairs both grouped ({j1} puts {fmt_pct(same1 / n_pairs)} of them in one device, "
+                              f"{j2} {fmt_pct(same2 / n_pairs)}).")
         md.append("")
         if attract:
-            md += ["Attractors:", ""] + [f"- {n} arms, {tid} ({lang}): {dev or '(unlabelled)'}"
-                                        for n, tid, lang, dev in sorted(attract, reverse=True)[:12]] + [""]
-        S["devices"] = {"per_arm": devp,
-                        "attractors": [{"arms": n, "target": t, "lang": l, "device": d} for n, t, l, d in attract]}
+            md += ["Attractors:", ""] + [f"- {v['arms']} arms, {tid} ({lang}): {v['device'] or '(unlabelled)'} [{', '.join(sorted(attr_judges[(tid, lang)]))}]"
+                                        for (tid, lang), v in sorted(attract.items(), key=lambda kv: (-kv[1]["arms"], kv[0]))[:12]] + [""]
+        S["devices"] = {"per_arm": devp, "cells": cells, "agreement": dev_agree,
+                        "attractors": [{"arms": v["arms"], "target": t, "lang": l, "device": v["device"], "judges": sorted(attr_judges[(t, l)])}
+                                       for (t, l), v in attract.items()]}
 
     # ---- specificity ----
     spec_path = run_dir / "specificity.jsonl"
@@ -264,25 +301,48 @@ def main() -> int:
     truth_path = run_dir / "truth.jsonl"
     truth_rows = read_jsonl(truth_path) if truth_path.exists() else []
     truth = {}
+    truth_agree = {}
     if truth_rows:
-        md += ["## Truth gate", "", "An item fails only on a contradicted premise; facts absent from the sheet do not count against it.", "",
-               "| arm | lang | n | pass | claims/item | contradicted/item | absent/item |", "|---|---|---:|---:|---:|---:|---:|"]
+        t_judges = sorted({r["judge"] for r in truth_rows})
+        md += ["## Truth gate", "", "An item fails only on a contradicted premise; facts absent from the sheet do not count against it. "
+               "One row per judge, n = items; where several judges checked an item it passes the gate only if every one of them passed it.", "",
+               "| arm | lang | judge | n | pass | claims/item | contradicted/item | absent/item |", "|---|---|---|---:|---:|---:|---:|---:|"]
         for a in arms:
             for lang in langs:
-                rs = [r for r in truth_rows if r["arm"] == a and r["lang"] == lang and not r["parse_fail"]]
-                if not rs:
-                    continue
-                n = len(rs)
-                truth[f"{a}|{lang}"] = {"n": n, "pass": round(sum(r["passes"] for r in rs) / n, 3),
-                                        "claims": round(sum(r["n_supported"] + r["n_contradicted"] + r["n_absent"] for r in rs) / n, 2),
-                                        "contra": round(sum(r["n_contradicted"] for r in rs) / n, 2),
-                                        "absent": round(sum(r["n_absent"] for r in rs) / n, 2)}
-                t = truth[f"{a}|{lang}"]
-                md.append(f"| {a} | {lang} | {n} | {fmt_pct(t['pass'])} | {t['claims']} | {t['contra']} | {t['absent']} |")
+                for j in t_judges:
+                    rs = [r for r in truth_rows if r["arm"] == a and r["lang"] == lang and r["judge"] == j and not r["parse_fail"]]
+                    if not rs:
+                        continue
+                    n = len(rs)
+                    truth[f"{a}|{lang}|{j}"] = {"n": n, "pass": round(sum(r["passes"] for r in rs) / n, 3),
+                                                "claims": round(sum(r["n_supported"] + r["n_contradicted"] + r["n_absent"] for r in rs) / n, 2),
+                                                "contra": round(sum(r["n_contradicted"] for r in rs) / n, 2),
+                                                "absent": round(sum(r["n_absent"] for r in rs) / n, 2)}
+                    t = truth[f"{a}|{lang}|{j}"]
+                    md.append(f"| {a} | {lang} | {j} | {n} | {fmt_pct(t['pass'])} | {t['claims']} | {t['contra']} | {t['absent']} |")
         md.append("")
+        if len(t_judges) >= 2:
+            t_by: dict = defaultdict(dict)
+            for r in truth_rows:
+                if not r["parse_fail"]:
+                    t_by[(r["lang"], r["item_id"])][r["judge"]] = bool(r["passes"])
+            for lang in langs:
+                for j1, j2 in combinations(t_judges, 2):
+                    both = [v for (lg, _), v in t_by.items() if lg == lang and j1 in v and j2 in v]
+                    if not both:
+                        continue
+                    agree = sum(v[j1] == v[j2] for v in both)
+                    only1 = sum((not v[j1]) and v[j2] for v in both)
+                    only2 = sum(v[j1] and not v[j2] for v in both)
+                    truth_agree[f"{lang}|{j1}|{j2}"] = {"judges": [j1, j2], "n": len(both), "agree": round(agree / len(both), 3),
+                                                        "only_first_fails": only1, "only_second_fails": only2}
+                    md.append(f"- {lang}: {j1} and {j2} agree on pass/fail for {fmt_pct(agree / len(both))} of {len(both)} items both checked; "
+                              f"{j1} alone fails {only1}, {j2} alone fails {only2}.")
+            md.append("")
     else:
         md += ["## Truth gate", "", "_truth.jsonl missing: run truth.py_", ""]
     S["truth"] = truth
+    S["truth_agreement"] = truth_agree
 
     # ---- damage tests ----
     dmg_path = run_dir / "damage.jsonl"
