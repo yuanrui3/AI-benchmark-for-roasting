@@ -8,6 +8,8 @@ plus an anchor to 250 million public New Yorker caption-contest ratings), and a 
 models and prompts. First results cover Claude Opus 5.5, Claude Sonnet 5.5 and Claude Haiku 5.5; GPT-5.5, Gemini
 3.1 Pro, DeepSeek V4 and Qwen 3.8 are wired in and wait for OpenRouter credit.
 
+Website: <https://yuanrui3.github.io/AI-benchmark-for-roasting/> · Code and data: <https://github.com/yuanrui3/AI-benchmark-for-roasting>
+
 Working log and every decision: [`CLAUDE.md`](CLAUDE.md). Design: [`docs/evaluation-design.md`](docs/evaluation-design.md).
 Full report of the main run: [`runs/pilot/report.md`](runs/pilot/report.md). Leaderboard: [`runs/pilot/leaderboard.md`](runs/pilot/leaderboard.md).
 
@@ -45,6 +47,11 @@ a paragraph-by-paragraph **authorship attribution map** (42% of the material is 
 **0–10 ratings of 379 punchlines**, and the 32 punchlines that were cut, with reasons. As data it is a rare thing: a
 human-rated Chinese humor set with human-versus-AI provenance for every line. In it, who contributed a line does not
 predict its score, no surface feature does, and what the line is about explains a fifth of the variance.
+
+Read it online: [the script, Chinese](https://yuanrui3.github.io/AI-benchmark-for-roasting/talkshow/script/standup_zh.html) ·
+[the script, English](https://yuanrui3.github.io/AI-benchmark-for-roasting/talkshow/script/standup_en.html) ·
+[every punchline with its score](https://yuanrui3.github.io/AI-benchmark-for-roasting/talkshow/ratings/index.html) ·
+[who wrote what](https://yuanrui3.github.io/AI-benchmark-for-roasting/talkshow/attribution/standup_zh.html)
 
 ## Leaderboard (judge opinion, Bradley–Terry over 5,600 English and 5,200 Chinese judgements)
 

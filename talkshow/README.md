@@ -15,6 +15,14 @@ included.
 
 Written 6–8 November 2026 by Xingguang Li with Claude. Released by the author on 13 November 2026.
 
+**Read it online · 在线看：**
+[脱口秀稿（中文）](https://yuanrui3.github.io/AI-benchmark-for-roasting/talkshow/script/standup_zh.html) ·
+[the script in English](https://yuanrui3.github.io/AI-benchmark-for-roasting/talkshow/script/standup_en.html) ·
+[包袱评分 / punchline scores](https://yuanrui3.github.io/AI-benchmark-for-roasting/talkshow/ratings/index.html) ·
+[署名光谱（中文）](https://yuanrui3.github.io/AI-benchmark-for-roasting/talkshow/attribution/standup_zh.html) ·
+[authorship spectrum, English](https://yuanrui3.github.io/AI-benchmark-for-roasting/talkshow/attribution/standup_en.html) ·
+[Model Card: Homo sapiens, with its spectrum](https://yuanrui3.github.io/AI-benchmark-for-roasting/talkshow/attribution/model_card.html)
+
 ## What is here
 
 | Path | What it is |
@@ -31,12 +39,9 @@ Written 6–8 November 2026 by Xingguang Li with Claude. Released by the author 
 | `analysis/pairs_rated.jsonl`, `pairs_revision.jsonl` | Judge-ready pairs: 1,106 pairs of punchlines at least two points apart, and 11 pairs of a deleted line against its rewrite. |
 | `analysis/build.py`, `analyze.py`, `revision_pairs.py` | The scripts that produce the data files from the pages. |
 
-To view the pages, download the repository and open the HTML files; they are self-contained. If GitHub Pages is
-enabled for this repository they are also live at:
-[rating page](https://yuanrui3.github.io/AI-benchmark-for-roasting/talkshow/ratings/index.html) ·
-[attribution, Chinese](https://yuanrui3.github.io/AI-benchmark-for-roasting/talkshow/attribution/standup_zh.html) ·
-[attribution, English](https://yuanrui3.github.io/AI-benchmark-for-roasting/talkshow/attribution/standup_en.html) ·
-[attribution, model card](https://yuanrui3.github.io/AI-benchmark-for-roasting/talkshow/attribution/model_card.html)
+On github.com the HTML links in this table show page source. Use the "Read it online" links above for the working
+pages (on the attribution pages, press 显示光谱 / Show spectrum to switch the tint on), or download the repository and
+open the files; they are self-contained.
 
 ## The numbers
 

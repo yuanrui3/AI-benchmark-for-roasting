@@ -1,0 +1,10 @@
+# GitHub Pages settings for https://yuanrui3.github.io/AI-benchmark-for-roasting/
+# The site is the repository itself: README.md is the home page, the Markdown files render as pages,
+# and the self-contained HTML pages under talkshow/ and runs/ are served as they are.
+title: Roast Anything
+description: >-
+  An LLM humor benchmark for roast generation in English and Chinese, with specificity and truth gates,
+  a damage-test-validated LLM judge, and the stand-up script 人比AI更像AI with human punchline ratings and
+  a human-vs-AI authorship map.
+plugins:
+  - jekyll-sitemap
