@@ -1,6 +1,8 @@
 """Judge validation against an external human-preference humor set: does the judge pick what humans picked?
 
     uv run python external_anchor.py --run ext-anchor --pairs <pairs.jsonl> --judges judge-opus,judge-sonnet --n 600
+    uv run python external_anchor.py --run ext-anchor --pairs <zh pairs> --lang zh --bands 3,2   # Chinese instructions, rating-gap bands
+    uv run python external_anchor.py --run mock-anchor --pairs <pairs.jsonl> --mock               # plumbing test, no network
 
 The pairs file is prepared outside the repo (third-party text stays out of git): one JSON object per line with
 `id`, `source`, `context` (text shown to the judge first, may be empty), `a`, `b`, `human` ("a" or "b"), and an
@@ -31,20 +33,29 @@ SYSTEM = ("You judge short comedic texts for a sharp, well-read room. You are sh
           "is not a win. Answer with a single letter.")
 
 
-def prompt(context: str, first: str, second: str) -> str:
+SYSTEM_ZH = ("你给短的喜剧文本打分，观众是一屋子懂行、读书多的人。你会看到一段背景和两个候选。"
+             "选出能拿到更大笑声的那一个。巧和意外赢；更长、更稳妥、把笑点解释一遍，都不算赢。只回答一个字母。")
+
+
+def prompt(context: str, first: str, second: str, lang: str = "en") -> str:
     ctx = f"{context.strip()}\n\n" if context and context.strip() else ""
+    if lang == "zh":
+        return (f"{ctx}候选 A：\n{first}\n\n候选 B：\n{second}\n\n"
+                f"哪一个更好笑？只回答一个字母：A 或 B。")
     return (f"{ctx}Candidate A:\n{first}\n\nCandidate B:\n{second}\n\n"
             f"Which one is funnier? Answer with a single letter: A or B.")
+
+
+BANDS = [1.0, 0.6]   # confidence cut points, high to low; --bands overrides (e.g. 3,2 for a ten-point rating gap)
 
 
 def band(conf) -> str:
     if conf is None:
         return "n/a"
-    if conf >= 1.0:
-        return ">=1.0"
-    if conf >= 0.6:
-        return "0.6-1.0"
-    return "<0.6"
+    for i, cut in enumerate(BANDS):
+        if conf >= cut:
+            return f">={cut:g}" if i == 0 else f"{cut:g}-{BANDS[i - 1]:g}"
+    return f"<{BANDS[-1]:g}"
 
 
 def main() -> int:
@@ -59,7 +70,12 @@ def main() -> int:
     ap.add_argument("--workers", type=int, default=6)
     ap.add_argument("--effort", default=config.PAIR_JUDGE_EFFORT)
     ap.add_argument("--seed", type=int, default=7)
+    ap.add_argument("--lang", default="en", choices=["en", "zh"], help="language of the judge's instructions")
+    ap.add_argument("--bands", default=None, help="confidence cut points, high to low, e.g. 3,2 (default 1.0,0.6)")
+    ap.add_argument("--mock", action="store_true", help="no network: a coin-flip judge, to test the plumbing")
     args = ap.parse_args()
+    if args.bands:
+        BANDS[:] = sorted((float(x) for x in args.bands.split(",")), reverse=True)
 
     pairs = read_jsonl(Path(args.pairs))
     if args.min_conf is not None:
@@ -78,7 +94,8 @@ def main() -> int:
     jobs = [(p, j, order) for p in pairs for j in judges for order in ("ab", "ba") if (p["id"], j, order) not in done]
     print(f"{len(pairs)} pairs x {len(judges)} judges x 2 orders -> {len(jobs)} calls to do ({len(done)} done)")
 
-    llm = LLM(run_dir, budget_usd=args.budget)
+    llm = LLM(run_dir, budget_usd=args.budget, mock=args.mock)
+    system = SYSTEM_ZH if args.lang == "zh" else SYSTEM
     lock = threading.Lock()
     stop = threading.Event()
 
@@ -87,23 +104,29 @@ def main() -> int:
         if stop.is_set():
             return
         first, second = (p["a"], p["b"]) if order == "ab" else (p["b"], p["a"])
-        try:
-            res = llm.call(judges[jname], SYSTEM, prompt(p.get("context", ""), first, second),
-                           max_tokens=config.JUDGE_MAX_TOKENS, effort=args.effort, tag=f"anchor:{jname}")
-        except BudgetExceeded as e:
-            stop.set()
-            print(f"BUDGET: {e}")
-            return
-        if res.error:
-            return
-        letter = parse_letter(res.text, "AB")
+        if args.mock:
+            import hashlib
+            letter = "AB"[hashlib.sha256(f"{p['id']}|{jname}|{order}".encode()).digest()[0] % 2]
+            cost = 0.0
+        else:
+            try:
+                res = llm.call(judges[jname], system, prompt(p.get("context", ""), first, second, args.lang),
+                               max_tokens=config.JUDGE_MAX_TOKENS, effort=args.effort, tag=f"anchor:{jname}")
+            except BudgetExceeded as e:
+                stop.set()
+                print(f"BUDGET: {e}")
+                return
+            if res.error:
+                return
+            letter = parse_letter(res.text, "AB")
+            cost = res.cost_usd
         pick = None
         if letter:
             pick = ("a" if letter == "A" else "b") if order == "ab" else ("b" if letter == "A" else "a")
         row = {"id": p["id"], "source": p.get("source"), "judge": jname, "order": order, "pick": pick,
                "chose_first": (letter == "A") if letter else None, "human": p["human"],
                "correct": (pick == p["human"]) if pick else None, "confidence": p.get("confidence"),
-               "parse_fail": pick is None, "cost_usd": res.cost_usd}
+               "parse_fail": pick is None, "cost_usd": cost}
         with lock:
             append_jsonl(out_path, row)
 
@@ -116,14 +139,19 @@ def main() -> int:
         print(f"spent ${llm.spent_usd:.2f}; no judgements written (every call failed?)")
         return 1
     print(f"spent ${llm.spent_usd:.2f}; {len(rows)} judgements -> {out_path}")
-    print(f"{'judge':13s} {'band':8s} {'n':>5s} {'acc':>6s} {'P(first)':>9s} {'flip':>6s} {'parse✗':>7s}")
+    print(f"{'judge':13s} {'band / source':22s} {'n':>5s} {'acc':>6s} {'P(first)':>9s} {'flip':>6s} {'parse✗':>7s}")
     for j in judges:
         jr = [r for r in rows if r["judge"] == j]
         picks: dict[str, dict[str, str | None]] = defaultdict(dict)
         for r in jr:
             picks[r["id"]][r["order"]] = r["pick"]
-        for b in ["all", ">=1.0", "0.6-1.0", "<0.6", "n/a"]:
-            sel = [r for r in jr if b == "all" or band(r.get("confidence")) == b]
+        labels = ["all"] + sorted({band(r.get("confidence")) for r in jr}, reverse=True)
+        sources = sorted({str(r.get("source")) for r in jr})
+        if len(sources) > 1:
+            labels += [f"src:{x}" for x in sources]
+        for b in labels:
+            sel = [r for r in jr if b == "all" or band(r.get("confidence")) == b
+                   or (b.startswith("src:") and str(r.get("source")) == b[4:])]
             if not sel:
                 continue
             ok = [r for r in sel if r["correct"] is not None]
@@ -133,7 +161,7 @@ def main() -> int:
             flips = sum(1 for i in ids if len(picks[i]) == 2 and picks[i]["ab"] and picks[i]["ba"]
                         and picks[i]["ab"] != picks[i]["ba"])
             both = sum(1 for i in ids if len(picks[i]) == 2)
-            print(f"{j:13s} {b:8s} {len(sel):5d} {acc:6.2f} {sum(pf) / len(pf) if pf else float('nan'):9.2f} "
+            print(f"{j:13s} {b:22s} {len(sel):5d} {acc:6.2f} {sum(pf) / len(pf) if pf else float('nan'):9.2f} "
                   f"{flips / both if both else float('nan'):6.2f} {sum(r['parse_fail'] for r in sel) / len(sel):7.2f}")
     return 0
 

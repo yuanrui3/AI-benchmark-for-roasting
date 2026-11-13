@@ -1,4 +1,6 @@
-# Talk-show reference: 阴燃 · The Slow Fire, Chapter 20
+# A second satire sample: 阴燃 · The Slow Fire, Chapter 20 ("Late Show")
+
+**This is not the show the roast-anything skill is modelled on.** The skill's source is the stand-up script 《人比AI更像AI》 ("Humans Are More AI Than AI"), which is private and not in this repository. This folder was called `reference/talk-show/` until 12 Nov 2026, which invited exactly that confusion. No code or prompt in the benchmark reads this folder; no result depends on it.
 
 - `ch20_late_show_en.md`: "Chapter Twenty: Late Show" (English)
 - `ch20_深夜秀_zh.md`: 《第二十章：深夜秀》 (Chinese)

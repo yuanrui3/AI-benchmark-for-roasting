@@ -64,7 +64,8 @@ credentials are the damage tests in `runs/pilot/report.md` and the crowd anchor 
 4. **Profile**: `agency.py` (agent-action rate: is the hit on people doing something?), `devices.py` (comic-device
    collisions across arms), length and rhythm.
 5. **Judge validation**: `damage.py` (seven degradations, both orders; a judge is admitted at ≥90% and must never
-   prefer an explained joke) and `external_anchor.py` (accuracy against public crowd preferences).
+   prefer an explained joke) and `external_anchor.py` (accuracy against public crowd preferences, or against your
+   own scored jokes: `rated_pairs.py` turns any joke set with a human rating into judge-ready pairs).
 6. **Taste**: `build_pairs.py` + `judge_pairs.py` (blind pairwise, both orders) and `rate.html` for human raters;
    `analyze.py`, `leaderboard.py`, `pool_rank.py`, `metric_check.py` read the results.
 
@@ -79,7 +80,7 @@ generic to any subjective judge.
 
 **Is there a Chinese humor benchmark here?** Yes: every target is roasted in Chinese with native prompts, judged by a
 judge validated on Chinese damage tests. There is no public Chinese humor-preference dataset, so the Chinese anchor is
-the damage tests plus 100 votes from one rater.
+the damage tests, 100 votes from one rater, and that rater's 0–10 scores on 379 Chinese stand-up punchlines (private text; staged as 1,100 pairs with `rated_pairs.py`, judge run pending).
 
 **What does it cost?** Opus judge calls are about $0.008 each at low effort; a 250-pair pool judged both ways is about
 $4. The full Claude-side run (2,080 roasts, every stage) was about $175.
@@ -126,7 +127,8 @@ New Yorker caption contest ([Hessel et al. 2023](https://github.com/jmhessel/cap
 ## Licence
 
 Code is MIT; targets, run data and docs are CC BY 4.0; the house-style skill and the chapters under `reference/`
-are the author's, all rights reserved (see `LICENSE`). The public humour datasets fetched by `external_pairs.py` are
+are the author's, all rights reserved (see `LICENSE`). The skill is modelled on the author's stand-up script
+《人比AI更像AI》, which is private and not included; `reference/novel-late-show/` is a different piece. The public humour datasets fetched by `external_pairs.py` are
 not included and keep their own licences.
 
 ## Limits
