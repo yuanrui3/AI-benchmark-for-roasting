@@ -36,6 +36,16 @@ Full report of the main run: [`runs/pilot/report.md`](runs/pilot/report.md). Lea
   would not land on the twin) spreads the arms from 0.04 (generic control) to 0.81 (fact-fed Opus) and predicts the
   judge's pick in 64–79% of decided pairs.
 
+## The talk show behind the house style: 《人比AI更像AI》
+
+The best-scoring prompt in this benchmark, the house-style skill, is modelled on a stand-up show the author wrote
+with Claude: **《人比AI更像AI》, "Humans Are More AI Than AI"**, in which an AI runs humans through the fifteen standard
+complaints about AI. The whole paper trail is in [`talkshow/`](talkshow/README.md): the script in Chinese and English,
+a paragraph-by-paragraph **authorship attribution map** (42% of the material is the human's), the human co-author's
+**0–10 ratings of 379 punchlines**, and the 32 punchlines that were cut, with reasons. As data it is a rare thing: a
+human-rated Chinese humor set with human-versus-AI provenance for every line. In it, who contributed a line does not
+predict its score, no surface feature does, and what the line is about explains a fifth of the variance.
+
 ## Leaderboard (judge opinion, Bradley–Terry over 5,600 English and 5,200 Chinese judgements)
 
 | arm | English score [95% CI] | Chinese score [95% CI] |
@@ -80,7 +90,7 @@ generic to any subjective judge.
 
 **Is there a Chinese humor benchmark here?** Yes: every target is roasted in Chinese with native prompts, judged by a
 judge validated on Chinese damage tests. There is no public Chinese humor-preference dataset, so the Chinese anchor is
-the damage tests, 100 votes from one rater, and that rater's 0–10 scores on 379 Chinese stand-up punchlines (private text; staged as 1,100 pairs with `rated_pairs.py`, judge run pending).
+the damage tests, 100 votes from one rater, and that rater's 0–10 scores on 379 Chinese stand-up punchlines ([`talkshow/`](talkshow/README.md); 1,106 judge-ready pairs, judge run pending).
 
 **What does it cost?** Opus judge calls are about $0.008 each at low effort; a 250-pair pool judged both ways is about
 $4. The full Claude-side run (2,080 roasts, every stage) was about $175.
@@ -126,9 +136,9 @@ New Yorker caption contest ([Hessel et al. 2023](https://github.com/jmhessel/cap
 
 ## Licence
 
-Code is MIT; targets, run data and docs are CC BY 4.0; the house-style skill and the chapters under `reference/`
-are the author's, all rights reserved (see `LICENSE`). The skill is modelled on the author's stand-up script
-《人比AI更像AI》, which is private and not included; `reference/novel-late-show/` is a different piece. The public humour datasets fetched by `external_pairs.py` are
+Code is MIT; targets, run data and docs are CC BY 4.0; the talk show under `talkshow/` is CC BY-NC 4.0; the
+house-style skill and the chapters under `reference/` are the author's, all rights reserved (see `LICENSE`).
+`reference/novel-late-show/` is a different piece from the talk show. The public humour datasets fetched by `external_pairs.py` are
 not included and keep their own licences.
 
 ## Limits
@@ -138,4 +148,4 @@ self-preference is bounded (at most five points across runs) but not measured. H
 two public English sets. The Chinese half of the practice-target pool is part-judged.
 
 *Keywords: LLM humor benchmark, roast generation, computational humor, LLM-as-a-judge, humor evaluation, Chinese
-humor, 吐槽, comedy writing evaluation, Claude Opus 5.5, Bradley–Terry leaderboard, New Yorker caption contest.*
+humor, 吐槽, 脱口秀, 人比AI更像AI, human-AI co-writing, authorship attribution, comedy writing evaluation, Claude Opus 5.5, Bradley–Terry leaderboard, New Yorker caption contest.*

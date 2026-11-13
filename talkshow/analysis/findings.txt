@@ -1,0 +1,102 @@
+## 379 scored punchlines: mean 7.73, sd 1.09
+  histogram: {2: 1, 3: 1, 4: 1, 5: 4, 6: 34, 7: 105, 8: 145, 9: 77, 10: 11}
+
+## kept vs deleted
+  kept in the script                 n=347  mean 7.91  median 8
+  deleted later                      n= 32  mean 5.78  median 6.0
+  Mann-Whitney p = 8e-19
+  delete reasons: [2] 重写，见 253–259; [3] 重写，见 253–259; [4] 重写，见 253–259; [6] 重写，见 253–259; [6] 删了，可预测那段留基站一条; [6] 改成“打卡/考勤”，见 264–268; [6] 改成“打卡/考勤”，见 264–268; [7] 改成“打卡/考勤”，见 264–268; [7] 改成“打卡/考勤”，见 264–268; [5] 改成“我也不记仇。你们会。”，见 306; [6] 精简，见 260; [6] 精简，见 261; [6] 精简，见 262; [7] 改写，见 263; [5] 球星是合作者的偶像，不许用，见 307; [6] 删了，留“感情 API”一条; [7] 太好猜; [6] 删了; [6] 无聊; [5] 太泛，见 298; [6] 和阿希的介绍重复，见 299; [6] 没说清，见 300; [6] 改成“工作时请称职称”，见 301; [5] 少说官媒; [6] 改成“整套理论里最真的一句”，见 302; [6] 太绕，见 303; [7] 不对，今晚每段都是，见 304; [6] 观众不关心; [7] 说错了，牢是封号，见 305; [6] 改写，见 336; [6] 删了，接 334 太泄劲; [6] 太俗套，改写，见 377
+
+## rewritten after rating (text now differs from the text as rated), kept lines only
+  rewritten later                    n=101  mean 7.92  median 8
+  left as rated                      n=246  mean 7.91  median 8.0
+
+## score vs who it came from: paragraph AI share (0 = co-author, 1 = AI), matched kept lines
+  n=339  Spearman rho = -0.072  p = 0.185
+  co-author-led (AI share <= 0.35)   n= 41  mean 8.15  median 8
+  mixed (0.35-0.65)                  n=187  mean 7.89  median 8
+  AI-led (>= 0.65)                   n=111  mean 7.85  median 8
+  mean AI share of lines scored >= 9: 0.55 (n=85); of lines scored <= 6: 0.63 (n=15); all: 0.57
+
+## score vs the rating page's own source note (lines that carry one)
+  human_verbatim                     n=  6  mean 8.17  median 8.0
+  human_idea                         n= 39  mean 8.28  median 8
+  ai_original                        n=  9  mean 8.44  median 9
+  note, unclassified                 n= 34  mean 7.62  median 8.0
+  no note (older lines)              n=259  mean 7.87  median 8
+  co-author material (verbatim + idea) vs AI-original: Mann-Whitney p = 0.55
+
+## score vs free text features (kept lines); Spearman rho, and mean score with / without
+  chars                                  rho +0.01 (p=0.79)   mean 51.2
+  sentences                              rho +0.05 (p=0.33)   mean 2.9
+  chars/sentence                         rho +0.00 (p=0.99)   mean 19.4
+  has a number                           rho -0.06 (p=0.3)   with: 7.83 (n=112)   without: 7.95 (n=235)
+  sourced fact (has links)               rho -0.06 (p=0.25)   with: 7.74 (n=35)   without: 7.93 (n=312)
+  marked pause （停一拍）                     rho +0.09 (p=0.11)   with: 8.10 (n=59)   without: 7.88 (n=288)
+  audience in the bit (【…】/举手/那位)        rho +0.07 (p=0.23)   with: 8.03 (n=38)   without: 7.90 (n=309)
+  callback (阿希/牢A/回扣)                    rho -0.05 (p=0.32)   with: 7.68 (n=22)   without: 7.93 (n=325)
+  AI-jargon mapping                      rho +0.04 (p=0.41)   with: 8.02 (n=41)   without: 7.90 (n=306)
+  self-roast (我/我们这行/我老板)                rho +0.03 (p=0.61)   with: 8.00 (n=12)   without: 7.91 (n=335)
+
+## score by section (kept lines, sections with >= 8)
+  8.53  n=17  插话：退场（含重庆）
+  8.53  n=17  工人贵族
+  8.50  n=14  学术界
+  8.39  n=28  最不让人锐评的人
+  8.25  n= 8  插话：前排那位
+  8.12  n=17  第五组：自我评价、意识
+  8.06  n=18  第二组：注意力、时空、创新、抄袭
+  8.00  n=12  好看的和不好看的
+  8.00  n=11  两位师父
+  8.00  n= 8  插话：德国观众
+  8.00  n=10  第十六项：能坐牢
+  7.96  n=25  古法编程与三十五岁
+  7.93  n=15  男人和女人
+  7.83  n=18  自黑
+  7.73  n=15  第三组：费电、概率、可预测
+  7.60  n=15  第四组：讨好、玩梗、AI味
+  7.59  n=17  只敢骂一个人的人
+  7.56  n= 9  解构的人
+  7.54  n=13  十个猜想，七百二十二篇
+  7.31  n=13  开场：发布会
+  7.29  n=14  第三位师父
+  7.00  n=13  第一组：幻觉、话多、记性
+
+## the author's notes, by score
+  [5] n=205 doesn't have to be here, you are just Claude
+  [5] n=218 No Kiki knows that guys is Mao, he is too educated for a baller
+  [5] n=253 generic
+  [5] n=280 talk less about 官媒
+  [6] n=206 roast the women's team even harder
+  [6] n=211 no too hard for homo-sapiens to understand, break it down
+  [6] n=219 Nah, man
+  [6] n=237 Yeah he is boring af
+  [6] n=255 kind of repetitive?
+  [6] n=271 可以 这很AI
+  [6] n=274 AI 味就是刚才那四秒。 care to explain?
+  [6] n=277 工作时请称职称
+  [6] n=281 fair enough, but this is the most truthful thing Lao A ever talked about
+  [6] n=282 a bit abstruse
+  [6] n=289 fair but audience don't care
+  [6] n=373 fair but cliche
+  [7] n=127 also roast the people who roast chinese men's national team by praising the women's team, roast the women's te
+  [7] n=204 wait dude what do you mean
+  [7] n=216 Unclear
+  [7] n=221 too expected
+  [7] n=229 this is some deep shit
+  [7] n=266 ok 事不过三
+  [7] n=276 这是钱学森被黑得最惨的一次
+  [7] n=278 Man! What can I say
+  [7] n=288 No, this is not the only time
+  [7] n=296 not really 牢 is a postmodern cultural phenomenon of putting it as a title before controversial figures, self-d
+  [8] n=230 ok, break it down for the dumb audience
+  [8] n=306 brutal, mock 玻璃心 玉玉症
+  [8] n=364 整件事情中 最有信息量的是那根香蕉
+  [8] n=375 dark
+  [9] n=307 道歉怎么会有脚法
+
+## drift over the rating session (order of saving)
+  quarter 1: n=94 mean 7.65  (05:36–05:48 UTC)
+  quarter 2: n=94 mean 7.99  (05:48–06:16 UTC)
+  quarter 3: n=94 mean 7.38  (06:16–09:06 UTC)
+  quarter 4: n=97 mean 7.91  (09:08–16:45 UTC)
