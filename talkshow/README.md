@@ -22,7 +22,7 @@ Written 6–8 November 2026 by Xingguang Li with Claude. Released by the author 
 | [`script/standup_zh.md`](script/standup_zh.md) | The stand-up script, Chinese original (about 42,000 characters). |
 | [`script/standup_en.md`](script/standup_en.md) | The English version, adapted for an American room, with one English-only segment. |
 | [`script/model_card_zh.md`](script/model_card_zh.md), [`model_card_en.md`](script/model_card_en.md) | *Model Card: Homo sapiens*, the mock benchmark report the show grew from, with 128 references. |
-| [`attribution/standup_zh.html`](attribution/standup_zh.html), [`standup_en.html`](attribution/standup_en.html), [`model_card.html`](attribution/model_card.html) | **署名光谱 / authorship spectrum.** The full text with every paragraph tinted by how much of it is the AI's (0 = the co-author's idea, material or own words; 1 = the AI raised it, found it and wrote it), and a one-line reason per paragraph. Self-contained pages: download and open, or use the preview links below. |
+| [`attribution/standup_zh.html`](attribution/standup_zh.html), [`standup_en.html`](attribution/standup_en.html), [`model_card.html`](attribution/model_card.html) | **署名光谱 / authorship spectrum.** The full text with every paragraph tinted by how much of it is the AI's (0 = the co-author's idea, material or own words; 1 = the AI raised it, found it and wrote it), and a one-line reason per paragraph. Self-contained pages; see below for how to view them. |
 | `attribution/*_blocks.jsonl` | The same maps as data: one row per paragraph with `id`, `lang`, `section`, `ai_share`, `why`, `text`. |
 | [`ratings/index.html`](ratings/index.html) | **包袱评分.** The page on which the co-author scored each punchline from 0 (dead air) to 10 (laughed out loud), with the scores and notes embedded. Read-only archive of the live page. |
 | [`ratings/punchlines.jsonl`](ratings/punchlines.jsonl), [`punchlines.csv`](ratings/punchlines.csv) | One row per punchline: the score, the note, the text as it was when scored, the section, whether it was later deleted and why, the source note, and the attribution of the paragraph it belongs to. |
@@ -31,11 +31,12 @@ Written 6–8 November 2026 by Xingguang Li with Claude. Released by the author 
 | `analysis/pairs_rated.jsonl`, `pairs_revision.jsonl` | Judge-ready pairs: 1,106 pairs of punchlines at least two points apart, and 11 pairs of a deleted line against its rewrite. |
 | `analysis/build.py`, `analyze.py`, `revision_pairs.py` | The scripts that produce the data files from the pages. |
 
-View the pages in a browser without downloading:
-[rating page](https://htmlpreview.github.io/?https://github.com/yuanrui3/AI-benchmark-for-roasting/blob/main/talkshow/ratings/index.html) ·
-[attribution, Chinese](https://htmlpreview.github.io/?https://github.com/yuanrui3/AI-benchmark-for-roasting/blob/main/talkshow/attribution/standup_zh.html) ·
-[attribution, English](https://htmlpreview.github.io/?https://github.com/yuanrui3/AI-benchmark-for-roasting/blob/main/talkshow/attribution/standup_en.html) ·
-[attribution, model card](https://htmlpreview.github.io/?https://github.com/yuanrui3/AI-benchmark-for-roasting/blob/main/talkshow/attribution/model_card.html)
+To view the pages, download the repository and open the HTML files; they are self-contained. If GitHub Pages is
+enabled for this repository they are also live at:
+[rating page](https://yuanrui3.github.io/AI-benchmark-for-roasting/talkshow/ratings/index.html) ·
+[attribution, Chinese](https://yuanrui3.github.io/AI-benchmark-for-roasting/talkshow/attribution/standup_zh.html) ·
+[attribution, English](https://yuanrui3.github.io/AI-benchmark-for-roasting/talkshow/attribution/standup_en.html) ·
+[attribution, model card](https://yuanrui3.github.io/AI-benchmark-for-roasting/talkshow/attribution/model_card.html)
 
 ## The numbers
 
