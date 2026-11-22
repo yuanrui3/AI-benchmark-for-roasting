@@ -1,5 +1,7 @@
 # Roast Anything: an LLM humor benchmark for roast generation, with a validated LLM judge (English and Chinese)
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24448825.svg)](https://doi.org/10.5281/zenodo.24448825)
+
 **Roast Anything** measures whether a large language model can write a roast that is **funny, true, and about *this*
 thing**. It is a bilingual (English + Chinese 吐槽) benchmark for computational humor with three parts that most humor
 evaluations lack: **gates before taste** (a specificity test against a near-twin and a truth check against a
