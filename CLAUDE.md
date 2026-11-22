@@ -152,6 +152,8 @@ Known gaps before the first real run: prompts and parsers untested on real outpu
 
 ## Reference material
 
+The reserved style materials below are documented for provenance and omitted from the archive.
+
 - `.claude/skills/roast-anything/`: the owner's roast skill, a dark, fact-anchored house style that defaults to Chinese. It encodes the owner's own taste, and the owner is also a rater, so blind the arms and give friends' votes real weight.
 - `reference/talk-show/`: Chapter 20, "Late Show", of the owner's novel 阴燃 · The Slow Fire, in English and Chinese. It is a style reference for satirical delivery: callbacks, Radio-Yerevan answers, *Yes, Minister* dialogue. It was machine-drafted and author-selected, so it is not a human-written baseline.
 - `docs/landscape.md`: prior work.

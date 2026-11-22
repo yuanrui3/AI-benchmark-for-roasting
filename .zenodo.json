@@ -1,0 +1,12 @@
+{
+  "title": "Roast Anything: A Bilingual Roast-Generation Benchmark",
+  "version": "v0.1.1",
+  "description": "<p>A bilingual benchmark for roast generation and humor judgment, with specificity and truth gates, judge validation, and pilot results.</p><p>This archive includes benchmark code and public benchmark data. The reserved house-style skill and fiction references are excluded. Code is MIT-licensed, and benchmark data and documentation are CC BY 4.0 under LICENSE. Referenced external datasets retain their own terms.</p>",
+  "creators": [
+    {
+      "name": "Chen, Yuanrui"
+    }
+  ],
+  "license": "MIT",
+  "upload_type": "software"
+}

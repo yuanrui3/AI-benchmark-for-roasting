@@ -1,14 +1,13 @@
 cff-version: 1.2.0
-message: "If you use this benchmark, its targets, or its judge-validation recipe, please cite it."
+message: "If you use this benchmark, its targets, or its judge-validation recipe, please cite it. See LICENSE for the terms that apply to code and data."
 title: "Roast Anything: a roast-generation benchmark with specificity and truth gates and a damage-test-validated LLM judge"
 authors:
   - family-names: Chen
     given-names: Yuanrui
-version: 0.1.0
-date-released: 2026-11-12
+version: 0.1.1
+date-released: 2026-11-22
 url: "https://github.com/yuanrui3/AI-benchmark-for-roasting"
 repository-code: "https://github.com/yuanrui3/AI-benchmark-for-roasting"
-license: MIT
 keywords:
   - LLM humor benchmark
   - roast generation

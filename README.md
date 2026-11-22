@@ -11,6 +11,12 @@ models and prompts. First results cover Claude Opus 5.5, Claude Sonnet 5.5 and C
 Working log and every decision: [`CLAUDE.md`](CLAUDE.md). Design: [`docs/evaluation-design.md`](docs/evaluation-design.md).
 Full report of the main run: [`runs/pilot/report.md`](runs/pilot/report.md). Leaderboard: [`runs/pilot/leaderboard.md`](runs/pilot/leaderboard.md).
 
+## Archive scope
+
+This release includes the benchmark code, targets, run data and documentation. The
+reserved house-style skill and fiction references are excluded. Re-running the
+house-style arm requires a separately authorized copy of the skill.
+
 ## Key findings (November 2026, Claude side)
 
 - **Claude Opus 5.5 is a usable humor judge in English and Chinese.** It passes all seven damage tests (explained
@@ -93,12 +99,11 @@ uv sync                          # add --extra anchor for the public-dataset dow
 cp .env.example .env             # ANTHROPIC_API_KEY and/or OPENROUTER_API_KEY; .env is git-ignored
 uv run python check_keys.py      # free: what each key can reach
 uv run python test_common.py     # unit checks, no network
-uv run python run_all.py --mock  # whole pipeline on a fake provider, zero cost
-uv run python run_all.py --run pilot --smoke     # a few dollars on real models
-uv run python run_all.py --run pilot --budget 40 # full run; resumes, nothing paid twice
+uv run python generate.py --mock --arms plain-opus --run archive-smoke --targets 1 --samples 1
 ```
 
-Either key alone works; missing providers are skipped and reported. On Windows set `PYTHONUTF8=1`.
+The archive smoke test runs one public arm on a mock provider. When using real models, either
+provider key works. On Windows set `PYTHONUTF8=1`.
 
 **Add a model**: an entry in `MODELS` and an arm in `config.py`, then `generate.py --arms <name>`, the gate stages, and
 `judge_pairs.py --judges judge-opus` on a pool built with `build_pairs.py`. **Add a judge**: an entry in `JUDGES`, then
@@ -125,9 +130,9 @@ New Yorker caption contest ([Hessel et al. 2023](https://github.com/jmhessel/cap
 
 ## Licence
 
-Code is MIT; targets, run data and docs are CC BY 4.0; the house-style skill and the chapters under `reference/`
-are the author's, all rights reserved (see `LICENSE`). The public humour datasets fetched by `external_pairs.py` are
-not included and keep their own licences.
+Code is MIT. Targets, run data and documentation are CC BY 4.0. The author retains all
+rights to the excluded house-style skill and fiction references. The external humour datasets
+fetched by `external_pairs.py` keep their own licences. See [`LICENSE`](LICENSE).
 
 ## Limits
 
